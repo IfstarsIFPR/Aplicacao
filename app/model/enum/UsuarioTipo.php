@@ -2,15 +2,16 @@
 #Nome do arquivo: UsuarioPapel.php
 #Objetivo: classe Enum para os papeis de permissões do model de Usuario
 
-class UsuarioPapel {
+class TipoUsuario {
 
     public static string $SEPARADOR = "|";
 
-    const USUARIO = "USUARIO";
-    const ADMINISTRADOR = "ADMINISTRADOR";
+    const aluno = "aluno";
+    const admin = "admin";
+    const professor = "professor";
 
     public static function getAllAsArray() {
-        return [UsuarioPapel::USUARIO, UsuarioPapel::ADMINISTRADOR];
+        return [TipoUsuario::aluno, TipoUsuario::admin, TipoUsuario::professor];
     }
 
 }

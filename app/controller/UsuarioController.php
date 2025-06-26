@@ -4,7 +4,7 @@ require_once(__DIR__ . "/Controller.php");
 require_once(__DIR__ . "/../dao/UsuarioDAO.php");
 require_once(__DIR__ . "/../service/UsuarioService.php");
 require_once(__DIR__ . "/../model/Usuario.php");
-require_once(__DIR__ . "/../model/enum/UsuarioPapel.php");
+require_once(__DIR__ . "/../model/enum/UsuarioTipo.php");
 
 class UsuarioController extends Controller {
 
@@ -30,7 +30,7 @@ class UsuarioController extends Controller {
 
     protected function create() {
         $dados['id'] = 0;
-        $dados['papeis'] = UsuarioPapel::getAllAsArray();
+        $dados['tipousuario'] = TipoUsuario::getAllAsArray();
 
         $this->loadView("usuario/form.php", $dados);
     }
@@ -43,8 +43,7 @@ class UsuarioController extends Controller {
             $usuario->setSenha("");
             $dados["usuario"] = $usuario;
 
-            $dados['papeis'] = UsuarioPapel::getAllAsArray();
-            
+             $dados['tipousuario'] = TipoUsuario::getAllAsArray();
             $this->loadView("usuario/form.php", $dados);
         } else
             $this->list("Usuário não encontrado!");
@@ -53,20 +52,18 @@ class UsuarioController extends Controller {
     protected function save() {
         //Capturar os dados do formulário
         $id = $_POST['id'];
-        $nome = trim($_POST['nome']) != "" ? trim($_POST['nome']) : NULL;
-        $login = trim($_POST['login']) != "" ? trim($_POST['login']) : NULL;
+        $nome = trim($_POST['nomeUsuario']) != "" ? trim($_POST['nomeUsuario']) : NULL;
+        $email = trim($_POST['email']) != "" ? trim($_POST['email']) : NULL;
         $senha = trim($_POST['senha']) != "" ? trim($_POST['senha']) : NULL;
         $confSenha = trim($_POST['conf_senha']) != "" ? trim($_POST['conf_senha']) : NULL;
-        $papel = $_POST['papel'];
-
+        $tipousuario = $_POST['tipousuario'];
         //Criar o objeto Usuario
         $usuario = new Usuario();
         $usuario->setId($id);
         $usuario->setNome($nome);
-        $usuario->setLogin($login);
+        $usuario->setEmail($email);
         $usuario->setSenha($senha);
-        $usuario->setPapel($papel);
-
+        $usuario->setTipousuario($tipousuario);
         //Validar os dados (camada service)
         $erros = $this->usuarioService->validarDados($usuario, $confSenha);
         if(! $erros) {
@@ -88,7 +85,8 @@ class UsuarioController extends Controller {
 
         //Mostrar os erros
         $dados['id'] = $usuario->getId();
-        $dados['papeis'] = UsuarioPapel::getAllAsArray();
+        $dados['nomeUsuario'] = $usuario->getNome();
+        $dados['tipousuario'] = TipoUsuario::getAllAsArray();
         $dados["usuario"] = $usuario;
         $dados['confSenha'] = $confSenha;
 

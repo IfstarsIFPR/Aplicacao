@@ -14,7 +14,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `usuario` (
   `idUsuario` INT NOT NULL AUTO_INCREMENT,
-  `idCurso` INT NOT NULL,
+  `idCurso` INT,
   `nomeUsuario` VARCHAR(100) NOT NULL,
   `senha` VARCHAR(255) NOT NULL,
   `email` VARCHAR(100) NOT NULL,
@@ -115,3 +115,7 @@ CREATE TABLE IF NOT EXISTS `avaliacao` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
+
+
+INSERT INTO usuario (email, senha) 
+VALUES ('heataer@gmail.com', '$2y$10$Y49i5tPHcdluuLVZSEQH1OEUlKXDgazm5PlDQtJBRYor/iIf2xgYe'); /* senha 123 */

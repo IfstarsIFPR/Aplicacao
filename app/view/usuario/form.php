@@ -19,17 +19,17 @@ require_once(__DIR__ . "/../include/menu.php");
             <form id="frmUsuario" method="POST" 
                 action="<?= BASEURL ?>/controller/UsuarioController.php?action=save" >
                 <div class="mb-3">
-                    <label class="form-label" for="txtNome">Nome:</label>
+                    <label class="form-label" for="txtNome">Nome Completo:</label>
                     <input class="form-control" type="text" id="txtNome" name="nome" 
                         maxlength="70" placeholder="Informe o nome"
                         value="<?php echo (isset($dados["usuario"]) ? $dados["usuario"]->getNome() : ''); ?>" />
                 </div>
                 
                 <div class="mb-3">
-                    <label class="form-label" for="txtLogin">Login:</label>
-                    <input class="form-control" type="text" id="txtLogin" name="login" 
+                    <label class="form-label" for="txtLogin">E-mail:</label>
+                    <input class="form-control" type="email" id="txtLogin" name="email" 
                         maxlength="15" placeholder="Informe o login"
-                        value="<?php echo (isset($dados["usuario"]) ? $dados["usuario"]->getLogin() : ''); ?>"/>
+                        value="<?php echo (isset($dados["usuario"]) ? $dados["usuario"]->getEmail() : ''); ?>"/>
                 </div>
 
                 <div class="mb-3">
@@ -47,17 +47,17 @@ require_once(__DIR__ . "/../include/menu.php");
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label" for="selPapel">Papel:</label>
-                    <select class="form-select" name="papel" id="selPapel">
-                        <option value="">Selecione o papel</option>
-                        <?php foreach($dados["papeis"] as $papel): ?>
-                            <option value="<?= $papel ?>" 
+                    <label class="form-label" for="selTipoUsuario">Tipo usuario:</label>
+                    <select class="form-select" name="tipoUsuario" id="selTipoUsuario">
+                        <option value="">Selecione o tipo de usuário</option>
+                        <?php foreach($dados["usuario"] as $tipousuario): ?>
+                            <option value="<?= $tipousuario ?>" 
                                 <?php 
-                                    if(isset($dados["usuario"]) && $dados["usuario"]->getPapel() == $papel) 
+                                    if(isset($dados["tipoUsuario"]) && $dados["tipoUsuario"]->getTipousuario() == $tipousuario) 
                                         echo "selected";
                                 ?>    
                             >
-                                <?= $papel ?>
+                                <?= $tipousuario ?>
                             </option>
                         <?php endforeach; ?>
                     </select>

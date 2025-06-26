@@ -2,31 +2,31 @@
 #Nome do arquivo: Usuario.php
 #Objetivo: classe Model para Usuario
 
-require_once(__DIR__ . "/enum/UsuarioPapel.php");
+require_once(__DIR__ . "/enum/UsuarioTipo.php");
 
-class Usuario implements JsonSerializable {
+class Usuario {
 
     private ?int $id;
-    private ?string $nome;
-    private ?string $login;
+    private ?int $idCurso;
+    private ?string $nome;      
+    private ?string $email;
     private ?string $senha;
-    private ?string $papel;
-    private ?string $fotoPerfil;
+    private ?string $tipousuario;
+    private ?int $siape;
+    private ?string $declaracaoMatricula;
+    private ?int $numMatricula;
 
-    public function jsonSerialize(): array
-    {
-        return array(
-            "id" => $this->id,
-            "nome" => $this->nome,
-            "login" => $this->login
-        );
-    }
-
+    /**
+     * Get the value of id
+     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
+    /**
+     * Set the value of id
+     */
     public function setId(?int $id): self
     {
         $this->id = $id;
@@ -34,11 +34,35 @@ class Usuario implements JsonSerializable {
         return $this;
     }
 
+    /**
+     * Get the value of idCurso
+     */
+    public function getIdCurso(): ?int
+    {
+        return $this->idCurso;
+    }
+
+    /**
+     * Set the value of idCurso
+     */
+    public function setIdCurso(?int $idCurso): self
+    {
+        $this->idCurso = $idCurso;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of nome
+     */
     public function getNome(): ?string
     {
         return $this->nome;
     }
 
+    /**
+     * Set the value of nome
+     */
     public function setNome(?string $nome): self
     {
         $this->nome = $nome;
@@ -46,23 +70,35 @@ class Usuario implements JsonSerializable {
         return $this;
     }
 
-    public function getLogin(): ?string
+    /**
+     * Get the value of email
+     */
+    public function getEmail(): ?string
     {
-        return $this->login;
+        return $this->email;
     }
 
-    public function setLogin(?string $login): self
+    /**
+     * Set the value of email
+     */
+    public function setEmail(?string $email): self
     {
-        $this->login = $login;
+        $this->email = $email;
 
         return $this;
     }
 
+    /**
+     * Get the value of senha
+     */
     public function getSenha(): ?string
     {
         return $this->senha;
     }
 
+    /**
+     * Set the value of senha
+     */
     public function setSenha(?string $senha): self
     {
         $this->senha = $senha;
@@ -70,27 +106,78 @@ class Usuario implements JsonSerializable {
         return $this;
     }
 
-    public function getPapel(): ?string
+    /**
+     * Get the value of tipousuario
+     */
+    public function getTipousuario(): ?string
     {
-        return $this->papel;
+        return $this->tipousuario;
     }
 
-    public function setPapel(?string $papel): self
+    /**
+     * Set the value of tipousuario
+     */
+    public function setTipousuario(?string $tipousuario): self
     {
-        $this->papel = $papel;
+        $this->tipousuario = $tipousuario;
 
         return $this;
     }
 
-    public function getFotoPerfil(): ?string
+    /**
+     * Get the value of siape
+     */
+    public function getSiape(): ?int
     {
-        return $this->fotoPerfil;
+        return $this->siape;
     }
 
-    public function setFotoPerfil(?string $fotoPerfil): self
+    /**
+     * Set the value of siape
+     */
+    public function setSiape(?int $siape): self
     {
-        $this->fotoPerfil = $fotoPerfil;
+        $this->siape = $siape;
 
         return $this;
     }
+
+    /**
+     * Get the value of declaracaoMatricula
+     */
+    public function getDeclaracaoMatricula(): ?string
+    {
+        return $this->declaracaoMatricula;
+    }
+
+    /**
+     * Set the value of declaracaoMatricula
+     */
+    public function setDeclaracaoMatricula(?string $declaracaoMatricula): self
+    {
+        $this->declaracaoMatricula = $declaracaoMatricula;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of numMatricula
+     */
+    public function getNumMatricula(): ?int
+    {
+        return $this->numMatricula;
+    }
+
+    /**
+     * Set the value of numMatricula
+     */
+    public function setNumMatricula(?int $numMatricula): self
+    {
+        $this->numMatricula = $numMatricula;
+
+        return $this;
+    }
+    
+
+   
 }
