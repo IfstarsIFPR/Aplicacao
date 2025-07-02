@@ -70,16 +70,17 @@ class UsuarioDAO {
     public function insert(Usuario $usuario) {
         $conn = Connection::getConn();
 
-        $sql = "INSERT INTO usuario (nome, email, senha, tipousuario)" .
-               " VALUES (:nome, :email, :senha, :tipousuario)";
+        $sql = "INSERT INTO usuario (nomeUsuario, email, senha, tipoUsuario, idCurso)" .
+               " VALUES (:nomeUsuario, :email, :senha, :tipoUsuario, :idCurso)";
         
         $senhaCripto = password_hash($usuario->getSenha(), PASSWORD_DEFAULT);
 
         $stm = $conn->prepare($sql);
-        $stm->bindValue("nome", $usuario->getNome());
+        $stm->bindValue("nomeUsuario", $usuario->getNome());
         $stm->bindValue("email", $usuario->getEmail());
         $stm->bindValue("senha", $senhaCripto);
-        $stm->bindValue("tipousuario", $usuario->getTipousuario());
+        $stm->bindValue("tipoUsuario", $usuario->getTipoUsuario());
+        $stm->bindValue("idCurso", ($usuario->getCurso() ? $usuario->getCurso()->getId() : NULL));
         $stm->execute();
     }
 
@@ -88,13 +89,16 @@ class UsuarioDAO {
         $conn = Connection::getConn();
 
         $sql = "UPDATE usuario SET email = :email," . 
-               " senha = :senha" .  " tipousuario = :tipousuario" .
-               " WHERE id_usuario = :id";
+              " nomeUsuario = :nomeUsuario," . " senha = :senha," .  " tipoUsuario = :tipoUsuario," .
+              " idCurso = :idCurso" .
+               " WHERE idUsuario = :id";
         
         $stm = $conn->prepare($sql);;
         $stm->bindValue("email", $usuario->getEmail());
+        $stm->bindValue("nomeUsuario", $usuario->getNome());
         $stm->bindValue("senha", password_hash($usuario->getSenha(), PASSWORD_DEFAULT));
-        $stm->bindValue("tipousuario", $usuario->getTipousuario());
+        $stm->bindValue("tipoUsuario", $usuario->getTipoUsuario());
+        $stm->bindValue("idCurso", ($usuario->getCurso() ? $usuario->getCurso()->getId() : NULL));
         $stm->bindValue("id", $usuario->getId());
         $stm->execute();
     }
@@ -130,8 +134,20 @@ class UsuarioDAO {
         foreach ($result as $reg) {
             $usuario = new Usuario();
             $usuario->setId($reg['idUsuario']);
+            $usuario->setNome($reg['nomeUsuario']);
             $usuario->setEmail($reg['email']);
             $usuario->setSenha($reg['senha']);
+            $usuario->setTipoUsuario($reg['tipoUsuario']);
+            $usuario->setSiape($reg['siape']);
+            $usuario->setDeclaracaoMatricula($reg['declaracaoMatricula']);
+            
+            if($reg["idCurso"] != NULL) {
+                $curso = new Curso();
+                $curso->setId($reg["idCurso"]);
+                $usuario->setCurso($curso);
+            } else
+                $usuario->setCurso(NULL);
+            
             array_push($usuarios, $usuario);
         }
 

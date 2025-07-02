@@ -68,5 +68,17 @@ class Controller {
         return 0;
     }
 
+    protected function usuarioLogadoIsAdmin() {
+        if(session_status() != PHP_SESSION_ACTIVE)
+            session_start();
+        
+        if(isset($_SESSION[SESSAO_USUARIO_ID])) {
+            if($_SESSION[SESSAO_USUARIO_TIPO] == UsuarioTipo::ADMIN)
+                return true;
+        }
+
+        return false;
+    }
+
 
 }

@@ -7,7 +7,7 @@ require_once(__DIR__ . "/../include/menu.php");
 ?>
 
 <h3 class="text-center">
-    <?php if($dados['id'] == 0) echo "Inserir"; else echo "Alterar"; ?> 
+    <?php if($dados['idUsuario'] == 0) echo "Inserir"; else echo "Alterar"; ?> 
     Usuário
 </h3>
 
@@ -19,8 +19,8 @@ require_once(__DIR__ . "/../include/menu.php");
             <form id="frmUsuario" method="POST" 
                 action="<?= BASEURL ?>/controller/UsuarioController.php?action=save" >
                 <div class="mb-3">
-                    <label class="form-label" for="txtNome">Nome Completo:</label>
-                    <input class="form-control" type="text" id="txtNome" name="nome" 
+                    <label class="form-label" for="txtNome">Nome:</label>
+                    <input class="form-control" type="text" id="txtNome" name="nomeUsuario" 
                         maxlength="70" placeholder="Informe o nome"
                         value="<?php echo (isset($dados["usuario"]) ? $dados["usuario"]->getNome() : ''); ?>" />
                 </div>
@@ -28,7 +28,7 @@ require_once(__DIR__ . "/../include/menu.php");
                 <div class="mb-3">
                     <label class="form-label" for="txtLogin">E-mail:</label>
                     <input class="form-control" type="email" id="txtLogin" name="email" 
-                        maxlength="15" placeholder="Informe o login"
+                        maxlength="70" placeholder="Informe o login"
                         value="<?php echo (isset($dados["usuario"]) ? $dados["usuario"]->getEmail() : ''); ?>"/>
                 </div>
 
@@ -47,24 +47,43 @@ require_once(__DIR__ . "/../include/menu.php");
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label" for="selTipoUsuario">Tipo usuario:</label>
+                    <label class="form-label" for="selTipoUsuario">Tipo usuário:</label>
                     <select class="form-select" name="tipoUsuario" id="selTipoUsuario">
                         <option value="">Selecione o tipo de usuário</option>
-                        <?php foreach($dados["usuario"] as $tipousuario): ?>
-                            <option value="<?= $tipousuario ?>" 
+                        <?php foreach($dados["tiposUsuario"] as $tipoUsuario): ?>
+                            <option value="<?= $tipoUsuario ?>" 
                                 <?php 
-                                    if(isset($dados["tipoUsuario"]) && $dados["tipoUsuario"]->getTipousuario() == $tipousuario) 
+                                    if(isset($dados["usuario"]) && $dados["usuario"]->getTipoUsuario() == $tipoUsuario) 
                                         echo "selected";
                                 ?>    
                             >
-                                <?= $tipousuario ?>
+                                <?= $tipoUsuario ?>
                             </option>
                         <?php endforeach; ?>
                     </select>
                 </div>
 
-                <input type="hidden" id="hddId" name="id" 
-                    value="<?= $dados['id']; ?>" />
+                <div class="mb-3">
+                    <label class="form-label" for="selCurso">Curso:</label>
+                    <select class="form-select" name="idCurso" id="selCurso">
+                        <option value="">Selecione o curso</option>
+                        <?php foreach($dados["cursos"] as $curso): ?>
+                            <option value="<?= $curso->getId() ?>" 
+                                <?php 
+                                    if(isset($dados["usuario"]) && $dados['usuario']->getCurso() != null && 
+                                        $dados["usuario"]->getCurso()->getId() == $curso->getId()) 
+                                        echo "selected";
+
+                                ?>    
+                            >
+                                <?= $curso->getNome() ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+
+                <input type="hidden" id="hddId" name="idUsuario" 
+                    value="<?= $dados['idUsuario']; ?>" />
 
                 <div class="mt-3">
                     <button type="submit" class="btn btn-success">Gravar</button>

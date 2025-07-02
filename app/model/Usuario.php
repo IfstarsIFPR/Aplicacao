@@ -3,15 +3,16 @@
 #Objetivo: classe Model para Usuario
 
 require_once(__DIR__ . "/enum/UsuarioTipo.php");
+require_once(__DIR__ . "/Curso.php");
 
 class Usuario {
 
     private ?int $id;
-    private ?int $idCurso;
+    private ?Curso $curso;
     private ?string $nome;      
     private ?string $email;
     private ?string $senha;
-    private ?string $tipousuario;
+    private ?string $tipoUsuario;
     private ?int $siape;
     private ?string $declaracaoMatricula;
     private ?int $numMatricula;
@@ -30,24 +31,6 @@ class Usuario {
     public function setId(?int $id): self
     {
         $this->id = $id;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of idCurso
-     */
-    public function getIdCurso(): ?int
-    {
-        return $this->idCurso;
-    }
-
-    /**
-     * Set the value of idCurso
-     */
-    public function setIdCurso(?int $idCurso): self
-    {
-        $this->idCurso = $idCurso;
 
         return $this;
     }
@@ -107,24 +90,6 @@ class Usuario {
     }
 
     /**
-     * Get the value of tipousuario
-     */
-    public function getTipousuario(): ?string
-    {
-        return $this->tipousuario;
-    }
-
-    /**
-     * Set the value of tipousuario
-     */
-    public function setTipousuario(?string $tipousuario): self
-    {
-        $this->tipousuario = $tipousuario;
-
-        return $this;
-    }
-
-    /**
      * Get the value of siape
      */
     public function getSiape(): ?int
@@ -178,6 +143,39 @@ class Usuario {
         return $this;
     }
     
+    /**
+     * Get the value of curso
+     */
+    public function getCurso(): ?Curso
+    {
+        return $this->curso;
+    }
 
-   
+    /**
+     * Set the value of curso
+     */
+    public function setCurso(?Curso $curso): self
+    {
+        $this->curso = $curso;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of tipoUsuario
+     */
+    public function getTipoUsuario(): ?string
+    {
+        return $this->tipoUsuario;
+    }
+
+    /**
+     * Set the value of tipoUsuario
+     */
+    public function setTipoUsuario(?string $tipoUsuario): self
+    {
+        $this->tipoUsuario = $tipoUsuario;
+
+        return $this;
+    }
 }

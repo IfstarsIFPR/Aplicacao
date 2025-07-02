@@ -19,13 +19,13 @@ require_once(__DIR__ . "/../include/menu.php");
         </div>
 
         <div class="col-12 mb-2">
-            <span class="fw-bold">Login:</span>
-            <span><?= $dados['usuario']->getLogin() ?></span>
+            <span class="fw-bold">Email:</span>
+            <span><?= $dados['usuario']->getEmail() ?></span>
         </div>
 
         <div class="col-12 mb-2">
-            <span class="fw-bold">Papel:</span>
-            <span><?= $dados['usuario']->getPapel() ?></span>
+            <span class="fw-bold">Tipo:</span>
+            <span><?= $dados['usuario']->getTipousuario() ?></span>
         </div>
 
         <div class="col-12 mb-2">

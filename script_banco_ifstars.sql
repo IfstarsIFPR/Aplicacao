@@ -119,3 +119,5 @@ ENGINE = InnoDB;
 
 INSERT INTO usuario (email, senha) 
 VALUES ('heataer@gmail.com', '$2y$10$Y49i5tPHcdluuLVZSEQH1OEUlKXDgazm5PlDQtJBRYor/iIf2xgYe'); /* senha 123 */
+
+INSERT INTO curso (nomeCurso, nivel) VALUES ('Técnico em Desenvolvimento de Sistemas (TDS)', 'Técnico');

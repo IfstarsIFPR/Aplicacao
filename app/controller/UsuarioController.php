@@ -2,6 +2,7 @@
 #Classe controller para Usuário
 require_once(__DIR__ . "/Controller.php");
 require_once(__DIR__ . "/../dao/UsuarioDAO.php");
+require_once(__DIR__ . "/../dao/CursoDAO.php");
 require_once(__DIR__ . "/../service/UsuarioService.php");
 require_once(__DIR__ . "/../model/Usuario.php");
 require_once(__DIR__ . "/../model/enum/UsuarioTipo.php");
@@ -9,6 +10,7 @@ require_once(__DIR__ . "/../model/enum/UsuarioTipo.php");
 class UsuarioController extends Controller {
 
     private UsuarioDAO $usuarioDao;
+    private CursoDAO $cursoDao;
     private UsuarioService $usuarioService;
 
     //Método construtor do controller - será executado a cada requisição a está classe
@@ -16,8 +18,15 @@ class UsuarioController extends Controller {
         if(! $this->usuarioEstaLogado())
             return;
 
+        //Verificar se o usuário é ADMIN
+        if(! $this->usuarioLogadoIsAdmin()) {
+            echo "Acesso Negado!";
+            return;
+        }
+
         $this->usuarioDao = new UsuarioDAO();
         $this->usuarioService = new UsuarioService();
+        $this->cursoDao = new CursoDAO();
 
         $this->handleAction();
     }
@@ -29,8 +38,9 @@ class UsuarioController extends Controller {
     }
 
     protected function create() {
-        $dados['id'] = 0;
-        $dados['tipousuario'] = TipoUsuario::getAllAsArray();
+        $dados['idUsuario'] = 0;
+        $dados['tiposUsuario'] = UsuarioTipo::getAllAsArray();
+        $dados['cursos'] = $this->cursoDao->list();
 
         $this->loadView("usuario/form.php", $dados);
     }
@@ -39,11 +49,13 @@ class UsuarioController extends Controller {
         //Busca o usuário na base pelo ID    
         $usuario = $this->findUsuarioById();
         if($usuario) {
-            $dados['id'] = $usuario->getId();
+            $dados['idUsuario'] = $usuario->getId();
             $usuario->setSenha("");
             $dados["usuario"] = $usuario;
 
-             $dados['tipousuario'] = TipoUsuario::getAllAsArray();
+            $dados['tiposUsuario'] = UsuarioTipo::getAllAsArray();
+            $dados['cursos'] = $this->cursoDao->list();
+
             $this->loadView("usuario/form.php", $dados);
         } else
             $this->list("Usuário não encontrado!");
@@ -51,12 +63,15 @@ class UsuarioController extends Controller {
 
     protected function save() {
         //Capturar os dados do formulário
-        $id = $_POST['id'];
+        $id = $_POST['idUsuario'];
         $nome = trim($_POST['nomeUsuario']) != "" ? trim($_POST['nomeUsuario']) : NULL;
         $email = trim($_POST['email']) != "" ? trim($_POST['email']) : NULL;
         $senha = trim($_POST['senha']) != "" ? trim($_POST['senha']) : NULL;
         $confSenha = trim($_POST['conf_senha']) != "" ? trim($_POST['conf_senha']) : NULL;
-        $tipousuario = $_POST['tipousuario'];
+        $tipousuario = $_POST['tipoUsuario'];
+        $idCurso = trim($_POST['idCurso']) != "" ? trim($_POST['idCurso']) : NULL;
+
+
         //Criar o objeto Usuario
         $usuario = new Usuario();
         $usuario->setId($id);
@@ -64,6 +79,14 @@ class UsuarioController extends Controller {
         $usuario->setEmail($email);
         $usuario->setSenha($senha);
         $usuario->setTipousuario($tipousuario);
+        
+        if($idCurso) {
+            $curso = new Curso();
+            $curso->setId($idCurso);
+            $usuario->setCurso($curso);
+        } else
+            $usuario->setCurso(null);
+        
         //Validar os dados (camada service)
         $erros = $this->usuarioService->validarDados($usuario, $confSenha);
         if(! $erros) {
@@ -79,16 +102,17 @@ class UsuarioController extends Controller {
             } catch(PDOException $e) {
                 //Iserir erro no array
                 array_push($erros, "Erro ao gravar no banco de dados!");
-                //array_push($erros, $e->getMessage());
+                array_push($erros, $e->getMessage());
             }
         } 
 
         //Mostrar os erros
-        $dados['id'] = $usuario->getId();
-        $dados['nomeUsuario'] = $usuario->getNome();
-        $dados['tipousuario'] = TipoUsuario::getAllAsArray();
+        $dados['idUsuario'] = $usuario->getId();
         $dados["usuario"] = $usuario;
         $dados['confSenha'] = $confSenha;
+
+        $dados['tiposUsuario'] = UsuarioTipo::getAllAsArray();
+        $dados['cursos'] = $this->cursoDao->list();
 
         $msgErro = implode("<br>", $erros);
 
