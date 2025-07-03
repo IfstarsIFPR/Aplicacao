@@ -7,8 +7,8 @@ require_once(__DIR__ . "/../include/menu.php");
 ?>
 
 <h3 class="text-center">
-    <?php if($dados['idUsuario'] == 0) echo "Inserir"; else echo "Alterar"; ?> 
-    Usuário
+    <?php if($dados['idUsuario'] == 0) echo "Cadastro"; else echo "Alterar"; ?> 
+    Aluno
 </h3>
 
 <div class="container">
@@ -17,7 +17,7 @@ require_once(__DIR__ . "/../include/menu.php");
         
         <div class="col-6">
             <form id="frmUsuario" method="POST" 
-                action="<?= BASEURL ?>/controller/UsuarioController.php?action=save" >
+                action="<?= BASEURL ?>/controller/CadastroController.php?action=save" >
                 <div class="mb-3">
                     <label class="form-label" for="txtNome">Nome:</label>
                     <input class="form-control" type="text" id="txtNome" name="nomeUsuario" 
@@ -28,7 +28,7 @@ require_once(__DIR__ . "/../include/menu.php");
                 <div class="mb-3">
                     <label class="form-label" for="txtLogin">E-mail:</label>
                     <input class="form-control" type="email" id="txtLogin" name="email" 
-                        maxlength="70" placeholder="Informe o login"
+                        maxlength="70" placeholder="Informe o email"
                         value="<?php echo (isset($dados["usuario"]) ? $dados["usuario"]->getEmail() : ''); ?>"/>
                 </div>
 
@@ -47,12 +47,11 @@ require_once(__DIR__ . "/../include/menu.php");
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label" for="txtSiape">Siape:</label>
-                    <input class="form-control" type="text" id="txtSiape" name="siape" 
-                        maxlength="15" placeholder="Informe o número do siape"
-                        value="<?php echo (isset($dados["usuario"]) ? $dados["usuario"]->getSiape() : ''); ?>"/>
+                    <label class="form-label" for="txtNumMatricula">Matrícula:</label>
+                    <input class="form-control" type="text" id="txtNumMatricula" name="numMatricula" 
+                        maxlength="20" placeholder="Informe o número de matrícula"
+                        value="<?php echo (isset($dados["usuario"]) ? $dados["usuario"]->getNumMatricula() : ''); ?>"/>
                 </div>
-
 
                 <div class="mb-3">
                     <label class="form-label" for="selTipoUsuario">Tipo usuário:</label>
@@ -107,7 +106,7 @@ require_once(__DIR__ . "/../include/menu.php");
     <div class="row" style="margin-top: 30px;">
         <div class="col-12">
         <a class="btn btn-secondary" 
-                href="<?= BASEURL ?>/controller/UsuarioController.php?action=list">Voltar</a>
+                href="<?= BASEURL ?>/controller/LoginController.php?action=login">Voltar</a>
         </div>
     </div>
 </div>

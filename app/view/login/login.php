@@ -32,9 +32,13 @@ require_once(__DIR__ . "/../include/header.php");
 
                      
                     <button type="submit" class="btn btn-success mt-3">Logar</button>
+                    
                 </form>
             </div>
         </div>
+        <h6>Não possui cadastro? <a href="CadastroController.php?action=create">Acesse aqui</a></h6>
+        
+
 
         <div class="col-6">
             <?php include_once(__DIR__ . "/../include/msg.php") ?>

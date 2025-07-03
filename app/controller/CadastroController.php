@@ -7,7 +7,7 @@ require_once(__DIR__ . "/../service/UsuarioService.php");
 require_once(__DIR__ . "/../model/Usuario.php");
 require_once(__DIR__ . "/../model/enum/UsuarioTipo.php");
 
-class UsuarioController extends Controller {
+class CadastroController extends Controller {
 
     private UsuarioDAO $usuarioDao;
     private CursoDAO $cursoDao;
@@ -15,14 +15,14 @@ class UsuarioController extends Controller {
 
     //Método construtor do controller - será executado a cada requisição a está classe
     public function __construct() {
-        if(! $this->usuarioEstaLogado())
+       /* if(! $this->usuarioEstaLogado())
             return;
 
         //Verificar se o usuário é ADMIN
         if(! $this->usuarioLogadoIsAdmin()) {
             echo "Acesso Negado!";
             return;
-        }
+        }*/
 
         $this->usuarioDao = new UsuarioDAO();
         $this->usuarioService = new UsuarioService();
@@ -42,7 +42,7 @@ class UsuarioController extends Controller {
         $dados['tiposUsuario'] = UsuarioTipo::getAllAsArray();
         $dados['cursos'] = $this->cursoDao->list();
 
-        $this->loadView("usuario/form.php", $dados);
+        $this->loadView("usuario/formAluno.php", $dados);
     }
 
     protected function edit() {
@@ -56,7 +56,7 @@ class UsuarioController extends Controller {
             $dados['tiposUsuario'] = UsuarioTipo::getAllAsArray();
             $dados['cursos'] = $this->cursoDao->list();
 
-            $this->loadView("usuario/form.php", $dados);
+            $this->loadView("usuario/formAluno.php", $dados);
         } else
             $this->list("Usuário não encontrado!");
     }
@@ -65,24 +65,22 @@ class UsuarioController extends Controller {
         //Capturar os dados do formulário
         $id = $_POST['idUsuario'];
         $nome = trim($_POST['nomeUsuario']) != "" ? trim($_POST['nomeUsuario']) : NULL;
+        $numMatricula = trim($_POST['numMatricula']) != "" ? trim($_POST['numMatricula']) : NULL;
         $email = trim($_POST['email']) != "" ? trim($_POST['email']) : NULL;
         $senha = trim($_POST['senha']) != "" ? trim($_POST['senha']) : NULL;
         $confSenha = trim($_POST['conf_senha']) != "" ? trim($_POST['conf_senha']) : NULL;
         $tipousuario = $_POST['tipoUsuario'];
-        $siape = trim($_POST['siape']) != "" ? trim($_POST['siape']) : NULL;
         $idCurso = trim($_POST['idCurso']) != "" ? trim($_POST['idCurso']) : NULL;
-        
-
 
 
         //Criar o objeto Usuario
         $usuario = new Usuario();
         $usuario->setId($id);
         $usuario->setNome($nome);
+        $usuario->setNumMatricula($numMatricula);
         $usuario->setEmail($email);
         $usuario->setSenha($senha);
         $usuario->setTipousuario($tipousuario);
-        $usuario->setSiape($siape);
         
         if($idCurso) {
             $curso = new Curso();
@@ -120,7 +118,7 @@ class UsuarioController extends Controller {
 
         $msgErro = implode("<br>", $erros);
 
-        $this->loadView("usuario/form.php", $dados, $msgErro);
+        $this->loadView("usuario/formAluno.php", $dados, $msgErro);
     }
 
     protected function delete() {
@@ -131,7 +129,7 @@ class UsuarioController extends Controller {
             //Excluir
             $this->usuarioDao->deleteById($usuario->getId());
 
-            header("location: " . BASEURL . "/controller/UsuarioController.php?action=list");
+            header("location: " . BASEURL . "/controller/CadastroController.php?action=list");
             exit;
         } else {
             $this->list("Usuário não encontrado!");
@@ -163,4 +161,4 @@ class UsuarioController extends Controller {
 
 
 #Criar objeto da classe para assim executar o construtor
-new UsuarioController();
+new CadastroController();

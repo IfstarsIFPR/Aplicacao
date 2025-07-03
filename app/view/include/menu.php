@@ -31,6 +31,17 @@ if (isset($_SESSION[SESSAO_USUARIO_NOME]))
                     <a class="dropdown-item" href="#">Outro cadastro</a>
                 </div>
             </li>
+         <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+                    data-bs-toggle="dropdown">
+                    Gerenciar Cursos
+                </a>
+            <div class="dropdown-menu">
+                    <a class="dropdown-item"
+                        href="<?= BASEURL . '/controller/CursoController.php?action=list' ?>">Cursos</a>
+                    <a class="dropdown-item" href="#">Adicionar curso</a>
+                </div>
+            </li>
 
         </ul>
 

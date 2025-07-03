@@ -20,7 +20,7 @@ class UsuarioService {
 
         if(! $confSenha)
             array_push($erros, "O campo [Confirmação da senha] é obrigatório.");
-
+        
         if(! $usuario->getTipousuario()) 
             array_push($erros, "O campo [Tipo usuário] é obrigatório");
 
