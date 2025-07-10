@@ -34,6 +34,11 @@ define('SESSAO_USUARIO_ID', "usuarioLogadoId");
 define('SESSAO_USUARIO_NOME', "usuarioLogadoNome");
 define('SESSAO_USUARIO_TIPO', "usuarioLogadoTipo");
 
+//Sessão do usuário
+define('SESSAO_CURSO_ID', "cursoLogadoId");
+define('SESSAO_CURSO_NOME', "cursoLogadoNome");
+define('SESSAO_CURSO_NIVEL', "NivelLogadoTipo");
+
 //Arquivos
 define('PATH_ARQUIVOS', __DIR__ . "/../../arquivos");
 define('BASEURL_ARQUIVOS', BASEURL . "/../arquivos");
