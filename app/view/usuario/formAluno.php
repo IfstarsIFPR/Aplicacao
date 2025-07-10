@@ -53,22 +53,7 @@ require_once(__DIR__ . "/../include/menu.php");
                         value="<?php echo (isset($dados["usuario"]) ? $dados["usuario"]->getNumMatricula() : ''); ?>"/>
                 </div>
 
-                <div class="mb-3">
-                    <label class="form-label" for="selTipoUsuario">Tipo usuário:</label>
-                    <select class="form-select" name="tipoUsuario" id="selTipoUsuario">
-                        <option value="">Selecione o tipo de usuário</option>
-                        <?php foreach($dados["tiposUsuario"] as $tipoUsuario): ?>
-                            <option value="<?= $tipoUsuario ?>" 
-                                <?php 
-                                    if(isset($dados["usuario"]) && $dados["usuario"]->getTipoUsuario() == $tipoUsuario) 
-                                        echo "selected";
-                                ?>    
-                            >
-                                <?= $tipoUsuario ?>
-                            </option>
-                        <?php endforeach; ?>
-                    </select>
-                </div>
+               
 
                 <div class="mb-3">
                     <label class="form-label" for="selCurso">Curso:</label>

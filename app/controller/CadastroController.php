@@ -39,7 +39,7 @@ class CadastroController extends Controller {
 
     protected function create() {
         $dados['idUsuario'] = 0;
-        $dados['tiposUsuario'] = UsuarioTipo::getAllAsArray();
+        $dados['tiposUsuario'] = UsuarioTipo::ALUNO;
         $dados['cursos'] = $this->cursoDao->list();
 
         $this->loadView("usuario/formAluno.php", $dados);
@@ -69,7 +69,7 @@ class CadastroController extends Controller {
         $email = trim($_POST['email']) != "" ? trim($_POST['email']) : NULL;
         $senha = trim($_POST['senha']) != "" ? trim($_POST['senha']) : NULL;
         $confSenha = trim($_POST['conf_senha']) != "" ? trim($_POST['conf_senha']) : NULL;
-        $tipousuario = $_POST['tipoUsuario'];
+        $tipousuario = UsuarioTipo::ALUNO;
         $idCurso = trim($_POST['idCurso']) != "" ? trim($_POST['idCurso']) : NULL;
 
 
