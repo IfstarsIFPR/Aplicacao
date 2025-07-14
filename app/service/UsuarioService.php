@@ -18,6 +18,9 @@ class UsuarioService {
         if(! $usuario->getSenha())
             array_push($erros, "O campo [Senha] é obrigatório.");
 
+         if(! $usuario->getCurso())
+            array_push($erros, "O campo [Curso] é obrigatório.");
+
         if(! $confSenha)
             array_push($erros, "O campo [Confirmação da senha] é obrigatório.");
         
