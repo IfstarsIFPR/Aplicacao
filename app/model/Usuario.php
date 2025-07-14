@@ -16,6 +16,9 @@ class Usuario {
     private ?int $siape;
     private ?string $declaracaoMatricula;
     private ?int $numMatricula;
+    private ?string $fotoPerfil;
+
+  
 
     /**
      * Get the value of id
@@ -31,6 +34,24 @@ class Usuario {
     public function setId(?int $id): self
     {
         $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of curso
+     */
+    public function getCurso(): ?Curso
+    {
+        return $this->curso;
+    }
+
+    /**
+     * Set the value of curso
+     */
+    public function setCurso(?Curso $curso): self
+    {
+        $this->curso = $curso;
 
         return $this;
     }
@@ -90,6 +111,24 @@ class Usuario {
     }
 
     /**
+     * Get the value of tipoUsuario
+     */
+    public function getTipoUsuario(): ?string
+    {
+        return $this->tipoUsuario;
+    }
+
+    /**
+     * Set the value of tipoUsuario
+     */
+    public function setTipoUsuario(?string $tipoUsuario): self
+    {
+        $this->tipoUsuario = $tipoUsuario;
+
+        return $this;
+    }
+
+    /**
      * Get the value of siape
      */
     public function getSiape(): ?int
@@ -142,39 +181,21 @@ class Usuario {
 
         return $this;
     }
-    
+
     /**
-     * Get the value of curso
+     * Get the value of fotoPerfil
      */
-    public function getCurso(): ?Curso
+    public function getFotoPerfil(): ?string
     {
-        return $this->curso;
+        return $this->fotoPerfil;
     }
 
     /**
-     * Set the value of curso
+     * Set the value of fotoPerfil
      */
-    public function setCurso(?Curso $curso): self
+    public function setFotoPerfil(?string $fotoPerfil): self
     {
-        $this->curso = $curso;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of tipoUsuario
-     */
-    public function getTipoUsuario(): ?string
-    {
-        return $this->tipoUsuario;
-    }
-
-    /**
-     * Set the value of tipoUsuario
-     */
-    public function setTipoUsuario(?string $tipoUsuario): self
-    {
-        $this->tipoUsuario = $tipoUsuario;
+        $this->fotoPerfil = $fotoPerfil;
 
         return $this;
     }
