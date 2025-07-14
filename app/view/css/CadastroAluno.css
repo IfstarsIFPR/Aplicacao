@@ -1,0 +1,75 @@
+body {
+        background-color: #173865; /* fundo geral */
+        color: #fff;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    h3.text-center {
+        margin-top: 20px;
+        font-weight: bold;
+        color: #ffffff;
+    }
+
+    .container {
+        margin-top: 30px;
+    }
+
+    form {
+        background-color: #091931; /* fundo do formulário */
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+    }
+
+    .form-label {
+        color: #d0d0d0;
+    }
+
+    .form-control,
+    .form-select {
+        background-color: #0d1f3a;
+        border: 1px solid #2d4a6e;
+        color: #ffffff;
+    }
+
+    .form-control::placeholder,
+    .form-select::placeholder {
+        color: #a0a0a0;
+    }
+
+    .form-control:focus,
+    .form-select:focus {
+        border-color: #ffffff;
+        background-color: #112545;
+        color: #ffffff;
+        box-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-success {
+        background-color: #173865;
+        border: none;
+        color: #ffffff;
+        padding: 10px 25px;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-success:hover {
+        background-color: #285a9e;
+    }
+
+    .btn-secondary {
+        background-color: #0d1f3a;
+        border: none;
+        color: #ffffff;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-secondary:hover {
+        background-color: #1c355d;
+    }
+
+    label {
+        font-weight: 500;
+    }
+
