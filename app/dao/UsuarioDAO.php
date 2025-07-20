@@ -114,6 +114,14 @@ class UsuarioDAO {
         $stm->execute();
     }
 
+      public function updateFotoPerfil(Usuario $usuario) {
+        $conn = Connection::getConn();
+
+        $sql = "UPDATE usuario SET foto_perfil = ? WHERE idUsuario = ?";
+
+        $stm = $conn->prepare($sql);
+        $stm->execute(array($usuario->getFotoPerfil(), $usuario->getId()));
+    }
 
     //Método para retornar a quantidade de usuários salvos na base
     public function quantidadeUsuarios() {
@@ -140,6 +148,7 @@ class UsuarioDAO {
             $usuario->setTipoUsuario($reg['tipoUsuario']);
             $usuario->setSiape($reg['siape']);
             $usuario->setDeclaracaoMatricula($reg['declaracaoMatricula']);
+            $usuario->setFotoPerfil($reg['foto_perfil']);
             
             if($reg["idCurso"] != NULL) {
                 $curso = new Curso();
