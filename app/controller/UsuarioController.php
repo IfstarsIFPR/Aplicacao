@@ -74,7 +74,6 @@ class UsuarioController extends Controller {
         
 
 
-
         //Criar o objeto Usuario
         $usuario = new Usuario();
         $usuario->setId($id);
