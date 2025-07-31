@@ -70,8 +70,8 @@ class UsuarioDAO {
     public function insert(Usuario $usuario) {
         $conn = Connection::getConn();
 
-        $sql = "INSERT INTO usuario (nomeUsuario, email, senha, tipoUsuario, idCurso)" .
-               " VALUES (:nomeUsuario, :email, :senha, :tipoUsuario, :idCurso)";
+        $sql = "INSERT INTO usuario (nomeUsuario, email, senha, tipoUsuario, idCurso, foto_perfil)" .
+               " VALUES (:nomeUsuario, :email, :senha, :tipoUsuario, :idCurso, :foto_perfil)";
         
         $senhaCripto = password_hash($usuario->getSenha(), PASSWORD_DEFAULT);
 
@@ -81,6 +81,7 @@ class UsuarioDAO {
         $stm->bindValue("senha", $senhaCripto);
         $stm->bindValue("tipoUsuario", $usuario->getTipoUsuario());
         $stm->bindValue("idCurso", ($usuario->getCurso() ? $usuario->getCurso()->getId() : NULL));
+        $stm->bindValue("foto_perfil", $usuario->getFotoPerfil());
         $stm->execute();
     }
 
@@ -89,7 +90,7 @@ class UsuarioDAO {
         $conn = Connection::getConn();
 
         $sql = "UPDATE usuario SET email = :email," . 
-              " nomeUsuario = :nomeUsuario," . " senha = :senha," .  " tipoUsuario = :tipoUsuario," .
+              " nomeUsuario = :nomeUsuario," . " senha = :senha," .  " tipoUsuario = :tipoUsuario," .  " foto_perfil = :foto_perfil," .
               " idCurso = :idCurso" .
                " WHERE idUsuario = :id";
         
@@ -99,6 +100,7 @@ class UsuarioDAO {
         $stm->bindValue("senha", password_hash($usuario->getSenha(), PASSWORD_DEFAULT));
         $stm->bindValue("tipoUsuario", $usuario->getTipoUsuario());
         $stm->bindValue("idCurso", ($usuario->getCurso() ? $usuario->getCurso()->getId() : NULL));
+        $stm->bindValue("foto_perfil", $usuario->getFotoPerfil());
         $stm->bindValue("id", $usuario->getId());
         $stm->execute();
     }
