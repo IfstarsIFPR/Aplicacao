@@ -85,6 +85,29 @@ class UsuarioDAO {
         $stm->execute();
     }
 
+
+ public function insertAluno(Usuario $usuario) {
+        $conn = Connection::getConn();
+
+        $sql = "INSERT INTO usuario (nomeUsuario, email, senha, tipoUsuario, idcurso, numMatricula, declaracaoMatricula )" .
+               " VALUES (:nomeUsuario, :email, :senha, :tipoUsuario, :idCurso, :numMatricula, :declaracaoMatricula)";
+        
+        $senhaCripto = password_hash($usuario->getSenha(), PASSWORD_DEFAULT);
+
+        $stm = $conn->prepare($sql);
+        $stm->bindValue("nomeUsuario", $usuario->getNome());
+        $stm->bindValue("email", $usuario->getEmail());
+        $stm->bindValue("senha", $senhaCripto);
+        $stm->bindValue("tipoUsuario", $usuario->getTipoUsuario());
+        $stm->bindValue("idCurso", ($usuario->getCurso() ? $usuario->getCurso()->getId() : NULL));
+        $stm->bindValue("numMatricula", $usuario->getNumMatricula());
+        $stm->bindValue("declaracaoMatricula", $usuario->getdeclaracaoMatricula()); 
+        $stm->execute();
+    }
+    
+
+
+
     //Método para atualizar um Usuario
     public function update(Usuario $usuario) {
         $conn = Connection::getConn();
