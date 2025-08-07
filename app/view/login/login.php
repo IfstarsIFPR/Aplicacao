@@ -6,12 +6,13 @@ require_once(__DIR__ . "/../include/header.php");
 <link rel="stylesheet" href="<?= BASEURL ?>/view/css/login.css">
 <div class="login-container">
     <div class="login-info">
-        <img src="../assets/logo-stars.png" alt="Logo STARS" />
-        <div class="logo-title">STARS</div>
-        <p style="margin-top: 10px;">
+        <img src="/Aplicacao/app/view/img/logoStars.png" alt="Logo STARS" />
+        <p style="margin-top: 10px; font-size: 25px;">
             Sistema de feedbacks de alunos sobre professores do IFPR - Campus Foz do Iguaçu.
         </p>
-        <img src="../assets/illustration-stars.png" alt="Ilustração" class="illustration">
+        <div class="illustration">
+ <img style="max-width: 1200px;" src="/Aplicacao/app/view/img/mulherestrela1.png" alt="Ilustração"></div>
+        
     </div>
 
     <div class="login-form">
