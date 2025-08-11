@@ -1,6 +1,8 @@
 <?php
 
 require_once(__DIR__ . "/../model/Usuario.php");
+require_once(__DIR__ . "/../model/enum/UsuarioTipo.php");
+
 
 class UsuarioService
 {
@@ -20,29 +22,45 @@ class UsuarioService
         if (! $usuario->getSenha())
             array_push($erros, "O campo [Senha] é obrigatório.");
 
-        if (! $usuario->getNumMatricula())
-            array_push($erros, "O campo [Número de Matricula] é obrigatório.");
-
-
-        if (! $usuario->getDeclaracaoMatricula())
-            array_push($erros, "O campo [Declaração de Matricula] é obrigatório.");
-
-        if (! $usuario->getCurso())
-            array_push($erros, "O campo [Curso] é obrigatório.");
-
         if (! $confSenha)
             array_push($erros, "O campo [Confirmação da senha] é obrigatório.");
-
-        if (! $usuario->getTipousuario())
-            array_push($erros, "O campo [Tipo usuário] é obrigatório");
-
 
         //Validar se a senha é igual a contra senha
         if ($usuario->getSenha() && $confSenha && $usuario->getSenha() != $confSenha)
             array_push($erros, "O campo [Senha] deve ser igual ao [Confirmação da senha].");
 
+
+        if (! $usuario->getTipousuario()){
+            array_push($erros, "O campo [Tipo usuário] é obrigatório");
+
+            return $erros;
+        }
+
+        if($usuario->getTipousuario() == UsuarioTipo::ALUNO){
+
+            if (! $usuario->getDeclaracaoMatricula())
+                array_push($erros, "O campo [Declaração de Matricula] é obrigatório.");
+
+
+            if (! $usuario->getNumMatricula())
+                array_push($erros, "O campo [Número de Matricula] é obrigatório.");
+        
+            if (! $usuario->getCurso())
+                array_push($erros, "O campo [Curso] é obrigatório.");
+            
+        }
+
+        if($usuario->getTipousuario() == UsuarioTipo::PROFESSOR){
+
+            if (! $usuario->getSiape())
+                array_push($erros, "O campo [SIAPE] é obrigatório.");
+
+        }
+
         return $erros;
     }
+
+    
 
     /* Método para validar se o usuário selecionou uma foto de perfil */
     public function validarFotoPerfil(array $foto)

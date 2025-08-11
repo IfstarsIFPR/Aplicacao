@@ -141,7 +141,7 @@ class CadastroController extends Controller
                 exit;
             } catch (PDOException $e) {
                 //Iserir erro no array
-                array_push($erros, "Erro ao gravar no banco de dados!");
+                array_push($erros, "Erro ao gravar no banco de dados!" . $e->getMessage());
                 array_push($erros, $e->getMessage());
             }
         }

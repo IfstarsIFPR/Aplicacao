@@ -72,8 +72,6 @@ class UsuarioController extends Controller {
         $siape = trim($_POST['siape']) != "" ? trim($_POST['siape']) : NULL;
         $idCurso = trim($_POST['idCurso']) != "" ? trim($_POST['idCurso']) : NULL;
         
-
-
         //Criar o objeto Usuario
         $usuario = new Usuario();
         $usuario->setId($id);
@@ -84,11 +82,14 @@ class UsuarioController extends Controller {
         $usuario->setSiape($siape);
         
         if($idCurso) {
+            
             $curso = new Curso();
             $curso->setId($idCurso);
             $usuario->setCurso($curso);
-        } else
+        
+        } else {
             $usuario->setCurso(null);
+        }
         
         //Validar os dados (camada service)
         $erros = $this->usuarioService->validarDados($usuario, $confSenha);

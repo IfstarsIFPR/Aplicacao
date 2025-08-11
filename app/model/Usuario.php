@@ -14,13 +14,11 @@ class Usuario {
     private ?string $senha;
     private ?string $tipoUsuario;
     private ?int $siape;
-    private ?string $declaracaoMatricula= "";
+    private ?string $declaracaoMatricula = "";
     private ?int $numMatricula;
     private ?string $fotoPerfil;
 
   
-
-
     /**
      * Get the value of id
      */
