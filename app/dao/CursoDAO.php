@@ -24,7 +24,7 @@ class CursoDAO {
         $conn = Connection::getConn();
 
         $sql = "SELECT * FROM curso c" .
-               " WHERE u.idCurso = ?";
+               " WHERE c.idCurso = ?";
         $stm = $conn->prepare($sql);    
         $stm->execute([$id]);
         $result = $stm->fetchAll();
