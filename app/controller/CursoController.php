@@ -13,14 +13,14 @@ class CursoController extends Controller {
 
     //Método construtor do controller - será executado a cada requisição a está classe
     public function __construct() {
-       /* if(! $this->usuarioEstaLogado())
+        if(! $this->usuarioEstaLogado())
             return;
 
         //Verificar se o usuário é ADMIN
         if(! $this->usuarioLogadoIsAdmin()) {
             echo "Acesso Negado!";
             return;
-        }*/
+        }
 
         $this->cursoDao = new CursoDAO();
         $this->cursoService = new CursoService();

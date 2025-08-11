@@ -2,6 +2,7 @@
 #Classe controller padrão
 
 require_once(__DIR__ . "/../util/config.php");
+require_once(__DIR__ . "/../model/enum/UsuarioTipo.php");
 
 class Controller {
 
@@ -69,10 +70,15 @@ class Controller {
     }
 
     protected function usuarioLogadoIsAdmin() {
+
+
         if(session_status() != PHP_SESSION_ACTIVE)
             session_start();
-        
+
+
+
         if(isset($_SESSION[SESSAO_USUARIO_ID])) {
+
             if($_SESSION[SESSAO_USUARIO_TIPO] == UsuarioTipo::ADMIN)
                 return true;
         }
