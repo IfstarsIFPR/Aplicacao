@@ -1,6 +1,6 @@
 <?php 
-#Nome do arquivo: Usuario.php
-#Objetivo: classe Model para Usuario
+#Nome do arquivo: Curso.php
+#Objetivo: classe Model para Curso
 
 class Curso {
 

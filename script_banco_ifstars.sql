@@ -52,17 +52,11 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `turma` (
   `idTurma` INT NOT NULL AUTO_INCREMENT,
-  `idDisciplina` INT NOT NULL,
   `idUsuario` INT NOT NULL,
   `codigoTurma` VARCHAR(15) NOT NULL,
   `anoTurma` INT NOT NULL,
   `turno` ENUM('Matutino', 'Vespertino', 'Noturno', 'Integral') NOT NULL,
   PRIMARY KEY (`idTurma`),
-  CONSTRAINT `fk_turma_disciplina1`
-    FOREIGN KEY (`idDisciplina`)
-    REFERENCES `disciplina` (`idDisciplina`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
   CONSTRAINT `fk_turma_usuario1`
     FOREIGN KEY (`idUsuario`)
     REFERENCES `usuario` (`idUsuario`)
@@ -87,6 +81,26 @@ CREATE TABLE IF NOT EXISTS `turmaAlunos` (
   CONSTRAINT `fk_turmasAlunos_usuarios1`
     FOREIGN KEY (`idUsuario`)
     REFERENCES `usuario` (`idUsuario`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `turmaDisciplina`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `turmaDisciplina` (
+  `idTurmaDisciplina` INT NOT NULL AUTO_INCREMENT,
+  `idTurma` INT NOT NULL,
+  `idDisciplina` INT NOT NULL,
+  PRIMARY KEY (`idTurmaDisciplina`),
+  CONSTRAINT `fk_turmadisciplina_turma`
+    FOREIGN KEY (`idTurma`)
+    REFERENCES `turma` (`idTurma`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_turmadisciplina_disciplina`
+    FOREIGN KEY (`idDisciplina`)
+    REFERENCES `disciplina` (`idDisciplina`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
