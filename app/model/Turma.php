@@ -1,63 +1,104 @@
 <?php 
 #Nome do arquivo: Turma.php
 #Objetivo: classe Model para Turma
+require_once(__DIR__ . "/Curso.php");
 
 class Turma {
 
     private ?int $id;
-
-    private int $idDisciplina;
-    private int $idUsuario;
-    private string $codigoTurma;
-    private int $anoTurma;
+    private ?Curso $curso;
+    private ?int $codigoTurma;
+    private ?int $anoTurma;
     private string $turno;
 
-    public function getId(): ?int {
+
+    /**
+     * Get the value of id
+     */
+    public function getId(): ?int
+    {
         return $this->id;
     }
 
-    public function setId(?int $id): void {
+    /**
+     * Set the value of id
+     */
+    public function setId(?int $id): self
+    {
         $this->id = $id;
+
+        return $this;
     }
 
-    public function getIdDisciplina(): int {
-        return $this->idDisciplina;
+    /**
+     * Get the value of curso
+     */
+    public function getCurso(): ?Curso
+    {
+        return $this->curso;
     }
 
-    public function setIdDisciplina(int $idDisciplina): void {
-        $this->idDisciplina = $idDisciplina;
+    /**
+     * Set the value of curso
+     */
+    public function setCurso(?Curso $curso): self
+    {
+        $this->curso = $curso;
+
+        return $this;
     }
 
-    public function getIdUsuario(): int {
-        return $this->idUsuario;
-    }
-
-    public function setIdUsuario(int $idUsuario): void {
-        $this->idUsuario = $idUsuario;
-    }
-
-    public function getCodigoTurma(): string {
+    /**
+     * Get the value of codigoTurma
+     */
+    public function getCodigoTurma(): ?int
+    {
         return $this->codigoTurma;
     }
 
-    public function setCodigoTurma(string $codigoTurma): void {
+    /**
+     * Set the value of codigoTurma
+     */
+    public function setCodigoTurma(?int $codigoTurma): self
+    {
         $this->codigoTurma = $codigoTurma;
+
+        return $this;
     }
 
-    public function getAnoTurma(): int {
+    /**
+     * Get the value of anoTurma
+     */
+    public function getAnoTurma(): ?int
+    {
         return $this->anoTurma;
     }
 
-    public function setAnoTurma(int $anoTurma): void {
+    /**
+     * Set the value of anoTurma
+     */
+    public function setAnoTurma(?int $anoTurma): self
+    {
         $this->anoTurma = $anoTurma;
+
+        return $this;
     }
 
-    public function getTurno(): string {
+    /**
+     * Get the value of turno
+     */
+    public function getTurno(): string
+    {
         return $this->turno;
     }
 
-    public function setTurno(string $turno): void {
+    /**
+     * Set the value of turno
+     */
+    public function setTurno(string $turno): self
+    {
         $this->turno = $turno;
+
+        return $this;
     }
-  
 }
