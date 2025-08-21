@@ -16,6 +16,8 @@ include_once(__DIR__ . "/../../util/config.php");
 
     <link href="<?php echo BASEURL; ?>/view/css/style.css" rel="stylesheet">
 
+    
+
 
 </head>
 <body>
