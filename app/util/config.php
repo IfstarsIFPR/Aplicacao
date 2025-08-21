@@ -27,6 +27,8 @@ define('LOGOUT_PAGE', BASEURL . '/controller/LoginController.php?action=logout')
 
 //Página home do sistema
 define('HOME_PAGE', BASEURL . '/controller/HomeController.php?action=home');
+define('HOME_PAGE_ALUNO', BASEURL . '/controller/HomeController.php?action=homeAluno');
+define('HOME_PAGE_PROFESSOR', BASEURL . '/controller/HomeController.php?action=homeProfessor');
 
 
 //Sessão do usuário

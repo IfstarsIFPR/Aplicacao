@@ -24,6 +24,23 @@ class HomeController extends Controller {
 
         $this->loadView("home/home.php", $dados);
     }
+
+
+    protected function homeAluno() {
+        //Carrega a quantidade de usuários cadastrados
+        $dados["qtdUsuarios"] = $this->usuarioDAO->quantidadeUsuarios();
+
+        //Carrega a view específica para o aluno
+        $this->loadView("home/homeAluno.php", $dados);
+    }
+
+     protected function homeProfessor() {
+        //Carrega a quantidade de usuários cadastrados
+        $dados["qtdUsuarios"] = $this->usuarioDAO->quantidadeUsuarios();
+
+        //Carrega a view específica para o aluno
+        $this->loadView("home/homeProfessor.php", $dados);
+    }
     
 }
 

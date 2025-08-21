@@ -37,6 +37,10 @@ h3.text-center {
     margin-bottom: 20px;   
     border-radius: 20px; 
 }
+.form-select {
+    border-radius: 20px;
+
+}
 
 .formAluno-info img {
     max-width: 500%; /* tamanho do logo */
@@ -64,7 +68,8 @@ h3.text-center {
     padding: 10px 25px;
     font-weight: bold;
     transition: background-color 0.3s ease;
-    border-radius: 5px;
+    width: 100%;
+    border-radius: 20px;
 }
 
 .btn-secondary {
@@ -73,3 +78,11 @@ h3.text-center {
     color: #ffffff;
     transition: background-color 0.3s ease;
 }
+
+ .register-link {
+        color: #b6c1ff;
+        font-size: 14px;
+        text-align: center;
+        margin-top: 15px;
+    }
+

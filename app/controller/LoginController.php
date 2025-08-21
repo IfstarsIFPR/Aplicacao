@@ -35,8 +35,18 @@ class LoginController extends Controller {
                 //Se encontrou o usuário, salva a sessão e redireciona para a HOME do sistema
                 $this->loginService->salvarUsuarioSessao($usuario);
 
-                header("location: " . HOME_PAGE);
+                if ($usuario->getTipoUsuario() === 'aluno') {
+                    header("Location: " . HOME_PAGE_ALUNO);
+                } elseif ($usuario->getTipoUsuario() === 'professor') {
+                    header("Location: " . HOME_PAGE_PROFESSOR);
+                } elseif ($usuario->getTipoUsuario() === 'administrador') {
+                    header("Location: " . HOME_PAGE);
+                }
                 exit;
+
+
+                // header("location: " . HOME_PAGE);
+                // exit;
             } else {
                 $erros = ["Login ou senha informados são inválidos!"];
             }

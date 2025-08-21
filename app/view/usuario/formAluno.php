@@ -97,8 +97,11 @@ require_once(__DIR__ . "/../include/header.php");
                     value="<?= $dados['idUsuario']; ?>" />
 
                 <div class="mt-12">
-                    <button type="submit" class="btn btn-success">Gravar</button>
+                    <button type="submit" class="btn btn-success">Cadastrar</button>
                 </div>
+                <div class="register-link">
+                Já possui cadastro? <a href="LoginController.php?action=login">Clique aqui</a>
+            </div>
             </form>
         </div>
 
