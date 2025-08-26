@@ -1,0 +1,98 @@
+<?php
+#Nome do arquivo: CursoDAO.php
+#Objetivo: classe DAO para o model de Turma
+
+include_once(__DIR__ . "/../connection/Connection.php");
+include_once(__DIR__ . "/../model/Disciplina.php");
+include_once(__DIR__ . "/../dao/TurmaDAO.php");
+
+
+
+class DisciplinaDAO {
+
+    //Método para listar as disciplinas a partir da base de dados
+    public function list() {
+        $conn = Connection::getConn();
+
+        $sql = "SELECT * FROM disciplina d ORDER BY d.nomeDisciplina";
+        $stm = $conn->prepare($sql);    
+        $stm->execute();
+        $result = $stm->fetchAll();
+
+        return $this->mapDisciplinas($result);
+        
+    }
+
+    //Método para buscar um usuário por seu ID
+    public function findById(int $id) {
+        $conn = Connection::getConn();
+
+        $sql = "SELECT * FROM disciplina d" .
+               " WHERE d.idDisciplina = ?";
+        $stm = $conn->prepare($sql);    
+        $stm->execute([$id]);
+        $result = $stm->fetchAll();
+
+        $disciplinas = $this->mapDisciplinas($result);
+
+        if(count($disciplinas) == 1)
+            return $disciplinas[0];
+        elseif(count($disciplinas) == 0)
+            return null;
+
+        die("DisciplinaDAO.findById()" . 
+            " - Erro: mais de uma disciplina encontrada.");
+    }
+
+     //Método para inserir um Usuario
+    public function insert(Disciplina $disciplina) {
+        $conn = Connection::getConn();
+
+        $sql = "INSERT INTO disciplina (nomeDisciplina)" .
+               " VALUES (:nomeDisciplina)";
+
+        $stm = $conn->prepare($sql);
+        $stm->bindValue("nomeDisciplina", $disciplina->getNomeDisciplina());
+        $stm->execute();
+    }
+
+      //Método para atualizar um Usuario
+    public function update(Disciplina $disciplina) {
+        $conn = Connection::getConn();
+
+        $sql = "UPDATE disciplina SET nomeDisciplina = :nomeDisciplina" .
+               " WHERE idDisciplina = :id";
+        
+        $stm = $conn->prepare($sql);;
+        $stm->bindValue("nomeDisciplina", $disciplina->getNomeDisciplina());
+        $stm->bindValue("id", $disciplina->getId());
+        $stm->execute();
+    }
+
+    //Método para excluir uma Turma pelo seu ID
+    public function deleteById(int $id) {
+        $conn = Connection::getConn();
+
+        $sql = "DELETE FROM disciplina WHERE idDisciplina = :id";
+        
+        $stm = $conn->prepare($sql);
+        $stm->bindValue("id", $id);
+        $stm->execute();
+    }
+
+     private function mapDisciplinas($result) {
+        $disciplinas = array();
+        foreach ($result as $reg) {
+            $disciplina = new Disciplina();
+            $disciplina->setId($reg['idDisciplina']);
+            $disciplina->setNomeDisciplina($reg['nomeDisciplina']);
+    
+            array_push($disciplinas, $disciplina);
+        }
+
+        return $disciplinas;
+    }
+    
+
+
+}

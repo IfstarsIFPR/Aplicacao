@@ -2,15 +2,21 @@
 #Nome do arquivo: view/include/menu.php
 #Objetivo: menu da aplicação para ser incluído em outras páginas
 
+require_once(__DIR__ . "/../../model/enum/UsuarioTipo.php");
+
 $nome = "(Sessão expirada)";
-$tipoUsuario = null;
+$isAdmin = false;
+$isAluno = false;
+$isProfessor = false;
 
 if (isset($_SESSION[SESSAO_USUARIO_NOME])) {
     $nome = $_SESSION[SESSAO_USUARIO_NOME];
 }
 
 if (isset($_SESSION[SESSAO_USUARIO_TIPO])) {
-    $tipoUsuario = $_SESSION[SESSAO_USUARIO_TIPO]; // 'aluno', 'professor', 'administrador'
+    $isAdmin = $_SESSION[SESSAO_USUARIO_TIPO] == UsuarioTipo::ADMIN;
+    $isAluno = $_SESSION[SESSAO_USUARIO_TIPO] == UsuarioTipo::ALUNO;
+    $isProfessor = $_SESSION[SESSAO_USUARIO_TIPO] == UsuarioTipo::PROFESSOR;
 }
 ?>
 <nav class="navbar navbar-expand-md bg-light px-3 mb-3">
@@ -25,7 +31,7 @@ if (isset($_SESSION[SESSAO_USUARIO_TIPO])) {
                 <a class="nav-link" href="<?= HOME_PAGE ?>">Home</a>
             </li>
 
-            <?php if ($tipoUsuario === 'administrador'): ?>
+            <?php if ($isAdmin): ?>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
                         data-bs-toggle="dropdown">
@@ -51,9 +57,22 @@ if (isset($_SESSION[SESSAO_USUARIO_TIPO])) {
                             href="<?= BASEURL . '/controller/CursoController.php?action=create' ?>">Adicionar curso</a>
                     </div>
                 </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+                        data-bs-toggle="dropdown">
+                        Gerenciar Disciplinas
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item"
+                            href="<?= BASEURL . '/controller/DisciplinaController.php?action=list' ?>">Disciplinas</a>
+                        <a class="dropdown-item"
+                            href="<?= BASEURL . '/controller/DisciplinaController.php?action=create' ?>">Adicionar disciplina</a>
+                    </div>
+                </li>
             <?php endif; ?>
 
-            <?php if ($tipoUsuario === 'aluno'): ?>
+            <?php if ($isAluno): ?>
                 <li class="nav-item">
                     <a class="nav-link" href="" > Minhas Turmas </a>
                 </li>
@@ -63,7 +82,7 @@ if (isset($_SESSION[SESSAO_USUARIO_TIPO])) {
             <?php endif; ?>
 
             
-            <?php if ($tipoUsuario === 'professor'): ?>
+            <?php if ($isProfessor): ?>
                 <li class="nav-item">
                     <a class="nav-link" href="" > Minhas Disciplinas </a>
                 </li>

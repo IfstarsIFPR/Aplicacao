@@ -10,6 +10,15 @@ require_once(__DIR__ . "/../../include/menu.php");
 
 <div class="container">
     <div class="row">
+        <div class="col-3" style="font-weight: bold;">Curso: </div>
+        <div class="col-6" ><?= $dados['curso']->getNome() ?></div>
+    </div>
+    <div class="row">
+        <div class="col-3" style="font-weight: bold;">Nível: </div>
+        <div class="col-6" ><?= $dados['curso']->getNivel() ?></div>
+    </div>
+
+    <div class="row">
         <div class="col-3">
             <a class="btn btn-success" 
                 href="<?= BASEURL ?>/controller/TurmaController.php?action=create">
@@ -28,7 +37,7 @@ require_once(__DIR__ . "/../../include/menu.php");
                     <tr>
                         <th>ID</th>
                         <th>Ano</th>
-                        <th>Código</th>
+                        <th>Curso</th>
                         <th>Turno</th>
                         <th>Disciplinas</th>
                         <th>Alterar</th>
@@ -40,10 +49,10 @@ require_once(__DIR__ . "/../../include/menu.php");
                         <tr>
                             <td><?php echo $tur->getId(); ?></td>
                             <td><?= $tur->getAnoTurma(); ?></td>
-                            <td><?= $tur->getCodigoTurma(); ?></td>
+                            <td><?= $tur->getCurso()->getNome(); ?></td>
                             <td><?= $tur->getTurno(); ?></td>
                             <td><a class="btn btn-warning" 
-                                href="<?= BASEURL ?>/controller/TurmaController.php?action=edit&id=<?= $tur->getId() ?>">
+                                href="<?= BASEURL ?>/controller/TurmaDisciplinaController.php?action=list&idTurma=<?= $tur->getId() ?>">
                                 Disciplinas</a> 
                             </td>
                             <td><a class="btn btn-primary" 

@@ -34,7 +34,14 @@ class TurmaController extends Controller {
 
     protected function list(string $msgErro = "", string $msgSucesso = "") {
 
-        $dados["lista"] = $this->turmaDao->list();
+        $curso = $this->findCursoById();
+        if(! $curso) {
+            echo "ID do curso inválido!";
+            exit;
+        }
+
+        $dados['curso'] = $curso;
+        $dados["lista"] = $this->turmaDao->listByCurso($curso->getId());
 
         $this->loadView("pages/turma/turma-list.php", $dados,  $msgErro, $msgSucesso);
     }
@@ -148,6 +155,15 @@ class TurmaController extends Controller {
 
         //Busca o usuário na base pelo ID    
         return $this->turmaDao->findById($id);
+    }
+
+    private function findCursoById() {
+        $id = 0;
+        if(isset($_GET["idCurso"]))
+            $id = $_GET["idCurso"];
+
+        //Busca o usuário na base pelo ID    
+        return $this->cursoDao->findById($id);
     }
 
 

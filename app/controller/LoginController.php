@@ -35,12 +35,14 @@ class LoginController extends Controller {
                 //Se encontrou o usuário, salva a sessão e redireciona para a HOME do sistema
                 $this->loginService->salvarUsuarioSessao($usuario);
 
-                if ($usuario->getTipoUsuario() === 'aluno') {
+                if ($usuario->getTipoUsuario() === UsuarioTipo::ALUNO) {
                     header("Location: " . HOME_PAGE_ALUNO);
-                } elseif ($usuario->getTipoUsuario() === 'professor') {
+                } elseif ($usuario->getTipoUsuario() === UsuarioTipo::PROFESSOR) {
                     header("Location: " . HOME_PAGE_PROFESSOR);
-                } elseif ($usuario->getTipoUsuario() === 'administrador') {
+                } elseif ($usuario->getTipoUsuario() === UsuarioTipo::ADMIN) {
                     header("Location: " . HOME_PAGE);
+                } else {
+                    echo "Tipo de usuário inválido!";
                 }
                 exit;
 

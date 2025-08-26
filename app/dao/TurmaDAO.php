@@ -4,6 +4,8 @@
 
 include_once(__DIR__ . "/../connection/Connection.php");
 include_once(__DIR__ . "/../model/Turma.php");
+include_once(__DIR__ . "/../dao/CursoDAO.php");
+
 
 
 class TurmaDAO {
@@ -14,6 +16,19 @@ class TurmaDAO {
 
         $sql = "SELECT * FROM turma t ORDER BY t.anoTurma";
         $stm = $conn->prepare($sql);    
+        $stm->execute();
+        $result = $stm->fetchAll();
+
+        return $this->mapTurmas($result);
+        
+    }
+
+    public function listByCurso(int $idCurso) {
+        $conn = Connection::getConn();
+
+        $sql = "SELECT * FROM turma t WHERE t.idCurso = :idCurso ORDER BY t.anoTurma";
+        $stm = $conn->prepare($sql); 
+        $stm->bindValue("idCurso", $idCurso);   
         $stm->execute();
         $result = $stm->fetchAll();
 
@@ -95,16 +110,16 @@ class TurmaDAO {
             $turma->setTurno($reg['turno']);
     
             if($reg["idCurso"] != NULL) {
-                $curso = new Curso();
-                $curso->setId($reg["idCurso"]);
+                $cursoDAO = new CursoDAO();
+                $curso = $cursoDAO->findById($reg["idCurso"]); // Busca o curso completo
                 $turma->setCurso($curso);
-            } else
+            } else {
                 $turma->setCurso(NULL);
-            
+}
             array_push($turmas, $turma);
         }
 
-        return $turmas;
+        return $turmas; 
     }
 
 
