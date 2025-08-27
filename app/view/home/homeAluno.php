@@ -5,7 +5,7 @@
 require_once(__DIR__ . "/../include/header.php");
 require_once(__DIR__ . "/../include/menu.php");
 ?>
-<link rel="stylesheet" href="<?= BASEURL ?>/view/css/home.css">
+<link rel="stylesheet" href="<?= BASEURL ?>/view/css/homeAluno.css">
 
 <h3 class="text-center">Página inicial do sistema</h3>
 
