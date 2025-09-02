@@ -5,7 +5,7 @@
 require_once(__DIR__ . "/../../include/header.php");
 require_once(__DIR__ . "/../../include/menu.php");
 ?>
-
+<link rel="stylesheet" href="<?= BASEURL ?>/view/css/form.css">
 <h3 class="text-center">
     <?php if (!isset($dados['idDisciplina']) || $dados['idDisciplina'] == 0) 
         echo "Inserir";
@@ -33,7 +33,7 @@ require_once(__DIR__ . "/../../include/menu.php");
                     value="<?= isset($dados['idDisciplina']) ? $dados['idDisciplina'] : 0 ?>">
 
                 <div class="mt-3">
-                    <button type="submit" class="btn btn-success">Gravar</button>
+                    <button type="submit" class="btn btn-secondary">Gravar</button>
                 </div>
             </form>
         </div>

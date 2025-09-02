@@ -37,7 +37,7 @@ if (isset($_SESSION[SESSAO_USUARIO_TIPO])) {
                         data-bs-toggle="dropdown">
                         Cadastros
                     </a>
-                    <div class="dropdown-menu">
+                    <div class="dropdown-menu" >
                         <a class="dropdown-item"
                             href="<?= BASEURL . '/controller/UsuarioController.php?action=list' ?>">Usuários</a>
                         <a class="dropdown-item"

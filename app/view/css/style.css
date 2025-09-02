@@ -1,6 +1,7 @@
 body {
     display: flex;
     flex-direction: column;
+    background-color: #0f2c54;
 }
 
 .container {
