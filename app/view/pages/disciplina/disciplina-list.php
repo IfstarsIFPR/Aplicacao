@@ -5,13 +5,13 @@
 require_once(__DIR__ . "/../../include/header.php");
 require_once(__DIR__ . "/../../include/menu.php");
 ?>
-<link rel="stylesheet" href="<?= BASEURL ?>/view/css/homeAluno.css">
+<link rel="stylesheet" href="<?= BASEURL ?>/view/css/listPrincipal.css">
 <h3 class="text-center">Disciplinas</h3>
 
 <div class="container">
     <div class="row">
         <div class="col-3">
-            <a class="btn btn-success" 
+            <a class="btn btn-secondary" style="margin-right: 110px;"
                 href="<?= BASEURL ?>/controller/DisciplinaController.php?action=create">
                 Inserir</a>
         </div>
@@ -37,11 +37,11 @@ require_once(__DIR__ . "/../../include/menu.php");
                         <tr>
                             <td><?php echo $dis->getId(); ?></td>
                             <td><?= $dis->getNomeDisciplina(); ?></td>
-                            <td><a class="btn btn-primary" 
+                            <td><a class="btn btn-secondary" 
                                 href="<?= BASEURL ?>/controller/DisciplinaController.php?action=edit&id=<?= $dis->getId() ?>">
                                 Alterar</a> 
                             </td>
-                            <td><a class="btn btn-danger" 
+                            <td><a class="btn btn-secondary" 
                                 onclick="return confirm('Confirma a exclusão da disciplina?');"
                                 href="<?= BASEURL ?>/controller/DisciplinaController.php?action=delete&id=<?= $dis->getId() ?>">
                                 Excluir</a> 

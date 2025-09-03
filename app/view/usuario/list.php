@@ -5,13 +5,13 @@
 require_once(__DIR__ . "/../include/header.php");
 require_once(__DIR__ . "/../include/menu.php");
 ?>
-<link rel="stylesheet" href="<?= BASEURL ?>/view/css/homeAluno.css">
+<link rel="stylesheet" href="<?= BASEURL ?>/view/css/listPrincipal.css">
 <h3 class="text-center">Usuários</h3>
 
 <div class="container">
     <div class="row">
         <div class="col-3">
-            <a class="btn btn-success" 
+            <a class="btn btn-secondary" style="margin-right: 110px;"
                 href="<?= BASEURL ?>/controller/UsuarioController.php?action=create">
                 Inserir</a>
         </div>
@@ -41,11 +41,11 @@ require_once(__DIR__ . "/../include/menu.php");
                             <td><?= $usu->getNome(); ?></td>
                             <td><?= $usu->getEmail(); ?></td>
                             <td><?= $usu->getTipoUsuario(); ?></td>
-                            <td><a class="btn btn-primary" 
+                            <td><a class="btn btn-secondary" 
                                 href="<?= BASEURL ?>/controller/UsuarioController.php?action=edit&id=<?= $usu->getId() ?>">
                                 Alterar</a> 
                             </td>
-                            <td><a class="btn btn-danger" 
+                            <td><a class="btn btn-secondary" 
                                 onclick="return confirm('Confirma a exclusão do usuário?');"
                                 href="<?= BASEURL ?>/controller/UsuarioController.php?action=delete&id=<?= $usu->getId() ?>">
                                 Excluir</a> 

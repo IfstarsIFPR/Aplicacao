@@ -5,7 +5,7 @@
 require_once(__DIR__ . "/../../include/header.php");
 require_once(__DIR__ . "/../../include/menu.php");
 ?>
-<link rel="stylesheet" href="<?= BASEURL ?>/view/css/homeAluno.css">
+<link rel="stylesheet" href="<?= BASEURL ?>/view/css/listPrincipal.css">
 <h3 class="text-center">Turmas</h3>
 
 <div class="container">
@@ -20,7 +20,7 @@ require_once(__DIR__ . "/../../include/menu.php");
 
     <div class="row">
         <div class="col-3">
-            <a class="btn btn-success" 
+            <a class="btn btn-secondary" style="margin-right: 110px;"
                 href="<?= BASEURL ?>/controller/TurmaController.php?action=create">
                 Inserir</a>
         </div>
@@ -51,15 +51,15 @@ require_once(__DIR__ . "/../../include/menu.php");
                             <td><?= $tur->getAnoTurma(); ?></td>
                             <td><?= $tur->getCurso()->getNome(); ?></td>
                             <td><?= $tur->getTurno(); ?></td>
-                            <td><a class="btn btn-warning" 
+                            <td><a class="btn btn-secondary" 
                                 href="<?= BASEURL ?>/controller/TurmaDisciplinaController.php?action=list&idTurma=<?= $tur->getId() ?>">
                                 Disciplinas</a> 
                             </td>
-                            <td><a class="btn btn-primary" 
+                            <td><a class="btn btn-secondary" 
                                 href="<?= BASEURL ?>/controller/TurmaController.php?action=edit&id=<?= $tur->getId() ?>">
                                 Alterar</a> 
                             </td>
-                            <td><a class="btn btn-danger" 
+                            <td><a class="btn btn-secondary" 
                                 onclick="return confirm('Confirma a exclusão do usuário?');"
                                 href="<?= BASEURL ?>/controller/TurmaController.php?action=delete&id=<?= $tur->getId() ?>">
                                 Excluir</a> 

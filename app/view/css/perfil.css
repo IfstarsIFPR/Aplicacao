@@ -1,0 +1,37 @@
+body {
+    background-color: #0d1b3d;
+    color: #fff;
+}
+
+h3.text-center {
+    font-weight: bold;
+    color: #ffffff;
+}
+
+/* Container centralizado */
+.container {
+    background: #142850; /* fundo mais claro que o body */
+    padding: 30px;
+    border-radius: 20px;
+    width: 60%;
+    margin: 40px auto;
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.4);
+    text-align: center;
+}
+
+table {
+    border-radius: 12px;       /* arredondamento */
+    overflow: hidden;          /* mantém os cantos arredondados visíveis */
+    width: 100%;
+}
+.btn{
+    background-color: #483D8B;
+    border: none;
+    color: #ffffff;
+    transition: background-color 0.3s ease;
+}
+.hidden{
+    text-align: center;
+    padding: 30px;
+  
+}
