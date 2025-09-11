@@ -13,8 +13,16 @@ require_once(__DIR__ . "/../include/menu.php");
 
 <div class="container">
     
-    <div class="row" style="margin-top: 10px;">
-        
+    <div class="row">
+        <div class="col-12">
+    </div> 
+
+    <div class="form-container  d-flex justify-content-end" >
+
+    <div class="form-info">
+        <img src="/Aplicacao/app/view/img/logoStars.png" alt="Logo STARS" />
+    </div>
+
         <div class="col-6">
             <form id="frmUsuario" method="POST" 
                 action="<?= BASEURL ?>/controller/UsuarioController.php?action=save" >

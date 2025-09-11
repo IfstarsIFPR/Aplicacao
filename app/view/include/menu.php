@@ -19,6 +19,8 @@ if (isset($_SESSION[SESSAO_USUARIO_TIPO])) {
     $isProfessor = $_SESSION[SESSAO_USUARIO_TIPO] == UsuarioTipo::PROFESSOR;
 }
 ?>
+<link rel="stylesheet" href="<?= BASEURL ?>/view/css/homeProfessor.css">
+
 <nav class="navbar navbar-expand-md bg-light px-3 mb-3">
     <button class="navbar-toggler" type="button"
         data-bs-toggle="collapse" data-bs-target="#navSite">

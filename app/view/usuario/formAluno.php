@@ -19,8 +19,6 @@ require_once(__DIR__ . "/../include/header.php");
             href="<?= BASEURL ?>/controller/LoginController.php?action=login"> ← </a>
     </div>
 
-    
-
     <div class="formAluno-container  d-flex justify-content-end" >
 
     <div class="formAluno-info">
@@ -29,7 +27,7 @@ require_once(__DIR__ . "/../include/header.php");
 
         <div class="aluno-form" style="border-radius: 20px">
             <form id="frmUsuario" method="POST"
-                action="<?= BASEURL ?>/controller/CadastroController.php?action=save" enctype="multipart/form-data">
+                action="<?= BASEURL ?>/controller/CadastroController.php?action=save">
 
                 <div class="mb-3">
                     <label class="form-label" for="txtNome">Nome:</label>
