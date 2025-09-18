@@ -3,20 +3,6 @@ body {
     color: #fff;
 }
 
-/* ======== BOTÃO VOLTAR ======== */
-.btn-voltar {
-    position: absolute;
-    top: -40px;      /* Coloca acima do formulário */
-    left: -50px;     /* Coloca no canto esquerdo */
-    font-size: 24px; /* Tamanho da seta */
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-    transition: 0.3s;
-}
-.btn-voltar:hover {
-    color: #00aaff; /* Efeito hover */
-}
 
 h3.text-center {
     font-weight: bold;
@@ -58,7 +44,7 @@ h3.text-center {
 }
 
 .form-control {
-        border-radius: 20px;
+    border-radius: 20px;
     }
 
 .btn-success {
@@ -77,6 +63,7 @@ h3.text-center {
     border: none;
     color: #ffffff;
     transition: background-color 0.3s ease;
+
 }
 
  .register-link {

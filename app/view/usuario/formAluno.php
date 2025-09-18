@@ -6,11 +6,8 @@ require_once(__DIR__ . "/../include/header.php");
 ?>
 <link rel="stylesheet" href="<?= BASEURL ?>/view/css/CadastroAluno.css">
 
-
-
 <h3 class="text-center">
-    <?php if ($dados['idUsuario'] == 0) echo "Cadastro";
-    else echo "Alterar"; ?>
+    <?php if ($dados['idUsuario'] == 0) echo "Cadastro"; else echo "Alterar"; ?>
     Aluno
 </h3>
 <div class="row">

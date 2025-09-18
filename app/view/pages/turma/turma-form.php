@@ -11,12 +11,15 @@ require_once(__DIR__ . "/../../include/menu.php");
     else echo "Alterar"; ?>
     Turmas
 </h3>
+<div class="row">
+       <div class="col-12">
+        <a class="btn btn-secondary"
+            href="<?= BASEURL ?>/controller/TurmaController.php?action=list&idCurso={$idCurso}"> ← </a>
+    </div>
 
-<div class="container">
+<div class="form-container  d-flex justify-content-center" >
 
-    <div class="row" style="margin-top: 10px;">
-
-        <div class="col-6">
+        <div class="form" style="border-radius: 20px">
             <form id="formTurma" method="POST"
                 action="<?= BASEURL ?>/controller/TurmaController.php?action=save">
                 <div class="mb-3">
@@ -26,9 +29,6 @@ require_once(__DIR__ . "/../../include/menu.php");
                         value="<?php echo (isset($dados["turma"]) ? $dados["turma"]->getAnoTurma() : ''); ?>" />
                 </div>
 
-                <div class="col-6">
-            <form id="formTurma" method="POST"
-                action="<?= BASEURL ?>/controller/TurmaController.php?action=save">
                 <div class="mb-3">
                     <label class="form-label" for="numCodigo">Código:</label>
                     <input class="form-control" type="number" id="numCodigo" name="codigoTurma"
@@ -75,22 +75,17 @@ require_once(__DIR__ . "/../../include/menu.php");
                     value="<?= $dados['idTurma']; ?>" />
 
                 <div class="mt-3">
-                    <button type="submit" class="btn btn-secondary">Gravar</button>
+                    <button type="submit" class="btn btn-success">Gravar</button>
                 </div>
             </form>
         </div>
+</div>
+
 
         <div class="col-6">
             <?php require_once(__DIR__ . "/../../include/msg.php"); ?>
         </div>
-    </div>
-
-    <div class="row" style="margin-top: 30px;">
-        <div class="col-12">
-            <a class="btn btn-secondary"
-                href="<?= BASEURL ?>/controller/TurmaController.php?action=list">Voltar</a>
-        </div>
-    </div>
+</div>
 </div>
 
 <?php

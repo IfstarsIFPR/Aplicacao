@@ -1,30 +1,30 @@
 body {
-    background-color: #0d1b3d;
+    background-color: #173865;
     color: #fff;
 }
-
 
 h3.text-center {
     font-weight: bold;
     color: #ffffff;
 }
 
-.formAluno-container {
+.form-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    height: 100vh;
-    padding: 0%;
-    left: 100px;
-    box-shadow: 0 4px 8px rgba(140, 132, 214, 0.2); /* Aplica uma sombra ao redor do formulário para destacar visualmente */
+    width: 100%;
 }
 
+.form .mb-3 {
+    margin-bottom: 20px;   
+    border-radius: 20px; 
+}
 .form-select {
     border-radius: 20px;
 
 }
 
-.aluno-form {
+.form {
     background-color: #0f1b3a;
     padding: 40px;
     border-radius: 20px;
@@ -33,8 +33,28 @@ h3.text-center {
     
 }
 
-.form-control {
-        border-radius: 20px;
-    }
+.btn-success{
+   background-color: #173865;
+    border: none;   
+    color: #ffffff ;
+    padding: 10px 25px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    border-radius: 20px;
+}
 
+.btn-secondary {
+   background-color: #0d1f3a;
+    border: none;
+    color: #ffffff;
+    transition: background-color 0.3s ease;
+}
+
+ .register-link {
+        color: #b6c1ff;
+        font-size: 14px;
+        text-align: center;
+        margin-top: 15px;
+    }
 

@@ -10,20 +10,16 @@ require_once(__DIR__ . "/../include/menu.php");
     <?php if($dados['idUsuario'] == 0) echo "Inserir"; else echo "Alterar"; ?> 
     Usuário
 </h3>
-
-<div class="container">
-    
-    <div class="row">
-        <div class="col-12">
-    </div> 
-
-    <div class="form-container  d-flex justify-content-end" >
-
-    <div class="form-info">
-        <img src="/Aplicacao/app/view/img/logoStars.png" alt="Logo STARS" />
+<div class="row">
+       <div class="col-12">
+        <a class="btn btn-secondary"
+            href="<?= BASEURL ?>/controller/UsuarioController.php?action=list"> ← </a>
     </div>
 
-        <div class="col-6">
+<div class="container">
+    <div class="form-container  d-flex justify-content-center" >
+
+        <div class="form" style="border-radius: 20px">
             <form id="frmUsuario" method="POST" 
                 action="<?= BASEURL ?>/controller/UsuarioController.php?action=save" >
                 <div class="mb-3">
@@ -101,24 +97,20 @@ require_once(__DIR__ . "/../include/menu.php");
                 <input type="hidden" id="hddId" name="idUsuario" 
                     value="<?= $dados['idUsuario']; ?>" />
 
-                <div class="mt-3">
-                    <button type="submit" class="btn btn-secondary">Gravar</button>
+                 <div class="mt-12">
+                    <button type="submit" class="btn btn-success">Cadastrar</button>
                 </div>
             </form>            
         </div>
-
+</div>
         <div class="col-6">
             <?php require_once(__DIR__ . "/../include/msg.php"); ?>
         </div>
-    </div>
+    
 
-    <div class="row" style="margin-top: 30px;">
-        <div class="col-12">
-        <a class="btn btn-secondary" 
-                href="<?= BASEURL ?>/controller/UsuarioController.php?action=list">Voltar</a>
-        </div>
-    </div>
 </div>
+</div>
+
 
 <?php  
 require_once(__DIR__ . "/../include/footer.php");
