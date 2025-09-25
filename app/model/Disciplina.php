@@ -7,6 +7,9 @@ class Disciplina {
     private ?int $id;
     private ?string $nomeDisciplina;
 
+    //TODO: implementar o relacionamento ManyToMany com Turma
+    private array $turmas; // array de objetos Turma
+
     /**
      * Get the value of id
      */

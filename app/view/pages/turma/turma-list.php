@@ -8,6 +8,12 @@ require_once(__DIR__ . "/../../include/menu.php");
 <link rel="stylesheet" href="<?= BASEURL ?>/view/css/listPrincipal.css">
 <h3 class="text-center">Turmas</h3>
 
+<div class="row">
+       <div class="col-12">
+        <a class="btn btn-secondary"
+            href="<?= BASEURL ?>/controller/CursoController.php?action=list"> ← </a>
+    </div>
+
 <div class="container">
     <div class="row">
         <div class="col-3" style="font-weight: bold;">Curso: </div>
@@ -70,6 +76,7 @@ require_once(__DIR__ . "/../../include/menu.php");
             </table>
         </div>
     </div>
+</div>
 </div>
 
 <?php  

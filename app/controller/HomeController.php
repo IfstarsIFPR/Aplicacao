@@ -2,6 +2,7 @@
 
 require_once(__DIR__ . "/Controller.php");
 require_once(__DIR__ . "/../dao/UsuarioDAO.php");
+require_once(__DIR__ . "/../dao/TurmaDAO.php");
 
 class HomeController extends Controller {
 

@@ -57,7 +57,7 @@ class CursoDAO {
         $conn = Connection::getConn();
 
         $sql = "UPDATE curso SET nomeCurso = :nomeCurso," . 
-              " nivel = :nivel," .
+              " nivel = :nivel" .
                " WHERE idCurso = :id";
         
         $stm = $conn->prepare($sql);;

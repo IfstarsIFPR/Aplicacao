@@ -3,10 +3,13 @@
 require_once(__DIR__ . "/Controller.php");
 require_once(__DIR__ . "/../model/Turma.php");
 require_once(__DIR__ . "/../dao/TurmaDAO.php");
+require_once(__DIR__ . "/../dao/DisciplinaDAO.php");
+
 
 class TurmaDisciplinaController extends Controller {
 
     private TurmaDAO $turmaDao;
+    private DisciplinaDAO $disciplinaDao;
 
     //Método construtor do controller - será executado a cada requisição a está classe
     public function __construct() {
@@ -21,13 +24,14 @@ class TurmaDisciplinaController extends Controller {
         }
 
         $this->turmaDao = new TurmaDAO();
+        $this->disciplinaDao = new DisciplinaDAO();
 
         $this->handleAction();
     }
 
     protected function list(string $msgErro = "", string $msgSucesso = "") {
 
-        $turma = $this->findTurmaById();
+        $turma = $this->disciplinaDao->findDisciplinasByTurmaId(1); // Temporário, depois pegar o ID da URL
         if(! $turma) {
             echo "ID da turma inválida!";
             exit;

@@ -3,11 +3,14 @@
 require_once(__DIR__ . "/Controller.php");
 require_once(__DIR__ . "/../model/Disciplina.php");
 require_once(__DIR__ . "/../dao/DisciplinaDAO.php");
+require_once(__DIR__ . "/../dao/TurmaDAO.php");
+
 require_once(__DIR__ . "/../service/DisciplinaService.php");
 
 class DisciplinaController extends Controller
 {
 
+    private TurmaDAO $turmaDAO;
     private DisciplinaDAO $disciplinaDao;
     private DisciplinaService $disciplinaService;
 
@@ -26,6 +29,7 @@ class DisciplinaController extends Controller
 
         $this->disciplinaDao = new DisciplinaDAO();
         $this->disciplinaService = new DisciplinaService();
+        $this->turmaDAO = new TurmaDAO();
 
         $this->handleAction();
     }
@@ -40,8 +44,12 @@ class DisciplinaController extends Controller
 
     protected function create()
     {
+
+
         $dados["idDisciplina"] = 0; // garante que não dará erro na view
         $dados["disciplina"] = null;
+        
+        $dados["turmas"]  = $this->turmaDAO->list();
 
         $this->loadView("pages/disciplina/disciplina-form.php", $dados);
     }
@@ -64,6 +72,9 @@ class DisciplinaController extends Controller
         $id = $_POST['idDisciplina'] ?? 0;
         $nomeDisciplina = trim($_POST['nomeDisciplina']) != "" ? trim($_POST['nomeDisciplina']) : NULL;
 
+        $turmasIds = $_POST['turmas'] ?? [];
+
+
         // Criar objeto Disciplina
         $disciplina = new Disciplina();
         $disciplina->setId($id);
@@ -75,7 +86,7 @@ class DisciplinaController extends Controller
             try {
                 if ($disciplina->getId() == 0) {
                     // Insert e recuperar o ID
-                    $this->disciplinaDao->insert($disciplina);
+                    $this->disciplinaDao->insert($disciplina, $turmasIds);
                 } else {
                     $this->disciplinaDao->update($disciplina);
                 }

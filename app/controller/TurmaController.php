@@ -102,7 +102,7 @@ class TurmaController extends Controller {
                 else
                     $this->turmaDao->update($turma);
                 
-                header("location: " . BASEURL . "/controller/TurmaController.php?action=list");
+                header("location: " . BASEURL . "/controller/TurmaController.php?action=list&idCurso={$idCurso}");
                 exit;
             } catch(PDOException $e) {
                 //Iserir erro no array
@@ -131,7 +131,7 @@ class TurmaController extends Controller {
             //Excluir
             $this->turmaDao->deleteById($turma->getId());
 
-            header("location: " . BASEURL . "/controller/TurmaController.php?action=list");
+            header("location: " . BASEURL . "/controller/TurmaController.php?action=list&idCurso=" . $turma->getCurso()->getId());
             exit;
         } else {
             $this->list("Turma não encontrada!");

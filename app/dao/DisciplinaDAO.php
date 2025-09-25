@@ -44,8 +44,33 @@ class DisciplinaDAO {
             " - Erro: mais de uma disciplina encontrada.");
     }
 
+    public function findDisciplinasByTurmaId($idTurma) {
+        $conn = Connection::getConn();
+
+        if (!isset($_GET["idTurma"])) {
+            return null;
+        }
+
+        $idTurma = $_GET["idTurma"];
+
+        $sql = "SELECT d.* FROM disciplina d " .
+               "JOIN turmadisciplina td ON d.idDisciplina = td.idDisciplina " .
+               "WHERE td.idTurma = :idTurma " .
+               "ORDER BY d.nomeDisciplina";
+
+        $stm = $conn->prepare($sql);
+        $stm->bindValue("idTurma", $idTurma);
+        $stm->execute();
+        $result = $stm->fetchAll();
+
+        $disciplinas = $this->mapDisciplinas($result);
+
+        return $disciplinas;
+
+    }
+
      //Método para inserir um Usuario
-    public function insert(Disciplina $disciplina) {
+    public function insert(Disciplina $disciplina, array $turmasIds) {
         $conn = Connection::getConn();
 
         $sql = "INSERT INTO disciplina (nomeDisciplina)" .
@@ -54,6 +79,22 @@ class DisciplinaDAO {
         $stm = $conn->prepare($sql);
         $stm->bindValue("nomeDisciplina", $disciplina->getNomeDisciplina());
         $stm->execute();
+
+        $lastId = $conn->lastInsertId();
+
+        // Inserir os relacionamentos ManyToMany na tabela disciplina_turma
+        if (!empty($turmasIds)) {   
+            
+            $sqlRel = "INSERT INTO turmadisciplina (idDisciplina, idTurma, idProfessor) VALUES (:disciplina_id, :turma_id, 4)";
+            $stmRel = $conn->prepare($sqlRel);
+
+            foreach ($turmasIds as $turmaId) {
+                $stmRel->bindValue("disciplina_id", $lastId);
+                $stmRel->bindValue("turma_id", $turmaId);
+                $stmRel->execute();
+            }
+        }
+
     }
 
       //Método para atualizar um Usuario
