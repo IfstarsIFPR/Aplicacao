@@ -31,6 +31,7 @@ class HomeController extends Controller {
 
     protected function homeAluno() {
         //Carrega a quantidade de usuários cadastrados
+        //Alteração
 
         $curso = $this->usuarioDAO->findById($this->getIdUsuarioLogado())->getCurso();        
 
