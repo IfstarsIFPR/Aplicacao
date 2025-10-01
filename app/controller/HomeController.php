@@ -7,6 +7,7 @@ require_once(__DIR__ . "/../dao/TurmaDAO.php");
 class HomeController extends Controller {
 
     private UsuarioDAO $usuarioDAO;
+    private TurmaDAO $turmaDAO;
 
     public function __construct() {
         //Verificar se o usuário está logado
@@ -14,6 +15,7 @@ class HomeController extends Controller {
             return;
 
         $this->usuarioDAO = new UsuarioDAO();
+        $this->turmaDAO = new TurmaDAO();
 
         //Tratar a ação solicitada no parâmetro "action"
         $this->handleAction();
@@ -29,6 +31,10 @@ class HomeController extends Controller {
 
     protected function homeAluno() {
         //Carrega a quantidade de usuários cadastrados
+
+        $curso = $this->usuarioDAO->findById($this->getIdUsuarioLogado())->getCurso();        
+
+        $dados['turmas'] = $this->turmaDAO->listByCurso($curso->getId());
         $dados["qtdUsuarios"] = $this->usuarioDAO->quantidadeUsuarios();
 
         //Carrega a view específica para o aluno
