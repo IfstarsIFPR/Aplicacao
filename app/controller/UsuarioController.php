@@ -68,7 +68,7 @@ class UsuarioController extends Controller {
         $email = trim($_POST['email']) != "" ? trim($_POST['email']) : NULL;
         $senha = trim($_POST['senha']) != "" ? trim($_POST['senha']) : NULL;
         $confSenha = trim($_POST['conf_senha']) != "" ? trim($_POST['conf_senha']) : NULL;
-        $tipousuario = $_POST['tipoUsuario'];
+        $tipousuario = UsuarioTipo::PROFESSOR;
         $siape = trim($_POST['siape']) != "" ? trim($_POST['siape']) : NULL;
         
         //Criar o objeto Usuario
