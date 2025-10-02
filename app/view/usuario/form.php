@@ -75,24 +75,6 @@ require_once(__DIR__ . "/../include/menu.php");
                     </select>
                 </div>
 
-                <div class="mb-3">
-                    <label class="form-label" for="selCurso">Curso:</label>
-                    <select class="form-select" name="idCurso" id="selCurso">
-                        <option value="">Selecione o curso</option>
-                        <?php foreach($dados["cursos"] as $curso): ?>
-                            <option value="<?= $curso->getId() ?>" 
-                                <?php 
-                                    if(isset($dados["usuario"]) && $dados['usuario']->getCurso() != null && 
-                                        $dados["usuario"]->getCurso()->getId() == $curso->getId()) 
-                                        echo "selected";
-
-                                ?>    
-                            >
-                                <?= $curso->getNome() ?>
-                            </option>
-                        <?php endforeach; ?>
-                    </select>
-                </div>
 
                 <input type="hidden" id="hddId" name="idUsuario" 
                     value="<?= $dados['idUsuario']; ?>" />

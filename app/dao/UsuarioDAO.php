@@ -70,8 +70,8 @@ class UsuarioDAO {
     public function insert(Usuario $usuario) {
         $conn = Connection::getConn();
 
-        $sql = "INSERT INTO usuario (nomeUsuario, email, senha, tipoUsuario, siape, idCurso, foto_perfil)" .
-               " VALUES (:nomeUsuario, :email, :senha, :tipoUsuario, :siape, :idCurso, :foto_perfil)";
+        $sql = "INSERT INTO usuario (nomeUsuario, email, senha, tipoUsuario, siape, foto_perfil)" .
+               " VALUES (:nomeUsuario, :email, :senha, :tipoUsuario, :siape, :foto_perfil)";
         
         $senhaCripto = password_hash($usuario->getSenha(), PASSWORD_DEFAULT);
 
@@ -82,7 +82,6 @@ class UsuarioDAO {
         $stm->bindValue("tipoUsuario", $usuario->getTipoUsuario());
         $stm->bindValue("siape", $usuario->getSiape());
 
-        $stm->bindValue("idCurso", ($usuario->getCurso() ? $usuario->getCurso()->getId() : NULL));
 
         //TODO: Caso houver tempo, vamos implementar o sistema de fotos de perfil
         $stm->bindValue("foto_perfil", "arquivo_6894a1046123e.jpg");

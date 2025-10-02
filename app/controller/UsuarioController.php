@@ -70,7 +70,6 @@ class UsuarioController extends Controller {
         $confSenha = trim($_POST['conf_senha']) != "" ? trim($_POST['conf_senha']) : NULL;
         $tipousuario = $_POST['tipoUsuario'];
         $siape = trim($_POST['siape']) != "" ? trim($_POST['siape']) : NULL;
-        $idCurso = trim($_POST['idCurso']) != "" ? trim($_POST['idCurso']) : NULL;
         
         //Criar o objeto Usuario
         $usuario = new Usuario();
@@ -81,15 +80,6 @@ class UsuarioController extends Controller {
         $usuario->setTipousuario($tipousuario);
         $usuario->setSiape($siape);
         
-        if($idCurso) {
-            
-            $curso = new Curso();
-            $curso->setId($idCurso);
-            $usuario->setCurso($curso);
-        
-        } else {
-            $usuario->setCurso(null);
-        }
         
         //Validar os dados (camada service)
         $erros = $this->usuarioService->validarDados($usuario, $confSenha);
@@ -116,7 +106,6 @@ class UsuarioController extends Controller {
         $dados['confSenha'] = $confSenha;
 
         $dados['tiposUsuario'] = UsuarioTipo::getAllAsArray();
-        $dados['cursos'] = $this->cursoDao->list();
 
         $msgErro = implode("<br>", $erros);
 
