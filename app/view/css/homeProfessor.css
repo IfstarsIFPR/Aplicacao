@@ -1,5 +1,5 @@
 body {
-    background-color: #142850; /* azul escuro */
+    background-color: #142850; 
     font-family: 'Arial', sans-serif;
     color: #f1f1f1; /* texto claro */
     margin: 0;
@@ -22,7 +22,6 @@ h3.text-center {
     border-radius: 20px;
     width: 60%;
     margin: 40px auto;
-    box-shadow: 0px 4px 15px rgba(0,0,0,0.4);
     text-align: center;
 }
 
