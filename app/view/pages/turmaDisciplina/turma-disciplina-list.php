@@ -11,27 +11,11 @@ require_once(__DIR__ . "/../../include/menu.php");
 <h3 class="text-center">Disciplinas da Turma</h3>
 
 <div class="container">
-    <div class="row" style="margin-top: 10px;">
-        <div class="col-12">
-            <table id="tabDisciplina" class='table table-striped table-bordered'>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nome</th>
-                    </tr>
-                </thead>
-                <?php foreach($dados['lista'] as $tur): ?>
-                    <tr>
-                        <td><?php echo $tur->getId(); ?></td>
-                        <td><?= $tur->getNomeDisciplina(); ?></td>
-                     </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-        </div>
-    </div>
+
+<?php print_r($dados['turma']) ?>
+
 </div>
 
-        <?php
-        require_once(__DIR__ . "/../../include/footer.php");
-        ?>
+<?php  
+require_once(__DIR__ . "/../../include/footer.php");
+?>

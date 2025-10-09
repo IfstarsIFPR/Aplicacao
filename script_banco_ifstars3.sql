@@ -19,6 +19,3 @@ ALTER TABLE turmaalunos DROP CONSTRAINT fk_turmaAlunos_turmaDisciplina;
 ALTER TABLE turmaalunos ADD COLUMN idTurma INT NOT NULL;
 ALTER TABLE turmaalunos ADD CONSTRAINT fk_turmaAlunos_turma FOREIGN KEY (idTurma) 
     REFERENCES turma (idTurma) ON DELETE CASCADE;
-
-ALTER TABLE turmaalunos 
-ADD CONSTRAINT unique_aluno_turma UNIQUE (idUsuario, idTurma);
