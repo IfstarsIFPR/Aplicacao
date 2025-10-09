@@ -33,7 +33,8 @@ require_once(__DIR__ . "/../../include/menu.php");
                 <?php
                 // Ordena as turmas pelo nome do curso
                 usort($dados["turmas"], function($a, $b) {
-                    return strcmp($a->getCurso()->getNome(), $b->getCurso()->getNome());});
+                    return strcmp($a->getCurso()->getNome(), $b->getCurso()->getNome());
+                        });
                 ?>
                 <div class="mb-3">
                     <label class="form-label" for="selectTurma">Turma:</label>

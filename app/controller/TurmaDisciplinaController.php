@@ -5,14 +5,13 @@ require_once(__DIR__ . "/../model/Turma.php");
 require_once(__DIR__ . "/../dao/TurmaDAO.php");
 require_once(__DIR__ . "/../dao/DisciplinaDAO.php");
 require_once(__DIR__ . "/../dao/TurmaAlunoDAO.php");
-require_once(__DIR__ . "/../dao/TurmaDisciplinaDAO.php");
+
 
 class TurmaDisciplinaController extends Controller {
 
     private TurmaDAO $turmaDao;
     private DisciplinaDAO $disciplinaDao;
     private TurmaAlunoDAO $turmaAlunoDao;
-    private TurmaDisciplinaDAO $turmaDisciplinaDao;
 
     //Método construtor do controller - será executado a cada requisição a está classe
     public function __construct() {
@@ -29,25 +28,22 @@ class TurmaDisciplinaController extends Controller {
         $this->turmaDao = new TurmaDAO();
         $this->disciplinaDao = new DisciplinaDAO();
         $this->turmaAlunoDao = new TurmaAlunoDAO();
-        $this->turmaDisciplinaDao = new TurmaDisciplinaDAO();
 
         $this->handleAction();
     }
 
     protected function list(string $msgErro = "", string $msgSucesso = "") {
 
-        $turma = $this->findTurmaById();
-        if (! $turma) {
-        echo "ID da turma inválido!";
-        exit;
+        $turma = $this->disciplinaDao->findDisciplinasByTurmaId(1); // Temporário, depois pegar o ID da URL
+        if(! $turma) {
+            echo "ID da turma inválida!";
+            exit;
+        }
+
+        $dados['turma'] = $turma;
+
+        $this->loadView("pages/turmaDisciplina/turma-disciplina-list.php", $dados,  $msgErro, $msgSucesso);
     }
-
-    // dados para a view
-    $dados['turma'] = $turma;
-    $dados["lista"] = $this->disciplinaDao->findDisciplinasByTurmaId($turma->getId());
-
-    $this->loadView("pages/turmaDisciplina/turma-disciplina-list.php", $dados, $msgErro, $msgSucesso);
-}
 
     public function acessarTurma(){
 
@@ -64,10 +60,7 @@ class TurmaDisciplinaController extends Controller {
         } else if($turma->getCodigoTurma() != $codigoTurma) {
             print ("Código de acesso inválido!");
             exit;
-        } else {
-            // Redirecionar para a página de listagem de disciplinas da turma
-            header("Location: " . BASEURL . "/controller/TurmaDisciplinaController.php?action=list&idTurma=" . $idTurma);
-        }
+        } 
         
             
         // se inscrever na turma
@@ -80,14 +73,6 @@ class TurmaDisciplinaController extends Controller {
 
         header("Location: " . BASEURL . "/controller/HomeController.php?action=homeAluno");
     }
-        private function findTurmaById() {
-        if (!isset($_GET["idTurma"])) {
-            return null;
-            }
-
-        $idTurma = (int) $_GET["idTurma"];
-        return $this->turmaDao->findById($idTurma);
-            }
 
 }
 
