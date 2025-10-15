@@ -24,6 +24,7 @@ require_once(__DIR__ . "/../../include/menu.php");
 
 <div class="container">
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
 <?php print_r($dados['turma']) ?>
 
@@ -33,6 +34,8 @@ require_once(__DIR__ . "/../../include/menu.php");
 require_once(__DIR__ . "/../../include/footer.php");
 ?>
 =======
+=======
+>>>>>>> Stashed changes
     <div class="row flex-row gap-3 mt-2">
             <!-- <table id="tabDisciplina" class='table table-striped table-bordered'>
                 <thead>
@@ -70,5 +73,9 @@ require_once(__DIR__ . "/../../include/footer.php");
 
 <?php
 require_once(__DIR__ . "/../../include/footer.php");
+<<<<<<< Updated upstream
+?>
+>>>>>>> Stashed changes
+=======
 ?>
 >>>>>>> Stashed changes

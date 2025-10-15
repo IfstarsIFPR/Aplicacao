@@ -33,12 +33,16 @@ require_once(__DIR__ . "/../../include/menu.php");
                         value="<?php echo (isset($dados["disciplina"]) ? $dados["disciplina"]->getNomeDisciplina() : ''); ?>" />
                 </div>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                 <?php
                 // Ordena as turmas pelo nome do curso
                 usort($dados["turmas"], function($a, $b) {
                     return strcmp($a->getCurso()->getNome(), $b->getCurso()->getNome());
                         });
                 ?>
+=======
+
+>>>>>>> Stashed changes
 =======
 
 >>>>>>> Stashed changes

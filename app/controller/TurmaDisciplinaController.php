@@ -6,7 +6,10 @@ require_once(__DIR__ . "/../dao/TurmaDAO.php");
 require_once(__DIR__ . "/../dao/DisciplinaDAO.php");
 require_once(__DIR__ . "/../dao/TurmaAlunoDAO.php");
 
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 class TurmaDisciplinaController extends Controller
 {
 
@@ -38,6 +41,7 @@ class TurmaDisciplinaController extends Controller
     {
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         $turma = $this->disciplinaDao->findDisciplinasByTurmaId(1); // Temporário, depois pegar o ID da URL
         if(! $turma) {
             echo "ID da turma inválida!";
@@ -67,6 +71,23 @@ class TurmaDisciplinaController extends Controller
     public function acessarTurma()
     {
 >>>>>>> Stashed changes
+=======
+        $turma = $this->findTurmaById();
+        if (! $turma) {
+            echo "ID da turma inválido!";
+            exit;
+        }
+
+        // dados para a view
+        $dados['turma'] = $turma;
+        $dados["lista"] = $this->disciplinaDao->findDisciplinasByTurmaId($turma->getId());
+
+        $this->loadView("pages/turmaDisciplina/turma-disciplina-list.php", $dados, $msgErro, $msgSucesso);
+    }
+
+    public function acessarTurma()
+    {
+>>>>>>> Stashed changes
 
         $codigoTurma = $_POST['codigoTurma'];
         $idTurma = $_POST['idTurma'];
@@ -75,6 +96,7 @@ class TurmaDisciplinaController extends Controller
         $turma = $this->turmaDao->findById($idTurma);
 
         if (!$turma) {
+<<<<<<< Updated upstream
 
             header("Location: " . BASEURL . "/controller/HomeController.php?action=homeAluno&mensagem=ID da turma inválida!");
 
@@ -93,6 +115,17 @@ class TurmaDisciplinaController extends Controller
             
 =======
 >>>>>>> Stashed changes
+=======
+
+            header("Location: " . BASEURL . "/controller/HomeController.php?action=homeAluno&mensagem=ID da turma inválida!");
+
+        } else if ($turma->getCodigoTurma() != $codigoTurma) {
+
+            header("Location: " . BASEURL . "/controller/HomeController.php?action=homeAluno&mensagem=Código de acesso inválido!");
+        } 
+
+
+>>>>>>> Stashed changes
         // se inscrever na turma
 
         // 1° criar o metodo de insert no DAO Turma alunos para a relacao de alunos e turmas
@@ -105,8 +138,11 @@ class TurmaDisciplinaController extends Controller
         
     }
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
 =======
+=======
+>>>>>>> Stashed changes
     private function findTurmaById()
     {
         if (!isset($_GET["idTurma"])) {
@@ -116,6 +152,9 @@ class TurmaDisciplinaController extends Controller
         $idTurma = (int) $_GET["idTurma"];
         return $this->turmaDao->findById($idTurma);
     }
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 }
 
