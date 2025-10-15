@@ -1,35 +1,24 @@
 <?php
-  #Nome do arquivo: view/include/menu.php
-  #Objetivo: menu da aplicação para ser incluído em outras páginas
+#Nome do arquivo: view/include/menu.php
+#Objetivo: menu da aplicação para ser incluído em outras páginas
 
-  require_once(__DIR__ . "/../../model/enum/UsuarioTipo.php");
-  require_once(__DIR__ . "/../../dao/TurmaAlunoDAO.php");
+require_once(__DIR__ . "/../../model/enum/UsuarioTipo.php");
 
-  $nome = "(Sessão expirada)";
-  $isAdmin = false;
-  $isAluno = false;
-  $isProfessor = false;
+$nome = "(Sessão expirada)";
+$isAdmin = false;
+$isAluno = false;
+$isProfessor = false;
 
-  if (isset($_SESSION[SESSAO_USUARIO_NOME])) {
-      $nome = $_SESSION[SESSAO_USUARIO_NOME];
-  }
+if (isset($_SESSION[SESSAO_USUARIO_NOME])) {
+    $nome = $_SESSION[SESSAO_USUARIO_NOME];
+}
 
-  if (isset($_SESSION[SESSAO_USUARIO_TIPO])) {
-      $isAdmin = $_SESSION[SESSAO_USUARIO_TIPO] == UsuarioTipo::ADMIN;
-      $isAluno = $_SESSION[SESSAO_USUARIO_TIPO] == UsuarioTipo::ALUNO;
-      $isProfessor = $_SESSION[SESSAO_USUARIO_TIPO] == UsuarioTipo::PROFESSOR;
-  }
-
-  if ($isAluno) {
-
-    $turmaAlunoDAO = new TurmaAlunoDAO();
-    $turmas = $turmaAlunoDAO->obterTurmasPorUsuario($_SESSION['usuarioLogadoId']);
-    $idTurma = $turmas[0]['idTurma'];
-    
-  }
-
+if (isset($_SESSION[SESSAO_USUARIO_TIPO])) {
+    $isAdmin = $_SESSION[SESSAO_USUARIO_TIPO] == UsuarioTipo::ADMIN;
+    $isAluno = $_SESSION[SESSAO_USUARIO_TIPO] == UsuarioTipo::ALUNO;
+    $isProfessor = $_SESSION[SESSAO_USUARIO_TIPO] == UsuarioTipo::PROFESSOR;
+}
 ?>
-
 <link rel="stylesheet" href="<?= BASEURL ?>/view/css/menu.css">
 
 <nav class="navbar navbar-expand-lg navbar-dark navbar-custom shadow-sm">
@@ -127,56 +116,6 @@
                     </ul>
                 </li>
             </ul>
-<<<<<<< Updated upstream
-=======
-          </li>
-
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="dropdownDisciplinas" role="button"
-              data-bs-toggle="dropdown" aria-expanded="false">
-              Gerenciar Disciplinas
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="dropdownDisciplinas">
-              <li><a class="dropdown-item" 
-                     href="<?= BASEURL . '/controller/DisciplinaController.php?action=list' ?>">Disciplinas</a></li>
-              <li><a class="dropdown-item" 
-                     href="<?= BASEURL . '/controller/DisciplinaController.php?action=create' ?>">Adicionar disciplina</a></li>
-            </ul>
-          </li>
-        <?php endif; ?>
-
-        <?php if ($isAluno): ?>
-          <li class="nav-item">
-             <a class="nav-link" href="<?= BASEURL . '/controller/TurmaDisciplinaController.php?action=list&idTurma=' . $idTurma ?>">Minhas Turmas</a></li>
-          <li class="nav-item">
-             <a class="nav-link" href="#">Minhas Avaliações</a></li>
-        <?php endif; ?>
-
-        <?php if ($isProfessor): ?>
-          <li class="nav-item"><a class="nav-link" href="#">Minhas Disciplinas</a></li>
-        <?php endif; ?>
-     
-    </ul>
- <ul class="navbar-nav ms-auto mr-3">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarUsuario"
-                    data-bs-toggle="dropdown">
-                    <?= $nome ?>
-                </a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarUsuario"
-            role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <div class="user-avatar"><?= strtoupper(substr($nome, 0, 2)) ?></div>
-          </a>
-          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarUsuario">
-            <li><a class="dropdown-item" href="<?= BASEURL . '/controller/PerfilController.php?action=view' ?>">Perfil</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item text-danger" href="<?= LOGOUT_PAGE ?>">Sair</a></li>
-          </ul>
-        </li>
-      </ul>
->>>>>>> Stashed changes
 
         </div>
     </div>
