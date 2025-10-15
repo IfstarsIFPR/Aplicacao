@@ -9,6 +9,13 @@ require_once(__DIR__ . "/../include/menu.php");
 <link rel="stylesheet" href="<?= BASEURL ?>/view/css/listPrincipal.css">
 <h3 class="text-center">Cursos</h3>
 
+<div class="row">
+        <div class="col-12">
+            <a class="btn btn-secondary"
+                href="<?= BASEURL ?>/controller/HomeController.php?action=home"> ← </a>
+        </div>
+    </div>
+
 <div class="container">
     <div class="row">
         <div class="col-3">

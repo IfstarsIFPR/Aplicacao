@@ -2,7 +2,7 @@
 
 include_once(__DIR__ . "/../connection/Connection.php");
 
-class TurmaAlunoDAO{
+class TurmaAlunoDAO {
 
     private PDO $conn;
 
@@ -19,6 +19,14 @@ class TurmaAlunoDAO{
         return $stmt->execute();
 
     }
+
+    public function obterTurmasPorUsuario($idUsuario) {
+        $sql = "SELECT idTurma FROM turmaalunos WHERE idUsuario = :idUsuario";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(":idUsuario", $idUsuario);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } 
     
 
 }

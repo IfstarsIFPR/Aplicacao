@@ -5,6 +5,8 @@
 require_once(__DIR__ . "/../../include/header.php");
 require_once(__DIR__ . "/../../include/menu.php");
 ?>
+
+
 <link rel="stylesheet" href="<?= BASEURL ?>/view/css/form.css">
 <h3 class="text-center">
     <?php if (!isset($dados['idDisciplina']) || $dados['idDisciplina'] == 0) 
@@ -30,14 +32,19 @@ require_once(__DIR__ . "/../../include/menu.php");
                         maxlength="70" placeholder="Informe o nome da disciplina"
                         value="<?php echo (isset($dados["disciplina"]) ? $dados["disciplina"]->getNomeDisciplina() : ''); ?>" />
                 </div>
+<<<<<<< Updated upstream
                 <?php
                 // Ordena as turmas pelo nome do curso
                 usort($dados["turmas"], function($a, $b) {
                     return strcmp($a->getCurso()->getNome(), $b->getCurso()->getNome());
                         });
                 ?>
+=======
+
+>>>>>>> Stashed changes
                 <div class="mb-3">
                     <label class="form-label" for="selectTurma">Turma:</label>
+                    
                     <select class="form-select" id="selectTurma" name="turmas" multiple>
 
                         <?php foreach ($dados["turmas"] as $turma) : ?>

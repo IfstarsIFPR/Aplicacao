@@ -11,12 +11,19 @@ require_once(__DIR__ . "/../include/menu.php");
 
 <div class="container">
 
-    <?php 
-        // echo '<pre>';
-        // var_dump($dados['turmas'][0]->getCurso()->getNome());
-        // echo '</pre>';
-        // die;
+    <?php
+    // echo '<pre>';
+    // var_dump($dados['turmas'][0]->getCurso()->getNome());
+    // echo '</pre>';
+    // die;
     ?>
+
+    <?php if (isset($dados['mensagem'])) : ?>
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Holy Guacamole!</strong> <?= $dados['mensagem'] ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <?php endif; ?>
 
 
     <div class="row">
