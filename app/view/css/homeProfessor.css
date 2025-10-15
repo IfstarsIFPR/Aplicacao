@@ -17,7 +17,6 @@ h3.text-center {
 
 /* Container centralizado */
 .container {
-    background: #142850; /* fundo mais claro que o body */
     padding: 30px;
     border-radius: 20px;
     width: 60%;

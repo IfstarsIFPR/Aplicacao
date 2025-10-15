@@ -9,7 +9,7 @@ require_once(__DIR__ . "/../include/menu.php");
  
 <h3 class="text-center" >Página inicial do sistema</h3>
 
-<div class="container" style="color: aliceblue;">
+<div class="container" >
     <span>Quantidade de usuários cadastrados no sistema: </span>
     <span class="fonteBonita">
         <?php echo $dados["qtdUsuarios"] ?>

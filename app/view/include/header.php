@@ -18,8 +18,8 @@ include_once(__DIR__ . "/../../util/config.php");
 
     <link rel="icon" type="image/x-icon" href="<?php echo BASEURL; ?>/../favicon.ico">
 
-    
-
+    <link rel="stylesheet" href="https://cdn.jquery.app/jqueryscripttop.css">
+    <link rel="stylesheet" href="<?php echo BASEURL; ?>/view/css/filter_multi_select.css">
 
 </head>
 <body>

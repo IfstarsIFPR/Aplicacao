@@ -1,11 +1,19 @@
 body {
-    background-color: #173865;
+    background-color: #142850;
     color: #fff;
 }
 
 h3.text-center {
     font-weight: bold;
     color: #ffffff;
+}
+
+.container{
+    padding: 30px;
+    border-radius: 20px;
+    width: 60%;
+    margin: 40px auto;
+    text-align: center; 
 }
 
 .container,
@@ -57,4 +65,9 @@ h3.text-center {
     font-size: 14px;
     text-align: center;
     margin-top: 15px;
+}
+
+#selectTurma {
+    border-radius: 20px;
+    max-width: 400px;
 }
