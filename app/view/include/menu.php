@@ -82,8 +82,7 @@ if (isset($_SESSION[SESSAO_USUARIO_TIPO])) {
 
                 <?php if ($isAluno): ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Minhas Turmas</a>
-                    </li>
+                        <a class="nav-link" href="<?= BASEURL . '/controller/TurmaDisciplinaController.php?action=list&idTurma=' . $idTurma ?>">Minhas Turmas</a></li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Minhas Avaliações</a>
                     </li>
