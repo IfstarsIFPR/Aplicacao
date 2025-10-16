@@ -20,12 +20,12 @@ class TurmaAlunoDAO {
 
     }
 
-    public function obterTurmasPorUsuario($idUsuario) {
-        $sql = "SELECT idTurma FROM turmaalunos WHERE idUsuario = :idUsuario";
+    public function obterTurmaPorUsuario($idUsuario) {
+        $sql = "SELECT idTurma FROM turmaalunos WHERE idUsuario = :idUsuario LIMIT 1";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(":idUsuario", $idUsuario);
         $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     } 
     
 

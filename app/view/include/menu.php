@@ -3,11 +3,14 @@
 #Objetivo: menu da aplicação para ser incluído em outras páginas
 
 require_once(__DIR__ . "/../../model/enum/UsuarioTipo.php");
+require_once(__DIR__ . "/../../dao/TurmaAlunoDAO.php");
+
 
 $nome = "(Sessão expirada)";
 $isAdmin = false;
 $isAluno = false;
 $isProfessor = false;
+$idUsuario = $_SESSION[SESSAO_USUARIO_ID] ?? 0;
 
 if (isset($_SESSION[SESSAO_USUARIO_NOME])) {
     $nome = $_SESSION[SESSAO_USUARIO_NOME];
@@ -18,6 +21,16 @@ if (isset($_SESSION[SESSAO_USUARIO_TIPO])) {
     $isAluno = $_SESSION[SESSAO_USUARIO_TIPO] == UsuarioTipo::ALUNO;
     $isProfessor = $_SESSION[SESSAO_USUARIO_TIPO] == UsuarioTipo::PROFESSOR;
 }
+
+if ($isAluno) {
+    $idUsuario = $_SESSION[SESSAO_USUARIO_ID] ?? 0;
+
+    $turmaDao = new TurmaAlunoDAO();
+    $idTurma = $turmaDao->obterTurmaPorUsuario($idUsuario)['idTurma'];
+}
+
+
+
 ?>
 <link rel="stylesheet" href="<?= BASEURL ?>/view/css/menu.css">
 
@@ -82,7 +95,8 @@ if (isset($_SESSION[SESSAO_USUARIO_TIPO])) {
 
                 <?php if ($isAluno): ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= BASEURL . '/controller/TurmaDisciplinaController.php?action=list&idTurma=' . $idTurma ?>">Minhas Turmas</a></li>
+                        <a class="nav-link" href="<?= BASEURL . '/controller/TurmaDisciplinaController.php?action=list&idTurma=' . $idTurma ?>">Minhas Turmas</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Minhas Avaliações</a>
                     </li>

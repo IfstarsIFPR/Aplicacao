@@ -39,6 +39,11 @@ class DisciplinaController extends Controller
 
         $dados["lista"] = $this->disciplinaDao->list();
 
+        // Ordena as turmas pelo nome do curso
+        // usort($dados["lista"], function ($a, $b) {
+        //     return strcmp($a->getCurso()->getNome(), $b->getCurso()->getNome());
+        // });
+
         $this->loadView("pages/disciplina/disciplina-list.php", $dados,  $msgErro, $msgSucesso);
     }
 
@@ -78,6 +83,7 @@ class DisciplinaController extends Controller
         } else
             $this->list("Disciplina não encontrada!");
     }
+
     protected function save()
     {
         // Capturar os dados do formulário
@@ -85,7 +91,6 @@ class DisciplinaController extends Controller
         $nomeDisciplina = trim($_POST['nomeDisciplina']) != "" ? trim($_POST['nomeDisciplina']) : NULL;
 
         $turmasIds = $_POST['turmas'] ?? [];
-
 
         // Criar objeto Disciplina
         $disciplina = new Disciplina();
