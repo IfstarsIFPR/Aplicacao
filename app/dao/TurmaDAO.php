@@ -100,7 +100,7 @@ class TurmaDAO {
         $stm->execute();
     }
 
-    private function mapTurmas($result) {
+    public function mapTurmas($result) {
         $turmas = array();
         foreach ($result as $reg) {
             $turma = new Turma();

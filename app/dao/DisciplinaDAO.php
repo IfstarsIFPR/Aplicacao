@@ -7,7 +7,6 @@ include_once(__DIR__ . "/../model/Disciplina.php");
 include_once(__DIR__ . "/../dao/TurmaDAO.php");
 
 
-
 class DisciplinaDAO {
 
     //Método para listar as disciplinas a partir da base de dados

@@ -21,7 +21,7 @@ require_once(__DIR__ . "/../../include/menu.php");
 <link rel="stylesheet" href="<?= BASEURL ?>/view/css/listPrincipal.css">
 
 <h3 class="text-center">Disciplinas da Turma</h3>
-
+ 
 <div class="container">
 
 

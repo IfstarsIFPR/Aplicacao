@@ -75,7 +75,7 @@ require_once(__DIR__ . "/../../include/menu.php");
                         <?php foreach ($dados["turmas"] as $turma) : ?>
                             <option value="<?= $turma->getId() ?>">
 
-                                <!-- se o usuario tem uma turma cujo id é igual ao id da turma lista, entao adione o atributo selected -->
+                                <!-- se a disciplina tem uma turma cujo id é igual ao id da turma lista, entao adicione o atributo selected -->
 
                                 <?= $turma->getCurso()->getNome() . " -> " . $turma->getAnoTurma() ?>
                             </option>
