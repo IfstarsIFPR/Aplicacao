@@ -1,3 +1,4 @@
+
 function carregarUsuarios(BASEURL) {
     //Requisição AJAX para buscar os usuários 
     // cadastrados em formato JSON

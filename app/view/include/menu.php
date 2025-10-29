@@ -22,12 +22,26 @@ if (isset($_SESSION[SESSAO_USUARIO_TIPO])) {
     $isProfessor = $_SESSION[SESSAO_USUARIO_TIPO] == UsuarioTipo::PROFESSOR;
 }
 
-if ($isAluno) {
+/*if ($isAluno) {
     $idUsuario = $_SESSION[SESSAO_USUARIO_ID] ?? 0;
 
     $turmaDao = new TurmaAlunoDAO();
     $idTurma = $turmaDao->obterTurmaPorUsuario($idUsuario)['idTurma'];
+}*/
+
+if ($isAluno) {
+    $idUsuario = $_SESSION[SESSAO_USUARIO_ID] ?? 0;
+
+    $turmaDao = new TurmaAlunoDAO();
+    $turma = $turmaDao->obterTurmaPorUsuario($idUsuario);
+
+    if ($turma && isset($turma['idTurma'])) {
+        $idTurma = $turma['idTurma'];
+    } else {
+        $idTurma = 0; // caso o aluno ainda não tenha turma ou retorne false
+    }
 }
+
 
 
 
