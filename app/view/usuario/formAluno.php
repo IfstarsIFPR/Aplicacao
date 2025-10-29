@@ -23,8 +23,8 @@ require_once(__DIR__ . "/../include/header.php");
     </div>
 
         <div class="aluno-form" style="border-radius: 20px">
-            <form id="frmUsuario" method="POST"
-                action="<?= BASEURL ?>/controller/CadastroController.php?action=save">
+           <form id="frmUsuario" method="POST" enctype="multipart/form-data"
+                      action="<?= BASEURL ?>/controller/CadastroController.php?action=save">
 
                 <div class="mb-3">
                     <label class="form-label" for="txtNome">Nome:</label>
