@@ -67,16 +67,20 @@ require_once(__DIR__ . "/../../include/menu.php");
                         value="<?php echo (isset($dados["disciplina"]) ? $dados["disciplina"]->getNomeDisciplina() : ''); ?>" />
                 </div>
 
+                <?php
+                // Garante que as variáveis existam para evitar erros
+                $turmasAssociadas = $dados["turmasAssociadas"] ?? [];
+                $idsAssociadas = array_map(fn($t) => $t->getId(), $turmasAssociadas);?>
+
                 <div class="mb-3">
                     <label class="form-label" for="selectTurma">Turma:</label>
 
-                    <select class="form-select" id="selectTurma" name="turmas[]" multiple  multiselect-search="true">
+                    <?php $idsAssociadas = array_map(fn($t) => $t->getId(), $dados["turmasAssociadas"] ?? []); ?>
 
+                    <select class="form-select" id="selectTurma" name="turmas[]" multiple  multiselect-search="true">
                         <?php foreach ($dados["turmas"] as $turma) : ?>
                             <option value="<?= $turma->getId() ?>">
-
-                                <!-- se a disciplina tem uma turma cujo id é igual ao id da turma lista, entao adicione o atributo selected -->
-
+                                <?= in_array($turma->getId(), $idsAssociadas) ? 'selected' : '' ?>>
                                 <?= $turma->getCurso()->getNome() . " -> " . $turma->getAnoTurma() ?>
                             </option>
 

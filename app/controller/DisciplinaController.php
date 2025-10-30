@@ -74,10 +74,14 @@ class DisciplinaController extends Controller
 
             $dados["turmas"]  = $this->turmaDAO->list();
 
+            // Buscar as turmas já associadas a esta disciplina
+            $dados["turmasAssociadas"] = $this->disciplinaDao->findTurmasByDisciplinaId($disciplina->getId());
+
             // Ordena as turmas pelo nome do curso
             usort($dados["turmas"], function($a, $b) {
                 return strcmp($a->getCurso()->getNome(), $b->getCurso()->getNome());
             });
+
 
             $this->loadView("pages/disciplina/disciplina-form.php", $dados);
         } else
