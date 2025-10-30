@@ -5,6 +5,7 @@
 include_once(__DIR__ . "/../connection/Connection.php");
 include_once(__DIR__ . "/../model/Disciplina.php");
 include_once(__DIR__ . "/../dao/TurmaDAO.php");
+include_once(__DIR__ . "/../dao/TurmaDisciplinaDAO.php");
 
 
 class DisciplinaDAO {
@@ -128,6 +129,11 @@ class DisciplinaDAO {
     //Método para excluir uma Turma pelo seu ID
     public function deleteById(int $id) {
         $conn = Connection::getConn();
+
+        // Primeiro, excluir os vínculos na tabela turmaDisciplina
+        $turmaDisciplinaDAO = new TurmaDisciplinaDAO();
+        $turmaDisciplinaDAO->deleteByDisciplina($id);
+        // Depois, excluir a disciplina
 
         $sql = "DELETE FROM disciplina WHERE idDisciplina = :id";
         

@@ -55,6 +55,7 @@ require_once(__DIR__ . "/../../include/menu.php");
     </div>
 </div>
 <div class="container">
+    <div class="col-12">
     <div class="form-container d-flex justify-content-center">
 
         <div class="form" style="border-radius: 20px">
@@ -72,7 +73,7 @@ require_once(__DIR__ . "/../../include/menu.php");
                 $turmasAssociadas = $dados["turmasAssociadas"] ?? [];
                 $idsAssociadas = array_map(fn($t) => $t->getId(), $turmasAssociadas);?>
 
-                <div class="mb-3">
+                <div class="mb-4">
                     <label class="form-label" for="selectTurma">Turma:</label>
 
                     <?php $idsAssociadas = array_map(fn($t) => $t->getId(), $dados["turmasAssociadas"] ?? []); ?>
@@ -99,6 +100,7 @@ require_once(__DIR__ . "/../../include/menu.php");
                 </div>
             </form>
         </div>
+    </div>
 
         <div class="col-6">
             <?php require_once(__DIR__ . "/../../include/msg.php"); ?>
