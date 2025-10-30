@@ -131,7 +131,7 @@ CREATE TABLE IF NOT EXISTS `avaliacao` (
 ENGINE = InnoDB;
 
 
-INSERT INTO usuario (email, senha) 
-VALUES ('heataer@gmail.com', '$2y$10$Y49i5tPHcdluuLVZSEQH1OEUlKXDgazm5PlDQtJBRYor/iIf2xgYe'); /* senha 123 */
+INSERT INTO usuario (email, senha, tipoUsuario) 
+VALUES ('erick@gmail.com', '$1$0.y2hAIQ$pvGmwymq5swPuB15WupnF/', 'admin'); /* senha 123 */
 
 INSERT INTO curso (nomeCurso, nivel) VALUES ('Técnico em Desenvolvimento de Sistemas (TDS)', 'Técnico');

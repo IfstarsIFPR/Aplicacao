@@ -68,6 +68,22 @@ class DisciplinaDAO {
 
     }
 
+    public function findTurmasByDisciplinaId($idDisciplina) {
+    $conn = Connection::getConn();
+
+    $sql = "SELECT t.* FROM turma t
+            JOIN turmadisciplina td ON t.idTurma = td.idTurma
+            WHERE td.idDisciplina = :idDisciplina";
+
+    $stm = $conn->prepare($sql);
+    $stm->bindValue("idDisciplina", $idDisciplina);
+    $stm->execute();
+    $result = $stm->fetchAll();
+
+    $turmaDao = new TurmaDAO();
+    return $turmaDao->mapTurmas($result);
+}
+
      //Método para inserir um Usuario
     public function insert(Disciplina $disciplina, array $turmasIds) {
         $conn = Connection::getConn();
