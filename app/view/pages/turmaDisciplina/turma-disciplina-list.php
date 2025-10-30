@@ -5,20 +5,8 @@
 require_once(__DIR__ . "/../../include/header.php");
 require_once(__DIR__ . "/../../include/menu.php");
 ?>
-
-<style>
-    .badge {
-        position: absolute;
-        right: 8px;
-        top: 19px;
-    }
-
-    .card-title {
-        min-height: 50px;
-    }
-</style>
-
-<link rel="stylesheet" href="<?= BASEURL ?>/view/css/listPrincipal.css">
+ 
+<link rel="stylesheet" href="<?= BASEURL ?>/view/css/TurmaDisciplina.css">
 
 <h3 class="text-center">Disciplinas da Turma</h3>
  

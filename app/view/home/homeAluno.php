@@ -7,7 +7,7 @@ require_once(__DIR__ . "/../include/menu.php");
 ?>
 <link rel="stylesheet" href="<?= BASEURL ?>/view/css/homeAluno.css">
 
-<h3 class="text-center">Página inicial do sistema</h3>
+<h3 class="text-center">Turmas</h3>
 
 <div class="container">
 

@@ -1,0 +1,17 @@
+ body{
+    background-color: #3a6093;
+ }
+ 
+    .badge {
+        position: absolute;
+        right: 8px;
+        top: 19px;
+    }
+
+    .card-title {
+        min-height: 50px;
+    }
+
+    h3{
+        color: white;
+    }

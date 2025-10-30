@@ -109,7 +109,7 @@ if ($isAluno) {
 
                 <?php if ($isAluno): ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= BASEURL . '/controller/TurmaDisciplinaController.php?action=list&idTurma=' . $idTurma ?>">Minhas Turmas</a>
+                        <a class="nav-link" href="<?= BASEURL . '/controller/TurmaDisciplinaController.php?action=list&idTurma=' . $idTurma ?>">Minhas Disciplinas</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Minhas Avaliações</a>

@@ -8,6 +8,8 @@
 /* ====== LOGO ====== */
 .navbar-logo {
   height: 25px;
+  display: flex;
+  align-items: flex;
 }
 
 /* ====== LINKS ====== */
@@ -21,7 +23,6 @@
   color: #cdd8f4 !important;
 }
 
-/* ====== DROPDOWN ====== */
 .dropdown-menu {
   background-color: #fff;
   border: none;
@@ -33,11 +34,10 @@
   background-color: #f0f4ff;
 }
 
-/* ====== AVATAR ====== */
 .user-avatar {
   width: 36px;
   height: 36px;
-  background-color: #d0d0d0;
+  background-color: #cdd8f9;
   color: #000;
   font-weight: bold;
   display: flex;
@@ -47,7 +47,6 @@
   font-size: 14px;
 }
 
-/* ====== ICONE ====== */
 .navbar-custom i {
   font-size: 18px;
   color: #fff;

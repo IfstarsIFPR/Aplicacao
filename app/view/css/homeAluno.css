@@ -2,7 +2,7 @@
 
 /* Fundo geral */
 body {
-    background-color: #142850; /* azul escuro */
+    background-color: #3a6093; /* azul escuro */
     font-family: 'Arial', sans-serif;
     color: #f1f1f1; /* texto claro */
     margin: 0;
@@ -20,12 +20,10 @@ h3.text-center {
 
 /* Container centralizado */
 .container {
-    background: #142850; /* fundo mais claro que o body */
     padding: 30px;
     border-radius: 20px;
     width: 60%;
     margin: 40px auto;
-    box-shadow: 0px 4px 15px rgba(0,0,0,0.4);
     text-align: center;
 }
 
@@ -55,12 +53,12 @@ h3.text-center {
     transform: scale(1.05);
 }
 
-.fonteBonita {
-    font-family: 'Poppins', sans-serif; /* ou outra fonte do Google Fonts */
+.fonteBonita{
+    font-family: 'Open Sans'; /* ou outra fonte do Google Fonts */
     font-weight: 700; /* deixa mais "forte" */
     font-size: 1.5rem; /* tamanho maior */
-    color: #3b82f6; /* azul bonito (mesmo estilo do botão) */
+    color: #4268a7; /* azul bonito (mesmo estilo do botão) */
     letter-spacing: 1px; /* dá espaçamento entre letras */
 }
 
-/* Lista de usuários */
+
