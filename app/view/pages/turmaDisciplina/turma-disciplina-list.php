@@ -12,8 +12,7 @@ require_once(__DIR__ . "/../../include/menu.php");
  
 <div class="container">
 
-
-    <div class="row flex-row gap-3 mt-2">
+    <div class="row flex-row gap-3 mt-3 justify-content-center">
 
         <?php foreach ($dados['lista'] as $tur): ?>
             <div class="card col-md-4" style="width: 18rem;">
