@@ -59,7 +59,7 @@ if ($isAluno) {
         </button>
 
 
-        <div class="collapse navbar-collapse" id="navSite">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <?php if ($isAdmin): ?>
                     <li class="nav-item dropdown">
