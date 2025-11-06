@@ -75,7 +75,7 @@ class CadastroController extends Controller
         $id = $_POST['idUsuario'];
         $nome = trim($_POST['nomeUsuario']) != "" ? trim($_POST['nomeUsuario']) : NULL;
         $numMatricula = trim($_POST['numMatricula']) != "" ? trim($_POST['numMatricula']) : NULL;
-       //s $declaracaoMatricula = ($_FILES['declaracaoMatricula']) != "" ?($_FILES['declaracaoMatricula']) : NULL;
+        //s $declaracaoMatricula = ($_FILES['declaracaoMatricula']) != "" ?($_FILES['declaracaoMatricula']) : NULL;
         $email = trim($_POST['email']) != "" ? trim($_POST['email']) : NULL;
         $senha = trim($_POST['senha']) != "" ? trim($_POST['senha']) : NULL;
         $confSenha = trim($_POST['conf_senha']) != "" ? trim($_POST['conf_senha']) : NULL;
@@ -91,7 +91,7 @@ class CadastroController extends Controller
 
         $arquivo = $_FILES["declaracaoMatricula"];
 
-        if($arquivo['name'] != '' && $arquivo['type'] == 'application/pdf'){
+        if ($arquivo['name'] != '' && $arquivo['type'] == 'application/pdf') {
             $usuario->setdeclaracaoMatricula($arquivo['name']);
         }
 
@@ -112,10 +112,10 @@ class CadastroController extends Controller
         if (! $erros) {
 
             // Validar arquivo
-            
-            if(! $erros) {
-            //1- Salvar a foto em um arquivo
-   
+
+            if (! $erros) {
+                //1- Salvar a foto em um arquivo
+
                 $nomeArquivo = $this->arquivoService->salvarArquivo($arquivo);
 
                 if ($nomeArquivo) {
@@ -154,9 +154,8 @@ class CadastroController extends Controller
         $dados['tiposUsuario'] = UsuarioTipo::getAllAsArray();
         $dados['cursos'] = $this->cursoDao->list();
 
-        $msgErro = implode("<br>", $erros);
-
-        $this->loadView("usuario/formAluno.php", $dados, $msgErro);
+        $dados['erros'] = $erros;
+        $this->loadView("usuario/formAluno.php", $dados);
     }
 
     protected function delete()
