@@ -12,12 +12,12 @@ require_once(__DIR__ . "/../../include/menu.php");
     Turmas
 </h3>
 <div class="row">
-       <div class="col-12">
+    <div class="col-12">
         <a class="btn btn-secondary"
             href="<?= BASEURL ?>/controller/TurmaController.php?action=list"> ← </a>
     </div>
 
-<div class="form-container  d-flex justify-content-center" >
+    <div class="form-container  d-flex justify-content-center">
 
         <div class="form" style="border-radius: 20px">
             <form id="formTurma" method="POST"
@@ -52,19 +52,20 @@ require_once(__DIR__ . "/../../include/menu.php");
                     </select>
                 </div>
 
-                 <div class="mb-3">
+                <div class="mb-3">
                     <label class="form-label" for="selCurso">Curso:</label>
                     <select class="form-select" name="idCurso" id="selCurso">
                         <option value="">Selecione o curso</option>
-                        <?php foreach($dados["cursos"] as $curso): ?>
-                            <option value="<?= $curso->getId() ?>" 
-                                <?php 
-                                    if(isset($dados["turma"]) && $dados['turma']->getCurso() != null && 
-                                        $dados["turma"]->getCurso()->getId() == $curso->getId()) 
-                                        echo "selected";
+                        <?php foreach ($dados["cursos"] as $curso): ?>
+                            <option value="<?= $curso->getId() ?>"
+                                <?php
+                                if (
+                                    isset($dados["turma"]) && $dados['turma']->getCurso() != null &&
+                                    $dados["turma"]->getCurso()->getId() == $curso->getId()
+                                )
+                                    echo "selected";
 
-                                ?>    
-                            >
+                                ?>>
                                 <?= $curso->getNome() ?>
                             </option>
                         <?php endforeach; ?>
@@ -79,12 +80,12 @@ require_once(__DIR__ . "/../../include/menu.php");
                 </div>
             </form>
         </div>
-</div>
+    </div>
 
 
-        <div class="col-6">
-            <?php require_once(__DIR__ . "/../../include/msg.php"); ?>
-        </div>
+    <div class="col-6">
+        <?php require_once(__DIR__ . "/../../include/msg.php"); ?>
+    </div>
 </div>
 </div>
 

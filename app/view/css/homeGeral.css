@@ -1,24 +1,18 @@
-/* homeAluno.css */
-
-/* Fundo geral */
 body {
-    background-color:#3a6093;
+    background-color:#1b3d69;
     font-family: 'Arial', sans-serif; /* fonte padrão */
     margin: 0;
     padding: 0;
     min-height: 100vh;
 }
 
-/* Título central */
+
 h3.text-center {
-    text-align: center;
-    color: #ffffff;
+    color: #fff;
     margin-top: 30px;
-    font-size: 26px;
-    font-weight: bold;
+   
 }
 
-/* Container centralizado */
 .container {
     padding: 30px;
     border-radius: 20px;
@@ -27,14 +21,12 @@ h3.text-center {
     text-align: center;
 }
 
-/* Texto dentro do container */
 .container span {
     font-size: 20px;
     font-weight: 50;
     color: #e6e6e6;
 }
 
-/* Botão estilo igual cadastro */
 .btn-info {
     background: linear-gradient(135deg, #2563eb, #1e40af); /* azul gradiente */
     color: white;
@@ -61,4 +53,3 @@ h3.text-center {
     letter-spacing: 1px; /* dá espaçamento entre letras */
 }
 
-/* Lista de usuários */

@@ -5,43 +5,8 @@
 require_once(__DIR__ . "/../../include/header.php");
 require_once(__DIR__ . "/../../include/menu.php");
 ?>
-
-
-<style>
-
-.multiselect-dropdown {
-    color: #333;
-}
-
-.multiselect-dropdown-list  div {
-   display: flex;
-   text-align: left;
-    align-items: center;
-
-}
-
-.multiselect-dropdown-list  div input {
-
-    width: 20px;
-
-}
-
-.multiselect-dropdown span.placeholder {
-    color: #333;
-    background: none !important;
-}
-
-.multiselect-dropdown span.optext {
-    background-color: #2c87ddff;
-    border-radius: 15px;
-        color: #fff;
-
-}
-
-</style>
-
-
 <link rel="stylesheet" href="<?= BASEURL ?>/view/css/form.css">
+
 <h3 class="text-center">
     <?php if (!isset($dados['idDisciplina']) || $dados['idDisciplina'] == 0)
         echo "Inserir";

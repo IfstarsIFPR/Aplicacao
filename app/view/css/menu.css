@@ -7,9 +7,7 @@
 
 /* ====== LOGO ====== */
 .navbar-logo {
-  height: 25px;
-  display: flex;
-  align-items: flex;
+  height: 50px;
 }
 
 /* ====== LINKS ====== */
@@ -45,7 +43,21 @@
   justify-content: center;
   border-radius: 50%;
   font-size: 14px;
+  border: none;
+  box-shadow: none;
+  transition: transform 0.2s ease;
 }
+
+/* ======= CORREÇÃO DO PERFIL ======= */
+.user-menu::after {
+  display: none !important;
+}
+
+
+.user-avatar:hover {
+  transform: scale(1.05);
+}
+
 
 .navbar-custom i {
   font-size: 18px;
