@@ -46,6 +46,7 @@ class HomeController extends Controller
     {
         //Carrega a quantidade de usuários cadastrados
         //Alteração
+    
 
         if(isset($_GET["mensagem"])){
             $dados["mensagem"] = $_GET["mensagem"];

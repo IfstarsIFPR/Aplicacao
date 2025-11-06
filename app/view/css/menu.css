@@ -7,7 +7,7 @@
 
 /* ====== LOGO ====== */
 .navbar-logo {
-  height: 25px;
+  height: 50px;
 }
 
 /* ====== LINKS ====== */
@@ -21,7 +21,6 @@
   color: #cdd8f4 !important;
 }
 
-/* ====== DROPDOWN ====== */
 .dropdown-menu {
   background-color: #fff;
   border: none;
@@ -33,11 +32,10 @@
   background-color: #f0f4ff;
 }
 
-/* ====== AVATAR ====== */
 .user-avatar {
   width: 36px;
   height: 36px;
-  background-color: #d0d0d0;
+  background-color: #cdd8f9;
   color: #000;
   font-weight: bold;
   display: flex;
@@ -45,9 +43,22 @@
   justify-content: center;
   border-radius: 50%;
   font-size: 14px;
+  border: none;
+  box-shadow: none;
+  transition: transform 0.2s ease;
 }
 
-/* ====== ICONE ====== */
+/* ======= CORREÇÃO DO PERFIL ======= */
+.user-menu::after {
+  display: none !important;
+}
+
+
+.user-avatar:hover {
+  transform: scale(1.05);
+}
+
+
 .navbar-custom i {
   font-size: 18px;
   color: #fff;

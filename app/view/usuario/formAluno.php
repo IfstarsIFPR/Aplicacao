@@ -7,7 +7,8 @@ require_once(__DIR__ . "/../include/header.php");
 <link rel="stylesheet" href="<?= BASEURL ?>/view/css/CadastroAluno.css">
 
 <h3 class="text-center">
-    <?php if ($dados['idUsuario'] == 0) echo "Cadastro"; else echo "Alterar"; ?>
+    <?php if ($dados['idUsuario'] == 0) echo "Cadastro";
+    else echo "Alterar"; ?>
     Aluno
 </h3>
 <div class="row">
@@ -16,21 +17,24 @@ require_once(__DIR__ . "/../include/header.php");
             href="<?= BASEURL ?>/controller/LoginController.php?action=login"> ← </a>
     </div>
 
-    <div class="formAluno-container  d-flex justify-content-end" >
+    <div class="formAluno-container  d-flex justify-content-end">
 
-    <div class="formAluno-info">
-        <img src="/Aplicacao/app/view/img/logoStars.png" alt="Logo STARS" />
-    </div>
+        <div class="formAluno-info">
+            <img src="/Aplicacao/app/view/img/logoStars.png" alt="Logo STARS" />
+        </div>
 
         <div class="aluno-form" style="border-radius: 20px">
-           <form id="frmUsuario" method="POST" enctype="multipart/form-data"
-                      action="<?= BASEURL ?>/controller/CadastroController.php?action=save">
+            <form id="frmUsuario" method="POST" enctype="multipart/form-data"
+                action="<?= BASEURL ?>/controller/CadastroController.php?action=save">
 
                 <div class="mb-3">
                     <label class="form-label" for="txtNome">Nome:</label>
                     <input class="form-control" type="text" id="txtNome" name="nomeUsuario"
                         maxlength="70" placeholder="Informe o nome"
                         value="<?php echo (isset($dados["usuario"]) ? $dados["usuario"]->getNome() : ''); ?>" />
+                    <?php if (isset($dados['erros']['nomeUsuario'])): ?>
+                        <small class="text-danger"><?php echo $dados['erros']['nomeUsuario']; ?></small>
+                    <?php endif; ?>
                 </div>
 
                 <div class="mb-3">
@@ -38,13 +42,19 @@ require_once(__DIR__ . "/../include/header.php");
                     <input class="form-control" type="email" id="txtLogin" name="email"
                         maxlength="70" placeholder="Informe o email"
                         value="<?php echo (isset($dados["usuario"]) ? $dados["usuario"]->getEmail() : ''); ?>" />
-
+                    <?php if (isset($dados['erros']['email'])): ?>
+                        <small class="text-danger"><?php echo $dados['erros']['email']; ?></small>
+                    <?php endif; ?>
                 </div>
+
                 <div class="mb-3">
                     <label class="form-label" for="txtSenha">Senha:</label>
                     <input class="form-control" type="password" id="txtPassword" name="senha"
                         maxlength="15" placeholder="Informe a senha"
                         value="<?php echo (isset($dados["usuario"]) ? $dados["usuario"]->getSenha() : ''); ?>" />
+                    <?php if (isset($dados['erros']['senha'])): ?>
+                        <small class="text-danger"><?php echo $dados['erros']['senha']; ?></small>
+                    <?php endif; ?>
                 </div>
 
                 <div class="mb-3">
@@ -52,6 +62,9 @@ require_once(__DIR__ . "/../include/header.php");
                     <input class="form-control" type="password" id="txtConfSenha" name="conf_senha"
                         maxlength="15" placeholder="Informe a confirmação da senha"
                         value="<?php echo isset($dados['confSenha']) ? $dados['confSenha'] : ''; ?>" />
+                    <?php if (isset($dados['erros']['conf_senha'])): ?>
+                        <small class="text-danger"><?php echo $dados['erros']['conf_senha']; ?></small>
+                    <?php endif; ?>
                 </div>
 
                 <div class="mb-3">
@@ -59,13 +72,18 @@ require_once(__DIR__ . "/../include/header.php");
                     <input class="form-control" type="text" id="txtNumMatricula" name="numMatricula"
                         maxlength="20" placeholder="Informe o número de matrícula"
                         value="<?php echo (isset($dados["usuario"]) ? $dados["usuario"]->getNumMatricula() : ''); ?>" />
+                    <?php if (isset($dados['erros']['numMatricula'])): ?>
+                        <small class="text-danger"><?php echo $dados['erros']['numMatricula']; ?></small>
+                    <?php endif; ?>
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label" for="txtdeclaracaoMatricula">Declaração de Matrícula:</label>
                     <input class="form-control" type="file" id="txtdeclaracaoMatricula" name="declaracaoMatricula"
-                        maxlength="20" placeholder="Informe a declaracao de matrícula"
-                        value="<?php echo (isset($dados["usuario"]) ? $dados["usuario"]->getDeclaracaoMatricula() : ''); ?>" />
+                        maxlength="20" />
+                    <?php if (isset($dados['erros']['declaracaoMatricula'])): ?>
+                        <small class="text-danger"><?php echo $dados['erros']['declaracaoMatricula']; ?></small>
+                    <?php endif; ?>
                 </div>
 
                 <div class="mb-3">
@@ -80,13 +98,16 @@ require_once(__DIR__ . "/../include/header.php");
                                     $dados["usuario"]->getCurso()->getId() == $curso->getId()
                                 )
                                     echo "selected";
-
                                 ?>>
                                 <?= $curso->getNome() ?>
                             </option>
                         <?php endforeach; ?>
                     </select>
+                    <?php if (isset($dados['erros']['idCurso'])): ?>
+                        <small class="text-danger"><?php echo $dados['erros']['idCurso']; ?></small>
+                    <?php endif; ?>
                 </div>
+
 
                 <input type="hidden" id="hddId" name="idUsuario"
                     value="<?= $dados['idUsuario']; ?>" />
@@ -95,8 +116,8 @@ require_once(__DIR__ . "/../include/header.php");
                     <button type="submit" class="btn btn-success">Cadastrar</button>
                 </div>
                 <div class="register-link">
-                Já possui cadastro? <a href="LoginController.php?action=login">Clique aqui</a>
-            </div>
+                    Já possui cadastro? <a href="LoginController.php?action=login">Clique aqui</a>
+                </div>
             </form>
         </div>
 

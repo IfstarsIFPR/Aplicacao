@@ -1,5 +1,5 @@
 body {
-    background-color: #142850;
+    background-color: #3a6093;
     color: #fff;
 }
 
@@ -30,8 +30,24 @@ h3.text-center {
 
 .form-select {
     border-radius: 20px;
+ padding: 10px 15px;
+    border: none;
 
 }
+
+.form-control {
+    border-radius: 20px !important;
+    padding: 10px 15px;
+    border: none;
+}
+
+/* Ajuste opcional para visual uniforme */
+.form-control:focus,
+.form-select:focus {
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+    outline: none;
+}
+
 
 .form {
     background-color: #0f1b3a;
@@ -71,3 +87,34 @@ h3.text-center {
     border-radius: 20px;
     max-width: 400px;
 }
+
+
+.multiselect-dropdown {
+    color: #333;
+}
+
+.multiselect-dropdown-list  div {
+   display: flex;
+   text-align: left;
+    align-items: center;
+
+}
+
+.multiselect-dropdown-list  div input {
+
+    width: 20px;
+
+}
+
+.multiselect-dropdown span.placeholder {
+    color: #333;
+    background: none !important;
+}
+
+.multiselect-dropdown span.optext {
+    background-color: #2c87ddff;
+    border-radius: 15px;
+    color: #fff;
+
+}
+

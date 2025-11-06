@@ -1,10 +1,10 @@
 <!-- Footer -->
-<footer class="text-center text-lg-start bg-light text-muted" style="margin-top: 10px;">
-    <!-- Copyright -->
-    <div class="text-center p-4">
-        © 2025 Copyright:
-        <a class="text-reset fw-bold" href="https://foz.ifpr.edu.br" target="blank">IFPR (Campus Foz do Iguaçu)</a>
-    </div>      
+<footer class="text-center text-lg-start bg-light text-muted" style="margin-top: 185px;">
+  <!-- Copyright -->
+  <div class="text-center p-4">
+    © 2025 Copyright:
+    <a class="text-reset fw-bold" href="https://foz.ifpr.edu.br" target="blank">IFPR (Campus Foz do Iguaçu)</a>
+  </div>
 </footer>
 
 <!-- BOOTSTRAP: scripts requeridos pelo framework -->
@@ -22,4 +22,5 @@
 
 <!-- Fecha as tags BODY e HTML -->
 </body>
+
 </html>

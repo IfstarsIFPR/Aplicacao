@@ -82,7 +82,7 @@ class TurmaDisciplinaController extends Controller
 
         $this->turmaAlunoDao->insert($this->getIdUsuarioLogado(), $idTurma);
 
-        header("Location: " . BASEURL . "/controller/HomeController.php?action=homeAluno");
+        header("Location: " . BASEURL . "/controller/TurmaDisciplinaController.php?action=list&idTurma=" . $idTurma);
     }
     private function findTurmaById()
     {

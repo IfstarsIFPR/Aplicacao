@@ -50,7 +50,6 @@ class DisciplinaController extends Controller
     protected function create()
     {
 
-
         $dados["idDisciplina"] = 0; // garante que não dará erro na view
         $dados["disciplina"] = null;
         
@@ -74,10 +73,14 @@ class DisciplinaController extends Controller
 
             $dados["turmas"]  = $this->turmaDAO->list();
 
+            // Buscar turmas associadas à disciplina
+            $dados["turmasAssociadas"] = $this->disciplinaDao->findTurmasByDisciplinaId($disciplina->getId());
+
             // Ordena as turmas pelo nome do curso
             usort($dados["turmas"], function($a, $b) {
                 return strcmp($a->getCurso()->getNome(), $b->getCurso()->getNome());
             });
+
 
             $this->loadView("pages/disciplina/disciplina-form.php", $dados);
         } else

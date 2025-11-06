@@ -42,20 +42,15 @@ if ($isAluno) {
     }
 }
 
-
-
-
 ?>
 <link rel="stylesheet" href="<?= BASEURL ?>/view/css/menu.css">
 
 <nav class="navbar navbar-expand-lg navbar-dark navbar-custom shadow-sm">
     <div class="container-fluid">
 
-
-        <a class="navbar-brand d-flex align-items-center" href="<?= HOME_PAGE ?>">
+        <a class="navbar-brand d-flex" href="<?= HOME_PAGE ?>">
             <img src="<?= BASEURL ?>/view/img/logoStars.png" alt="Logo" class="navbar-logo me-2">
         </a>
-
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -109,7 +104,7 @@ if ($isAluno) {
 
                 <?php if ($isAluno): ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= BASEURL . '/controller/TurmaDisciplinaController.php?action=list&idTurma=' . $idTurma ?>">Minhas Turmas</a>
+                        <a class="nav-link" href="<?= BASEURL . '/controller/TurmaDisciplinaController.php?action=list&idTurma=' . $idTurma ?>">Minhas Disciplinas</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Minhas Avaliações</a>
@@ -123,24 +118,22 @@ if ($isAluno) {
             </ul>
             <ul class="navbar-nav ms-auto mr-3">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarUsuario"
-                        data-bs-toggle="dropdown">
-                    </a>
-
+            
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarUsuario"
-                        role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <div class="user-avatar"><?= strtoupper(substr($nome, 0, 2)) ?></div>
-                    </a>
+            </ul>
+                <a class="nav-link d-flex align-items-center user-menu" href="#" id="navbarUsuario"
+                    role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <div class="user-avatar"><?= strtoupper(substr($nome, 0, 2)) ?></div>
+                </a>
 
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarUsuario">
-                        <li><a class="dropdown-item" href="<?= BASEURL . '/controller/PerfilController.php?action=view' ?>">Perfil</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item text-danger" href="<?= LOGOUT_PAGE ?>">Sair</a></li>
-                    </ul>
+
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarUsuario">
+                    <li><a class="dropdown-item" href="<?= BASEURL . '/controller/PerfilController.php?action=view' ?>">Perfil</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item text-danger" href="<?= LOGOUT_PAGE ?>">Sair</a></li>
+                </ul>
                 </li>
             </ul>
 

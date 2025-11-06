@@ -31,6 +31,14 @@ class TurmaDisciplinaDAO {
         return $stmt->fetchAll(PDO::FETCH_CLASS, Disciplina::class);
     }
 
+    //Delete todas as associações de uma disciplina
+    public function deleteByDisciplina($idDisciplina) {
+        $sql = "DELETE FROM turmaDisciplina WHERE idDisciplina = :idDisciplina";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(":idDisciplina", $idDisciplina);
+        return $stmt->execute();
+    }
+
     // Remove vínculo
     public function deleteByTurmaDisciplina($idTurma, $idDisciplina) {
         $sql = "DELETE FROM turmaDisciplina WHERE idTurma = :idTurma AND idDisciplina = :idDisciplina";

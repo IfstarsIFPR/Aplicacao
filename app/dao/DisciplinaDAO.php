@@ -5,6 +5,7 @@
 include_once(__DIR__ . "/../connection/Connection.php");
 include_once(__DIR__ . "/../model/Disciplina.php");
 include_once(__DIR__ . "/../dao/TurmaDAO.php");
+include_once(__DIR__ . "/../dao/TurmaDisciplinaDAO.php");
 
 
 class DisciplinaDAO {
@@ -68,6 +69,22 @@ class DisciplinaDAO {
 
     }
 
+    public function findTurmasByDisciplinaId($idDisciplina) {
+    $conn = Connection::getConn();
+
+    $sql = "SELECT t.* FROM turma t
+            JOIN turmadisciplina td ON t.idTurma = td.idTurma
+            WHERE td.idDisciplina = :idDisciplina";
+
+    $stm = $conn->prepare($sql);
+    $stm->bindValue("idDisciplina", $idDisciplina);
+    $stm->execute();
+    $result = $stm->fetchAll();
+
+    $turmaDao = new TurmaDAO();
+    return $turmaDao->mapTurmas($result);
+}
+
      //Método para inserir um Usuario
     public function insert(Disciplina $disciplina, array $turmasIds) {
         $conn = Connection::getConn();
@@ -112,6 +129,11 @@ class DisciplinaDAO {
     //Método para excluir uma Turma pelo seu ID
     public function deleteById(int $id) {
         $conn = Connection::getConn();
+
+        // Primeiro, excluir os vínculos na tabela turmaDisciplina
+        $turmaDisciplinaDAO = new TurmaDisciplinaDAO();
+        $turmaDisciplinaDAO->deleteByDisciplina($id);
+        // Depois, excluir a disciplina
 
         $sql = "DELETE FROM disciplina WHERE idDisciplina = :id";
         
