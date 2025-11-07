@@ -136,4 +136,22 @@ body {
     .illustration img {
         max-width: 220px;
     }
+
+
+.error-message {
+    color: #ff5a5a;
+    font-size: 13px;
+    margin-top: 4px;
 }
+
+.error-message-geral {
+    background-color: #ffe0e0;
+    color: #c00;
+    padding: 8px;
+    border-radius: 6px;
+    text-align: center;
+    margin-top: 10px;
+}
+}
+
+

@@ -1,0 +1,26 @@
+:root {
+  --amarelo: #f7d21e;
+}
+
+.estrela {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+
+.estrela input {
+  display: none;
+}
+
+.estrela label i {
+  font-size: 1.8rem;
+  color: #ccc;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.estrela input:checked ~ label i,
+.estrela label:hover i,
+.estrela label:hover ~ label i {
+  color: var(--amarelo);
+}
