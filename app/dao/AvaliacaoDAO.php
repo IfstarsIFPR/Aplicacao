@@ -32,8 +32,6 @@ class AvaliacaoDAO {
             print $e->getMessage();
         }
 
-
-   
         }
 
     public function list(): array {
