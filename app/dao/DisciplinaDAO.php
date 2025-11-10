@@ -6,6 +6,8 @@ include_once(__DIR__ . "/../connection/Connection.php");
 include_once(__DIR__ . "/../model/Disciplina.php");
 include_once(__DIR__ . "/../dao/TurmaDAO.php");
 include_once(__DIR__ . "/../dao/TurmaDisciplinaDAO.php");
+include_once(__DIR__ . "/../dao/UsuarioDAO.php");
+
 
 
 class DisciplinaDAO {
@@ -67,6 +69,23 @@ class DisciplinaDAO {
 
         return $disciplinas;
 
+    }
+
+    public function findProfessorByDisciplinaId($idDisciplina): Usuario {
+        $conn = Connection::getConn();
+ 
+        $usuarioDao = new UsuarioDAO();
+
+        $sql = "SELECT p.* FROM usuario p
+                JOIN turmadisciplina td ON p.idUsuario = td.idProfessor
+                WHERE td.idDisciplina = :idDisciplina LIMIT 1";
+
+        $stm = $conn->prepare($sql);
+        $stm->bindValue("idDisciplina", $idDisciplina);
+        $stm->execute();
+        $result = $stm->fetchAll();
+
+        return $usuarioDao->mapUsuarios($result)[0];
     }
 
     public function findTurmasByDisciplinaId($idDisciplina) {

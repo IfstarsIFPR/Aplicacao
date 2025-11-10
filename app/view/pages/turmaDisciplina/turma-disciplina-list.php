@@ -8,19 +8,31 @@ require_once(__DIR__ . "/../../include/menu.php");
 
 <link rel="stylesheet" href="<?= BASEURL ?>/view/css/TurmaDisciplina.css">
 
-<h3 class="text-center">Disciplinas da Turma</h3>
 
 <div class="container">
 
-    <?php foreach ($dados['lista'] as $tur): ?>
-        <div class="card-body col-md-4 text-center">
+    <h3 class="text-center">Disciplinas da Turma</h3>
 
-            <h5 class="card-title"><?= $tur->getNomeDisciplina(); ?></h5>
-            <p class="card-text">Professor(a) Fulano de Tal</p>
-            <a href="#" class="btn btn-primary">avaliar!</a>
+    <div class="row">
 
-        </div>
-    <?php endforeach; ?>
+
+        <?php foreach ($dados['lista'] as $tur): ?>
+
+            <div class="col-md-6 col-lg-3 p-4">
+                <div class="card-body text-center">
+
+                    <h5 class="card-title"><?= $tur->getNomeDisciplina(); ?></h5>
+                    <p class="card-text">Professor(a) Fulano de Tal</p>
+                    <a href="<?= BASEURL ?>/controller/AvaliacaoController.php?action=create&id_disicplina=<?= $tur->getId() ?>" class="btn btn-primary">avaliar!</a>
+
+                </div>
+            </div>
+            <!-- ./col -->
+
+        <?php endforeach; ?>
+
+    </div>
+    <!-- /.row -->
 
 </div>
 

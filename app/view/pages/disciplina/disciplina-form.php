@@ -73,7 +73,7 @@ require_once(__DIR__ . "/../../include/menu.php");
     </div>
 </div>
 
-<script src="https://admirhodzic.github.io/multiselect-dropdown/multiselect-dropdown.js"></script>
+<script src="<?= BASEURL ?>/view/js/multiselect-dropdown.js"></script>
 
 <?php
 require_once(__DIR__ . "/../../include/footer.php");

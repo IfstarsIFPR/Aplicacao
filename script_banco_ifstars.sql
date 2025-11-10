@@ -111,7 +111,9 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `avaliacao` (
   `idAvaliacao` INT NOT NULL AUTO_INCREMENT,
-  `idTurmaAlunos` INT NOT NULL,
+  `idAluno` INT NOT NULL,
+  `idProfessor` INT NOT NULL,
+  `idDisciplina` INT NOT NULL,
   `bimestre` ENUM('1º Bimestre', '2º Bimestre', '3º Bimestre', '4º Bimestre') NOT NULL,
   `notaClareza` INT NOT NULL,
   `notaDidatica` INT NOT NULL,
@@ -122,13 +124,15 @@ CREATE TABLE IF NOT EXISTS `avaliacao` (
   `notaRecursos` INT NOT NULL,
   `comentario` VARCHAR(100) NULL,
   PRIMARY KEY (`idAvaliacao`),
-  UNIQUE INDEX `idx_unico_avaliacao` (`idTurmaAlunos` ASC, `bimestre` ASC),
-  CONSTRAINT `fk_avaliacao_turmasAlunos1`
-    FOREIGN KEY (`idTurmaAlunos`)
-    REFERENCES `turmaAlunos` (`idTurmaAlunos`)
+    FOREIGN KEY (`idAluno`) REFERENCES usuario(idUsuario),
+    FOREIGN KEY (`idProfessor`) REFERENCES usuario(idUsuario),
+    FOREIGN KEY (`idDisciplina`) REFERENCES disciplina(idDisciplina)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
+
+ALTER TABLE avaliacao DROP FOREIGN KEY fk_avaliacao_turmasAlunos1;
+ALTER TABLE avaliacao DROP COLUMN idTurmaAlunos;
 
 
 INSERT INTO usuario (email, senha, tipoUsuario) 

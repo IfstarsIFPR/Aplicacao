@@ -4,6 +4,8 @@ require_once(__DIR__ . "/Controller.php");
 require_once(__DIR__ . "/../dao/AvaliacaoDAO.php");
 require_once(__DIR__ . "/../model/Avaliacao.php");
 require_once(__DIR__ . "/../service/AvaliacaoService.php");
+require_once(__DIR__ . "/../dao/DisciplinaDAO.php");
+
 
 class AvaliacaoController extends Controller
 {
@@ -22,9 +24,20 @@ class AvaliacaoController extends Controller
     // Lista todas as avaliações
     protected function list(string $msgErro = "", string $msgSucesso = "")
     {
-        $dados["lista"] = $this->avaliacaoDao->list();
+        $dados["lista"] = $this->avaliacaoDao->listByAlunoId($this->getIdUsuarioLogado());
 
-        $this->loadView("usuario/avaliacao.php", $dados, $msgErro, $msgSucesso);
+
+        print '<pre> ';
+        print_r($dados["lista"]);
+        print '</pre> ';
+
+        ///controller/TurmaDisciplinaController.php?action=list&idTurma=1
+
+        //$this->loadView("usuario/avaliacao.php", $dados, $msgErro, $msgSucesso);
+
+        //TODO: provisoriamente redireciona para a lista de disciplinas da turma 1 - O ideal é redirecionar para a página das minhas avaliações
+        //header("location: " . BASEURL . "/controller/TurmaDisciplinaController.php?action=list&idTurma=1?msgSucesso=$msgSucesso");
+        //exit;
     }
 
     // Exibe o formulário de criação
@@ -38,10 +51,21 @@ class AvaliacaoController extends Controller
     protected function save()
     {
 
+        $disciplinaDao = new DisciplinaDAO();
+
         // Capturar dados do formulário
         $id = $_POST['idAvaliacao'];
-        $idTurmaAlunos = trim($_POST['idTurmaAlunos']) !== "" ? trim($_POST['idTurmaAlunos']) : NULL;
+
         $bimestre = trim($_POST['bimestre']) != "" ? trim($_POST['bimestre']) : NULL;
+
+        $idDisciplina = trim($_POST['idDisciplina']) != "" ? trim($_POST['idDisciplina']) : NULL;
+
+        //TODO: AQUI DEVE HAVER UMA VALIDACAO PARA O ID DA DISCILINA.
+
+
+        $professor = $disciplinaDao->findProfessorByDisciplinaId($idDisciplina);
+
+        $idAluno = $this->getIdUsuarioLogado();
         $notaClareza = trim($_POST['notaClareza']) != "" ? trim($_POST['notaClareza']) : NULL;
         $notaDidatica = trim($_POST['notaDidatica']) != "" ? trim($_POST['notaDidatica']) : NULL;
         $notaInteracao = trim($_POST['notaInteracao']) != "" ? trim($_POST['notaInteracao']) : NULL;
@@ -54,8 +78,14 @@ class AvaliacaoController extends Controller
         // Criar objeto Avaliacao e preencher
         $avaliacao = new Avaliacao();
         $avaliacao->setIdAvaliacao($id);
-        $avaliacao->setIdTurmaAlunos($idTurmaAlunos);
+
+        // $avaliacao->setIdTurmaAlunos($idTurmaAlunos);
         $avaliacao->setBimestre($bimestre);
+
+        $avaliacao->setIdAluno($idAluno);
+        $avaliacao->setProfessor($professor);
+        $avaliacao->setIdDisciplina($idDisciplina);
+
         $avaliacao->setNotaClareza($notaClareza);
         $avaliacao->setNotaDidatica($notaDidatica);
         $avaliacao->setNotaInteracao($notaInteracao);
@@ -84,8 +114,8 @@ class AvaliacaoController extends Controller
                 
                 }
 
-                header("location: " . BASEURL . "/controller/AvaliacaoController.php?action=list");
-                exit;
+                $this->list("", "Avaliação salva com sucesso!");
+                return; // Importante para evitar que o código continue e exiba o formulário novamente
 
             } catch (PDOException $e) {
                 //Iserir erro no array

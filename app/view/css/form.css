@@ -91,6 +91,9 @@ h3.text-center {
 
 .multiselect-dropdown {
     color: #333;
+    width: 100% !important;
+    padding: 8px;
+    border-radius: 25px;
 }
 
 .multiselect-dropdown-list  div {

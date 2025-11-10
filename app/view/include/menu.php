@@ -2,48 +2,61 @@
 #Nome do arquivo: view/include/menu.php
 #Objetivo: menu da aplicação para ser incluído em outras páginas
 
+//MOSTRA TODOS OS ERROS PHP
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 require_once(__DIR__ . "/../../model/enum/UsuarioTipo.php");
 require_once(__DIR__ . "/../../dao/TurmaAlunoDAO.php");
 
+try {
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
 
-$nome = "(Sessão expirada)";
-$isAdmin = false;
-$isAluno = false;
-$isProfessor = false;
-$idUsuario = $_SESSION[SESSAO_USUARIO_ID] ?? 0;
+    $nome = "(Sessão expirada)";
+    $isAdmin = false;
+    $isAluno = false;
+    $isProfessor = false;
+    $idUsuario = $_SESSION[SESSAO_USUARIO_ID] ?? 0;
 
-if (isset($_SESSION[SESSAO_USUARIO_NOME])) {
-    $nome = $_SESSION[SESSAO_USUARIO_NOME];
-}
+    if (isset($_SESSION[SESSAO_USUARIO_NOME])) {
+        $nome = $_SESSION[SESSAO_USUARIO_NOME];
+    }
 
-if (isset($_SESSION[SESSAO_USUARIO_TIPO])) {
-    $isAdmin = $_SESSION[SESSAO_USUARIO_TIPO] == UsuarioTipo::ADMIN;
-    $isAluno = $_SESSION[SESSAO_USUARIO_TIPO] == UsuarioTipo::ALUNO;
-    $isProfessor = $_SESSION[SESSAO_USUARIO_TIPO] == UsuarioTipo::PROFESSOR;
-}
+    if (isset($_SESSION[SESSAO_USUARIO_TIPO])) {
+        $isAdmin = $_SESSION[SESSAO_USUARIO_TIPO] == UsuarioTipo::ADMIN;
+        $isAluno = $_SESSION[SESSAO_USUARIO_TIPO] == UsuarioTipo::ALUNO;
+        $isProfessor = $_SESSION[SESSAO_USUARIO_TIPO] == UsuarioTipo::PROFESSOR;
+    }
 
-/*if ($isAluno) {
+    /*if ($isAluno) {
     $idUsuario = $_SESSION[SESSAO_USUARIO_ID] ?? 0;
 
     $turmaDao = new TurmaAlunoDAO();
     $idTurma = $turmaDao->obterTurmaPorUsuario($idUsuario)['idTurma'];
 }*/
 
-if ($isAluno) {
-    $idUsuario = $_SESSION[SESSAO_USUARIO_ID] ?? 0;
+    if ($isAluno) {
+        $idUsuario = $_SESSION[SESSAO_USUARIO_ID] ?? 0;
 
-    $turmaDao = new TurmaAlunoDAO();
-    $turma = $turmaDao->obterTurmaPorUsuario($idUsuario);
+        $turmaDao = new TurmaAlunoDAO();
+        $turma = $turmaDao->obterTurmaPorUsuario($idUsuario);
 
-    if ($turma && isset($turma['idTurma'])) {
-        $idTurma = $turma['idTurma'];
-    } else {
-        $idTurma = 0; // caso o aluno ainda não tenha turma ou retorne false
+        if ($turma && isset($turma['idTurma'])) {
+            $idTurma = $turma['idTurma'];
+        } else {
+            $idTurma = 0; // caso o aluno ainda não tenha turma ou retorne false
+        }
     }
+} catch (Exception $e) {
+    // Tratar exceção se necessário
 }
 
+
+
 ?>
-<link rel="stylesheet" href="<?= BASEURL ?>/view/css/menu.css">
 
 <nav class="navbar navbar-expand-lg navbar-dark navbar-custom shadow-sm">
     <div class="container-fluid">
@@ -107,7 +120,7 @@ if ($isAluno) {
                         <a class="nav-link" href="<?= BASEURL . '/controller/TurmaDisciplinaController.php?action=list&idTurma=' . $idTurma ?>">Minhas Disciplinas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Minhas Avaliações</a>
+                        <a class="nav-link" href="<?= BASEURL . '/controller/AvaliacaoController.php?action=list' ?>">Minhas Avaliações</a>
                     </li>
                 <?php endif; ?>
 
@@ -118,23 +131,23 @@ if ($isAluno) {
             </ul>
             <ul class="navbar-nav ms-auto mr-3">
                 <li class="nav-item dropdown">
-            
+
                 </li>
             </ul>
-                <a class="nav-link d-flex align-items-center user-menu" href="#" id="navbarUsuario"
-                    role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <div class="user-avatar"><?= strtoupper(substr($nome, 0, 2)) ?></div>
-                </a>
+            <a class="nav-link d-flex align-items-center user-menu" href="#" id="navbarUsuario"
+                role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <div class="user-avatar"><?= strtoupper(substr($nome, 0, 2)) ?></div>
+            </a>
 
 
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarUsuario">
-                    <li><a class="dropdown-item" href="<?= BASEURL . '/controller/PerfilController.php?action=view' ?>">Perfil</a></li>
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
-                    <li><a class="dropdown-item text-danger" href="<?= LOGOUT_PAGE ?>">Sair</a></li>
-                </ul>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarUsuario">
+                <li><a class="dropdown-item" href="<?= BASEURL . '/controller/PerfilController.php?action=view' ?>">Perfil</a></li>
+                <li>
+                    <hr class="dropdown-divider">
                 </li>
+                <li><a class="dropdown-item text-danger" href="<?= LOGOUT_PAGE ?>">Sair</a></li>
+            </ul>
+            </li>
             </ul>
 
         </div>

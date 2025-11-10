@@ -55,6 +55,12 @@ class HomeController extends Controller
         $curso = $this->usuarioDAO->findById($this->getIdUsuarioLogado())->getCurso();
 
         $dados["turmas"] = $this->turmaDAO->listByCurso($curso->getId());
+
+        // print '<pre>';
+        // print_r($dados["turmas"]);
+        // print '</pre>';
+        // die;
+
         $dados["qtdUsuarios"] = $this->usuarioDAO->quantidadeUsuarios();
 
         //Carrega a view específica para o aluno

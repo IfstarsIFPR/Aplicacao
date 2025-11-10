@@ -3,7 +3,9 @@
 class Avaliacao {
 
     private ?int $idAvaliacao;
-    private ?int $idTurmaAlunos;
+    private ?int $idAluno;
+    private ?Usuario $professor;
+    private ?int $idDisciplina;
     private ?string $bimestre;
     private ?int $notaClareza;
     private ?int $notaDidatica;
@@ -13,6 +15,8 @@ class Avaliacao {
     private ?int $notaOrganizacao;
     private ?int $notaRecursos;
     private ?string $comentario;
+
+
 
 
     /**
@@ -34,19 +38,55 @@ class Avaliacao {
     }
 
     /**
-     * Get the value of idTurmaAlunos
+     * Get the value of idAluno
      */
-    public function getIdTurmaAlunos(): ?int
+    public function getIdAluno(): ?int
     {
-        return $this->idTurmaAlunos;
+        return $this->idAluno;
     }
 
     /**
-     * Set the value of idTurmaAlunos
+     * Set the value of idAluno
      */
-    public function setIdTurmaAlunos(?int $idTurmaAlunos): self
+    public function setIdAluno(?int $idAluno): self
     {
-        $this->idTurmaAlunos = $idTurmaAlunos;
+        $this->idAluno = $idAluno;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of professor
+     */
+    public function getProfessor(): ?Usuario
+    {
+        return $this->professor;
+    }
+
+    /**
+     * Set the value of professor
+     */
+    public function setProfessor(?Usuario $professor): self
+    {
+        $this->professor = $professor;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of idDisciplina
+     */
+    public function getIdDisciplina(): ?int
+    {
+        return $this->idDisciplina;
+    }
+
+    /**
+     * Set the value of idDisciplina
+     */
+    public function setIdDisciplina(?int $idDisciplina): self
+    {
+        $this->idDisciplina = $idDisciplina;
 
         return $this;
     }

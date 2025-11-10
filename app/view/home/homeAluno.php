@@ -13,7 +13,7 @@ require_once(__DIR__ . "/../include/menu.php");
 
     <?php
     // echo '<pre>';
-    // var_dump($dados['turmas'][0]->getCurso()->getNome());
+    // var_dump($dados['turmas']);
     // echo '</pre>';
     // die;
     ?>
@@ -26,28 +26,39 @@ require_once(__DIR__ . "/../include/menu.php");
     <?php endif; ?>
 
 
-    <div class=""></div>
-        <?php foreach ($dados['turmas'] as $turma) : ?>
-        
-                    <div class="card row flex-row gap-3 mt-2 text-center">
-                        <h5 class="card-title"><?= $turma->getCurso()->getNome() ?></h5>
-                        <p class="card-text"><?= $turma->getAnoTurma() ?></p>
+    <div class="row">
+    <?php foreach ($dados['turmas'] as $turma) : ?>
 
-                        <form action="<?= BASEURL ?>/controller/TurmaDisciplinaController.php?action=acessarTurma" method="POST">
+        <div class="col-md-6 col-lg-3 p-4">
 
-                            <input type="hidden" name="idTurma" value="<?= $turma->getId() ?>">
+            <div class="card row flex-row gap-3 mt-2 text-center">
+                <h5 class="card-title"><?= $turma->getCurso()->getNome() ?></h5>
+                <p class="card-text"><?= $turma->getAnoTurma() ?></p>
 
-                            <input type="text" name="codigoTurma" value="" class="form-control" placeholder="Digite o código da turma">
+                <form action="<?= BASEURL ?>/controller/TurmaDisciplinaController.php?action=acessarTurma" method="POST">
 
-                            <button type="submit" href="#" class="btn btn-primary mt-3">Acessar</a>
+                    <input type="hidden" name="idTurma" value="<?= $turma->getId() ?>">
 
-                        </form>
-                </div>
+                    <input type="text" name="codigoTurma" value="" class="form-control" placeholder="Digite o código da turma">
+
+                    <button type="submit" href="#" class="btn btn-primary mt-3">Acessar</a>
+
+                </form>
             </div>
+            <!-- /.card -->
 
-        <?php endforeach; ?>
+        </div>
+
+    <?php endforeach; ?>
+
+    
     </div>
+    <!-- /.row -->
+
+
 </div>
+<!-- /.container -->
+
 
 <script src="<?= BASEURL ?>/view/js/home_ajax.js"></script>
 
