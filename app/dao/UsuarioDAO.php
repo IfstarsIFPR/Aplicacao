@@ -4,6 +4,7 @@
 
 include_once(__DIR__ . "/../connection/Connection.php");
 include_once(__DIR__ . "/../model/Usuario.php");
+include_once(__DIR__ . "/../model/enum/UsuarioTipo.php");
 
 class UsuarioDAO {
 
@@ -18,6 +19,18 @@ class UsuarioDAO {
         
         return $this->mapUsuarios($result);
     }
+
+    public function listProfessores() {
+        $conn = Connection::getConn();
+
+        $sql = "SELECT * FROM usuario u WHERE u.tipoUsuario = ? ORDER BY u.nomeUsuario";
+        $stm = $conn->prepare($sql);    
+        $stm->execute([UsuarioTipo::PROFESSOR]);
+        $result = $stm->fetchAll();
+        
+        return $this->mapUsuarios($result);
+    }
+
 
     //Método para buscar um usuário por seu ID
     public function findById(int $id) {

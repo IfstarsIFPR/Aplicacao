@@ -28,6 +28,7 @@ require_once(__DIR__ . "/../../include/menu.php");
                     <tr>
                         <th>ID</th>
                         <th>Nome</th>
+                        <th>Turmas</th>
                         <th>Alterar</th>
                         <th>Excluir</th>
                     </tr>
@@ -37,6 +38,10 @@ require_once(__DIR__ . "/../../include/menu.php");
                         <tr>
                             <td><?php echo $dis->getId(); ?></td>
                             <td><?= $dis->getNomeDisciplina(); ?></td>
+                            <td><a class="btn btn-secondary" 
+                                href="<?= BASEURL ?>/controller/TurmaDisciplinaController.php?action=listTurmas&idDisciplina=<?= $dis->getId() ?>">
+                                Turmas</a> 
+                            </td>
                             <td><a class="btn btn-secondary" 
                                 href="<?= BASEURL ?>/controller/DisciplinaController.php?action=edit&id=<?= $dis->getId() ?>">
                                 Alterar</a> 
