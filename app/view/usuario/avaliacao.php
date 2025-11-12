@@ -1,4 +1,6 @@
 <?php
+  require_once(__DIR__ . "/../../model/enum/AvaliacaoBimestre.php");
+
   require_once(__DIR__ . "/../include/header.php");
   require_once(__DIR__ . "/../include/menu.php");
 ?>
@@ -19,7 +21,11 @@
           <label class="form-label">Clareza na explicação:</label>
           <div class="estrela">
             <?php for ($i = 5; $i >= 1; $i--): ?>
-              <input type="radio" name="notaClareza" id="clareza<?= $i ?>" value="<?= $i ?>">
+              <input type="radio" name="notaClareza" id="clareza<?= $i ?>" value="<?= $i ?>"
+                <?php if($dados['avaliacao'] && $dados['avaliacao']->getNotaClareza() && 
+                          $dados['avaliacao']->getNotaClareza() == $i)
+                          echo "checked"; ?>
+              >
               <label for="clareza<?= $i ?>"><i class="bi bi-star-fill"></i></label>
             <?php endfor; ?>
           </div>
@@ -86,23 +92,31 @@
 
         <div class="col-6">
           <label for="comentario" class="form-label">Comentário</label>
-          <textarea name="comentario" id="comentario" class="form-control" rows="3" placeholder="Escreva um comentário..."></textarea>
+          <textarea name="comentario" id="comentario" class="form-control" rows="3" placeholder="Escreva um comentário..."><?= $dados["avaliacao"] ? $dados["avaliacao"]->getComentario() : "" ?></textarea>
           <button type="submit" class="btn btn-warning w-100">Enviar Avaliação</button>
         </div>
 
-        <input type="hidden" name="idDisciplina" value="<?= $_GET['id_disicplina'] ?>">
+        <input type="hidden" name="idDisciplina" value="<?= $dados['idDisciplina'] ?>">
 
         <label for="bimestre" class="form-label mt-3">Bimestre:</label>
         <select name="bimestre" id="bimestre" class="form-select">
           <option value="">Selecione</option>
-          <option value="1º Bimestre">1º Bimestre</option>
+          <option value="1º Bimestre" 
+            <?= $dados["avaliacao"] && $dados["avaliacao"]->getBimestre() == AvaliacaoBimestre::PRIMEIRO ? "selected" : "" ?>>1º Bimestre</option>
           <option value="2º Bimestre">2º Bimestre</option>
           <option value="3º Bimestre">3º Bimestre</option>
           <option value="4º Bimestre">4º Bimestre</option>
         </select>
       </div>
 
-
     </form>
+
+    <?php 
+      require_once(__DIR__ .  "/../include/msg.php");
+    ?>
   </div>
 </div>
+
+<?php 
+      require_once(__DIR__ .  "/../include/footer.php");
+?>

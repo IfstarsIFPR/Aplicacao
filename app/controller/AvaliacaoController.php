@@ -44,6 +44,8 @@ class AvaliacaoController extends Controller
     protected function create()
     {
         $dados['idAvaliacao'] = 0;
+        $dados['avaliacao'] = null;
+        $dados['idDisciplina'] = $_GET['id_disicplina'];
         $this->loadView("usuario/avaliacao.php", $dados);
     }
 
@@ -66,14 +68,14 @@ class AvaliacaoController extends Controller
         $professor = $disciplinaDao->findProfessorByDisciplinaId($idDisciplina);
 
         $idAluno = $this->getIdUsuarioLogado();
-        $notaClareza = trim($_POST['notaClareza']) != "" ? trim($_POST['notaClareza']) : NULL;
-        $notaDidatica = trim($_POST['notaDidatica']) != "" ? trim($_POST['notaDidatica']) : NULL;
-        $notaInteracao = trim($_POST['notaInteracao']) != "" ? trim($_POST['notaInteracao']) : NULL;
-        $notaMotivacao = trim($_POST['notaMotivacao']) != "" ? trim($_POST['notaMotivacao']) : NULL;
-        $notaDominioConteudo = trim($_POST['notaDominioConteudo']) != "" ? trim($_POST['notaDominioConteudo']) : NULL;
-        $notaOrganizacao = trim($_POST['notaOrganizacao']) != "" ? trim($_POST['notaOrganizacao']) : NULL;
-        $notaRecursos = trim($_POST['notaRecursos']) != "" ? trim($_POST['notaRecursos']) : NULL;
-        $comentario = trim($_POST['comentario']) != "" ? trim($_POST['comentario']) : NULL;
+        $notaClareza = isset($_POST['notaClareza']) ? $_POST['notaClareza'] : NULL;
+        $notaDidatica = isset($_POST['notaDidatica']) ? $_POST['notaDidatica'] : NULL;
+        $notaInteracao = isset($_POST['notaInteracao']) ? $_POST['notaInteracao'] : NULL;
+        $notaMotivacao = isset($_POST['notaMotivacao']) ? $_POST['notaMotivacao'] : NULL;
+        $notaDominioConteudo = isset($_POST['notaDominioConteudo']) ? $_POST['notaDominioConteudo'] : NULL;
+        $notaOrganizacao = isset($_POST['notaOrganizacao']) ? $_POST['notaOrganizacao'] : NULL;
+        $notaRecursos = isset($_POST['notaRecursos']) ? $_POST['notaRecursos'] : NULL;
+        $comentario = trim($_POST['comentario']) != "" ? $_POST['comentario'] : NULL;
 
         // Criar objeto Avaliacao e preencher
         $avaliacao = new Avaliacao();
@@ -126,6 +128,7 @@ class AvaliacaoController extends Controller
 
         //Mostrar os erros
         $dados['idAvaliacao'] = $avaliacao->getIdAvaliacao();
+        $dados['idDisciplina'] = $idDisciplina;
         $dados["avaliacao"] = $avaliacao;
 
         $msgErro = implode("<br>", $erros);
