@@ -21,7 +21,7 @@ require_once(__DIR__ . "/../include/menu.php");
         <div class="form-container  d-flex justify-content-center">
 
             <div class="form" style="border-radius: 20px">
-                <form id="frmUsuario" method="POST">
+                <form id="frmUsuario" method="POST" action="<?= BASEURL ?>/controller/UsuarioController.php?action=ativar">
 
                     <div class="mb-3"> Nome do aluno:
                         <?php echo $dados["usuario"]->getNome() ?>
@@ -30,21 +30,25 @@ require_once(__DIR__ . "/../include/menu.php");
                     <div class="mb-3">
                         <label class="form-label" for="txtdeclaracaoMatricula">Declaração de Matrícula:</label>
 
-                        <a href="<?= BASEURL_ARQUIVOS . '/'. $dados["usuario"]->getdeclaracaoMatricula() ?>"> Declaração</a>
+                        <a href="<?= BASEURL_ARQUIVOS . '/' . $dados["usuario"]->getdeclaracaoMatricula() ?>"> Declaração</a>
 
 
                         <!-- <input class="form-control" type="file" id="txtdeclaracaoMatricula" name="declaracaoMatricula"
                             maxlength="20" value="<?php echo (isset($dados["usuario"]) ? $dados["usuario"]->getdeclaracaoMatricula() : ''); ?>" /> -->
-                        
+
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label" for="selStatus">Status do Aluno:</label>
                         <select class="form-select" name="idStatus" id="selStatus">
                             <option value="">Selecione o staus</option>
-                            <option value="pendente">Pendente</option>
-                            <option value="ativo">Ativo</option>
+                            <option value="pendente" <?= $dados["usuario"]->getStatus() == "pendente" ? "selected" : "" ?>>Pendente</option>
+                            <option value="ativo" <?= $dados["usuario"]->getStatus() == "ativo" ? "selected" : "" ?>>Ativo</option>
                         </select>
+                    </div>
+
+                    <div class="mt-3">
+                        <button type="submit" class="btn btn-success">Atualizar Status</button>
                     </div>
 
 
