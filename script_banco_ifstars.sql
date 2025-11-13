@@ -133,7 +133,7 @@ ENGINE = InnoDB;
 
 ALTER TABLE avaliacao DROP FOREIGN KEY fk_avaliacao_turmasAlunos1;
 ALTER TABLE avaliacao DROP COLUMN idTurmaAlunos;
-ALTER TABLE usuario ADD COLUMN status ENUM('ativo', 'pendente', '', '');
+ALTER TABLE usuario ADD COLUMN status ENUM('ativo','pendente','','') NOT NULL DEFAULT 'pendente';
 
 
 INSERT INTO usuario (email, senha, tipoUsuario) 
