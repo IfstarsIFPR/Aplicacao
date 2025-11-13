@@ -2,21 +2,15 @@
      background-color: #1b3d69;
  }
 
+ html,
+body {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
  h3 {
      color: #fff;
      margin-top: 40px;
- }
-
- .container {
-     /* display: flex;
-    flex-direction: row;         /* coloca os cards lado a lado */
-     /* min-width: 400px ;           */
-     /* justify-content: center;     centraliza horizontalmente */
-     /* align-items: flex-start;     alinha todos pelo topo */
-     /* text-align: center; */
-     /* gap: 30px;                   espaço entre os cards */
-     /* padding: 30px; */
-     */
  }
 
  .card-title {

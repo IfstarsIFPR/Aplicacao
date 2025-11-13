@@ -3,6 +3,11 @@ body {
     color: #fff;
 }
 
+html, body {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
 h3.text-center {
     font-weight: bold;
     color: #ffffff;

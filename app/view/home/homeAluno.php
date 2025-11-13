@@ -7,7 +7,7 @@ require_once(__DIR__ . "/../include/menu.php");
 ?>
 <link rel="stylesheet" href="<?= BASEURL ?>/view/css/homeAluno.css">
 
-<h3 class="text-center">Turmas</h3>
+<h3 class="text-center mt-5">Turmas</h3>
 
 <div class="container">
 
@@ -46,22 +46,14 @@ require_once(__DIR__ . "/../include/menu.php");
                 </form>
             </div>
             <!-- /.card -->
-
         </div>
-
     <?php endforeach; ?>
-
     
     </div>
     <!-- /.row -->
-
-
 </div>
 <!-- /.container -->
 
-
 <script src="<?= BASEURL ?>/view/js/home_ajax.js"></script>
+<?php require_once(__DIR__ . "/../include/footer.php"); ?>
 
-<?php
-require_once(__DIR__ . "/../include/footer.php");
-?>

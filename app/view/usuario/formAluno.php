@@ -6,24 +6,24 @@ require_once(__DIR__ . "/../include/header.php");
 ?>
 <link rel="stylesheet" href="<?= BASEURL ?>/view/css/CadastroAluno.css">
 
-<h3 class="text-center">
+<h3 class="text-center mt-5">
     <?php if ($dados['idUsuario'] == 0) echo "Cadastro";
     else echo "Alterar"; ?>
     Aluno
 </h3>
-<div class="row">
+
+<div class="row col-md-12">
     <div class="col-12">
         <a class="btn btn-secondary"
             href="<?= BASEURL ?>/controller/LoginController.php?action=login"> ← </a>
     </div>
 
-    <div class="formAluno-container  d-flex justify-content-end">
+    <div class="col-lg-5 col-md-6 text-center mb-4 mb-lg-0 d-flex justify-content-center align-items-center">
+        <img src="/Aplicacao/app/view/img/logoStars.png" alt="Logo STARS">
+    </div>
 
-        <div class="formAluno-info">
-            <img src="/Aplicacao/app/view/img/logoStars.png" alt="Logo STARS" />
-        </div>
-
-        <div class="aluno-form" style="border-radius: 20px">
+    <div class="ol-lg-5 col-md-6 p-4 text-center mb-4 mb-lg-0 d-flex justify-content-center align-items-center form-col">
+        <div class="aluno-form ">
             <form id="frmUsuario" method="POST" enctype="multipart/form-data"
                 action="<?= BASEURL ?>/controller/CadastroController.php?action=save">
 
@@ -120,16 +120,13 @@ require_once(__DIR__ . "/../include/header.php");
                 </div>
             </form>
         </div>
-
-        <div class="col-3">
-            <?php require_once(__DIR__ . "/../include/msg.php"); ?>
-        </div>
     </div>
-</div>
-</div>
-</div>
-</div>
 
+    <div class="col-3">
+        <?php require_once(__DIR__ . "/../include/msg.php"); ?>
+    </div>
+
+</div>
 <?php
 require_once(__DIR__ . "/../include/footer.php");
 ?>

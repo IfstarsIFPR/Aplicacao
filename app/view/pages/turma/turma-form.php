@@ -13,10 +13,6 @@ require_once(__DIR__ . "/../../include/menu.php");
 </h3>
 <div class="row">
     <div class="col-12">
-        <a class="btn btn-secondary"
-            href="<?= BASEURL ?>/controller/TurmaController.php?action=list"> ← </a>
-    </div>
-
     <div class="form-container  d-flex justify-content-center">
 
         <div class="form" style="border-radius: 20px">
