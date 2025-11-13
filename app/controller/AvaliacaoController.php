@@ -127,9 +127,11 @@ class AvaliacaoController extends Controller
         $dados['idDisciplina'] = $idDisciplina;
         $dados["avaliacao"] = $avaliacao;
 
-        $msgErro = implode("<br>", $erros);
+        $dados["erros"] = $erros;
 
-        $this->loadView("usuario/listaAvaliacao.php", $dados, $msgErro);
+$this->loadView("usuario/avaliacao.php", $dados);
+return;
+
     }
 }
 
