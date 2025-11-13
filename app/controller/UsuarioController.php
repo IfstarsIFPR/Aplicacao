@@ -15,6 +15,7 @@ class UsuarioController extends Controller {
 
     //Método construtor do controller - será executado a cada requisição a está classe
     public function __construct() {
+        
         if(! $this->usuarioEstaLogado())
             return;
 
@@ -35,6 +36,18 @@ class UsuarioController extends Controller {
         $dados["lista"] = $this->usuarioDao->list();
 
         $this->loadView("usuario/list.php", $dados,  $msgErro, $msgSucesso);
+    }
+
+
+    protected function listPendentes(string $msgErro = "", string $msgSucesso = "") {
+        
+        $dados["lista"] = $this->usuarioDao->listPendentes();
+
+        $this->loadView("usuario/list-pendentes.php", $dados,  $msgErro, $msgSucesso);
+    }
+
+    protected function editPendentes(){
+        
     }
 
     protected function create() {

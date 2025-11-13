@@ -6,16 +6,10 @@ require_once(__DIR__ . "/../include/header.php");
 require_once(__DIR__ . "/../include/menu.php");
 ?>
 <link rel="stylesheet" href="<?= BASEURL ?>/view/css/listPrincipal.css">
-<h3 class="text-center mt-5">Usuários</h3>
+<h3 class="text-center mt-5">Usuários Pendentes</h3>
 
 <div class="container">
     <div class="row">
-        <div class="col-3">
-            <a class="btn btn-secondary" style="margin-right: 110px;"
-                href="<?= BASEURL ?>/controller/UsuarioController.php?action=create">
-                Inserir</a>
-        </div>
-
         <div class="col-9">
             <?php require_once(__DIR__ . "/../include/msg.php"); ?>
         </div>
@@ -30,7 +24,7 @@ require_once(__DIR__ . "/../include/menu.php");
                         <th>Nome</th>
                         <th>E-mail</th>
                         <th>Tipo</th>
-                        <th>Alterar</th>
+                        <th>Verificar</th>
                         <th>Excluir</th>
                     </tr>
                 </thead>
@@ -43,7 +37,7 @@ require_once(__DIR__ . "/../include/menu.php");
                             <td><?= $usu->getTipoUsuario(); ?></td>
                             <td><a class="btn btn-secondary" 
                                 href="<?= BASEURL ?>/controller/UsuarioController.php?action=edit&id=<?= $usu->getId() ?>">
-                                Alterar</a> 
+                                verificar</a> 
                             </td>
                             <td><a class="btn btn-secondary" 
                                 onclick="return confirm('Confirma a exclusão do usuário?');"

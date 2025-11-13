@@ -6,10 +6,10 @@ require_once(__DIR__ . "/../include/header.php");
 require_once(__DIR__ . "/../include/menu.php");
 ?>
 <link rel="stylesheet" href="<?= BASEURL ?>/view/css/form.css">
-<h3 class="text-center">
+<h3 class="text-center mt-5">
     <?php if ($dados['idUsuario'] == 0) echo "Inserir";
     else echo "Alterar"; ?>
-    Usuário
+    Professor
 </h3>
 <div class="row">
     <div class="col-12">

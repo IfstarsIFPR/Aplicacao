@@ -20,6 +20,18 @@ class UsuarioDAO {
         return $this->mapUsuarios($result);
     }
 
+    //Método para listar os usuaários a partir da base de dados
+    public function listPendentes() {
+        $conn = Connection::getConn();
+
+        $sql = "SELECT * FROM usuario u WHERE u.tipoUsuario = 'aluno' AND u.status = 'pendente' ORDER BY u.nomeUsuario";
+        $stm = $conn->prepare($sql);    
+        $stm->execute();
+        $result = $stm->fetchAll();
+        
+        return $this->mapUsuarios($result);
+    }
+
     public function listProfessores() {
         $conn = Connection::getConn();
 

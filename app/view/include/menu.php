@@ -78,14 +78,19 @@ try {
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="dropdownCadastros" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            Cadastros
+                            Usuários
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dropdownCadastros">
                             <li><a class="dropdown-item"
-                                    href="<?= BASEURL . '/controller/UsuarioController.php?action=list' ?>">Usuários</a></li>
+                                    href="<?= BASEURL . '/controller/UsuarioController.php?action=list' ?>">Gerenciar usuários</a></li>
                             <li><a class="dropdown-item"
-                                    href="<?= BASEURL . '/controller/UsuarioController.php?action=create' ?>">Outro cadastro</a></li>
-                        </ul>
+                                    href="<?= BASEURL . '/controller/UsuarioController.php?action=create' ?>">Cadastro de professor</a></li>
+                       
+                            
+                            <li><a class="dropdown-item"
+                                    href="<?= BASEURL . '/controller/UsuarioController.php?action=listPendentes' ?>">Estudantes pendentes</a></li>                        
+                        
+                                </ul>
                     </li>
 
                     <li class="nav-item dropdown">
