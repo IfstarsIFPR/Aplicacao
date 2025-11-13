@@ -6,11 +6,10 @@ require_once(__DIR__ . "/../model/Avaliacao.php");
 require_once(__DIR__ . "/../service/AvaliacaoService.php");
 require_once(__DIR__ . "/../dao/DisciplinaDAO.php");
 
-
 class AvaliacaoController extends Controller
 {
     private AvaliacaoDAO $avaliacaoDao;
-     private AvaliacaoService $avaliacaoService;
+    private AvaliacaoService $avaliacaoService;
 
     public function __construct()
     {
@@ -18,7 +17,7 @@ class AvaliacaoController extends Controller
         $this->avaliacaoService = new AvaliacaoService();
 
         // executa ação conforme parâmetro na URL (ex: action=list, action=save)
-        $this->handleAction();  
+        $this->handleAction();
     }
 
     // Lista todas as avaliações
@@ -26,19 +25,21 @@ class AvaliacaoController extends Controller
     {
         $dados["lista"] = $this->avaliacaoDao->listByAlunoId($this->getIdUsuarioLogado());
 
-
-        print '<pre> ';
-        print_r($dados["lista"]);
-        print '</pre> ';
+        //print '<pre> ';
+        //print_r($dados["lista"]);
+        //print '</pre> ';
 
         ///controller/TurmaDisciplinaController.php?action=list&idTurma=1
 
-        //$this->loadView("usuario/avaliacao.php", $dados, $msgErro, $msgSucesso);
+        $this->loadView("usuario/listaAvaliacao.php", $dados, $msgErro, $msgSucesso);
 
         //TODO: provisoriamente redireciona para a lista de disciplinas da turma 1 - O ideal é redirecionar para a página das minhas avaliações
         //header("location: " . BASEURL . "/controller/TurmaDisciplinaController.php?action=list&idTurma=1?msgSucesso=$msgSucesso");
         //exit;
     }
+
+
+
 
     // Exibe o formulário de criação
     protected function create()
@@ -46,6 +47,7 @@ class AvaliacaoController extends Controller
         $dados['idAvaliacao'] = 0;
         $dados['avaliacao'] = null;
         $dados['idDisciplina'] = $_GET['id_disicplina'];
+
         $this->loadView("usuario/avaliacao.php", $dados);
     }
 
@@ -57,9 +59,7 @@ class AvaliacaoController extends Controller
 
         // Capturar dados do formulário
         $id = $_POST['idAvaliacao'];
-
         $bimestre = trim($_POST['bimestre']) != "" ? trim($_POST['bimestre']) : NULL;
-
         $idDisciplina = trim($_POST['idDisciplina']) != "" ? trim($_POST['idDisciplina']) : NULL;
 
         //TODO: AQUI DEVE HAVER UMA VALIDACAO PARA O ID DA DISCILINA.
@@ -87,7 +87,6 @@ class AvaliacaoController extends Controller
         $avaliacao->setIdAluno($idAluno);
         $avaliacao->setProfessor($professor);
         $avaliacao->setIdDisciplina($idDisciplina);
-
         $avaliacao->setNotaClareza($notaClareza);
         $avaliacao->setNotaDidatica($notaDidatica);
         $avaliacao->setNotaInteracao($notaInteracao);
@@ -96,7 +95,7 @@ class AvaliacaoController extends Controller
         $avaliacao->setNotaOrganizacao($notaOrganizacao);
         $avaliacao->setNotaRecursos($notaRecursos);
         $avaliacao->setComentario($comentario);
-        
+
 
         //Validar os dados (camada service)
         $erros = $this->avaliacaoService->validarDados($avaliacao);
@@ -105,19 +104,16 @@ class AvaliacaoController extends Controller
 
             //Inserir na Base de Dados
             try {
-                if ($avaliacao->getIdAvaliacao() == 0){
-
-                    //print_r($avaliacao);
-                    //exit;
+                if ($avaliacao->getIdAvaliacao() == 0) {
 
                     $this->avaliacaoDao->insert($avaliacao);
                 } else {
                     $this->avaliacaoDao->update($avaliacao);
-                
                 }
 
                 $this->list("", "Avaliação salva com sucesso!");
-                return; // Importante para evitar que o código continue e exiba o formulário novamente
+                return;
+         // Importante para evitar que o código continue e exiba o formulário novamente
 
             } catch (PDOException $e) {
                 //Iserir erro no array
@@ -133,7 +129,7 @@ class AvaliacaoController extends Controller
 
         $msgErro = implode("<br>", $erros);
 
-        $this->loadView("usuario/avaliacao.php", $dados, $msgErro);
+        $this->loadView("usuario/listaAvaliacao.php", $dados, $msgErro);
     }
 }
 

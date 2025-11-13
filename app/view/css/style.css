@@ -7,3 +7,9 @@ body {
 .container {
     min-height: calc(100vh - 196px);
 }
+
+html,
+body {
+    overflow-x: hidden;
+    overflow-y: auto;
+}

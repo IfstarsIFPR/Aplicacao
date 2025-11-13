@@ -6,6 +6,12 @@ body {
     padding: 0;
 }
 
+html,
+body {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
 /* Título central */
 h3.text-center {
     text-align: center;
