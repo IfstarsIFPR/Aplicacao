@@ -4,6 +4,7 @@
 
 require_once(__DIR__ . "/enum/UsuarioTipo.php");
 require_once(__DIR__ . "/Curso.php");
+require_once(__DIR__ . "/enum/UsuarioStatus.php");
 
 class Usuario {
 
@@ -17,7 +18,7 @@ class Usuario {
     private ?string $declaracaoMatricula = "";
     private ?int $numMatricula;
     private ?string $fotoPerfil;
-    private ?string $status;
+    private ?string $status = "pendente";
 
   
     /**
@@ -199,6 +200,7 @@ class Usuario {
 
         return $this;
     }
+
 
 
     /**
