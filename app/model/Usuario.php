@@ -17,6 +17,7 @@ class Usuario {
     private ?string $declaracaoMatricula = "";
     private ?int $numMatricula;
     private ?string $fotoPerfil;
+    private ?string $status;
 
   
     /**
@@ -195,6 +196,25 @@ class Usuario {
     public function setFotoPerfil(?string $fotoPerfil): self
     {
         $this->fotoPerfil = $fotoPerfil;
+
+        return $this;
+    }
+
+
+    /**
+     * Get the value of status
+     */
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
+
+    /**
+     * Set the value of status
+     */
+    public function setStatus(?string $status): self
+    {
+        $this->status = $status;
 
         return $this;
     }

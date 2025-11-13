@@ -36,7 +36,7 @@ require_once(__DIR__ . "/../include/menu.php");
                             <td><?= $usu->getEmail(); ?></td>
                             <td><?= $usu->getTipoUsuario(); ?></td>
                             <td><a class="btn btn-secondary" 
-                                href="<?= BASEURL ?>/controller/UsuarioController.php?action=edit&id=<?= $usu->getId() ?>">
+                                href="<?= BASEURL ?>/controller/UsuarioController.php?action=editPendentes&id=<?= $usu->getId() ?>">
                                 verificar</a> 
                             </td>
                             <td><a class="btn btn-secondary" 

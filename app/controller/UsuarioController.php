@@ -6,6 +6,8 @@ require_once(__DIR__ . "/../dao/CursoDAO.php");
 require_once(__DIR__ . "/../service/UsuarioService.php");
 require_once(__DIR__ . "/../model/Usuario.php");
 require_once(__DIR__ . "/../model/enum/UsuarioTipo.php");
+require_once(__DIR__ . "/../model/enum/UsuarioStatus.php");
+
 
 class UsuarioController extends Controller {
 
@@ -46,13 +48,12 @@ class UsuarioController extends Controller {
         $this->loadView("usuario/list-pendentes.php", $dados,  $msgErro, $msgSucesso);
     }
 
-    protected function editPendentes(){
-        
-    }
+
 
     protected function create() {
         $dados['idUsuario'] = 0;
         $dados['tiposUsuario'] = UsuarioTipo::getAllAsArray();
+        $dados['usuarioStatus'] = UsuarioStatus::getAllAsArray();
         $dados['cursos'] = $this->cursoDao->list();
 
         $this->loadView("usuario/form.php", $dados);
@@ -65,11 +66,28 @@ class UsuarioController extends Controller {
             $dados['idUsuario'] = $usuario->getId();
             $usuario->setSenha("");
             $dados["usuario"] = $usuario;
-
+          
             $dados['tiposUsuario'] = UsuarioTipo::getAllAsArray();
             $dados['cursos'] = $this->cursoDao->list();
 
             $this->loadView("usuario/form.php", $dados);
+        } else
+            $this->list("Usuário não encontrado!");
+    }
+
+    protected function editPendentes() {
+        //Busca o usuário na base pelo ID    
+        $usuario = $this->findUsuarioById();
+        if($usuario) {
+            $dados['idUsuario'] = $usuario->getId();
+            $usuario->setSenha("");
+            $dados["usuario"] = $usuario;
+
+            $dados['usuarioStatus'] = UsuarioStatus::getAllAsArray();
+            $dados['tiposUsuario'] = UsuarioTipo::getAllAsArray();
+            $dados['cursos'] = $this->cursoDao->list();
+
+            $this->loadView("usuario/formAlunoPendente.php", $dados);
         } else
             $this->list("Usuário não encontrado!");
     }
