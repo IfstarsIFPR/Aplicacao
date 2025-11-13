@@ -16,7 +16,7 @@
      /* text-align: center; */
      /* gap: 30px;                   espaço entre os cards */
      /* padding: 30px; */
-     */
+        margin-top: 20px;
  }
 
  .card-title {
