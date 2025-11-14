@@ -88,6 +88,17 @@ class TurmaDisciplinaDAO
             " - Erro: mais de uma disciplina encontrada.");
     }
 
+    public function update(TurmaDisciplina $td)
+    {
+        $sql = "UPDATE turmaDisciplina 
+                SET idProfessor = :idProfessor 
+                WHERE idTurmaDisciplina = :idTurmaDisciplina";
+        $stm = $this->conn->prepare($sql);
+        $stm->bindValue(':idProfessor', $td->getProfessor()->getId());
+        $stm->bindValue(':idTurmaDisciplina', $td->getId());
+        $stm->execute();
+    }
+
 
     //Delete todas as associações de uma disciplina
     public function deleteByDisciplina($idDisciplina)

@@ -14,7 +14,11 @@ require_once(__DIR__ . "/../../include/menu.php");
     <h3 class="text-center">Turmas da Disciplina</h3>                  
 
     <div class="row">
+    <div class="form-container  d-flex justify-content-center">
 
+        <div class="form" style="border-radius: 20px">
+            <form id="formTurma" method="POST"
+                action="<?= BASEURL ?>/controller/TurmaDisciplinaController.php?action=save">
 
         <div class="mb-3" style="color: antiquewhite;">
         <label>Turma:</label><br>
@@ -25,23 +29,31 @@ require_once(__DIR__ . "/../../include/menu.php");
     <div class="mb-3" style="color: antiquewhite;">
         <label>Professor:</label>
         <select name="idProfessor" class="form-control">
-            <?php foreach ($dados['usuario'] as $prof): ?>
-                <option value="<?= $prof->getId() ?>"
-                    <?= ($prof->getId() == $dados['turmaDisciplina']->getProfessor()->getId() ? 'selected' : '') ?>>
-                    <?= $prof->getNome() ?>
-                </option>
-            <?php endforeach; ?>
+    <?php foreach ($dados['professores'] as $professor): ?>
+        <option value="<?= $professor->getId() ?>"
+            <?php 
+                if (
+                    isset($dados["turmaDisciplina"]) &&
+                    $dados["turmaDisciplina"]->getProfessor() != null &&
+                    $dados["turmaDisciplina"]->getProfessor()->getId() == $professor->getId()
+                )
+                    echo "selected";
+            ?>
+        >
+            <?= $professor->getNome() ?>
+        </option>
+
+    <?php endforeach; ?>
         </select>
     </div>
+    <input type="hidden" id="hddId" name="idTurmaDisciplina"
+                    value="<?= $dados['idTurmaDisciplina']; ?>" />
 
-    <button class="btn btn-primary">Salvar</button>
+    <button type="submit" class="btn btn-primary">Salvar</button>
 
 </form>
             </div>
-            <!-- ./col -->
-
     </div>
-    <!-- /.row -->
 
 </div>
 

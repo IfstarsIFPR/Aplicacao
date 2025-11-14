@@ -145,8 +145,6 @@ class UsuarioDAO {
         $stm->bindValue("declaracaoMatricula", $usuario->getdeclaracaoMatricula()); 
         $stm->execute();
     }
-    
-
 
 
     //Método para atualizar um Usuario
@@ -200,6 +198,17 @@ class UsuarioDAO {
         $result = $stm->fetchAll();
 
         return $result[0]["qtd_usuario"];
+    }
+
+    public function findProfessores() {
+        $conn = Connection::getConn();
+
+        $sql = "SELECT * FROM usuario u WHERE u.tipoUsuario = ? ORDER BY u.nomeUsuario";
+        $stm = $conn->prepare($sql);    
+        $stm->execute([UsuarioTipo::PROFESSOR]);
+        $result = $stm->fetchAll();
+        
+        return $this->mapUsuarios($result);
     }
 
     //Método para converter um registro da base de dados em um objeto Usuario
