@@ -92,6 +92,26 @@ class UsuarioController extends Controller {
             $this->list("Usuário não encontrado!");
     }
 
+    protected function ativar()
+    {
+        if (isset($_POST['idUsuario']) && isset($_POST['idStatus'])) {
+            $idUsuario = (int)$_POST['idUsuario'];
+            $status = $_POST['idStatus'];
+
+            //Atualiza o status no banco
+            try {
+                $this->usuarioDao->atualizarStatus($idUsuario, $status);
+                $this->listPendentes("", "Status atualizado com sucesso!");
+            } catch (PDOException $e) {
+                $this->listPendentes("Erro ao atualizar status: " . $e->getMessage());
+            }
+        } else {
+            $this->listPendentes("Dados inválidos para atualização.");
+        }
+    }
+
+
+
     protected function save() {
         //Capturar os dados do formulário
         $id = $_POST['idUsuario'];

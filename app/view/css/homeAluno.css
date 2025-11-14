@@ -2,21 +2,17 @@
      background-color: #1b3d69;
  }
 
- .container {
-/* 
-     width: 400px;
-     align-items: center;
-     text-align: center;
-     justify-content: center; */
- }
-
  .text-center {
-
      color: #fff;
      margin-top: 40px;
      padding: 20px;
 
+ }
 
+ html,
+ body {
+     overflow-x: hidden;
+     overflow-y: auto;
  }
 
  .card-title {

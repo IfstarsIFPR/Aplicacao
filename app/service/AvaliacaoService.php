@@ -5,37 +5,35 @@ require_once(__DIR__ . "/../model/Avaliacao.php");
 class AvaliacaoService {
 
     /* Método para validar os dados da avaliação que vem do formulário */
-    public function validarDados(Avaliacao $avaliacao) {
-        $erros = array();
+   public function validarDados(Avaliacao $avaliacao) {
+    $erros = [];
 
-        //Validar campos vazios
-        if(! $avaliacao->getBimestre())
-            array_push($erros, "Selecione um [Bimestre]!");
+    if(!$avaliacao->getBimestre())
+        $erros["bimestre"] = "Selecione um bimestre!";
 
-        if(! $avaliacao->getNotaClareza())
-            array_push($erros, "Preencha a nota de clareza!");
+    if(!$avaliacao->getNotaClareza())
+        $erros["notaClareza"] = "Preencha a nota de clareza!";
 
-        if(! $avaliacao->getNotaDidatica())
-            array_push($erros, "Preencha a nota de Didática!");
+    if(!$avaliacao->getNotaDidatica())
+        $erros["notaDidatica"] = "Preencha a nota de didática!";
 
-        if(! $avaliacao->getNotaInteracao())
-            array_push($erros, "Preencha a nota de Interação!");
+    if(!$avaliacao->getNotaInteracao())
+        $erros["notaInteracao"] = "Preencha a nota de interação!";
 
-        if(! $avaliacao->getNotaMotivacao())
-            array_push($erros, "Preencha a nota de Motivação!");
+    if(!$avaliacao->getNotaMotivacao())
+        $erros["notaMotivacao"] = "Preencha a nota de motivação!";
 
-        if(! $avaliacao->getNotaDominioConteudo())
-            array_push($erros, "Preencha a nota de domínio de conteúdo!");
+    if(!$avaliacao->getNotaDominioConteudo())
+        $erros["notaDominioConteudo"] = "Preencha a nota de domínio de conteúdo!";
 
-        if(! $avaliacao->getNotaOrganizacao())
-            array_push($erros, "Preencha a nota de Organização!");
+    if(!$avaliacao->getNotaOrganizacao())
+        $erros["notaOrganizacao"] = "Preencha a nota de organização!";
 
-        if(! $avaliacao->getNotaRecursos())
-            array_push($erros, "Preencha a nota de Recursos!");
+    if(!$avaliacao->getNotaRecursos())
+        $erros["notaRecursos"] = "Preencha a nota de recursos!";
 
-
-        return $erros;
-    }
+    return $erros;
+}
 
 
 }

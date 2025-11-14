@@ -20,7 +20,7 @@ class UsuarioDAO {
         return $this->mapUsuarios($result);
     }
 
-    //Método para listar os usuaários a partir da base de dados
+    //Método para listar os usuários pendentes a partir da base de dados
     public function listPendentes() {
         $conn = Connection::getConn();
 
@@ -30,6 +30,18 @@ class UsuarioDAO {
         $result = $stm->fetchAll();
         
         return $this->mapUsuarios($result);
+    }
+
+    //Método para atualizar o status do aluno a partir da base de dados
+    public function atualizarStatus(int $idUsuario, string $status)
+    {
+        $conn = Connection::getConn();
+
+        $sql = "UPDATE usuario SET status = :status WHERE idUsuario = :id";
+        $stm = $conn->prepare($sql);
+        $stm->bindValue("status", $status);
+        $stm->bindValue("id", $idUsuario);
+        $stm->execute();
     }
 
     public function listProfessores() {
@@ -203,6 +215,7 @@ class UsuarioDAO {
             $usuario->setSiape($reg['siape']);
             $usuario->setDeclaracaoMatricula($reg['declaracaoMatricula']);
             $usuario->setFotoPerfil($reg['foto_perfil']);
+            $usuario->setStatus($reg['status']);
             
             if($reg["idCurso"] != NULL) {
                 $curso = new Curso();
