@@ -70,6 +70,20 @@ class TurmaDisciplinaController extends Controller
         $this->loadView("pages/turmaDisciplina/turma-disciplina-admin.php", $dados, $msgErro, $msgSucesso);
     }
 
+    protected function edit() {
+        //Busca a turma na base pelo ID    
+        $turmaDisciplina = $this->findTurmaDisciplinaById();
+        if($turmaDisciplina) {
+            $dados['idTurmaDisciplina'] = $turmaDisciplina->getId();
+            $dados["turmaDisciplina"] = $turmaDisciplina;
+            $dados["usuario"] = $turmaDisciplina->getProfessor()->getNome() ;
+
+            $this->loadView("pages/turmaDisciplina/turma-disciplina-edit.php", $dados);
+            
+        } else
+            $this->list("Turma não encontrada!");
+    }
+
     public function acessarTurma()
     {
 
@@ -119,6 +133,16 @@ class TurmaDisciplinaController extends Controller
 
         $idDisciplina = (int) $_GET["idDisciplina"];
         return $this->disciplinaDao->findById($idDisciplina);
+    }
+
+    private function findTurmaDisciplinaById()
+    {
+        if (!isset($_GET["idTurmaDisciplina"])) {
+            return null;
+        }
+
+        $idTurmaDisciplina = (int) $_GET["idTurmaDisciplina"];
+        return $this->turmaDisciplinaDao->findTurmaDisciplinaById($idTurmaDisciplina);
     }
 }
 

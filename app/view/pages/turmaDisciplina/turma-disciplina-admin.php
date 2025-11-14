@@ -13,9 +13,7 @@ require_once(__DIR__ . "/../../include/menu.php");
 
     <h3 class="text-center">Turmas da Disciplina</h3>
 
-    <span>Disciplina:</span><span><?= $dados['disciplina']->getNomeDisciplina() ?></span>
-
-    <a href="<?= BASEURL ?>/controller/TurmaDisciplinaController.php?action=create&idDisciplina=<?= $dados['disciplina']->getId() ?>" class="btn btn-primary">Inserir</a>                    
+    <span>Disciplina:</span><span><?= $dados['disciplina']->getNomeDisciplina() ?></span>                    
 
     <div class="row">
 
@@ -28,8 +26,8 @@ require_once(__DIR__ . "/../../include/menu.php");
                     <h5 class="card-title"><?= $turmaDisc->getTurma()->getCurso()->getNome() . " -> " . $turmaDisc->getTurma()->getAnoTurma() ?></h5>
                     <p class="card-text">Professor(a) <?= $turmaDisc->getProfessor()->getNome() ?></p>
                     
-                    <a href="<?= BASEURL ?>/controller/TurmaDisciplinaController.php?action=editar&id_turma_disc=<?= $turmaDisc->getId() ?>" class="btn btn-primary">Editar</a>
-                    <a href="<?= BASEURL ?>/controller/TurmaDisciplinaController.php?action=excluir&id_turma_disc=<?= $turmaDisc->getId() ?>" class="btn btn-primary">Excluir</a>
+                    <a href="<?= BASEURL ?>/controller/TurmaDisciplinaController.php?action=edit&idTurmaDisciplina=<?= $turmaDisc->getId() ?>" class="btn btn-primary">Editar</a>
+                    <a href="<?= BASEURL ?>/controller/TurmaDisciplinaController.php?action=excluir&idTurmaDisciplina=<?= $turmaDisc->getId() ?>" class="btn btn-primary">Excluir</a>
 
 
                 </div>
