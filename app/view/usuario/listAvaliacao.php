@@ -7,7 +7,7 @@ require_once(__DIR__ . "/../include/menu.php");
 
 <div class="container mt-4">
     <h3 class="text-center text-white mb-4 mt-5">
-        Todas as Avaliações
+        Avaliações da Disciplina
     </h3>
 
     <div class="row">
@@ -25,10 +25,9 @@ require_once(__DIR__ . "/../include/menu.php");
                         <div class="card-body">
 
                             <h5 class="card-title text-primary text-center">
-                                <?= htmlspecialchars($avaliacao["bimestre"]) ?>
+                             <?= htmlspecialchars($avaliacao["bimestre"]) ?>
                             </h5>
                             <hr>
-                            <p><strong>Id da disciplina:</strong> <?= htmlspecialchars($avaliacao["idDisciplina"]) ?></p>
                             <p><strong>Clareza:</strong> <?= htmlspecialchars($avaliacao["notaClareza"]) ?></p>
                             <p><strong>Didática:</strong> <?= htmlspecialchars($avaliacao["notaDidatica"]) ?></p>
                             <p><strong>Interação:</strong> <?= htmlspecialchars($avaliacao["notaInteracao"]) ?></p>

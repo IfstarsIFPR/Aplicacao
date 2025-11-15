@@ -125,7 +125,7 @@ try {
                         <a class="nav-link" href="<?= BASEURL . '/controller/TurmaDisciplinaController.php?action=list&idTurma=' . $idTurma ?>">Minhas Disciplinas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= BASEURL . '/controller/AvaliacaoController.php?action=list' ?>">Minhas Avaliações</a>
+                        <a class="nav-link" href="<?= BASEURL . '/controller/AvaliacaoController.php?action=disciplinasAvaliadas' ?>">Minhas Avaliações</a>
                     </li>
                 <?php endif; ?>
 
