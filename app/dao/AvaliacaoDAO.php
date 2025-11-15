@@ -90,6 +90,50 @@ class AvaliacaoDAO
         $stmt->execute([$id]);
     }
 
+    public function listDisciplinasAvaliadas(int $idAluno): array
+{
+   $conn = Connection::getConn();
+   $sql = "SELECT DISTINCT d.idDisciplina, d.nomeDisciplina
+        FROM avaliacao a
+        INNER JOIN disciplina d ON d.idDisciplina = a.idDisciplina
+        WHERE a.idAluno = ?
+        ORDER BY d.nomeDisciplina";
+    $stm = $conn->prepare($sql);
+    $stm->execute([$idAluno]);
+    return $stm->fetchAll(PDO::FETCH_ASSOC);
+}
+
+public function listByDisciplinaId($idAluno, $idDisciplina)
+{
+    $conn = Connection::getConn();
+    $sql = "SELECT * FROM avaliacao 
+            WHERE idAluno = :idAluno 
+              AND idDisciplina = :idDisciplina
+            ORDER BY bimestre ASC";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->bindValue(":idAluno", $idAluno);
+    $stmt->bindValue(":idDisciplina", $idDisciplina);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+
+public function listByDisciplinaAndAluno($idDisciplina, $idAluno)
+{
+    $conn = Connection::getConn();
+    $sql = "SELECT * FROM avaliacao 
+            WHERE idDisciplina = ? AND idAluno = ?
+            ORDER BY bimestre ASC";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->execute([$idDisciplina, $idAluno]);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+
+
+
 
     //TODO: Implementar método de atualização
     public function update()

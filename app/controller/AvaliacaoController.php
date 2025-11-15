@@ -38,6 +38,53 @@ class AvaliacaoController extends Controller
         //exit;
     }
 
+    protected function disciplinasAvaliadas(string $msgErro = "")
+    {
+        $idAluno = $this->getIdUsuarioLogado();
+        $dados["lista"] = $this->avaliacaoDao->listDisciplinasAvaliadas($idAluno);
+
+        // carrega a view que mostra os cards das disciplinas
+        $this->loadView("usuario/disciplinasAvaliadas.php", $dados, $msgErro);
+    }
+
+
+    protected function listarAvaliacoesPorDisciplina(string $msgErro = "", string $msgSucesso = "")
+    {
+        if (!isset($_GET['idDisciplina'])) {
+            $this->list("Disciplina não informada.");
+            return;
+        }
+
+        $idDisciplina = $_GET['idDisciplina'];
+        $idAluno = $this->getIdUsuarioLogado();
+
+        // Buscar somente as avaliações da disciplina selecionada
+        $dados["lista"] = $this->avaliacaoDao->listByDisciplinaId($idAluno, $idDisciplina);
+
+        $this->loadView("usuario/listAvaliacao.php", $dados, $msgErro, $msgSucesso);
+    }
+
+
+
+    protected function listByDisciplina(string $msgErro = "", string $msgSucesso = "")
+    {
+        if (!isset($_GET['idDisciplina'])) {
+            $this->list("Disciplina não informada.");
+            return;
+        }
+
+        $idDisciplina = $_GET['idDisciplina'];
+        $idAluno = $this->getIdUsuarioLogado();
+
+        // Chama o DAO para pegar avaliações do aluno nessa disciplina
+        $dados["lista"] = $this->avaliacaoDao->listByDisciplinaId($idAluno, $idDisciplina);
+
+        $dados["idDisciplina"] = $idDisciplina;
+
+        // Carrega a view correta
+        $this->loadView("usuario/listAvaliacao.php", $dados, $msgErro, $msgSucesso);
+    }
+
 
 
 
@@ -113,7 +160,7 @@ class AvaliacaoController extends Controller
 
                 $this->list("", "Avaliação salva com sucesso!");
                 return;
-         // Importante para evitar que o código continue e exiba o formulário novamente
+                // Importante para evitar que o código continue e exiba o formulário novamente
 
             } catch (PDOException $e) {
                 //Iserir erro no array
@@ -129,8 +176,8 @@ class AvaliacaoController extends Controller
 
         $dados["erros"] = $erros;
 
-$this->loadView("usuario/avaliacao.php", $dados);
-return;
+    $this->loadView("usuario/avaliacao.php", $dados);
+    return;
 
     }
 }
