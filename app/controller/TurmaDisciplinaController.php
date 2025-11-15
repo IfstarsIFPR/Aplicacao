@@ -71,6 +71,17 @@ class TurmaDisciplinaController extends Controller
         $this->loadView("pages/turmaDisciplina/turma-disciplina-admin.php", $dados, $msgErro, $msgSucesso);
     }
 
+    protected function minhasDisciplinasProfessor()
+{
+    $idProfessor = $this->getIdUsuarioLogado();
+    $disciplinas = $this->turmaDisciplinaDao->listByProfessor($idProfessor);
+    $dados["disciplinas"] = $disciplinas;
+    $this->loadView("pages/turmaDisciplina/minhas-disciplinas-professor.php", $dados);
+}
+
+
+
+
     protected function edit() {
 
         $usuarioDao = new UsuarioDAO();

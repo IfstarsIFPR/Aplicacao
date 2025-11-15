@@ -85,12 +85,12 @@ try {
                                     href="<?= BASEURL . '/controller/UsuarioController.php?action=list' ?>">Gerenciar usuários</a></li>
                             <li><a class="dropdown-item"
                                     href="<?= BASEURL . '/controller/UsuarioController.php?action=create' ?>">Cadastro de professor</a></li>
-                       
-                            
+
+
                             <li><a class="dropdown-item"
-                                    href="<?= BASEURL . '/controller/UsuarioController.php?action=listPendentes' ?>">Estudantes pendentes</a></li>                        
-                        
-                                </ul>
+                                    href="<?= BASEURL . '/controller/UsuarioController.php?action=listPendentes' ?>">Estudantes pendentes</a></li>
+
+                        </ul>
                     </li>
 
                     <li class="nav-item dropdown">
@@ -130,7 +130,12 @@ try {
                 <?php endif; ?>
 
                 <?php if ($isProfessor): ?>
-                    <li class="nav-item"><a class="nav-link" href="#">Minhas Disciplinas</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                            href="<?= BASEURL . '/controller/TurmaDisciplinaController.php?action=minhasDisciplinasProfessor' ?>">
+                            Minhas Disciplinas
+                        </a>
+                    </li>
                 <?php endif; ?>
 
             </ul>
