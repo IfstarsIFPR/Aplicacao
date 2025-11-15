@@ -38,6 +38,9 @@ require_once(__DIR__ . "/../include/header.php");
                 <?php if (isset($dados['erros']['senha'])): ?>
                     <small class="text-danger"><?php echo $dados['erros']['senha']; ?></small>
                 <?php endif; ?>
+                <?php if (isset($dados['erros']['status'])): ?>
+                    <small class="text-danger"><?php echo $dados['erros']['status']; ?></small>
+                <?php endif; ?>
             </div>
 
 
@@ -54,6 +57,8 @@ require_once(__DIR__ . "/../include/header.php");
 </div>
 </div>
 </div>
+
+
 
 <?php
 require_once(__DIR__ . "/../include/footer.php");

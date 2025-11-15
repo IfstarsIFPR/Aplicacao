@@ -20,7 +20,7 @@ class UsuarioDAO {
         return $this->mapUsuarios($result);
     }
 
-    //Método para listar os usuaários a partir da base de dados
+    //Método para listar os usuários pendentes a partir da base de dados
     public function listPendentes() {
         $conn = Connection::getConn();
 
@@ -30,6 +30,18 @@ class UsuarioDAO {
         $result = $stm->fetchAll();
         
         return $this->mapUsuarios($result);
+    }
+
+    //Método para atualizar o status do aluno a partir da base de dados
+    public function atualizarStatus(int $idUsuario, string $status)
+    {
+        $conn = Connection::getConn();
+
+        $sql = "UPDATE usuario SET status = :status WHERE idUsuario = :id";
+        $stm = $conn->prepare($sql);
+        $stm->bindValue("status", $status);
+        $stm->bindValue("id", $idUsuario);
+        $stm->execute();
     }
 
     public function listProfessores() {
@@ -133,8 +145,6 @@ class UsuarioDAO {
         $stm->bindValue("declaracaoMatricula", $usuario->getdeclaracaoMatricula()); 
         $stm->execute();
     }
-    
-
 
 
     //Método para atualizar um Usuario
@@ -190,6 +200,17 @@ class UsuarioDAO {
         return $result[0]["qtd_usuario"];
     }
 
+    public function findProfessores() {
+        $conn = Connection::getConn();
+
+        $sql = "SELECT * FROM usuario u WHERE u.tipoUsuario = ? ORDER BY u.nomeUsuario";
+        $stm = $conn->prepare($sql);    
+        $stm->execute([UsuarioTipo::PROFESSOR]);
+        $result = $stm->fetchAll();
+        
+        return $this->mapUsuarios($result);
+    }
+
     //Método para converter um registro da base de dados em um objeto Usuario
     public function mapUsuarios($result) {
         $usuarios = array();
@@ -203,6 +224,7 @@ class UsuarioDAO {
             $usuario->setSiape($reg['siape']);
             $usuario->setDeclaracaoMatricula($reg['declaracaoMatricula']);
             $usuario->setFotoPerfil($reg['foto_perfil']);
+            $usuario->setStatus($reg['status']);
             
             if($reg["idCurso"] != NULL) {
                 $curso = new Curso();
