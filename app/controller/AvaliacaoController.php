@@ -176,7 +176,7 @@ class AvaliacaoController extends Controller
 
         $dados["erros"] = $erros;
 
-    $this->loadView("usuario/listAvaliacao.php", $dados);
+    $this->loadView("usuario/avaliacao.php", $dados);
     return;
 
     }
