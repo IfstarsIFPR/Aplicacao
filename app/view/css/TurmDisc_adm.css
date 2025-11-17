@@ -1,0 +1,65 @@
+body {
+    background-color: #1b3d69;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+html,
+body {
+    overflow-x: hidden;
+}
+
+h3 {
+    color: #fff;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.disciplina-nome {
+    color: #c6d5f1;
+    font-weight: bold;
+}
+
+.card-body {
+    background-color: #072957;
+    padding: 40px 20px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    min-height: 260px;
+}
+
+.card-title {
+    min-height: 50px;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 0;
+
+}
+
+.card-text {
+    color: white;
+    min-height: 50px;
+    text-align: center;
+    margin: 20px 0;     
+}
+
+
+.btn-primary,
+.btn-secondary {
+    background-color: #7085f3;
+    border: none;
+    min-width: 50%;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.buttons{
+    display: flex;
+    justify-content: center;   /* centraliza horizontalmente */
+    align-items: center;        /* alinha verticalmente */
+    gap: 12px;                  /* espaço entre os botões */
+    margin-top: 15px;
+    padding: 20px;  
+}
