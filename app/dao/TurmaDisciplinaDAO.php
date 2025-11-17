@@ -99,6 +99,26 @@ class TurmaDisciplinaDAO
         $stm->execute();
     }
 
+    public function listByProfessor(int $idProfessor)
+{
+    $sql = "SELECT td.idTurmaDisciplina,
+                   t.idTurma, t.anoTurma, t.codigoTurma, t.turno, t.idCurso,
+                   td.idDisciplina, d.nomeDisciplina,
+                   u.idUsuario, u.nomeUsuario, u.siape
+            FROM turmaDisciplina td
+            INNER JOIN turma t ON t.idTurma = td.idTurma
+            INNER JOIN disciplina d ON d.idDisciplina = td.idDisciplina
+            LEFT JOIN usuario u ON u.idUsuario = td.idProfessor
+            WHERE td.idProfessor = :idProfessor
+            ORDER BY d.nomeDisciplina, t.codigoTurma";
+
+    $stmt = $this->conn->prepare($sql);
+    $stmt->bindParam(":idProfessor", $idProfessor, PDO::PARAM_INT);
+    $stmt->execute();
+
+    return $this->mapTurmaDisciplina($stmt->fetchAll(PDO::FETCH_ASSOC));
+}
+
 
     //Delete todas as associações de uma disciplina
     public function deleteByDisciplina($idDisciplina)
@@ -129,6 +149,8 @@ class TurmaDisciplinaDAO
             //Disciplina
             $disc = new Disciplina();
             $disc->setId($reg['idDisciplina']);
+            if (isset($reg['nomeDisciplina'])) {
+            $disc->setNomeDisciplina($reg['nomeDisciplina']);}
             $turmaDisc->setDisciplina($disc);
 
             //Turma

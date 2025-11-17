@@ -71,6 +71,17 @@ class TurmaDisciplinaController extends Controller
         $this->loadView("pages/turmaDisciplina/turma-disciplina-admin.php", $dados, $msgErro, $msgSucesso);
     }
 
+    protected function minhasDisciplinasProfessor()
+{
+    $idProfessor = $this->getIdUsuarioLogado();
+    $disciplinas = $this->turmaDisciplinaDao->listByProfessor($idProfessor);
+    $dados["disciplinas"] = $disciplinas;
+    $this->loadView("pages/turmaDisciplina/minhas-disciplinas-professor.php", $dados);
+}
+
+
+
+
     protected function edit() {
 
         $usuarioDao = new UsuarioDAO();
@@ -86,50 +97,34 @@ class TurmaDisciplinaController extends Controller
         } else
             $this->list("Turma não encontrada!");
     }
-   protected function save() {
-    
-    $TurmaDisciplina = $_POST['idTurmaDisciplina'];
-    $Professor = $_POST['idProfessor'];
+    protected function save()
+    {
 
-    // Busca registro atual
-    $turmaDisciplina = $this->turmaDisciplinaDao->findTurmaDisciplinaById($TurmaDisciplina);
-    $idDisciplina = $turmaDisciplina->getDisciplina()->getId();
+        $idTurmaDisciplina = $_POST['idTurmaDisciplina'];
+        $idProfessor = $_POST['idProfessor'];
 
-    $turmaDisciplina = new TurmaDisciplina();
-    $turmaDisciplina->setId($TurmaDisciplina);
+        // Busca registro completo
+        $turmaDisciplina = $this->turmaDisciplinaDao->findTurmaDisciplinaById($idTurmaDisciplina);
+        $idDisciplina = $turmaDisciplina->getDisciplina()->getId();
 
-    $professor = new Usuario();
-    $professor->setId($Professor);
-    $turmaDisciplina->setProfessor($professor);
+        // Atualiza apenas o professor
+        $professor = new Usuario();
+        $professor->setId($idProfessor);
+        $turmaDisciplina->setProfessor($professor);
 
-            try {
+        try {
+            // Apenas update (nunca insert)
+            $this->turmaDisciplinaDao->update($turmaDisciplina);
 
-            // Insert ou Update
-            if ($turmaDisciplina->getId() == 0)
-                $this->turmaDisciplinaDao->insert($turmaDisciplina, $idDisciplina);
-            else
-                $this->turmaDisciplinaDao->update($turmaDisciplina);
-
-            // Redireciona para lista da turma
             header("location: " . BASEURL . "/controller/TurmaDisciplinaController.php?action=listTurmas&idDisciplina={$idDisciplina}");
             exit;
-
         } catch (PDOException $e) {
-
-           array_push($erros, "Erro ao gravar no banco de dados!");
-           array_push($erros, $e->getMessage());
+            $msgErro = "Erro ao atualizar: " . $e->getMessage();
+            $dados['msgErro'] = $msgErro;
+            $this->loadView("pages/turmaDisciplina/turma-disciplina-edit.php", $dados, $msgErro);
         }
+    }
 
-        $dados['turmaDisciplina'] = $turmaDisciplina;
-        $dados['turmas'] = $this->turmaDao->list();
-        $dados['professores'] = (new UsuarioDAO())->findProfessores();
-
-        $msgErro = implode("<br>", $erros);
-
-        $this->loadView("pages/turma-disciplina/turma-disciplina-edit.php", $dados, $msgErro);
-
-
-}
     public function acessarTurma(){
         $codigoTurma = $_POST['codigoTurma'];
         $idTurma = $_POST['idTurma'];
