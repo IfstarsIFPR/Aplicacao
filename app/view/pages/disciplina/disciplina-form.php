@@ -7,18 +7,22 @@ require_once(__DIR__ . "/../../include/menu.php");
 ?>
 <link rel="stylesheet" href="<?= BASEURL ?>/view/css/form.css">
 
+<div class="row">
+
+
 <h3 class="text-center">
     <?php if (!isset($dados['idDisciplina']) || $dados['idDisciplina'] == 0)
         echo "Inserir";
     else echo "Alterar"; ?>
     Disciplinas
 </h3>
-<div class="row">
+
     <div class="col-12">
         <a class="btn btn-secondary"
             href="<?= BASEURL ?>/controller/DisciplinaController.php?action=list"> ← </a>
     </div>
 </div>
+
 <div class="container">
     <div class="col-12">
     <div class="form-container d-flex justify-content-center">
