@@ -13,11 +13,14 @@ require_once(__DIR__ . "/../../include/menu.php");
 
         <?php foreach ($dados['disciplinas'] as $turmaDisc): ?>
 
-            <div class="col-md-6 col-lg-3 p-4">
+            <div class="col-lg-6 col-xl-3 p-4">
                 <div class="card-body text-center">
 
                     <h5 class="card-title">
                         <?= $turmaDisc->getDisciplina()->getNomeDisciplina() ?>
+
+                                                
+
                     </h5>
 
                     <p class="card-text">
@@ -29,10 +32,10 @@ require_once(__DIR__ . "/../../include/menu.php");
                         Turno: <?= $turmaDisc->getTurma()->getTurno() ?>
                     </p>
 
-                    <a href="#"
-                       class="btn btn-primary">
-                        Ver Avaliações
-                    </a>
+                    <a href="<?= BASEURL ?>/controller/AvaliacaoController.php?action=grafico&idTurma=<?= $turmaDisc->getTurma()->getId() ?>&idDisciplina=<?= $turmaDisc->getDisciplina()->getId() ?>&bimestre=1º Bimestre" 
+   class="btn btn-primary">
+    Ver Avaliações
+</a>
 
                 </div>
             </div>

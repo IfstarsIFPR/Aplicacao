@@ -5,6 +5,7 @@ class Avaliacao {
     private ?int $idAvaliacao;
     private ?int $idAluno;
     private ?Usuario $professor;
+    private ?Turma $turma;
     private ?int $idDisciplina;
     private ?string $bimestre;
     private ?int $notaClareza;
@@ -73,6 +74,24 @@ class Avaliacao {
         return $this;
     }
 
+        /**
+     * Get the value of turma
+     */
+    public function getTurma(): ?Turma
+    {
+        return $this->turma;
+    }
+
+    /**
+     * Set the value of turma
+     */
+    public function setTurma(?Turma $turma): self
+    {
+        $this->turma = $turma;
+
+        return $this;
+    }
+
     /**
      * Get the value of idDisciplina
      */
@@ -90,6 +109,8 @@ class Avaliacao {
 
         return $this;
     }
+
+    
 
     /**
      * Get the value of bimestre
@@ -252,4 +273,5 @@ class Avaliacao {
 
         return $this;
     }
+
 }

@@ -5,6 +5,10 @@ require_once(__DIR__ . "/../dao/AvaliacaoDAO.php");
 require_once(__DIR__ . "/../model/Avaliacao.php");
 require_once(__DIR__ . "/../service/AvaliacaoService.php");
 require_once(__DIR__ . "/../dao/DisciplinaDAO.php");
+require_once(__DIR__ . "/../dao/TurmaAlunoDAO.php");
+require_once(__DIR__ . "/../dao/TurmaDAO.php");
+
+
 
 class AvaliacaoController extends Controller
 {
@@ -85,8 +89,32 @@ class AvaliacaoController extends Controller
         $this->loadView("usuario/listAvaliacao.php", $dados, $msgErro, $msgSucesso);
     }
 
+    protected function grafico()
+    {
+        if (!isset($_GET['idDisciplina'])) {
+            $this->list("Disciplina não informada.");
+            return;
+        }
+
+        $idProfessor = $this->getIdUsuarioLogado();
+
+        $idTurma = $_GET['idTurma'];
+        $idDisciplina = $_GET['idDisciplina'];
+        $bimestre = $_GET['bimestre'];
 
 
+        // DAO deve retornar TODAS as avaliações da disciplina (todos os alunos)
+        $dados["avaliacoes"] = $this->avaliacaoDao->listByDisciplinaProfessor($idProfessor, $idTurma, $idDisciplina, $bimestre);
+
+        $dados["comentarios"] = $this->avaliacaoDao->listComentariosByDisciplinaProfessor($idProfessor, $idTurma, $idDisciplina, $bimestre);
+
+        // print('<pre>');
+        // print_r($dados["avaliacoes"]);
+        // print('</pre>');
+        // die;
+
+        $this->loadView("usuario/graficoAvaliacao.php", $dados);
+    }
 
     // Exibe o formulário de criação
     protected function create()
@@ -103,6 +131,9 @@ class AvaliacaoController extends Controller
     {
 
         $disciplinaDao = new DisciplinaDAO();
+        $turmaAlunoDAO = new TurmaAlunoDAO();
+        $turmaDAO = new TurmaDAO();
+
 
         // Capturar dados do formulário
         $id = $_POST['idAvaliacao'];
@@ -110,6 +141,9 @@ class AvaliacaoController extends Controller
         $idDisciplina = trim($_POST['idDisciplina']) != "" ? trim($_POST['idDisciplina']) : NULL;
 
         //TODO: AQUI DEVE HAVER UMA VALIDACAO PARA O ID DA DISCILINA.
+
+
+        //TODO: aqui eh possivel validar o bimestre da mesma forma que estavamos validamos o cadastro na turma. 
 
 
         $professor = $disciplinaDao->findProfessorByDisciplinaId($idDisciplina);
@@ -123,7 +157,9 @@ class AvaliacaoController extends Controller
         $notaOrganizacao = isset($_POST['notaOrganizacao']) ? $_POST['notaOrganizacao'] : NULL;
         $notaRecursos = isset($_POST['notaRecursos']) ? $_POST['notaRecursos'] : NULL;
         $comentario = trim($_POST['comentario']) != "" ? $_POST['comentario'] : NULL;
-
+        
+        $turma = $turmaDAO->findById($turmaAlunoDAO->obterTurmaPorUsuario($idAluno)['idTurma']);
+      
         // Criar objeto Avaliacao e preencher
         $avaliacao = new Avaliacao();
         $avaliacao->setIdAvaliacao($id);
@@ -133,6 +169,7 @@ class AvaliacaoController extends Controller
 
         $avaliacao->setIdAluno($idAluno);
         $avaliacao->setProfessor($professor);
+        $avaliacao->setTurma($turma);
         $avaliacao->setIdDisciplina($idDisciplina);
         $avaliacao->setNotaClareza($notaClareza);
         $avaliacao->setNotaDidatica($notaDidatica);

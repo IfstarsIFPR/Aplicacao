@@ -51,6 +51,12 @@ class HomeController extends Controller
         if(isset($_GET["mensagem"])){
             $dados["mensagem"] = $_GET["mensagem"];
         }
+
+
+        //TODO: VERIFICAR NA DAO TURMAALUNO UMA FUNCAO QUE CONSULTA A TABELA turmaalunos E VERIFICA SE EXISTE UM RESULTADO,
+        //Algo como SELECT * FROM `turmaalunos` WHERE idUsuario = 6;
+
+        //Se existe um resultado pelo menos, significa que o usuario ja selecionou a tumra
             
         $curso = $this->usuarioDAO->findById($this->getIdUsuarioLogado())->getCurso();
 
@@ -70,10 +76,12 @@ class HomeController extends Controller
     protected function homeProfessor()
     {
         //Carrega a quantidade de usuários cadastrados
-        $dados["qtdUsuarios"] = $this->usuarioDAO->quantidadeUsuarios();
+        //$dados["qtdUsuarios"] = $this->usuarioDAO->quantidadeUsuarios();
 
         //Carrega a view específica para o aluno
-        $this->loadView("home/homeProfessor.php", $dados);
+        //$this->loadView("home/homeProfessor.php", $dados);
+
+        header("location: " . BASEURL . "/controller/TurmaDisciplinaController.php?action=minhasDisciplinasProfessor");
     }
 
     public function homeAdmin()

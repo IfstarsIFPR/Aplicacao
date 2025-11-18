@@ -13,6 +13,7 @@ class AvaliacaoDAO
             $sql = "INSERT INTO avaliacao (
                     idAluno, 
                     idProfessor,
+                    idTurma,
                     idDisciplina,
                     bimestre, 
                     notaClareza, 
@@ -26,6 +27,7 @@ class AvaliacaoDAO
                 ) VALUES (
                     :idAluno,
                     :idProfessor,
+                    :idTurma,
                     :idDisciplina,
                     :bimestre, 
                     :notaClareza, 
@@ -43,6 +45,7 @@ class AvaliacaoDAO
             // Bind dos parâmetros
             $stm->bindValue(":idAluno", $avaliacao->getIdAluno(), PDO::PARAM_INT);
             $stm->bindValue(":idProfessor", $avaliacao->getProfessor()->getId(), PDO::PARAM_INT);
+            $stm->bindValue(":idTurma", $avaliacao->getTurma()->getId(), PDO::PARAM_INT);
             $stm->bindValue(":idDisciplina", $avaliacao->getIdDisciplina(), PDO::PARAM_INT);
             $stm->bindValue(":bimestre", $avaliacao->getBimestre(), PDO::PARAM_STR);
             $stm->bindValue(":notaClareza", $avaliacao->getNotaClareza());
@@ -91,45 +94,94 @@ class AvaliacaoDAO
     }
 
     public function listDisciplinasAvaliadas(int $idAluno): array
-{
-   $conn = Connection::getConn();
-   $sql = "SELECT DISTINCT d.idDisciplina, d.nomeDisciplina
+    {
+        $conn = Connection::getConn();
+        $sql = "SELECT DISTINCT d.idDisciplina, d.nomeDisciplina
         FROM avaliacao a
         INNER JOIN disciplina d ON d.idDisciplina = a.idDisciplina
         WHERE a.idAluno = ?
         ORDER BY d.nomeDisciplina";
-    $stm = $conn->prepare($sql);
-    $stm->execute([$idAluno]);
-    return $stm->fetchAll(PDO::FETCH_ASSOC);
-}
+        $stm = $conn->prepare($sql);
+        $stm->execute([$idAluno]);
+        return $stm->fetchAll(PDO::FETCH_ASSOC);
+    }
 
-public function listByDisciplinaId($idAluno, $idDisciplina)
-{
-    $conn = Connection::getConn();
-    $sql = "SELECT * FROM avaliacao 
+
+
+    public function listComentariosByDisciplinaProfessor($idProfessor, $idTurma, $idDisciplina, $bimestre): array
+    {
+        $conn = Connection::getConn();
+        $stmt = $conn->prepare("SELECT * FROM avaliacao WHERE idProfessor = :idProfessor AND idTurma = :idTurma 
+        AND idDisciplina = :idDisciplina AND bimestre = :bimestre");
+
+        $stmt->bindValue(':idProfessor', $idProfessor);
+        $stmt->bindValue(':idDisciplina', $idDisciplina);
+        $stmt->bindValue(':idTurma', $idTurma);
+        $stmt->bindValue(':bimestre', $bimestre);
+
+
+        $stmt->execute();
+
+        //TODO : Ajustar para retornar objetos Avaliacao - Padrao MAP usado nas outras DAOS
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
+
+    public function listByDisciplinaProfessor($idProfessor, $idTurma, $idDisciplina, $bimestre)
+    {
+        $conn = Connection::getConn();
+
+        $sql = "SELECT
+                AVG(notaClareza) AS mediaClareza,
+                AVG(notaDidatica) AS mediaDidatica,
+                AVG(notaInteracao) AS mediaInteracao,
+                AVG(notaMotivacao) AS mediaMotivacao,
+                AVG(notaDominioConteudo) AS mediaDominioConteudo,
+                AVG(notaOrganizacao) AS mediaOrganizacao,
+                AVG(notaRecursos) AS mediaRecursos
+            FROM avaliacao
+            WHERE idProfessor = :idProfessor AND idDisciplina = :idDisciplina AND idTurma = :idTurma AND bimestre = :bimestre";
+
+        $stmt = $conn->prepare($sql);
+        $stmt->bindValue(':idProfessor', $idProfessor);
+        $stmt->bindValue(':idDisciplina', $idDisciplina);
+        $stmt->bindValue(':idTurma', $idTurma);
+        $stmt->bindValue(':bimestre', $bimestre);
+
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+
+    public function listByDisciplinaId($idAluno, $idDisciplina)
+    {
+        $conn = Connection::getConn();
+        $sql = "SELECT * FROM avaliacao 
             WHERE idAluno = :idAluno 
               AND idDisciplina = :idDisciplina
             ORDER BY bimestre ASC";
 
-    $stmt = $conn->prepare($sql);
-    $stmt->bindValue(":idAluno", $idAluno);
-    $stmt->bindValue(":idDisciplina", $idDisciplina);
-    $stmt->execute();
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
-}
+        $stmt = $conn->prepare($sql);
+        $stmt->bindValue(":idAluno", $idAluno);
+        $stmt->bindValue(":idDisciplina", $idDisciplina);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 
 
-public function listByDisciplinaAndAluno($idDisciplina, $idAluno)
-{
-    $conn = Connection::getConn();
-    $sql = "SELECT * FROM avaliacao 
+    public function listByDisciplinaAndAluno($idDisciplina, $idAluno)
+    {
+        $conn = Connection::getConn();
+        $sql = "SELECT * FROM avaliacao 
             WHERE idDisciplina = ? AND idAluno = ?
             ORDER BY bimestre ASC";
 
-    $stmt = $conn->prepare($sql);
-    $stmt->execute([$idDisciplina, $idAluno]);
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
-}
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$idDisciplina, $idAluno]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 
 
 

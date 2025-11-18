@@ -27,6 +27,28 @@ class TurmaAlunoDAO {
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     } 
+
+    public function mapTurmas($result) {
+        $turmas = array();
+        foreach ($result as $reg) {
+            $turma = new Turma();
+            $turma->setId($reg['idTurma']);
+            $turma->setAnoTurma($reg['anoTurma']);
+            $turma->setCodigoTurma($reg['codigoTurma']);
+            $turma->setTurno($reg['turno']);
+    
+            if($reg["idCurso"] != NULL) {
+                $cursoDAO = new CursoDAO();
+                $curso = $cursoDAO->findById($reg["idCurso"]); // Busca o curso completo
+                $turma->setCurso($curso);
+            } else {
+                $turma->setCurso(NULL);
+}
+            array_push($turmas, $turma);
+        }
+
+        return $turmas; 
+    }
     
 
 }

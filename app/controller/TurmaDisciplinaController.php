@@ -72,28 +72,28 @@ class TurmaDisciplinaController extends Controller
     }
 
     protected function minhasDisciplinasProfessor()
-{
-    $idProfessor = $this->getIdUsuarioLogado();
-    $disciplinas = $this->turmaDisciplinaDao->listByProfessor($idProfessor);
-    $dados["disciplinas"] = $disciplinas;
-    $this->loadView("pages/turmaDisciplina/minhas-disciplinas-professor.php", $dados);
-}
+    {
+        $idProfessor = $this->getIdUsuarioLogado();
+        $disciplinas = $this->turmaDisciplinaDao->listByProfessor($idProfessor);
+        $dados["disciplinas"] = $disciplinas;
+        $this->loadView("pages/turmaDisciplina/minhas-disciplinas-professor.php", $dados);
+    }
 
 
 
 
-    protected function edit() {
+    protected function edit()
+    {
 
         $usuarioDao = new UsuarioDAO();
         //Busca a turma na base pelo ID    
         $turmaDisciplina = $this->findTurmaDisciplinaById();
-        if($turmaDisciplina) {
-            $dados['idTurmaDisciplina'] = $turmaDisciplina->getId(); 
+        if ($turmaDisciplina) {
+            $dados['idTurmaDisciplina'] = $turmaDisciplina->getId();
             $dados["turmaDisciplina"] = $turmaDisciplina;
             $dados['professores'] = $usuarioDao->findProfessores();
 
             $this->loadView("pages/turmaDisciplina/turma-disciplina-edit.php", $dados);
-            
         } else
             $this->list("Turma não encontrada!");
     }
@@ -125,7 +125,8 @@ class TurmaDisciplinaController extends Controller
         }
     }
 
-    public function acessarTurma(){
+    public function acessarTurma()
+    {
         $codigoTurma = $_POST['codigoTurma'];
         $idTurma = $_POST['idTurma'];
 
@@ -164,7 +165,7 @@ class TurmaDisciplinaController extends Controller
         return $this->turmaDao->findById($idTurma);
     }
 
-     private function findDisciplinaById()
+    private function findDisciplinaById()
     {
         if (!isset($_GET["idDisciplina"])) {
             return null;
