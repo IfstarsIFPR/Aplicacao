@@ -7,6 +7,9 @@ class Disciplina {
     private ?int $id;
     private ?string $nomeDisciplina;
 
+    //Atributo para armazenar o nome do professor na listagem de turmas do aluno
+    private ?string $nomeProfessor;
+
     //TODO: implementar o relacionamento ManyToMany com Turma
     private array $turmas; // array de objetos Turma
 
@@ -43,6 +46,24 @@ class Disciplina {
     public function setNomeDisciplina(?string $nomeDisciplina): self
     {
         $this->nomeDisciplina = $nomeDisciplina;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of nomeProfessor
+     */
+    public function getNomeProfessor(): ?string
+    {
+        return $this->nomeProfessor;
+    }
+
+    /**
+     * Set the value of nomeProfessor
+     */
+    public function setNomeProfessor(?string $nomeProfessor): self
+    {
+        $this->nomeProfessor = $nomeProfessor;
 
         return $this;
     }

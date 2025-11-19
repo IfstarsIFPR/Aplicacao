@@ -73,6 +73,11 @@ class TurmaDisciplinaController extends Controller
 
     protected function minhasDisciplinasProfessor()
     {
+        if(! $this->usuarioLogadoIsProfessor()) {
+            echo "Acesso negado!";
+            exit;
+        }
+        
         $idProfessor = $this->getIdUsuarioLogado();
         $disciplinas = $this->turmaDisciplinaDao->listByProfessor($idProfessor);
         $dados["disciplinas"] = $disciplinas;

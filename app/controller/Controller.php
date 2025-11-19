@@ -93,5 +93,22 @@ class Controller {
         return false;
     }
 
+     protected function usuarioLogadoIsProfessor() {
+
+
+        if(session_status() != PHP_SESSION_ACTIVE)
+            session_start();
+
+
+
+        if(isset($_SESSION[SESSAO_USUARIO_ID])) {
+
+            if($_SESSION[SESSAO_USUARIO_TIPO] == UsuarioTipo::PROFESSOR)
+                return true;
+        }
+
+        return false;
+    }
+
 
 }

@@ -106,6 +106,22 @@ class AvaliacaoDAO
         return $stm->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function alunoJaAvaliouDisciplinaNoBimestre(int $idAluno, int $idDisciplina, string $bimestre): bool
+    {
+        $conn = Connection::getConn();
+        $sql = "SELECT a.idAvaliacao
+                FROM avaliacao a
+                WHERE a.idAluno = ? AND a.idDisciplina = ? AND a.bimestre = ?";
+        $stm = $conn->prepare($sql);
+        $stm->execute([$idAluno, $idDisciplina, $bimestre]);
+        $result = $stm->fetchAll(PDO::FETCH_ASSOC);
+
+        if(empty($result))
+            return false;
+        else
+            return true;
+    }
+
 
 
     public function listComentariosByDisciplinaProfessor($idProfessor, $idTurma, $idDisciplina, $bimestre): array

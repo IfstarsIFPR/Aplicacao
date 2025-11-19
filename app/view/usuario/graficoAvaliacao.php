@@ -42,7 +42,7 @@ require_once(__DIR__ . "/../include/menu.php");
             <!-- Formulário para responder -->
             <form method="post" action="<?= BASEURL ?>/controller/AvaliacaoController.php?action=responder" class="mt-2">
                 <input type="hidden" name="idAvaliacao" value="<?= $comentario['idAvaliacao'] ?>">
-                 <textarea name="resposta" class="form-control mb-2" placeholder="Responder comentário" required></textarea>
+                 <textarea name="resposta" class="form-control mb-2" placeholder="Responder comentário" required><?= $comentario['respostaProfessor'] ?></textarea>
                     <button type="submit" class="btn btn-primary btn-sm">Responder</button> 
                      <a href="#" class="card-link">denunciar</a>
 

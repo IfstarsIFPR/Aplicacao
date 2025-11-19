@@ -55,8 +55,9 @@ class DisciplinaDAO {
 
         $idTurma = $_GET["idTurma"];
 
-        $sql = "SELECT d.* FROM disciplina d " .
+        $sql = "SELECT d.*, u.nomeUsuario FROM disciplina d " .
                "JOIN turmadisciplina td ON d.idDisciplina = td.idDisciplina " .
+               "JOIN usuario u ON (u.idUsuario = td.idProfessor)" .
                "WHERE td.idTurma = :idTurma " .
                "ORDER BY d.nomeDisciplina";
 
@@ -167,6 +168,9 @@ class DisciplinaDAO {
             $disciplina = new Disciplina();
             $disciplina->setId($reg['idDisciplina']);
             $disciplina->setNomeDisciplina($reg['nomeDisciplina']);
+
+            if(isset($reg['nomeUsuario']))
+                $disciplina->setNomeProfessor($reg['nomeUsuario']);
     
             array_push($disciplinas, $disciplina);
         }
