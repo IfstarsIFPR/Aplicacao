@@ -29,20 +29,36 @@ require_once(__DIR__ . "/../include/menu.php");
 
 
     <!-- COMENTARIOS -->
+      <div class="row">
     <section class="comentarios mt-5">
 
         <?php foreach ($dados["comentarios"] as $comentario): ?>
 
         <div class="card mb-3">
+            
             <div class="card-body">
-                <p class="card-text"><?= $comentario['comentario'] ?></p>
-                <a href="#" class="card-link">denunciar</a>
+                <p class="card-text"><strong>Anônimo:</strong> <?= $comentario['comentario'] ?></p> 
+               
+            <!-- Formulário para responder -->
+            <form method="post" action="<?= BASEURL ?>/controller/AvaliacaoController.php?action=responder" class="mt-2">
+                <input type="hidden" name="idAvaliacao" value="<?= $comentario['idAvaliacao'] ?>">
+                 <textarea name="resposta" class="form-control mb-2" placeholder="Responder comentário" required></textarea>
+                    <button type="submit" class="btn btn-primary btn-sm">Responder</button> 
+                     <a href="#" class="card-link">denunciar</a>
+
+            </form>
             </div>
         </div>
 
+        
+
     <?php endforeach; ?>
+    
 
     </section>
+      </div>
+
+    
 
 
 </div>

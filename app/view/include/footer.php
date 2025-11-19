@@ -1,5 +1,5 @@
 <!-- Footer -->
-<footer class="text-center text-lg-start bg-light text-muted" style="margin-top: 185px;">
+<footer class="text-center text-lg-start bg-light text-muted" style="margin-top: flex; margin-bottom: flex;">
   <div class="text-center p-4">
     © 2025 Copyright:
     <a class="text-reset fw-bold" href="https://foz.ifpr.edu.br" target="blank">IFPR (Campus Foz do Iguaçu)</a>

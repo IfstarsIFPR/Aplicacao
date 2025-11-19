@@ -3,6 +3,7 @@
 require_once(__DIR__ . "/Controller.php");
 require_once(__DIR__ . "/../dao/UsuarioDAO.php");
 require_once(__DIR__ . "/../dao/TurmaDAO.php");
+require_once(__DIR__ . "/../dao/TurmaAlunoDAO.php");
 
 class HomeController extends Controller
 {
@@ -55,6 +56,14 @@ class HomeController extends Controller
 
         //TODO: VERIFICAR NA DAO TURMAALUNO UMA FUNCAO QUE CONSULTA A TABELA turmaalunos E VERIFICA SE EXISTE UM RESULTADO,
         //Algo como SELECT * FROM `turmaalunos` WHERE idUsuario = 6;
+        $turmaAlunoDAO = new TurmaAlunoDAO();
+        $turmaUsuario = $turmaAlunoDAO->obterTurmaPorUsuario($this->getIdUsuarioLogado()); 
+        if($turmaUsuario){
+            //Se existe um resultado pelo menos, significa que o usuario ja selecionou a tumra
+            $dados["turmaSelecionada"] = $this->turmaDAO->findById($turmaUsuario["idTurma"]);
+            header("location: " . BASEURL . "/controller/TurmaDisciplinaController.php?action=list&idTurma=" . $dados["turmaSelecionada"]->getId());
+            return;
+        }else{
 
         //Se existe um resultado pelo menos, significa que o usuario ja selecionou a tumra
             
@@ -67,10 +76,11 @@ class HomeController extends Controller
         // print '</pre>';
         // die;
 
-        $dados["qtdUsuarios"] = $this->usuarioDAO->quantidadeUsuarios();
+       // $dados["qtdUsuarios"] = $this->usuarioDAO->quantidadeUsuarios();
 
         //Carrega a view específica para o aluno
         $this->loadView("home/homeAluno.php", $dados);
+    }
     }
 
     protected function homeProfessor()

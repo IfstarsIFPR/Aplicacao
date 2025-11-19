@@ -68,6 +68,20 @@ class AvaliacaoController extends Controller
         $this->loadView("usuario/listAvaliacao.php", $dados, $msgErro, $msgSucesso);
     }
 
+    protected function responder()
+    {
+        $idAvaliacao = (int)$_POST['idAvaliacao'];
+        $resposta = $_POST['resposta'];
+
+        try {
+            $this->avaliacaoDao->responderComentario($idAvaliacao, $resposta);
+            header("Location: " . $_SERVER['HTTP_REFERER']); // volta para a página do gráfico/comentários
+            exit;
+        } catch (Exception $e) {
+            echo "Erro ao responder comentário: " . $e->getMessage();
+        }
+    }
+
 
 
     protected function listByDisciplina(string $msgErro = "", string $msgSucesso = "")
