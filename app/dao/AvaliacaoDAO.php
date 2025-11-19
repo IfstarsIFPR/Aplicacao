@@ -127,6 +127,17 @@ class AvaliacaoDAO
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function responderComentario(int $idAvaliacao, string $resposta): bool
+    {
+        $conn = Connection::getConn();
+        $sql = "UPDATE avaliacao SET respostaProfessor = :resposta WHERE idAvaliacao = :idAvaliacao";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindValue(':resposta', $resposta, PDO::PARAM_STR);
+        $stmt->bindValue(':idAvaliacao', $idAvaliacao, PDO::PARAM_INT);
+
+        return $stmt->execute();
+    }
+
 
 
     public function listByDisciplinaProfessor($idProfessor, $idTurma, $idDisciplina, $bimestre)

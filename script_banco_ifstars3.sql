@@ -24,3 +24,5 @@ ALTER TABLE turmaalunos ADD CONSTRAINT fk_turmaAlunos_turma FOREIGN KEY (idTurma
 ALTER TABLE avaliacao ADD COLUMN idTurma INT;
 ALTER TABLE avaliacao ADD CONSTRAINT fk_avaliacao_turma FOREIGN KEY (idTurma) 
 REFERENCES turma (idTurma);
+
+ALTER TABLE avaliacao ADD COLUMN respostaProfessor TEXT DEFAULT NULL;
