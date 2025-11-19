@@ -52,11 +52,11 @@ class DisciplinaController extends Controller
 
         $dados["idDisciplina"] = 0; // garante que não dará erro na view
         $dados["disciplina"] = null;
-        
+
         $dados["turmas"]  = $this->turmaDAO->list();
 
         // Ordena as turmas pelo nome do curso
-        usort($dados["turmas"], function($a, $b) {
+        usort($dados["turmas"], function ($a, $b) {
             return strcmp($a->getCurso()->getNome(), $b->getCurso()->getNome());
         });
 
@@ -77,7 +77,7 @@ class DisciplinaController extends Controller
             $dados["turmasAssociadas"] = $this->disciplinaDao->findTurmasByDisciplinaId($disciplina->getId());
 
             // Ordena as turmas pelo nome do curso
-            usort($dados["turmas"], function($a, $b) {
+            usort($dados["turmas"], function ($a, $b) {
                 return strcmp($a->getCurso()->getNome(), $b->getCurso()->getNome());
             });
 
@@ -101,7 +101,8 @@ class DisciplinaController extends Controller
         $disciplina->setNomeDisciplina($nomeDisciplina);
 
         // Validar os dados (camada service)
-        $erros = $this->disciplinaService->validarDados($disciplina);
+        $erros = $this->disciplinaService->validarDados($disciplina, $turmasIds);
+
         if (!$erros) {
             try {
                 if ($disciplina->getId() == 0) {
@@ -124,9 +125,9 @@ class DisciplinaController extends Controller
         $dados['idDisciplina'] = $disciplina->getId();
         $dados["disciplina"] = $disciplina;
 
-        $msgErro = implode("<br>", $erros);
 
-        $this->loadView("pages/disciplina/disciplina-form.php", $dados, $msgErro);
+        $dados['erros'] = $erros;
+        $this->loadView("pages/disciplina/disciplina-form.php", $dados);
     }
 
 
@@ -144,7 +145,7 @@ class DisciplinaController extends Controller
             $this->list("Disciplina não encontrada!");
         }
     }
-    
+
 
     private function findDisciplinaById()
     {

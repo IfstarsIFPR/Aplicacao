@@ -1,20 +1,23 @@
 <?php
-    
+
 require_once(__DIR__ . "/../model/Disciplina.php");
 
-class DisciplinaService {
+class DisciplinaService
+{
 
     /* Método para validar os dados do usuário que vem do formulário */
-    public function validarDados(Disciplina $disciplina) {
-        $erros = array();
+    public function validarDados(Disciplina $disciplina, array $turmasIds = []) {
+    $erros = [];
 
-        //Validar campos vazios
-        if(! $disciplina->getNomeDisciplina())
-            array_push($erros, "O campo [Nome] é obrigatório.");
+    // Nome obrigatório
+    if (!$disciplina->getNomeDisciplina())
+        $erros['nomeDisciplina'] = "O campo nome é obrigatório.";
 
+    // Turma obrigatória
+    if (empty($turmasIds))
+        $erros['turmas'] = "Selecione ao menos uma Turma.";
 
-        return $erros;
-    }
-
+    return $erros;
+}
 
 }

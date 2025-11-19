@@ -10,10 +10,11 @@ class CursoService {
 
         //Validar campos vazios
         if(! $curso->getNome())
-            array_push($erros, "O campo [Nome] é obrigatório.");
+            $erros['nomeCurso'] = "O campo nome é obrigatório.";
         
         if(! $curso->getNivel()) 
-            array_push($erros, "O campo [Nivel] é obrigatório");
+            $erros['nivel'] = "O campo nível é obrigatório.";
+
 
         return $erros;
     }
