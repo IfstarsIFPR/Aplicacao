@@ -97,10 +97,11 @@ class HomeController extends Controller
     public function homeAdmin()
     {
         //Carrega a quantidade de usuários cadastrados
-        $dados["qtdUsuarios"] = $this->usuarioDAO->quantidadeUsuarios();
+        //$dados["qtdUsuarios"] = $this->usuarioDAO->quantidadeUsuarios();
 
         //Carrega a view específica para o admin
-        $this->loadView("home/home.php", $dados);
+        //$this->loadView("home/home.php", $dados);
+        header("location: " . BASEURL . "/controller/UsuarioController.php?action=listPendentes");
     }
 }
 
