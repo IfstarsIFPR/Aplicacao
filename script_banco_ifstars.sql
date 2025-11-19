@@ -136,6 +136,7 @@ ALTER TABLE avaliacao DROP COLUMN idTurmaAlunos;
 ALTER TABLE usuario ADD COLUMN status ENUM('ativo','pendente','','') NOT NULL DEFAULT 'pendente';
 
 
+
 INSERT INTO usuario (email, senha, tipoUsuario) 
 VALUES ('erick@gmail.com', '$1$0.y2hAIQ$pvGmwymq5swPuB15WupnF/', 'admin'); /* senha 123 */
 
