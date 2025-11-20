@@ -62,6 +62,15 @@ class AvaliacaoController extends Controller
         $idDisciplina = $_GET['idDisciplina'];
         $idAluno = $this->getIdUsuarioLogado();
 
+        $disciplinaDao = new DisciplinaDAO();
+        $disciplina = $disciplinaDao->findById($idDisciplina);
+
+        // Buscar professor responsável pela disciplina
+        $professor = $disciplinaDao->findProfessorByDisciplinaId($idDisciplina);
+
+        $dados["nomeDisciplina"] = $disciplina->getNomeDisciplina();
+        $dados["nomeProfessor"] = $professor->getNome();
+
         // Buscar somente as avaliações da disciplina selecionada
         $dados["lista"] = $this->avaliacaoDao->listByDisciplinaId($idAluno, $idDisciplina);
 
@@ -98,6 +107,7 @@ class AvaliacaoController extends Controller
         $dados["lista"] = $this->avaliacaoDao->listByDisciplinaId($idAluno, $idDisciplina);
 
         $dados["idDisciplina"] = $idDisciplina;
+        
 
         // Carrega a view correta
         $this->loadView("usuario/listAvaliacao.php", $dados, $msgErro, $msgSucesso);
