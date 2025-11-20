@@ -10,13 +10,13 @@ require_once(__DIR__ . "/../../include/menu.php");
 
 <div class="container">
 
-    <h3 class="text-center">Disciplinas da Turma</h3>
+    <h3 class="text-center mt-5">Disciplinas da Turma</h3>
 
     <div class="row">
 
         <?php foreach ($dados['lista'] as $disc): ?>
 
-            <div class="col-md-6 col-lg-3 p-4">
+            <div class="col-md-6 col-lg-4 p-4">
                 <div class="card-body text-center">
 
                     <h5 class="card-title"><?= $disc->getNomeDisciplina(); ?></h5>
