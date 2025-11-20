@@ -1,15 +1,14 @@
+html, body {
+    overflow-x: hidden;
+    overflow-y: visible;
+    height: 100%;
+    overflow-x: hidden !important;
+}
+
 body {
-    display: flex;
-    flex-direction: column;
     background-color: #0f2c54;
 }
 
 .container {
-    min-height: calc(100vh - 196px);
-}
-
-html,
-body {
-    overflow-x: hidden;
-    overflow-y: auto;
+    min-height: auto;
 }

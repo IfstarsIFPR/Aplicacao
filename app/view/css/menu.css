@@ -70,3 +70,14 @@
     font-size: 14px;
   }
 }
+
+.navbar {
+    overflow: hidden !important;
+}
+.navbar, .sidebar, header, #menu {
+    overflow: hidden !important;
+}
+* {
+    border: 1px solid red;
+}
+
