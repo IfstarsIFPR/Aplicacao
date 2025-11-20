@@ -1,8 +1,16 @@
 <?php
     
 require_once(__DIR__ . "/../model/Avaliacao.php");
+require_once(__DIR__ . "/../dao/AvaliacaoDAO.php");
 
 class AvaliacaoService {
+
+    private AvaliacaoDAO $avaliacaoDAO;
+
+    public function __construct()
+    {
+        $this->avaliacaoDAO = new AvaliacaoDAO();
+    }
 
     /* Método para validar os dados da avaliação que vem do formulário */
    public function validarDados(Avaliacao $avaliacao) {
@@ -10,6 +18,11 @@ class AvaliacaoService {
 
     if(!$avaliacao->getBimestre())
         $erros["bimestre"] = "Selecione um bimestre!";
+    elseif ($this->avaliacaoDAO->alunoJaAvaliouDisciplinaNoBimestre($avaliacao->getIdAluno(), 
+                                                                 $avaliacao->getIdDisciplina(), 
+                                                                 $avaliacao->getBimestre()) ) {
+        $erros["bimestre"] = "Este bimestre já foi avaliado para esta disciplina!";
+    }
 
     if(!$avaliacao->getNotaClareza())
         $erros["notaClareza"] = "Preencha a nota de clareza!";

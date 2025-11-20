@@ -209,7 +209,8 @@ class AvaliacaoController extends Controller
                     $this->avaliacaoDao->update($avaliacao);
                 }
 
-                $this->list("", "Avaliação salva com sucesso!");
+                //$this->list("", "Avaliação salva com sucesso!");
+                header("location: " . BASEURL . "/controller/AvaliacaoController.php?action=listarAvaliacoesPorDisciplina&idDisciplina=" . $avaliacao->getIdDisciplina());
                 return;
                 // Importante para evitar que o código continue e exiba o formulário novamente
 

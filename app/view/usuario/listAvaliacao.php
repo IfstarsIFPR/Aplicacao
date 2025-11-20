@@ -3,7 +3,7 @@ require_once(__DIR__ . "/../include/header.php");
 require_once(__DIR__ . "/../include/menu.php");
 ?>
 
-<link rel="stylesheet" href="<?= BASEURL ?>/view/css/listaAvaliacao.css">
+<link rel="stylesheet" href="<?= BASEURL ?>/view/css/listAvaliacao.css">
 
 <div class="container mt-4">
     <h3 class="text-center text-white mb-4 mt-5">
@@ -28,8 +28,14 @@ require_once(__DIR__ . "/../include/menu.php");
                              <?= htmlspecialchars($avaliacao["bimestre"]) ?>
                             </h5>
                             <hr>
-                            <p><strong>Clareza:</strong> <?= htmlspecialchars($avaliacao["notaClareza"]) ?></p>
-                            <p><strong>Didática:</strong> <?= htmlspecialchars($avaliacao["notaDidatica"]) ?></p>
+                            <p><strong>Clareza:</strong> 
+                                <?php for($i=1; $i<=$avaliacao["notaClareza"]; $i++): ?>
+                                    <i class="bi bi-star-fill"></i>
+                                <?php endfor; ?>
+                            </p>
+                            <p><strong>Didática:</strong> 
+                                <?= htmlspecialchars($avaliacao["notaDidatica"]) ?>
+                            </p>
                             <p><strong>Interação:</strong> <?= htmlspecialchars($avaliacao["notaInteracao"]) ?></p>
                             <p><strong>Motivação:</strong> <?= htmlspecialchars($avaliacao["notaMotivacao"]) ?></p>
                             <p><strong>Domínio do Conteúdo:</strong> <?= htmlspecialchars($avaliacao["notaDominioConteudo"]) ?></p>
@@ -39,6 +45,12 @@ require_once(__DIR__ . "/../include/menu.php");
                             <?php if (!empty($avaliacao["comentario"])): ?>
                                 <p><strong>Comentário:</strong><br>
                                     <?= nl2br(htmlspecialchars($avaliacao["comentario"])) ?>
+                                </p>
+                            <?php endif; ?>
+
+                             <?php if (!empty($avaliacao["respostaProfessor"])): ?>
+                                <p><strong>Resposta professor:</strong><br>
+                                    <?= nl2br(htmlspecialchars($avaliacao["respostaProfessor"])) ?>
                                 </p>
                             <?php endif; ?>
 
