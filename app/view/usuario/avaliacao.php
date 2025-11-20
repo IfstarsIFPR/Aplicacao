@@ -137,12 +137,9 @@ require_once(__DIR__ . "/../include/menu.php");
 
           <label for="comentario" class="form-label">Comentário</label>
           <textarea name="comentario" id="comentario" class="form-control" rows="3" placeholder="Escreva um comentário...">
-<<<<<<< Updated upstream
 <?= $dados["avaliacao"] ? $dados["avaliacao"]->getComentario() : "" ?></textarea>
-=======
           <?= $dados["avaliacao"] ? $dados["avaliacao"]->getComentario() : "" ?>
           </textarea>
->>>>>>> Stashed changes
 
           <?php if (isset($dados["erros"]["comentario"])): ?>
             <small class="text-danger"><?= $dados["erros"]["comentario"] ?></small>
