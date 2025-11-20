@@ -96,7 +96,7 @@ class AvaliacaoDAO
     public function listDisciplinasAvaliadas(int $idAluno): array
     {
         $conn = Connection::getConn();
-        $sql = "SELECT d.idDisciplina, d.nomeDisciplina
+        $sql = "SELECT DISTINCT d.idDisciplina, d.nomeDisciplina
         FROM avaliacao a
         INNER JOIN disciplina d ON d.idDisciplina = a.idDisciplina
         WHERE a.idAluno = ?
