@@ -48,7 +48,8 @@ require_once(__DIR__ . "/../include/menu.php");
           <label class="form-label mt-2">Didática:</label>
           <div class="estrela">
             <?php for ($i = 5; $i >= 1; $i--): ?>
-              <input type="radio" name="notaDidatica" id="didatica<?= $i ?>" value="<?= $i ?>">
+              <input type="radio" name="notaDidatica" id="didatica<?= $i ?>" value="<?= $i ?>"
+                  <?php if ($dados['avaliacao'] && $dados['avaliacao']->getNotaDidatica() == $i) echo "checked"; ?>>
               <label for="didatica<?= $i ?>"><i class="bi bi-star-fill"></i></label>
             <?php endfor; ?>
           </div>
@@ -60,7 +61,8 @@ require_once(__DIR__ . "/../include/menu.php");
           <label class="form-label mt-2">Interação:</label>
           <div class="estrela">
             <?php for ($i = 5; $i >= 1; $i--): ?>
-              <input type="radio" name="notaInteracao" id="interacao<?= $i ?>" value="<?= $i ?>">
+              <input type="radio" name="notaInteracao" id="interacao<?= $i ?>" value="<?= $i ?>"
+                  <?php if ($dados['avaliacao'] && $dados['avaliacao']->getNotaInteracao() == $i) echo "checked"; ?>>
               <label for="interacao<?= $i ?>"><i class="bi bi-star-fill"></i></label>
             <?php endfor; ?>
           </div>
@@ -72,7 +74,8 @@ require_once(__DIR__ . "/../include/menu.php");
           <label class="form-label mt-2">Uso de recursos:</label>
           <div class="estrela">
             <?php for ($i = 5; $i >= 1; $i--): ?>
-              <input type="radio" name="notaRecursos" id="recursos<?= $i ?>" value="<?= $i ?>">
+              <input type="radio" name="notaRecursos" id="recursos<?= $i ?>" value="<?= $i ?>"
+                   <?php if ($dados['avaliacao'] && $dados['avaliacao']->getNotaRecursos() == $i) echo "checked"; ?>>
               <label for="recursos<?= $i ?>"><i class="bi bi-star-fill"></i></label>
             <?php endfor; ?>
           </div>
@@ -84,7 +87,8 @@ require_once(__DIR__ . "/../include/menu.php");
           <label class="form-label mt-2">Motivação:</label>
           <div class="estrela">
             <?php for ($i = 5; $i >= 1; $i--): ?>
-              <input type="radio" name="notaMotivacao" id="motivacao<?= $i ?>" value="<?= $i ?>">
+              <input type="radio" name="notaMotivacao" id="motivacao<?= $i ?>" value="<?= $i ?>"
+                   <?php if ($dados['avaliacao'] && $dados['avaliacao']->getNotaMotivacao() == $i) echo "checked"; ?>>
               <label for="motivacao<?= $i ?>"><i class="bi bi-star-fill"></i></label>
             <?php endfor; ?>
           </div>
@@ -96,7 +100,8 @@ require_once(__DIR__ . "/../include/menu.php");
           <label class="form-label mt-2">Organização:</label>
           <div class="estrela">
             <?php for ($i = 5; $i >= 1; $i--): ?>
-              <input type="radio" name="notaOrganizacao" id="organizacao<?= $i ?>" value="<?= $i ?>">
+              <input type="radio" name="notaOrganizacao" id="organizacao<?= $i ?>" value="<?= $i ?>"
+                   <?php if ($dados['avaliacao'] && $dados['avaliacao']->getNotaOrganizacao() == $i) echo "checked"; ?>>
               <label for="organizacao<?= $i ?>"><i class="bi bi-star-fill"></i></label>
             <?php endfor; ?>
           </div>
@@ -133,6 +138,8 @@ require_once(__DIR__ . "/../include/menu.php");
           <label for="comentario" class="form-label">Comentário</label>
           <textarea name="comentario" id="comentario" class="form-control" rows="3" placeholder="Escreva um comentário...">
 <?= $dados["avaliacao"] ? $dados["avaliacao"]->getComentario() : "" ?></textarea>
+          <?= $dados["avaliacao"] ? $dados["avaliacao"]->getComentario() : "" ?>
+          </textarea>
 
           <?php if (isset($dados["erros"]["comentario"])): ?>
             <small class="text-danger"><?= $dados["erros"]["comentario"] ?></small>

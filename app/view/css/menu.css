@@ -70,3 +70,18 @@
     font-size: 14px;
   }
 }
+
+@media (max-width: 576px) {
+  .navbar-custom {
+    padding: 6px 10px;
+  }
+
+  .navbar-logo {
+    height: 40px;
+  }
+
+  .navbar-custom .nav-link {
+    font-size: 14px;
+    padding: 8px 10px;
+  }
+}
