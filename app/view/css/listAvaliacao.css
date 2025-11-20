@@ -1,31 +1,105 @@
+/* Fundo geral */
 body {
-    background-color: #1b3d69;
-    color: white;
+    background: linear-gradient(120deg, #0f1e3a, #1b3d69);
+    color: #fff;
     font-family: 'Segoe UI', sans-serif;
+    min-height: 100vh;
+    padding-bottom: 50px;
 }
 
-.card {
-    border-radius: 15px;
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
-}
-
-.card-title {
-    font-weight: bold;
-    color: #1b3d69;
-}
-
+/* Container */
 .container {
     max-width: 1100px;
 }
 
-i {
-  font-size: 1.8rem;
-  color: #f7d21e;
+/* Título da disciplina */
+.titulo-disciplina {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #f4f4f4;
+    letter-spacing: 1px;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 20px;
 }
 
+.professor-nome {
+    font-size: 1.2rem;
+    color: #bcd7ff;
+}
 
+/* Card das avaliações */
+.avaliacao-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 18px;
+    transition: transform 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
+    border: 1px solid rgba(255,255,255,0.1);
+    height: 100%;
+}
+
+.avaliacao-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+/* Cabeçalho do card */
+.cabecalho-bimestre {
+    background: #123d6e;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #fff;
+    border-radius: 18px 18px 0 0;
+    padding: 10px 0;
+    text-align: center;
+}
+
+/* Critérios */
+.criterio-linha {
+    display: flex;
+    justify-content: space-between;
+    margin: 8px 0;
+    padding: 8px 12px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.05);
+}
+
+.criterio-nome {
+    font-weight: 600;
+}
+
+.estrela {
+    font-size: 1.4rem;
+    color: #ffdd4b;
+}
+
+/* Comentários */
+.comentario-bloco {
+    margin-top: 15px;
+    padding: 12px;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.aluno-comentario {
+    background: rgba(255, 255, 255, 0.1);
+    border-left: 4px solid #31344b;
+}
+
+.resposta-prof {
+    background: rgba(50, 115, 255, 0.2);
+    border-left: 4px solid #4ca3ff;
+}
+
+/* Texto dos comentários */
+.comentario-bloco p {
+    margin-top: 5px;
+    color: #e4e4e4;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .avaliacao-card {
+        margin-bottom: 20px;
+    }
+}
