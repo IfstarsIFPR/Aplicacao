@@ -19,12 +19,14 @@ require_once(__DIR__ . "/../include/menu.php");
         <div class="col-md-6">
 
           <!-- Clareza -->
+           <span class="info-icon" data-info="Capacidade do professor de transmitir o conteúdo de forma compreensível.">i</span>
           <label class="form-label">Clareza na explicação:</label>
           <div class="estrela">
             <?php for ($i = 5; $i >= 1; $i--): ?>
               <input type="radio" name="notaClareza" id="clareza<?= $i ?>" value="<?= $i ?>"
                 <?php if ($dados['avaliacao'] && $dados['avaliacao']->getNotaClareza() == $i) echo "checked"; ?>>
               <label for="clareza<?= $i ?>"><i class="bi bi-star-fill"></i></label>
+
             <?php endfor; ?>
           </div>
           <?php if (isset($dados["erros"]["notaClareza"])): ?>
@@ -32,6 +34,7 @@ require_once(__DIR__ . "/../include/menu.php");
           <?php endif; ?>
 
           <!-- Domínio -->
+            <span class="info-icon" data-info="Nível de conhecimento e segurança demonstrado pelo professor ao abordar os temas da disciplina.">i</span>
           <label class="form-label mt-2">Domínio do conteúdo:</label>
           <div class="estrela">
             <?php for ($i = 5; $i >= 1; $i--): ?>
@@ -45,11 +48,12 @@ require_once(__DIR__ . "/../include/menu.php");
           <?php endif; ?>
 
           <!-- Didática -->
+            <span class="info-icon" data-info="Forma como o professor organiza e apresenta o conteúdo, facilitando o processo de aprendizagem.">i</span>
           <label class="form-label mt-2">Didática:</label>
           <div class="estrela">
             <?php for ($i = 5; $i >= 1; $i--): ?>
               <input type="radio" name="notaDidatica" id="didatica<?= $i ?>" value="<?= $i ?>"
-                  <?php if ($dados['avaliacao'] && $dados['avaliacao']->getNotaDidatica() == $i) echo "checked"; ?>>
+                <?php if ($dados['avaliacao'] && $dados['avaliacao']->getNotaDidatica() == $i) echo "checked"; ?>>
               <label for="didatica<?= $i ?>"><i class="bi bi-star-fill"></i></label>
             <?php endfor; ?>
           </div>
@@ -58,11 +62,12 @@ require_once(__DIR__ . "/../include/menu.php");
           <?php endif; ?>
 
           <!-- Interação -->
+            <span class="info-icon" data-info="Comunicação entre professor e alunos, promovendo participação e esclarecimento de dúvidas.">i</span>
           <label class="form-label mt-2">Interação:</label>
           <div class="estrela">
             <?php for ($i = 5; $i >= 1; $i--): ?>
               <input type="radio" name="notaInteracao" id="interacao<?= $i ?>" value="<?= $i ?>"
-                  <?php if ($dados['avaliacao'] && $dados['avaliacao']->getNotaInteracao() == $i) echo "checked"; ?>>
+                <?php if ($dados['avaliacao'] && $dados['avaliacao']->getNotaInteracao() == $i) echo "checked"; ?>>
               <label for="interacao<?= $i ?>"><i class="bi bi-star-fill"></i></label>
             <?php endfor; ?>
           </div>
@@ -71,11 +76,12 @@ require_once(__DIR__ . "/../include/menu.php");
           <?php endif; ?>
 
           <!-- Recursos -->
+            <span class="info-icon" data-info="Emprego adequado de materiais e ferramentas que auxiliam na compreensão do conteúdo.">i</span>
           <label class="form-label mt-2">Uso de recursos:</label>
           <div class="estrela">
             <?php for ($i = 5; $i >= 1; $i--): ?>
               <input type="radio" name="notaRecursos" id="recursos<?= $i ?>" value="<?= $i ?>"
-                   <?php if ($dados['avaliacao'] && $dados['avaliacao']->getNotaRecursos() == $i) echo "checked"; ?>>
+                <?php if ($dados['avaliacao'] && $dados['avaliacao']->getNotaRecursos() == $i) echo "checked"; ?>>
               <label for="recursos<?= $i ?>"><i class="bi bi-star-fill"></i></label>
             <?php endfor; ?>
           </div>
@@ -84,11 +90,12 @@ require_once(__DIR__ . "/../include/menu.php");
           <?php endif; ?>
 
           <!-- Motivação -->
+            <span class="info-icon" data-info="Capacidade do professor de estimular o interesse e o engajamento dos alunos durante as aulas.">i</span>
           <label class="form-label mt-2">Motivação:</label>
           <div class="estrela">
             <?php for ($i = 5; $i >= 1; $i--): ?>
               <input type="radio" name="notaMotivacao" id="motivacao<?= $i ?>" value="<?= $i ?>"
-                   <?php if ($dados['avaliacao'] && $dados['avaliacao']->getNotaMotivacao() == $i) echo "checked"; ?>>
+                <?php if ($dados['avaliacao'] && $dados['avaliacao']->getNotaMotivacao() == $i) echo "checked"; ?>>
               <label for="motivacao<?= $i ?>"><i class="bi bi-star-fill"></i></label>
             <?php endfor; ?>
           </div>
@@ -97,11 +104,12 @@ require_once(__DIR__ . "/../include/menu.php");
           <?php endif; ?>
 
           <!-- Organização -->
+            <span class="info-icon" data-info="Planejamento das aulas e estruturação clara do conteúdo, atividades e avaliações.">i</span>
           <label class="form-label mt-2">Organização:</label>
           <div class="estrela">
             <?php for ($i = 5; $i >= 1; $i--): ?>
               <input type="radio" name="notaOrganizacao" id="organizacao<?= $i ?>" value="<?= $i ?>"
-                   <?php if ($dados['avaliacao'] && $dados['avaliacao']->getNotaOrganizacao() == $i) echo "checked"; ?>>
+                <?php if ($dados['avaliacao'] && $dados['avaliacao']->getNotaOrganizacao() == $i) echo "checked"; ?>>
               <label for="organizacao<?= $i ?>"><i class="bi bi-star-fill"></i></label>
             <?php endfor; ?>
           </div>
@@ -150,7 +158,7 @@ require_once(__DIR__ . "/../include/menu.php");
 
 
 
-        
+
 
       </div>
 
@@ -161,6 +169,14 @@ require_once(__DIR__ . "/../include/menu.php");
     ?>
   </div>
 </div>
+
+<script>
+function mostrarDescricao(id) {
+  const div = document.getElementById(id);
+  div.style.display = (div.style.display === "none") ? "block" : "none";
+}
+</script>
+
 
 <?php
 require_once(__DIR__ .  "/../include/footer.php");
