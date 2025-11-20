@@ -7,11 +7,9 @@ require_once(__DIR__ . "/../include/menu.php");
 ?>
 <link rel="stylesheet" href="<?= BASEURL ?>/view/css/perfil.css">
 
-<h3 class="text-center mt-5">
-    Perfil
-</h3>
-
 <div class="container">
+
+    <h3 class="text-center mt-5">Perfil</h3>
 
     <div class="row mt-2">
         <div class="col-12 mb-2">
@@ -30,12 +28,6 @@ require_once(__DIR__ . "/../include/menu.php");
         </div>
 
     </div>
-
-<div class="col-6">
-            <?php require_once(__DIR__ . "/../include/msg.php"); ?>
-        </div>
-    </div>
-</div>
 </div>
 
 <?php  

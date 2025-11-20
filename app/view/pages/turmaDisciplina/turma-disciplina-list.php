@@ -8,13 +8,11 @@ require_once(__DIR__ . "/../../include/menu.php");
 
 <link rel="stylesheet" href="<?= BASEURL ?>/view/css/TurmDisc_list.css">
 
-
 <div class="container">
 
     <h3 class="text-center">Disciplinas da Turma</h3>
 
     <div class="row">
-
 
         <?php foreach ($dados['lista'] as $disc): ?>
 
@@ -30,10 +28,7 @@ require_once(__DIR__ . "/../../include/menu.php");
             <!-- ./col -->
 
         <?php endforeach; ?>
-
     </div>
     <!-- /.row -->
-
 </div>
-
 <?php require_once(__DIR__ . "/../../include/footer.php"); ?>

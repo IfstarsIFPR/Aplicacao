@@ -4,12 +4,15 @@
 require_once(__DIR__ . "/../include/header.php");
 ?>
 <link rel="stylesheet" href="<?= BASEURL ?>/view/css/login.css">
+
 <div class="login-container">
+
     <div class="login-info">
         <img src="/Aplicacao/app/view/img/logoStars.png" alt="Logo STARS" />
         <p style="margin-top: 10px; font-size: 25px;">
             Sistema de feedbacks de alunos sobre professores do IFPR - Campus Foz do Iguaçu.
         </p>
+
         <div class="illustration">
             <img style="max-width: 1200px;" src="/Aplicacao/app/view/img/mulherestrela1.png" alt="Ilustração">
         </div>
@@ -55,11 +58,6 @@ require_once(__DIR__ . "/../include/header.php");
         </form>
     </div>
 </div>
-</div>
-</div>
-
-
-
 <?php
 require_once(__DIR__ . "/../include/footer.php");
 ?>
