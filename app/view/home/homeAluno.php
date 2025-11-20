@@ -11,13 +11,6 @@ require_once(__DIR__ . "/../include/menu.php");
 
 <div class="container">
 
-    <?php
-    // echo '<pre>';
-    // var_dump($dados['turmas']);
-    // echo '</pre>';
-    // die;
-    ?>
-
     <?php if (isset($dados['mensagem'])) : ?>
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
             <strong>Alerta!</strong> <?= $dados['mensagem'] ?>

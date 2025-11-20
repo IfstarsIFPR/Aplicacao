@@ -96,7 +96,7 @@ class AvaliacaoDAO
     public function listDisciplinasAvaliadas(int $idAluno): array
     {
         $conn = Connection::getConn();
-        $sql = "SELECT DISTINCT d.idDisciplina, d.nomeDisciplina
+        $sql = "SELECT d.idDisciplina, d.nomeDisciplina
         FROM avaliacao a
         INNER JOIN disciplina d ON d.idDisciplina = a.idDisciplina
         WHERE a.idAluno = ?
@@ -116,13 +116,11 @@ class AvaliacaoDAO
         $stm->execute([$idAluno, $idDisciplina, $bimestre]);
         $result = $stm->fetchAll(PDO::FETCH_ASSOC);
 
-        if(empty($result))
+        if (empty($result))
             return false;
         else
             return true;
     }
-
-
 
     public function listComentariosByDisciplinaProfessor($idProfessor, $idTurma, $idDisciplina, $bimestre): array
     {
@@ -154,8 +152,6 @@ class AvaliacaoDAO
         return $stmt->execute();
     }
 
-
-
     public function listByDisciplinaProfessor($idProfessor, $idTurma, $idDisciplina, $bimestre)
     {
         $conn = Connection::getConn();
@@ -181,7 +177,6 @@ class AvaliacaoDAO
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-
     public function listByDisciplinaId($idAluno, $idDisciplina)
     {
         $conn = Connection::getConn();
@@ -197,7 +192,6 @@ class AvaliacaoDAO
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-
     public function listByDisciplinaAndAluno($idDisciplina, $idAluno)
     {
         $conn = Connection::getConn();
@@ -209,10 +203,6 @@ class AvaliacaoDAO
         $stmt->execute([$idDisciplina, $idAluno]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-
-
-
-
 
     //TODO: Implementar método de atualização
     public function update()

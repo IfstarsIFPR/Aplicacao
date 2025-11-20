@@ -16,7 +16,6 @@ require_once(__DIR__ . "/../include/menu.php");
                 <form id="formCurso" method="POST"
                       action="<?= BASEURL ?>/controller/CursoController.php?action=save">
 
-                    <!-- NOME -->
                     <div class="mb-3">
                         <label class="form-label" for="txtNome">Nome:</label>
                         <input class="form-control" type="text" id="txtNome" name="nomeCurso"
@@ -27,7 +26,6 @@ require_once(__DIR__ . "/../include/menu.php");
                         <?php endif; ?>
                     </div>
 
-                    <!-- NIVEL -->
                     <div class="mb-3">
                         <label class="form-label" for="selNivel">Nível:</label>
                         <select class="form-select" name="nivel" id="selNivel">

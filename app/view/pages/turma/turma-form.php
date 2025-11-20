@@ -6,14 +6,16 @@ require_once(__DIR__ . "/../../include/header.php");
 require_once(__DIR__ . "/../../include/menu.php");
 ?>
 <link rel="stylesheet" href="<?= BASEURL ?>/view/css/form.css">
-<h3 class="text-center">
+
+<h3 class="text-center mt-5">
     <?php if ($dados['idTurma'] == 0) echo "Inserir";
     else echo "Alterar"; ?>
     Turmas
 </h3>
+
 <div class="row">
-    <div class="col-12">
-        <div class="form-container  d-flex justify-content-center">
+    <div class="container">
+        <div class="form-container d-flex justify-content-center">
 
             <div class="form" style="border-radius: 20px">
                 <form id="formTurma" method="POST"
@@ -28,7 +30,6 @@ require_once(__DIR__ . "/../../include/menu.php");
                         <?php endif; ?>
                     </div>
 
-
                     <div class="mb-3">
                         <label class="form-label" for="numCodigo">Código:</label>
                         <input class="form-control" type="number" id="numCodigo" name="codigoTurma"
@@ -38,7 +39,6 @@ require_once(__DIR__ . "/../../include/menu.php");
                             <small class="text-danger"><?= $dados["erros"]["codigoTurma"] ?></small>
                         <?php endif; ?>
                     </div>
-
 
                     <div class="mb-3">
                         <label class="form-label" for="selTurno">Turno:</label>
@@ -56,7 +56,6 @@ require_once(__DIR__ . "/../../include/menu.php");
                             <small class="text-danger"><?= $dados["erros"]["turno"] ?></small>
                         <?php endif; ?>
                     </div>
-
 
                     <div class="mb-3">
                         <label class="form-label" for="selCurso">Curso:</label>
@@ -77,7 +76,6 @@ require_once(__DIR__ . "/../../include/menu.php");
                         <?php endif; ?>
                     </div>
 
-
                     <input type="hidden" id="hddId" name="idTurma"
                         value="<?= $dados['idTurma']; ?>" />
 
@@ -87,8 +85,6 @@ require_once(__DIR__ . "/../../include/menu.php");
                 </form>
             </div>
         </div>
-
-
         <div class="col-6">
             <?php require_once(__DIR__ . "/../../include/msg.php"); ?>
         </div>

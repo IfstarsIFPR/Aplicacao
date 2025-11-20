@@ -177,7 +177,5 @@ class DisciplinaDAO {
 
         return $disciplinas;
     }
-    
-
 
 }

@@ -7,23 +7,16 @@ require_once(__DIR__ . "/../../include/menu.php");
 ?>
 <link rel="stylesheet" href="<?= BASEURL ?>/view/css/form.css">
 
-<div class="row">
-
-
-    <h3 class="text-center">
+   <h3 class="text-center mt-5">
         <?php if (!isset($dados['idDisciplina']) || $dados['idDisciplina'] == 0)
             echo "Inserir";
         else echo "Alterar"; ?>
         Disciplinas
     </h3>
 
-    <div class="col-12">
-        <a class="btn btn-secondary"
-            href="<?= BASEURL ?>/controller/DisciplinaController.php?action=list"> ← </a>
-    </div>
-</div>
-
 <div class="container">
+
+<div class="row">
     <div class="col-12">
         <div class="form-container d-flex justify-content-center">
 
@@ -62,7 +55,6 @@ require_once(__DIR__ . "/../../include/menu.php");
                         <?php endif; ?>
                     </div>
 
-
                     <!-- Campo hidden para o ID da disciplina -->
                     <input type="hidden" name="idDisciplina"
                         value="<?= isset($dados['idDisciplina']) ? $dados['idDisciplina'] : 0 ?>">
@@ -73,13 +65,12 @@ require_once(__DIR__ . "/../../include/menu.php");
                 </form>
             </div>
         </div>
-
-        <div class="col-6">
+            <div class="col-6">
             <?php require_once(__DIR__ . "/../../include/msg.php"); ?>
+            </div>
         </div>
     </div>
 </div>
-
 <script src="<?= BASEURL ?>/view/js/multiselect-dropdown.js"></script>
 
 <?php

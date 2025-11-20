@@ -77,7 +77,6 @@ class CursoDAO {
         $stm->execute();
     }
 
-
     //Método para converter um registro da base de dados em um objeto Curso
     private function mapCursos($result) {
         $cursos = array();
