@@ -1,0 +1,167 @@
+body {
+     background-color: #1b3d69;
+ }
+/* Container principal */
+
+.container-grafico {
+    background: linear-gradient(90deg, #0a2a52, #084190);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    color: #fff;
+    margin-bottom: 50px;
+}
+
+/* Título centralizado */
+.container-grafico h3 {
+    font-weight: 600;
+    color: #f8f9fa;
+}
+
+/* Barra superior com título + select */
+.top-bar {
+    background: rgba(255,255,255,0.05);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+/* Ajuste do select */
+.select-bimestre {
+    width: 200px;
+    background-color: #074d8a;
+    color: white;
+    border: 1px solid #ffffff;
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+.select-bimestre:hover {
+    cursor: pointer;
+}
+
+.select-bimestre option {
+    background-color: #0f4c81;
+    color: #fff;
+}
+
+/* Adapta melhor no celular */
+@media (max-width: 768px) {
+    .top-bar {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    .select-bimestre {
+        width: 100%;
+    }
+}
+
+
+
+
+/* Cards de comentários */
+.comentarios .card {
+      background: rgba(255,255,255,0.05);
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    color: #f1f1f1;
+    margin-bottom: 20px;
+}
+
+.titulo-comentarios {
+    color: #f1f1f1;
+    font-weight: 600;
+    position: relative;
+}
+
+.titulo-comentarios::after {
+    content: "";
+    width: 100%;
+    height: 2px;
+    background: #f1f1f1;
+    display: block;
+    margin-top: 6px;
+    opacity: 0.4;
+}
+
+/* Cards lado a lado */
+.card-comentario {
+    background-color: #072957;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+    color: #f1f1f1;
+
+    /* define tamanho dos cards */
+    width: calc(50% - 12px);   /* 2 por linha */
+    min-height: 170px;  
+}
+
+
+/* Em telas pequenas volta a 1 por linha */
+@media (max-width: 768px) {
+    .card-comentario {
+        width: 100%;
+    }
+}
+
+
+/* Título do comentário */
+.comentarios .card strong {
+    color: #ffffff; /* destaque para "Anônimo" */
+}
+
+/* Texto do comentário */
+.comentarios .card-text {
+    font-size: 0.95rem;
+}
+
+/* Área de resposta do professor */
+.comentarios textarea {
+    background-color: #406eaa90;
+    color: #ffffff;
+    border: 1px solid #19488690;
+    border-radius: 6px;
+    resize: none;
+}
+
+/* Botões */
+.comentarios .btn-primary {
+    background-color: #007bff;
+    border: none;
+}
+
+.comentarios .btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.comentarios .card-link {
+    color: #dc3545;
+    font-size: 0.85rem;
+}
+
+/* Centraliza botões dentro do card */
+.acoes-comentario {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Link denunciar parecendo botão */
+.acoes-comentario .card-link {
+    color: #ff8080;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.acoes-comentario .card-link:hover {
+    color: #ff4d4d;
+    text-decoration: underline;
+}
+
+
+
+
+

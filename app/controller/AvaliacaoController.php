@@ -137,6 +137,23 @@ class AvaliacaoController extends Controller
         // print('</pre>');
         // die;
 
+        // Buscar nomes da disciplina e turma
+        $disciplinaDao = new DisciplinaDAO();
+        $disciplina = $disciplinaDao->findById($idDisciplina);
+
+        $turmaDao = new TurmaDAO();
+        $turma = $turmaDao->findById($idTurma);
+
+        // Buscar curso da turma usando CursoDAO
+        $cursoDao = new CursoDAO();
+        $curso = $cursoDao->findById($turma->getCurso()->getId());
+
+
+
+        // Montar nome da turma: "Nome do Curso - Ano da Turma"
+        $dados["nomeTurma"] = ($curso ? $curso->getNome() : "Curso não informado") . " - " . $turma->getAnoTurma();
+        $dados["nomeDisciplina"] = $disciplina->getNomeDisciplina();
+        
         $this->loadView("usuario/graficoAvaliacao.php", $dados);
     }
 
