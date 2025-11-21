@@ -1,0 +1,43 @@
+body {
+    background: linear-gradient(120deg, #355887, #1b3d69);
+
+ }
+.sem-avaliacao-box {
+    text-align: center;
+    margin-top: 80px;
+    background: #1b3d69;
+    padding: 40px;
+    border-radius: 15px;
+    color: white;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+}
+
+.sem-avaliacao-img {
+    width: 450px;
+    opacity: 1;
+    margin-bottom: 25px;
+    filter: drop-shadow(0 5px 10px rgba(0,0,0,0.3));
+}
+
+.sem-avaliacao-box h2 {
+    margin-bottom: 10px;
+}
+
+.info-turma-disc {
+    font-size: 1.1rem;
+    color: #dce6f7;
+}
+
+.btn-voltar {
+    background: #033887;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    transition: 0.2s ease-in-out;
+}
+
+.btn-voltar:hover {
+    background: #084fbf;
+}

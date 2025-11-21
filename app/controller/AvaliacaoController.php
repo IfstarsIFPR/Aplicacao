@@ -115,46 +115,66 @@ class AvaliacaoController extends Controller
 
     protected function grafico()
     {
-        if (!isset($_GET['idDisciplina'])) {
-            $this->list("Disciplina não informada.");
-            return;
+    if (!isset($_GET['idDisciplina']) || !isset($_GET['idTurma']) || !isset($_GET['bimestre'])) {
+        $this->list("Parâmetros insuficientes.");
+        return;
+    }
+
+    $idProfessor = $this->getIdUsuarioLogado();
+    $idTurma = $_GET['idTurma'];
+    $idDisciplina = $_GET['idDisciplina'];
+    $bimestre = $_GET['bimestre'];
+
+    // Buscar médias e comentários
+    $medias = $this->avaliacaoDao->listByDisciplinaProfessor($idProfessor, $idTurma, $idDisciplina, $bimestre);
+    $comentarios = $this->avaliacaoDao->listComentariosByDisciplinaProfessor($idProfessor, $idTurma, $idDisciplina, $bimestre);
+
+    // --- VERIFICA SE NÃO EXISTEM AVALIAÇÕES ---
+    $temMedias = false;
+    foreach ($medias as $m) {
+        if (!is_null($m)) {
+            $temMedias = true;
+            break;
         }
+    }
 
-        $idProfessor = $this->getIdUsuarioLogado();
-
-        $idTurma = $_GET['idTurma'];
-        $idDisciplina = $_GET['idDisciplina'];
-        $bimestre = $_GET['bimestre'];
-
-
-        // DAO deve retornar TODAS as avaliações da disciplina (todos os alunos)
-        $dados["avaliacoes"] = $this->avaliacaoDao->listByDisciplinaProfessor($idProfessor, $idTurma, $idDisciplina, $bimestre);
-
-        $dados["comentarios"] = $this->avaliacaoDao->listComentariosByDisciplinaProfessor($idProfessor, $idTurma, $idDisciplina, $bimestre);
-
-        // print('<pre>');
-        // print_r($dados["avaliacoes"]);
-        // print('</pre>');
-        // die;
-
-        // Buscar nomes da disciplina e turma
+    if (!$temMedias && empty($comentarios)) {
+        // Carregar apenas nomes da disciplina e turma para exibir na tela vazia
         $disciplinaDao = new DisciplinaDAO();
         $disciplina = $disciplinaDao->findById($idDisciplina);
 
         $turmaDao = new TurmaDAO();
         $turma = $turmaDao->findById($idTurma);
 
-        // Buscar curso da turma usando CursoDAO
-        $cursoDao = new CursoDAO();
-        $curso = $cursoDao->findById($turma->getCurso()->getId());
-
-
-
-        // Montar nome da turma: "Nome do Curso - Ano da Turma"
-        $dados["nomeTurma"] = ($curso ? $curso->getNome() : "Curso não informado") . " - " . $turma->getAnoTurma();
         $dados["nomeDisciplina"] = $disciplina->getNomeDisciplina();
-        
-        $this->loadView("usuario/graficoAvaliacao.php", $dados);
+        $dados["nomeTurma"] = $turma->getAnoTurma();
+
+        $this->loadView("usuario/semAvaliacao.php", $dados);
+        return;
+    }
+
+    // Se existe avaliação → continua
+    $dados["avaliacoes"] = $medias;
+    $dados["comentarios"] = $comentarios;
+
+    // Buscar nomes da disciplina e turma
+    $disciplinaDao = new DisciplinaDAO();
+    $disciplina = $disciplinaDao->findById($idDisciplina);
+
+    $turmaDao = new TurmaDAO();
+    $turma = $turmaDao->findById($idTurma);
+
+    // Buscar curso da turma usando CursoDAO
+    $cursoDao = new CursoDAO();
+    $curso = $cursoDao->findById($turma->getCurso()->getId());
+
+    // Montar nome da turma: "Nome do Curso - Ano da Turma"
+    $dados["nomeTurma"] = ($curso ? $curso->getNome() : "Curso não informado") . " - " . $turma->getAnoTurma();
+    $dados["nomeDisciplina"] = $disciplina->getNomeDisciplina();
+    
+    $this->loadView("usuario/graficoAvaliacao.php", $dados);
+
+
     }
 
     // Exibe o formulário de criação

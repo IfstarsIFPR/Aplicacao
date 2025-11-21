@@ -36,7 +36,6 @@ document.addEventListener("DOMContentLoaded", function () {
             datasets: [{
                 data: valores,
                 backgroundColor: colors, // <- 7 cores diferentes
-                borderColor: "#fff",
                 borderWidth: 2,
                 borderRadius: 8
             }]
