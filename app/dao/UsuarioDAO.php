@@ -152,7 +152,7 @@ class UsuarioDAO {
         $conn = Connection::getConn();
 
         $sql = "UPDATE usuario SET email = :email," . 
-              " nomeUsuario = :nomeUsuario," . " senha = :senha," .  " tipoUsuario = :tipoUsuario," .
+              " nomeUsuario = :nomeUsuario," . " senha = :senha," .  " tipoUsuario = :tipoUsuario," . " foto_perfil = :foto_perfil," .
               " idCurso = :idCurso" .
                " WHERE idUsuario = :id";
         
@@ -160,6 +160,7 @@ class UsuarioDAO {
         $stm->bindValue("email", $usuario->getEmail());
         $stm->bindValue("nomeUsuario", $usuario->getNome());
         $stm->bindValue("senha", password_hash($usuario->getSenha(), PASSWORD_DEFAULT));
+        $stm->bindValue("foto_perfil", $usuario->getFotoPerfil());
         $stm->bindValue("tipoUsuario", $usuario->getTipoUsuario());
         $stm->bindValue("idCurso", ($usuario->getCurso() ? $usuario->getCurso()->getId() : NULL));
         $stm->bindValue("id", $usuario->getId());
@@ -175,6 +176,16 @@ class UsuarioDAO {
         $stm = $conn->prepare($sql);
         $stm->bindValue("id", $id);
         $stm->execute();
+    }
+
+    public function updateFotoPerfil(Usuario $usuario) {
+        $conn = Connection::getConn();
+
+        $sql = "UPDATE usuario SET foto_perfil = ? WHERE idUsuario = ?";
+
+        $stm = $conn->prepare($sql);
+        $stm->execute(array($usuario->getFotoPerfil(), $usuario->getId()));
+        
     }
 
     //Método para retornar a quantidade de usuários salvos na base
@@ -212,6 +223,7 @@ class UsuarioDAO {
             $usuario->setSenha($reg['senha']);
             $usuario->setTipoUsuario($reg['tipoUsuario']);
             $usuario->setSiape($reg['siape']);
+            $usuario->setFotoPerfil($reg['foto_perfil']);
             $usuario->setDeclaracaoMatricula($reg['declaracaoMatricula']);
             $usuario->setStatus($reg['status']);
             

@@ -9,6 +9,7 @@ error_reporting(E_ALL);
 
 require_once(__DIR__ . "/../../model/enum/UsuarioTipo.php");
 require_once(__DIR__ . "/../../dao/TurmaAlunoDAO.php");
+require_once(__DIR__ . "/../../dao/UsuarioDAO.php");
 
 try {
     if (session_status() === PHP_SESSION_NONE) {
@@ -54,6 +55,9 @@ try {
     // Tratar exceção se necessário
 }
 
+// Obter os dados do usuário logado (principalmente a foto de perfil)
+$usuarioDao = new UsuarioDAO();
+$usuario = $usuarioDao->findById($idUsuario);
 
 
 ?>
@@ -146,7 +150,7 @@ try {
             </ul>
             <a class="nav-link d-flex align-items-center user-menu" href="#" id="navbarUsuario"
                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <div class="user-avatar"><?= strtoupper(substr($nome, 0, 2)) ?></div>
+                <div class="user-avatar"> <img src="<?= BASEURL_ARQUIVOS . '/' . $usuario->getFotoPerfil() ?>" style="width: 50px; height: 50px; object-fit: cover; border-radius: 50%;"> </div>
             </a>
 
 
