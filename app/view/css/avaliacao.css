@@ -2,28 +2,45 @@
   --amarelo: #f7d21e;
 }
 
-html,
-body {
-    overflow-x: hidden;
-    overflow-y: auto;
-    background-color: #1b3d69;
+html, body {
+  background-color: #1b3d69;
+  overflow-x: hidden;
 }
 
+/* ===== COLUNA DA ESQUERDA (critérios) ===== */
+.estrelas-container {
+  background-color: #0d2b55;
+  padding: 20px 25px;
+  border-radius: 20px;
+  /* width: 350px; */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+
+.estrela input { 
+  display: none; 
+}
+
+.form-label {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  margin-left: 4px;
+}
+
+/* ===== ESTRELAS ===== */
 .estrela {
+  background-color: #11274c;
   display: flex;
-  flex-direction: row-reverse;
-  justify-content: flex-end;
-}
+  justify-content: space-around;
+  border-radius: 20px;
+  padding: 5px 5px 5px 5px;
 
-.estrela input {
-  display: none;
+  direction: rtl; 
 }
 
 .estrela label i {
-  font-size: 1.8rem;
-  color: #ccc;
-  cursor: pointer;
-  transition: color 0.2s;
+  font-size: 1.4rem;
+  color: rgb(64, 64, 105);
 }
 
 .estrela input:checked ~ label i,
@@ -31,43 +48,51 @@ body {
 .estrela label:hover ~ label i {
   color: var(--amarelo);
 }
-.btn-enviar {
-  margin-top: 15px;
-  background-color: transparent;
-  border: 2px solid white;
-  color: white;
-  padding: 10px 25px;
-  font-size: 1.1rem;
-  border-radius: 30px;
-  width: 100%;
-  cursor: pointer;
-  transition: 0.2s ease-in-out;
+
+/* ===== COLUNA DIREITA ===== */
+.forms{
+  padding-left: px;
 }
 
-.btn-enviar:hover {
-  background-color: rgba(255, 255, 255, 0.15);
+/* ===== CAMPOS ===== */
+.form-select,
+.form-control {
+  background-color: #11274c;
+  color: white;
+  border-radius: 20px;
+  padding: 12px 18px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  border: none;
+}
+
+.form-control::placeholder {
+  color: #bcd2e0;
+}
+
+/* ===== BOTÃO ===== */
+.btn-primary {
+  background-color: transparent !important;
+  border: 1px solid #cbdbeb;
+  border-radius: 25px !important;
+  padding: 10px;
+  transition: 0.2s;
+}
+
+.btn-primary:hover {
+  background-color: rgba(255,255,255,0.15) !important;
   transform: scale(1.03);
 }
-.text-danger {
-    display: block;
-    margin-bottom: 8px;
-}
-.box-validacao {
-  background-color: #0b1a33; /* azul escuro */
-  color: white; 
-  padding: 15px;
-  border-radius: 10px;
-  margin-bottom: 20px;
-  border-left: 5px solid var(--amarelo); /* opcional: detalhe */
-}
 
-.box-validacao p {
-  margin: 0;
-  padding: 3px 0;
+.info-icon {
+ 
+  border: 1px solid #cbdbeb;
+  color: #3aa0ff;
+  font-size: 11px;
+  margin-right: 5px;
 }
-
 /* Ícone */
 .info-icon {
+  background-color: transparent;
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -75,7 +100,6 @@ body {
   height: 18px;
   margin-left: 6px;
   border-radius: 50%;
-  background-color: #0f2c54;
   color: white;
   font-size: 12px;
   cursor: pointer;
@@ -103,5 +127,21 @@ body {
 .topico {
   font-weight: 600;
   margin-bottom: 5px;
+}
+
+.text-danger {
+  display: block;
+  margin-top: 10px;
+}
+
+.avaliacao-container .btn-voltar  {
+  font-size: 30px;
+  color: #fff;
+  float: left;
+}
+
+.nome-professor {
+  text-transform: capitalize;
+  color: #fff;
 }
 

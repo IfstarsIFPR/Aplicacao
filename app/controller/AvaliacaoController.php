@@ -180,9 +180,19 @@ class AvaliacaoController extends Controller
     // Exibe o formulário de criação
     protected function create()
     {
+        $disciplinaDao = new DisciplinaDAO();
+
+        $idDisciplina = $_GET['id_disicplina'];
+
         $dados['idAvaliacao'] = 0;
         $dados['avaliacao'] = null;
-        $dados['idDisciplina'] = $_GET['id_disicplina'];
+        $dados['idDisciplina'] = $idDisciplina;
+        $dados['professor'] = $disciplinaDao->findProfessorByDisciplinaId($idDisciplina);
+
+        // print '<pre>';
+        // print_r($dados['professor']);
+        // print '</pre>';
+        // die;
 
         $this->loadView("usuario/avaliacao.php", $dados);
     }
