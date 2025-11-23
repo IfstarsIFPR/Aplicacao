@@ -1,12 +1,12 @@
  body {
-     background-color: #1b3d69;
+     background: linear-gradient(120deg, #1b3d69, #112f57);
  }
 
  html,
-body {
-    overflow-x: hidden;
-    overflow-y: auto;
-}
+ body {
+     overflow-x: hidden;
+     overflow-y: auto;
+ }
 
  h3 {
      color: #fff;

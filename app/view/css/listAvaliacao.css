@@ -35,13 +35,13 @@ body {
     background-color: rgba(255, 255, 255, 0.05);
     border-radius: 18px;
     transition: transform 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
-    border: 1px solid rgba(255,255,255,0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     height: 100%;
 }
 
 .avaliacao-card:hover {
     transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
 }
 
 /* Cabeçalho do card */
@@ -62,7 +62,7 @@ body {
     margin: 8px 0;
     padding: 8px 12px;
     border-radius: 10px;
-    background: rgba(255,255,255,0.05);
+    background: rgba(255, 255, 255, 0.05);
 }
 
 .criterio-nome {
