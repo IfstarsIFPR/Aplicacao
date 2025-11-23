@@ -6,24 +6,24 @@ require_once(__DIR__ . "/../include/header.php");
 ?>
 <link rel="stylesheet" href="<?= BASEURL ?>/view/css/CadastroAluno.css">
 
-<h3 class="text-center mt-5">
-    <?php if ($dados['idUsuario'] == 0) echo "Cadastro";
-    else echo "Alterar"; ?>
-    Aluno
-</h3>
+<div class="container">
 
-<div class="row col-md-12">
-    <div class="col-12">
-        <a class="btn btn-secondary"
-            href="<?= BASEURL ?>/controller/LoginController.php?action=login"> ← </a>
-    </div>
+    <h3 class="text-center mt-5">
+      <!-- <a href="/controller/LoginController.php?action=login" class="btn-voltar position-relative"><i class="bi bi-arrow-left-circle"></i></a>-->
+       <?php if ($dados['idUsuario'] == 0) echo "Cadastro";
+       else echo "Alterar"; ?>
+       Aluno
+    </h3>
 
-    <div class="col-lg-5 col-md-6 text-center mb-4 mb-lg-0 d-flex justify-content-center align-items-center">
-        <img src="/Aplicacao/app/view/img/logoStars.png" alt="Logo STARS">
-    </div>
+    <div class="row my-5 justify-content-center align-items-center"> 
 
-    <div class="ol-lg-5 col-md-6 p-4 text-center mb-4 mb-lg-0 d-flex justify-content-center align-items-center form-col">
-        <div class="aluno-form ">
+        <div class="col-lg-2 col-md-2 text-center d-flex justify-content-center align-items-center">
+        <img src="/Aplicacao/app/view/img/logoStars.png" 
+             class="logo-aluno" 
+             alt="Logo STARS">
+         </div>
+
+           <div class="col-md-4 offset-md-2 aluno-form">
             <form id="frmUsuario" method="POST" enctype="multipart/form-data"
                 action="<?= BASEURL ?>/controller/CadastroController.php?action=save">
 
@@ -120,13 +120,13 @@ require_once(__DIR__ . "/../include/header.php");
                 </div>
             </form>
         </div>
-    </div>
 
+    </div>
     <div class="col-3">
         <?php require_once(__DIR__ . "/../include/msg.php"); ?>
     </div>
-
 </div>
+
 <?php
 require_once(__DIR__ . "/../include/footer.php");
 ?>

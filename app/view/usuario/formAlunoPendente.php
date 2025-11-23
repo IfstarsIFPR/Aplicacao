@@ -12,11 +12,7 @@ require_once(__DIR__ . "/../include/menu.php");
     Aluno
 </h3>
 <div class="row">
-    <div class="col-12">
-        <a class="btn btn-secondary"
-            href="<?= BASEURL ?>/controller/UsuarioController.php?action=list"> ← </a>
-    </div>
-
+   
     <div class="container">
         <div class="form-container  d-flex justify-content-center">
 
@@ -31,7 +27,6 @@ require_once(__DIR__ . "/../include/menu.php");
                         <label class="form-label" for="txtdeclaracaoMatricula">Declaração de Matrícula:</label>
 
                         <a href="<?= BASEURL_ARQUIVOS . '/' . $dados["usuario"]->getdeclaracaoMatricula() ?>"> Declaração</a>
-
 
                         <!-- <input class="form-control" type="file" id="txtdeclaracaoMatricula" name="declaracaoMatricula"
                             maxlength="20" value="<?php echo (isset($dados["usuario"]) ? $dados["usuario"]->getdeclaracaoMatricula() : ''); ?>" /> -->
@@ -50,7 +45,6 @@ require_once(__DIR__ . "/../include/menu.php");
                     <div class="mt-3">
                         <button type="submit" class="btn btn-success">Atualizar Status</button>
                     </div>
-
 
                     <input type="hidden" id="hddId" name="idUsuario"
                         value="<?= $dados['idUsuario']; ?>" />

@@ -5,13 +5,13 @@ require_once(__DIR__ . "/../include/menu.php");
 
 <link rel="stylesheet" href="<?= BASEURL ?>/view/css/listAvaliacao.css">
 
-
 <div class="container">
     <h3 class="text-center text-white mb-4 mt-5">
+        <!-- <a href="/controller/TurmaDisciplinaController.php?action=list&idTurma=2" class="btn-voltar position-relative"><i class="bi bi-arrow-left-circle"></i></a>-->
+  
         <?= $dados["nomeDisciplina"] ?> —
         <span class="text-info">Professor(a) <?= $dados["nomeProfessor"] ?></span>
     </h3>
-
 
     <div class="row">
 
@@ -77,5 +77,6 @@ require_once(__DIR__ . "/../include/menu.php");
 
     </div>
 </div>
+<!--<script src="/view/js/botaovoltar.js"></script>-->
 
 <?php require_once(__DIR__ . "/../include/footer.php"); ?>

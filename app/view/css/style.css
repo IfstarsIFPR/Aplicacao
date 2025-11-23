@@ -16,12 +16,20 @@ body {
     flex-direction: column;
 }
 
+body {
+
+    flex-direction: column;
+    display: block;
+
+}
+
+main {
+    flex: 1;
+}
+
 footer {
     margin-top: auto;
 }
 
-body {
-    display: block;
-}
 
 

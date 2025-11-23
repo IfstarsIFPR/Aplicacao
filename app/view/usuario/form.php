@@ -12,10 +12,6 @@ require_once(__DIR__ . "/../include/menu.php");
     Usuário
 </h3>
 <div class="row">
-    <div class="col-12">
-        <a class="btn btn-secondary"
-            href="<?= BASEURL ?>/controller/UsuarioController.php?action=list"> ← </a>
-    </div>
 
     <div class="container">
         <div class="form-container  d-flex justify-content-center">

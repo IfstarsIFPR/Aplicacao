@@ -282,7 +282,7 @@ class AvaliacaoController extends Controller
         $dados['idAvaliacao'] = $avaliacao->getIdAvaliacao();
         $dados['idDisciplina'] = $idDisciplina;
         $dados["avaliacao"] = $avaliacao;
-
+        $dados["professor"] = $professor; 
         $dados["erros"] = $erros;
 
     $this->loadView("usuario/avaliacao.php", $dados);

@@ -11,12 +11,11 @@ require_once(__DIR__ . "/../include/menu.php");
 
 
   <h2 class="text-center mt-5 text-white">
-    <a href="<?= BASEURL ?>/controller/TurmaDisciplinaController.php?action=list&idTurma=2" class="btn-voltar position-relative"><i class="bi bi-arrow-left-circle"></i></a>
-
+   <!--<a href="/controller/TurmaDisciplinaController.php?action=list&idTurma=2" class="btn-voltar position-relative"><i class="bi bi-arrow-left-circle"></i></a> -->
     Avaliação do Professor
   </h2>
 
-  <h5 class="text-center text-white nome-professor mb-5"><?=  $dados['professor']->getNome() ?></h5>
+  <h4 class="text-center text-white nome-professor mb-5"><?=  $dados['professor']->getNome() ?></h4>
 
   <form method="POST" action="<?= BASEURL ?>/controller/AvaliacaoController.php?action=save">
 
@@ -171,16 +170,6 @@ require_once(__DIR__ . "/../include/menu.php");
     div.style.display = (div.style.display === "none") ? "block" : "none";
   }
 </script>
-
-
-<script>
-  let voltar = document.querySelector('.btn-voltar');
-
-  voltar.addEventListener('click', () => {
-    window.history.back();
-  });
-</script>
-
 
 <?php
 require_once(__DIR__ .  "/../include/footer.php");

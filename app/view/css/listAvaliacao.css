@@ -74,6 +74,13 @@ body {
     color: #ffdd4b;
 }
 
+.container .btn-voltar {
+    font-size: 30px;
+    color: #fff;
+    float: left;
+}
+
+
 /* Comentários */
 .comentario-bloco {
     margin-top: 15px;
