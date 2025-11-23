@@ -204,9 +204,4 @@ class AvaliacaoDAO
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    //TODO: Implementar método de atualização
-    public function update()
-    {
-        return null;
-    }
 }

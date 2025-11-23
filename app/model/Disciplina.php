@@ -10,9 +10,6 @@ class Disciplina {
     //Atributo para armazenar o nome do professor na listagem de turmas do aluno
     private ?string $nomeProfessor;
 
-    //TODO: implementar o relacionamento ManyToMany com Turma
-    private array $turmas; // array de objetos Turma
-
     /**
      * Get the value of id
      */
