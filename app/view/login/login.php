@@ -7,13 +7,13 @@ require_once(__DIR__ . "/../include/header.php");
 
 <div class="login-container">
 
-    <div class="login-info">
+    <div class="login-info md-2 mb-4">
         <img src="/Aplicacao/app/view/img/logoStars.png" alt="Logo STARS" />
         <p style="margin-top: 10px; font-size: 25px;">
             Sistema de feedbacks de alunos sobre professores do IFPR - Campus Foz do Iguaçu.
         </p>
 
-        <div class="illustration">
+        <div class="illustration mt-4 ms-2">
             <img style="max-width: 1200px;" src="/Aplicacao/app/view/img/mulherestrela1.png" alt="Ilustração">
         </div>
 

@@ -146,9 +146,13 @@ class AvaliacaoController extends Controller
         $turmaDao = new TurmaDAO();
         $turma = $turmaDao->findById($idTurma);
 
-        $dados["nomeDisciplina"] = $disciplina->getNomeDisciplina();
-        $dados["nomeTurma"] = $turma->getAnoTurma();
+        // Buscar curso da turma usando CursoDAO
+        $cursoDao = new CursoDAO();
+        $curso = $cursoDao->findById($turma->getCurso()->getId());
 
+ 
+        $dados["nomeTurma"] = ($curso ? $curso->getNome() : "Curso não informado") . " - " . $turma->getAnoTurma();
+        $dados["nomeDisciplina"] = $disciplina->getNomeDisciplina();
         $this->loadView("usuario/semAvaliacao.php", $dados);
         return;
     }
