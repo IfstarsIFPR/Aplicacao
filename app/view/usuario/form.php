@@ -9,7 +9,7 @@ require_once(__DIR__ . "/../include/menu.php");
 <h3 class="text-center mt-5">
     <?php if ($dados['idUsuario'] == 0) echo "Inserir";
     else echo "Alterar"; ?>
-    Usuário
+    Professor
 </h3>
 <div class="row">
 

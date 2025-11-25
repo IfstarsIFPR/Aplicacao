@@ -34,11 +34,18 @@ class UsuarioController extends Controller {
         $this->handleAction();
     }
 
-    protected function list(string $msgErro = "", string $msgSucesso = "") {
+ protected function list(string $msgErro = "", string $msgSucesso = "") {
+    $tipoUsuario = $_GET['tipoUsuario'] ?? null; // pegar o filtro enviado pelo select
+    if ($tipoUsuario) {
+        $dados["lista"] = $this->usuarioDao->listByTipo($tipoUsuario);
+    } else {
         $dados["lista"] = $this->usuarioDao->list();
-
-        $this->loadView("usuario/list.php", $dados,  $msgErro, $msgSucesso);
     }
+
+    $dados['tiposUsuario'] = UsuarioTipo::getAllAsArray(); // passar os tipos para o select
+
+    $this->loadView("usuario/list.php", $dados, $msgErro, $msgSucesso);
+}
 
 
     protected function listPendentes(string $msgErro = "", string $msgSucesso = "") {
