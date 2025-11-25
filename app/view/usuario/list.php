@@ -200,6 +200,7 @@ require_once(__DIR__ . "/../include/menu.php");
                             <th>E-mail</th>
                             <th>Tipo</th>
                             <th>Alterar</th>
+                       <!-- <th>Excluir</th> -->
                         </tr>
                     </thead>
                     <tbody>
@@ -213,6 +214,11 @@ require_once(__DIR__ . "/../include/menu.php");
                                         href="<?= BASEURL ?>/controller/UsuarioController.php?action=edit&id=<?= $usu->getId() ?>">
                                         Alterar</a>
                                 </td>
+                              <!--   <td><a class="btn btn-secondary"
+                                    onclick="return confirm('Confirma a exclusão do usuário?');"
+                                    href=" <?= BASEURL ?>/controller/UsuarioController.php?action=delete&id=<?= $usu->getId() ?>">
+                                    Excluir</a>
+                            </td> -->
                             </tr>
                         <?php endforeach; ?>
                     </tbody>

@@ -158,6 +158,7 @@ require_once(__DIR__ . "/../include/menu.php");
                             <th>E-mail</th>
                             <th>Tipo</th>
                             <th>Verificar</th>
+                            <!--<th>Excluir</th> -->
                         </tr>
                     </thead>
                     <tbody>
@@ -173,6 +174,13 @@ require_once(__DIR__ . "/../include/menu.php");
                                         <i class="bi bi-check-circle"></i>
                                     </a>
                                 </td>
+                               <!-- <td>
+                                    <a class="btn-excluir"
+                                        onclick="return confirm('Confirma a exclusão do usuário?');"
+                                        href="<?= BASEURL ?>/controller/UsuarioController.php?action=delete&id=<?= $usu->getId() ?>">
+                                        Excluir
+                                    </a>
+                                </td> -->
                             </tr>
                         <?php endforeach; ?>
                     </tbody>

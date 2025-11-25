@@ -149,6 +149,7 @@ require_once(__DIR__ . "/../include/menu.php");
                         <th>Nivel</th>
                         <th>Turmas</th>
                         <th>Alterar</th>
+                     <!--<th>Excluir</th> -->
                     </tr>
                 </thead>
                 <tbody>
@@ -165,6 +166,11 @@ require_once(__DIR__ . "/../include/menu.php");
                                 href="<?= BASEURL ?>/controller/CursoController.php?action=edit&id=<?= $curs->getId() ?>">
                                 Alterar</a> 
                             </td>
+                            <!-- <td><a class="btn btn-secondary" 
+                                onclick="return confirm('Confirma a exclusão do curso?');"
+                                href="<?= BASEURL ?>/controller/CursoController.php?action=delete&id=<?= $curs->getId() ?>">
+                                Excluir</a> 
+                            </td> -->
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
