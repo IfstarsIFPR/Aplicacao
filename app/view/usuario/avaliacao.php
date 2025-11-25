@@ -12,7 +12,7 @@ require_once(__DIR__ . "/../include/menu.php");
 
   <h2 class="text-center mt-5 text-white">
    <!--<a href="/controller/TurmaDisciplinaController.php?action=list&idTurma=2" class="btn-voltar position-relative"><i class="bi bi-arrow-left-circle"></i></a> -->
-    Avaliação do Professor
+    Avaliação do(a) Professor(a):
   </h2>
 
   <h4 class="text-center text-white nome-professor mb-5"><?=  $dados['professor']->getNome() ?></h4>
