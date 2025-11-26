@@ -165,7 +165,7 @@ require_once(__DIR__ . "/../../include/menu.php");
                                     <td><?= $tur->getCurso()->getNome(); ?></td>
                                     <td><?= $tur->getTurno(); ?></td>
                                     <td><a class="btn-disciplinas"
-                                            href="<?= BASEURL ?>/controller/TurmaDisciplinaController.php?action=list&idTurma=<?= $tur->getId() ?>">
+                                            href="<?= BASEURL ?>/controller/TurmaDisciplinaController.php?action=listDisc&idTurma=<?= $tur->getId() ?>">
                                             Disciplinas</a>
                                     </td>
                                     <td><a class="btn-alterar"
