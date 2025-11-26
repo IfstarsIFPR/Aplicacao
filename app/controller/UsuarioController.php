@@ -165,9 +165,9 @@ class UsuarioController extends Controller {
 
         $dados['tiposUsuario'] = UsuarioTipo::getAllAsArray();
 
-        $msgErro = implode("<br>", $erros);
+       $dados['erros'] = $erros;
+       $this->loadView("usuario/form.php", $dados);
 
-        $this->loadView("usuario/form.php", $dados, $msgErro);
     }
 
     protected function delete() {
