@@ -8,7 +8,7 @@ require_once(__DIR__ . "/../include/menu.php");
 
 <div class="container">
 
-    <h3 class="text-center mt-5 section-title">Disciplinas Avaliadas</h3>
+    <h3 class="text-center mt-5 section-title"> ⭐ Disciplinas Avaliadas</h3>
 
     <div class="row justify-content-center">
 
