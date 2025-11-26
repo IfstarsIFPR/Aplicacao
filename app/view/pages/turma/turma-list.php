@@ -130,7 +130,7 @@ require_once(__DIR__ . "/../../include/menu.php");
  <div class="container card-dashboard">
         <div class="titulo-dashboard">
     <h3>
-        Turma(s) do Curso:
+        📚 Turma(s) do Curso:
         <span class="curso-nome"><?= $dados['curso']->getNome() ?></span>
     </h3> </div>
     <div class="text-center mt-2">
