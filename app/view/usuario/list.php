@@ -199,7 +199,7 @@ require_once(__DIR__ . "/../include/menu.php");
                             <th>Nome</th>
                             <th>E-mail</th>
                             <th>Tipo</th>
-                            <th>Alterar</th>
+                           <!-- <th>Alterar</th> -->
                        <!-- <th>Excluir</th> -->
                         </tr>
                     </thead>
@@ -210,10 +210,10 @@ require_once(__DIR__ . "/../include/menu.php");
                                 <td><?= $usu->getNome(); ?></td>
                                 <td><?= $usu->getEmail(); ?></td>
                                 <td><?= $usu->getTipoUsuario(); ?></td>
-                                <td><a class="btn-alterar"
+                               <!-- <td><a class="btn-alterar"
                                         href="<?= BASEURL ?>/controller/UsuarioController.php?action=edit&id=<?= $usu->getId() ?>">
                                         Alterar</a>
-                                </td>
+                                </td> -->
                               <!--   <td><a class="btn btn-secondary"
                                     onclick="return confirm('Confirma a exclusão do usuário?');"
                                     href=" <?= BASEURL ?>/controller/UsuarioController.php?action=delete&id=<?= $usu->getId() ?>">
