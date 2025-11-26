@@ -2,8 +2,9 @@
   --amarelo: #f7d21e;
 }
 
-html, body {
-  background-color: #1b3d69;
+html,
+body {
+  background: linear-gradient(120deg, #1b3d69, #112f57);
   overflow-x: hidden;
 }
 
@@ -16,8 +17,8 @@ html, body {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
 }
 
-.estrela input { 
-  display: none; 
+.estrela input {
+  display: none;
 }
 
 .form-label {
@@ -35,7 +36,7 @@ html, body {
   border-radius: 20px;
   padding: 5px 5px 5px 5px;
 
-  direction: rtl; 
+  direction: rtl;
 }
 
 .estrela label i {
@@ -43,14 +44,14 @@ html, body {
   color: rgb(64, 64, 105);
 }
 
-.estrela input:checked ~ label i,
+.estrela input:checked~label i,
 .estrela label:hover i,
-.estrela label:hover ~ label i {
+.estrela label:hover~label i {
   color: var(--amarelo);
 }
 
 /* ===== COLUNA DIREITA ===== */
-.forms{
+.forms {
   padding-left: px;
 }
 
@@ -79,17 +80,18 @@ html, body {
 }
 
 .btn-primary:hover {
-  background-color: rgba(255,255,255,0.15) !important;
+  background-color: rgba(255, 255, 255, 0.15) !important;
   transform: scale(1.03);
 }
 
 .info-icon {
- 
+
   border: 1px solid #cbdbeb;
   color: #3aa0ff;
   font-size: 11px;
   margin-right: 5px;
 }
+
 /* Ícone */
 .info-icon {
   background-color: transparent;
@@ -118,7 +120,7 @@ html, body {
   padding: 6px 10px;
   width: 220px;
   border-radius: 8px;
-  box-shadow: 0px 0px 8px rgba(0,0,0,0.3);
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
   font-size: 13px;
   z-index: 200;
 }
@@ -134,7 +136,7 @@ html, body {
   margin-top: 10px;
 }
 
-.avaliacao-container .btn-voltar  {
+.avaliacao-container .btn-voltar {
   font-size: 30px;
   color: #fff;
   float: left;
@@ -144,5 +146,3 @@ html, body {
   text-transform: capitalize;
   color: #fff;
 }
-
-

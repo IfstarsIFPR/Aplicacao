@@ -122,6 +122,17 @@ $usuario = $usuarioDao->findById($idUsuario);
                                     href="<?= BASEURL . '/controller/DisciplinaController.php?action=create' ?>">Adicionar disciplina</a></li>
                         </ul>
                     </li>
+
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdownTurmas" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Gerenciar Turmas
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownTurmas">
+                            <li><a class="dropdown-item"
+                                    href="<?= BASEURL . '/controller/TurmaController.php?action=create' ?>">Adicionar turma</a></li>
+                        </ul>
+                    </li>
                 <?php endif; ?>
 
                 <?php if ($isAluno): ?>

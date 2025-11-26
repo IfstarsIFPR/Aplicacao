@@ -1,5 +1,5 @@
 body {
-    background-color: #1b3d69;
+    background: linear-gradient(120deg, #1b3d69, #112f57);
     margin: 0;
     padding: 0;
     font-family: 'Segoe UI', sans-serif;
@@ -42,7 +42,7 @@ h3 {
     color: white;
     min-height: 50px;
     text-align: center;
-    margin: 20px 0;     
+    margin: 20px 0;
 }
 
 
@@ -55,11 +55,14 @@ h3 {
     font-weight: bold;
 }
 
-.buttons{
+.buttons {
     display: flex;
-    justify-content: center;   /* centraliza horizontalmente */
-    align-items: center;        /* alinha verticalmente */
-    gap: 12px;                  /* espaço entre os botões */
+    justify-content: center;
+    /* centraliza horizontalmente */
+    align-items: center;
+    /* alinha verticalmente */
+    gap: 12px;
+    /* espaço entre os botões */
     margin-top: 15px;
-    padding: 20px;  
+    padding: 20px;
 }

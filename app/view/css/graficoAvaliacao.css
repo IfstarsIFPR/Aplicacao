@@ -1,13 +1,14 @@
 body {
     background: linear-gradient(120deg, #1b3d69, #112f57);
- }
+}
+
 /* Container principal */
 
 .container-grafico {
     background: linear-gradient(90deg, #0a2a52, #084190);
     padding: 30px;
     border-radius: 12px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
     color: #fff;
     margin-bottom: 50px;
 }
@@ -20,10 +21,10 @@ body {
 
 /* Barra superior com título + select */
 .top-bar {
-    background: rgba(255,255,255,0.05);
+    background: rgba(255, 255, 255, 0.05);
     padding: 20px;
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
 /* Ajuste do select */
@@ -52,6 +53,7 @@ body {
         text-align: center;
         gap: 15px;
     }
+
     .select-bimestre {
         width: 100%;
     }
@@ -62,9 +64,9 @@ body {
 
 /* Cards de comentários */
 .comentarios .card {
-      background: rgba(255,255,255,0.05);
+    background: rgba(255, 255, 255, 0.05);
     border-radius: 10px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
     color: #f1f1f1;
     margin-bottom: 20px;
 }
@@ -89,12 +91,13 @@ body {
 .card-comentario {
     background-color: #072957;
     border-radius: 10px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
     color: #f1f1f1;
 
     /* define tamanho dos cards */
-    width: calc(50% - 12px);   /* 2 por linha */
-    min-height: 170px;  
+    width: calc(50% - 12px);
+    /* 2 por linha */
+    min-height: 170px;
 }
 
 
@@ -108,7 +111,8 @@ body {
 
 /* Título do comentário */
 .comentarios .card strong {
-    color: #ffffff; /* destaque para "Anônimo" */
+    color: #ffffff;
+    /* destaque para "Anônimo" */
 }
 
 /* Texto do comentário */
@@ -160,8 +164,3 @@ body {
     color: #ff4d4d;
     text-decoration: underline;
 }
-
-
-
-
-

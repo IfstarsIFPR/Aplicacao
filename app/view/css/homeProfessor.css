@@ -1,51 +1,60 @@
 body {
-    background: linear-gradient(120deg, #1b3d69, #112f57);
+    background: linear-gradient(135deg, #1b3b67, #061e45);
     overflow-x: hidden;
     overflow-y: auto;
+        font-family: 'Poppins', sans-serif;
+
 }
 
- h3 {
-     color: #fff;
-     margin-top: 40px;
- }
+/* Título */
+.section-title {
+    color: #ffffff;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 40px;
+}
 
- .card-title {
-     min-height: 50px;
-     color: white;
-     letter-spacing: 1px;
-     text-align: center;
- }
+/* Card estilizado */
+.custom-card {
+    background: #0e2d57;
+    border: none;
+    border-radius: 18px;
+    transition: 0.3s;
+}
 
- .card-text {
-     color: white;
-     min-height: 50px;
-     text-align: center;
-     letter-spacing: 1px;
- }
+/* Hover suave */
+.custom-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+}
 
- p{
-    color: white;
- }
+/* Título do card */
+.card-title {
+    color: #ffffff;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
 
- .grifado {
-    font-weight: bold;
-    color: #b9c6ff;}
+/* Texto interno */
+.card-text {
+    color: #d7e3ff;
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+}
 
+/* Botão */
+.btn-custom {
+    background-color: #6c82ff;
+    border-radius: 12px;
+    padding: 10px 25px;
+    font-weight: 600;
+    transition: 0.3s;
+    border: none;
+}
 
- .card-body {
-     background-color: #072957;
-     padding: 40px;
-     border-radius: 20px;
-     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
- }
+.btn-custom:hover {
+    background-color: #5668ff;
+    transform: scale(1.05);
+}
 
- .btn-primary {
-     background-color: #7085f3;
-     border: none;
-     min-width: 50%;
-     border-radius: 20px;
-     padding: 10px;
-     font-weight: bold;
-     box-align: center;
-
- }

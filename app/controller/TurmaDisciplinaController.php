@@ -54,6 +54,23 @@ class TurmaDisciplinaController extends Controller
         $this->loadView("pages/turmaDisciplina/turma-disciplina-list.php", $dados, $msgErro, $msgSucesso);
     }
 
+     protected function listDisc(string $msgErro = "", string $msgSucesso = "")
+    {
+
+        $turma = $this->findTurmaById();
+
+        if (!$turma) {
+            echo "ID da turma inválido!";
+            exit;
+        }
+
+        // dados para a view
+        $dados['turma'] = $turma;
+        $dados["lista"] = $this->disciplinaDao->findDisciplinasByTurmaId($turma->getId());
+
+        $this->loadView("pages/turmaDisciplina/turma-disciplina-list-admin.php", $dados, $msgErro, $msgSucesso);
+    }
+
     protected function listTurmas(string $msgErro = "", string $msgSucesso = "")
     {
 

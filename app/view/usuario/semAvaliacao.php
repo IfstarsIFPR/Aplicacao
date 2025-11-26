@@ -31,7 +31,7 @@ require_once(__DIR__ . "/../include/menu.php");
 
         <img src="<?= BASEURL ?>/view/img/pessoas_lupa.png" class="sem-avaliacao-img" alt="Sem Avaliações">
 
-        <h2>Ainda não foram feitas avaliações nesta disciplina!</h2>
+        <h2>Ainda não foram feitas avaliações!</h2>
 
       
     </div>

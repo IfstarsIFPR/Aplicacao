@@ -32,6 +32,20 @@ class UsuarioDAO {
         return $this->mapUsuarios($result);
     }
 
+    public function listByTipo(string $tipoUsuario) {
+    $conn = Connection::getConn();
+
+    $sql = "SELECT * FROM usuario WHERE tipoUsuario = ? ORDER BY nomeUsuario";
+    $stm = $conn->prepare($sql);
+    $stm->execute([$tipoUsuario]);
+    $result = $stm->fetchAll();
+
+    return $this->mapUsuarios($result);
+}
+
+
+
+
     //Método para atualizar o status do aluno a partir da base de dados
     public function atualizarStatus(int $idUsuario, string $status)
     {

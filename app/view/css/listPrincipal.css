@@ -1,5 +1,5 @@
 body {
-    background-color: #1b3d69;
+    background: linear-gradient(120deg, #1b3d69, #112f57);
     color: #fff;
 }
 
@@ -29,18 +29,23 @@ h3.text-center {
 }
 
 table {
-    border-radius: 12px;       /* arredondamento */
-    overflow: hidden;          /* mantém os cantos arredondados visíveis */
+    border-radius: 12px;
+    /* arredondamento */
+    overflow: hidden;
+    /* mantém os cantos arredondados visíveis */
     width: 100%;
 }
-.btn{
+
+.btn {
     background-color: #483D8B;
     border: none;
     color: #ffffff;
     transition: background-color 0.3s ease;
 }
+
 .btn:hover {
-    background-color: #1e40af; /* cor ao passar o mouse */
+    background-color: #1e40af;
+    /* cor ao passar o mouse */
     cursor: pointer;
 }
 

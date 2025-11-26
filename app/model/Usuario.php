@@ -15,7 +15,7 @@ class Usuario {
     private ?string $senha;
     private ?string $tipoUsuario;
     private ?int $siape;
-    private ?string $fotoPerfil;
+    private ?string $fotoPerfil = "";
     private ?string $declaracaoMatricula = "";
     private ?int $numMatricula;
     private ?string $status = "pendente";
@@ -205,6 +205,8 @@ class Usuario {
 
         return $this;
     }
+
+    
 
     /**
      * Get the value of fotoPerfil

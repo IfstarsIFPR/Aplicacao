@@ -1,9 +1,10 @@
 body {
-    background-color: #1b3d69;
+    background: linear-gradient(120deg, #1b3d69, #112f57);
     color: #fff;
 }
 
-html, body {
+html,
+body {
     overflow-x: hidden;
     overflow-y: auto;
 }
@@ -13,12 +14,12 @@ h3.text-center {
     color: #ffffff;
 }
 
-.container{
+.container {
     padding: 30px;
     border-radius: 20px;
     width: 60%;
     margin: 40px auto;
-    text-align: center; 
+    text-align: center;
 }
 
 .form .mb-3 {
@@ -38,8 +39,9 @@ h3.text-center {
     padding: 10px 15px;
     border: none;
 }
-.form-container{
-     justify-content: center;
+
+.form-container {
+    justify-content: center;
 }
 
 .form {
@@ -61,4 +63,3 @@ h3.text-center {
     width: 100%;
     border-radius: 20px;
 }
-

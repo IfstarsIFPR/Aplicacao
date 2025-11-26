@@ -6,8 +6,7 @@ require_once(__DIR__ . "/../../include/header.php");
 require_once(__DIR__ . "/../../include/menu.php");
 ?>
 
-<link rel="stylesheet" href="<?= BASEURL ?>/view/css/TurmDisc_adm.css">
-
+<link rel="stylesheet" href="<?= BASEURL ?>/view/css/TurmDisc_list.css">
 <style>
     /* Card container da tabela */
     .card-dashboard {
@@ -81,34 +80,6 @@ require_once(__DIR__ . "/../../include/menu.php");
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    .btn-alterar {
-        background: #0a2d54ff;
-        border-radius: 10px;
-        padding: 6px 14px;
-        color: #fff;
-        text-decoration: none;
-        transition: 0.25s;
-    }
-
-    .btn-alterar:hover {
-        background: #4496c9ff;
-        transform: translateY(-2px);
-    }
-
-    .btn-turmas {
-        background: #2c5f9aff;
-        border-radius: 10px;
-        padding: 6px 14px;
-        color: #fff;
-        text-decoration: none;
-        transition: 0.25s;
-    }
-
-    .btn-turmas:hover {
-        background: #4496c9ff;
-        transform: translateY(-2px);
-    }
-
 
     /* Responsividade */
     @media (max-width: 768px) {
@@ -127,45 +98,29 @@ require_once(__DIR__ . "/../../include/menu.php");
     }
 
 </style>
-<div class="container card-dashboard">
-    <div class="titulo-dashboard">
-        <h3>Turmas da Disciplina:
-            <span class="disciplina-nome">
-                <?= $dados['disciplina']->getNomeDisciplina() ?>
-            </span>
-        </h3>
-    </div>
 
-    <div class="table-responsive mt-4">
-        <table id="tabTurmasDisciplinas" class="tabela-custom">
-            <thead>
-                <tr>
-                    <th>Turma</th>
-                    <th>Professor</th>
-                    <th>Alterar</th>
-                    <!--<th>Excluir</th> -->
-                </tr>
-            </thead>
-            <tbody>
+    <div class="container card-dashboard">
+                <div class="titulo-dashboard">
+                    <h3>Disciplinas da Turma</h3>
+                </div>
 
-                <?php foreach ($dados['turmas'] as $turmaDisc): ?>
+ <div class="table-responsive mt-4">
+            <table id="tabCursos" class="tabela-custom">
+                <thead>
                     <tr>
-                        <td><?php echo $turmaDisc->getTurma()->getCurso()->getNome(); ?></td>
-                        <td><?php echo $turmaDisc->getProfessor()->getNome(); ?></td>
-                        <td> <a class="btn-alterar"
-                              href="<?= BASEURL ?>/controller/TurmaDisciplinaController.php?action=edit&idTurmaDisciplina=<?= $turmaDisc->getId() ?>">
-                                Alterar </a>
-                        </td>
-                        <!--<td><a href="<?= BASEURL ?>/controller/TurmaDisciplinaController.php?action=excluir&idTurmaDisciplina=<?= $turmaDisc->getId() ?>" 
-                           class="btn btn-secondary">
-                           Excluir
-                        </a>
-                </td> -->
+                        <th>Disciplina</th>
+                        <th>Professor</th>
                     </tr>
-                <?php endforeach; ?>
-            </tbody>
+                </thead>
+                <tbody>
+        <?php foreach ($dados['lista'] as $disc): ?>
+              <tr>
+                <td><?php echo $disc->getNomeDisciplina(); ?></td>
+                <td><?php echo $disc->getNomeProfessor(); ?></td>
+        </tr>
+        <?php endforeach; ?>
+        </tbody>
         </table>
-    </div>
 </div>
-
+    </div>
 <?php require_once(__DIR__ . "/../../include/footer.php"); ?>
