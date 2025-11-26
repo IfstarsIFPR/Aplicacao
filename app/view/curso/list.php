@@ -131,7 +131,7 @@ require_once(__DIR__ . "/../include/menu.php");
 
     <div class="container card-dashboard">
         <div class="titulo-dashboard">
-            <h3>Cursos</h3>
+            <h3> 📘 Cursos</h3>
         </div>
 
         <div class="row">
