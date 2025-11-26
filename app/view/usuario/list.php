@@ -166,7 +166,7 @@ require_once(__DIR__ . "/../include/menu.php");
     <div class="col-md-6">
         <div class="container card-dashboard">
             <div class="titulo-dashboard">
-                <h3>Usuários</h3>
+                <h3> 👥 Usuários</h3>
             </div>
 
 
