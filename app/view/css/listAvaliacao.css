@@ -1,6 +1,6 @@
 /* Fundo geral */
 body {
-    background: linear-gradient(120deg, #1b3d69, #112f57);
+    background: linear-gradient(135deg, #1b3b67, #061e45);
     color: #fff;
     font-family: 'Segoe UI', sans-serif;
     min-height: 100vh;
@@ -35,7 +35,6 @@ body {
     background-color: rgba(255, 255, 255, 0.05);
     border-radius: 18px;
     transition: transform 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
-    border: 1px solid rgba(255, 255, 255, 0.1);
     height: 100%;
 }
 
@@ -46,7 +45,7 @@ body {
 
 /* Cabeçalho do card */
 .cabecalho-bimestre {
-    background: #123d6e;
+    background: #072957;
     font-size: 1.2rem;
     font-weight: 600;
     color: #fff;
@@ -91,12 +90,12 @@ body {
 }
 
 .aluno-comentario {
-    background: rgba(255, 255, 255, 0.1);
-    border-left: 4px solid #31344b;
+    background: rgba(90, 105, 183, 0.1);
+    border-left: 4px solid #22285b;
 }
 
 .resposta-prof {
-    background: rgba(50, 115, 255, 0.2);
+    background: rgba(151, 172, 218, 0.2);
     border-left: 4px solid #4ca3ff;
 }
 
