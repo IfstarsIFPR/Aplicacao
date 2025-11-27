@@ -19,12 +19,12 @@ require_once(__DIR__ . "/../include/menu.php");
             <?php
             $foto = $dados['usuario']->getFotoPerfil();
             $fotoPerfil = $foto
-                ? BASEURL_ARQUIVOS . '/' . $foto
-                : BASEURL . '/view/img/default_profile.png';
-            ?>
+            ? BASEURL_ARQUIVOS . '/' . $foto 
+            : BASEURL_ARQUIVOS . '/../img/Sem_foto.png';
+    ?>
+      
             <img src="<?= $fotoPerfil ?>" class="foto-perfil">
-<br>
-            <h4><strong><?= $dados['usuario']->getNome() ?></h4>
+            <h4 class="my-3"><strong><?= $dados['usuario']->getNome() ?></h4>
 
         </div>
 

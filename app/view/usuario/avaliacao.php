@@ -152,7 +152,7 @@ require_once(__DIR__ . "/../include/menu.php");
           <small class="text-danger"><?= $dados["erros"]["comentario"] ?></small>
         <?php endif; ?>
 
-        <button type="submit" class="btn btn-primary w-100 mt-3">Enviar</button>
+        <button type="submit" class="btn btn-primary w-50 mt-3 d-block mx-auto">Enviar</button>
       </div>
 
     </div>
