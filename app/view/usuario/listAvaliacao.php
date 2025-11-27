@@ -9,7 +9,7 @@ require_once(__DIR__ . "/../include/menu.php");
     <h3 class="text-center text-white mb-4 mt-5">
   
        📕 <?= $dados["nomeDisciplina"] ?> —
-        <span class="text-info">Professor(a) <?= $dados["nomeProfessor"] ?></span>
+        <span class="text-info">Professor(a): <?= $dados["nomeProfessor"] ?></span>
     </h3>
 
     <div class="row my-5">

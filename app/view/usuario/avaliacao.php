@@ -10,18 +10,18 @@ require_once(__DIR__ . "/../include/menu.php");
 <div class="container avaliacao-container">
 
 
-  <h2 class="text-center mt-5 text-white">
+  <h3 class="text-center mt-5 text-white">
    <!--<a href="/controller/TurmaDisciplinaController.php?action=list&idTurma=2" class="btn-voltar position-relative"><i class="bi bi-arrow-left-circle"></i></a> -->
     📊 Avaliação do(a) Professor(a):
-  </h2>
+  </h3>
 
-  <h4 class="text-center text-white nome-professor mb-5"><?=  $dados['professor']->getNome() ?></h4>
+  <h3 class="text-center text-white nome-professor mb-5"><?=  $dados['professor']->getNome() ?></h3>
 
   <form method="POST" action="<?= BASEURL ?>/controller/AvaliacaoController.php?action=save">
 
     <input type="hidden" name="idAvaliacao" value="0">
 
-    <div class="row">
+    <div class="row my-5">
       <div class="col-md-4 estrelas-container">
 
         <!-- Clareza -->
