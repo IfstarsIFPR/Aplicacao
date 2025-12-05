@@ -6,26 +6,26 @@ require_once(__DIR__ . "/../include/header.php");
 require_once(__DIR__ . "/../include/menu.php");
 ?>
 <link rel="stylesheet" href="<?= BASEURL ?>/view/css/homeGeral.css">
- 
-<h3 class="text-center mt-5" >Página inicial do sistema</h3>
 
-<div class="container" >
+<h3 class="text-center mt-5">Página inicial do sistema</h3>
+
+<div class="container">
     <span>Quantidade de usuários cadastrados no sistema: </span>
     <span class="fonteBonita">
         <?php echo $dados["qtdUsuarios"] ?>
     </span>
-    <button class="btn btn-info" 
+    <button class="btn btn-info"
         onclick="carregarUsuarios('<?= BASEURL ?>')">Ajax</button>
 
     <div>
         <ul id="listaUsuarios">
-            
+
         </ul>
     </div>
 </div>
 
 <script src="<?= BASEURL ?>/view/js/home_ajax.js"></script>
 
-<?php  
+<?php
 require_once(__DIR__ . "/../include/footer.php");
 ?>

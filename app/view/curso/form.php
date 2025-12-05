@@ -14,7 +14,7 @@ require_once(__DIR__ . "/../include/menu.php");
 
             <div class="form" style="border-radius: 20px">
                 <form id="formCurso" method="POST"
-                      action="<?= BASEURL ?>/controller/CursoController.php?action=save">
+                    action="<?= BASEURL ?>/controller/CursoController.php?action=save">
 
                     <div class="mb-3">
                         <label class="form-label" for="txtNome">Nome:</label>

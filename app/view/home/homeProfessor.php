@@ -14,18 +14,18 @@ require_once(__DIR__ . "/../include/menu.php");
     <span class="fonteBonita">
         <?php echo $dados["qtdUsuarios"] ?>
     </span>
-    <button class="btn btn-info" 
+    <button class="btn btn-info"
         onclick="carregarUsuarios('<?= BASEURL ?>')">Ajax</button>
 
     <div>
         <ul id="listaUsuarios">
-            
+
         </ul>
     </div>
 </div>
 
 <script src="<?= BASEURL ?>/view/js/home_ajax.js"></script>
 
-<?php  
+<?php
 require_once(__DIR__ . "/../include/footer.php");
 ?>

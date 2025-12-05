@@ -20,28 +20,28 @@ require_once(__DIR__ . "/../include/menu.php");
 
 
     <div class="row">
-    <?php foreach ($dados['turmas'] as $turma) : ?>
+        <?php foreach ($dados['turmas'] as $turma) : ?>
 
-        <div class="col-md-6 col-lg-3 p-4">
+            <div class="col-md-6 col-lg-3 p-4">
 
-            <div class="card row flex-row gap-3 mt-2 text-center">
-                <h5 class="card-title"><?= $turma->getCurso()->getNome() ?></h5>
-                <p class="card-text"><?= $turma->getAnoTurma() ?></p>
+                <div class="card row flex-row gap-3 mt-2 text-center">
+                    <h5 class="card-title"><?= $turma->getCurso()->getNome() ?></h5>
+                    <p class="card-text"><?= $turma->getAnoTurma() ?></p>
 
-                <form action="<?= BASEURL ?>/controller/TurmaDisciplinaController.php?action=acessarTurma" method="POST">
+                    <form action="<?= BASEURL ?>/controller/TurmaDisciplinaController.php?action=acessarTurma" method="POST">
 
-                    <input type="hidden" name="idTurma" value="<?= $turma->getId() ?>">
+                        <input type="hidden" name="idTurma" value="<?= $turma->getId() ?>">
 
-                    <input type="text" name="codigoTurma" value="" class="form-control" placeholder="Digite o código da turma">
+                        <input type="text" name="codigoTurma" value="" class="form-control" placeholder="Digite o código da turma">
 
-                    <button type="submit" href="#" class="btn btn-primary mt-3">Acessar</a>
+                        <button type="submit" href="#" class="btn btn-primary mt-3">Acessar</a>
 
-                </form>
+                    </form>
+                </div>
+                <!-- /.card -->
             </div>
-            <!-- /.card -->
-        </div>
-    <?php endforeach; ?>
-    
+        <?php endforeach; ?>
+
     </div>
     <!-- /.row -->
 </div>
@@ -49,4 +49,3 @@ require_once(__DIR__ . "/../include/menu.php");
 
 <script src="<?= BASEURL ?>/view/js/home_ajax.js"></script>
 <?php require_once(__DIR__ . "/../include/footer.php"); ?>
-
