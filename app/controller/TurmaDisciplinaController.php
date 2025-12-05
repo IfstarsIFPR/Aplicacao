@@ -22,13 +22,6 @@ class TurmaDisciplinaController extends Controller
 
         if (! $this->usuarioEstaLogado())
             return;
-
-        //Verificar se o usuário é ADMIN
-        // if(! $this->usuarioLogadoIsAdmin()) {
-        //     echo "Acesso Negado!";
-        //     return;
-        // }
-
         $this->turmaDao = new TurmaDAO();
         $this->disciplinaDao = new DisciplinaDAO();
         $this->turmaAlunoDao = new TurmaAlunoDAO();
@@ -101,9 +94,6 @@ class TurmaDisciplinaController extends Controller
         $this->loadView("pages/turmaDisciplina/minhas-disciplinas-professor.php", $dados);
     }
 
-
-
-
     protected function edit()
     {
 
@@ -151,8 +141,6 @@ class TurmaDisciplinaController extends Controller
     {
         $codigoTurma = $_POST['codigoTurma'];
         $idTurma = $_POST['idTurma'];
-
-
         $turma = $this->turmaDao->findById($idTurma);
 
         if (! $turma) {
@@ -165,13 +153,6 @@ class TurmaDisciplinaController extends Controller
             // Redirecionar para a página de listagem de disciplinas da turma
             header("Location: " . BASEURL . "/controller/TurmaDisciplinaController.php?action=list&idTurma=" . $idTurma);
         }
-
-
-        // se inscrever na turma
-
-        // 1° criar o metodo de insert no DAO Turma alunos para a relacao de alunos e turmas
-        // 2° Aqui mesmo, Chamar o dao e realizar o insert
-        // 3° Redirecionar para a página de listagem de disciplinas da turma  
 
         $this->turmaAlunoDao->insert($this->getIdUsuarioLogado(), $idTurma);
 
@@ -207,7 +188,6 @@ class TurmaDisciplinaController extends Controller
         return $this->turmaDisciplinaDao->findTurmaDisciplinaById($idTurmaDisciplina);
     }
 }
-
 
 #Criar objeto da classe para assim executar o construtor
 new TurmaDisciplinaController();

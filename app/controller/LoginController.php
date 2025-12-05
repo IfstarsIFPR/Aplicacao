@@ -32,26 +32,28 @@ class LoginController extends Controller
 
         //Validar os campos
         $erros = $this->loginService->validarCampos($email, $senha);
+
         if (empty($erros)) {
             //Valida o login a partir do banco de dados
             $usuario = $this->usuarioDao->findByEmailSenha($email, $senha);
+
             if ($usuario) {
 
-                    //bloqueio se o aluno estiver com cadastro pendente
-                    if (
-                        $usuario->getTipoUsuario() === UsuarioTipo::ALUNO
-                        && $usuario->getStatus() === UsuarioStatus::PENDENTE
-                    ) {
-                        $erros['status'] = "Seu cadastro ainda está pendente! Aguarde a validação da declaração de matrícula.";
+                //bloqueio se o aluno estiver com cadastro pendente
+                if (
+                    $usuario->getTipoUsuario() === UsuarioTipo::ALUNO
+                    && $usuario->getStatus() === UsuarioStatus::PENDENTE
+                ) {
+                    $erros['status'] = "Seu cadastro ainda está pendente! Aguarde a validação da declaração de matrícula.";
 
-                        $dados["email"] = $email;
-                        $dados["senha"] = $senha;
-                        $dados["erros"] = $erros;
+                    $dados["email"] = $email;
+                    $dados["senha"] = $senha;
+                    $dados["erros"] = $erros;
 
-                        // Retorna para o login
-                        $this->loadView("login/login.php", $dados);
-                        return; // para a função
-                    }
+                    // Retorna para o login
+                    $this->loadView("login/login.php", $dados);
+                    return; // para a função
+                }
                 //Se encontrou o usuário, salva a sessão e redireciona para a HOME do sistema
                 $this->loginService->salvarUsuarioSessao($usuario);
 
@@ -65,10 +67,6 @@ class LoginController extends Controller
                     echo "Tipo de usuário inválido!";
                 }
                 exit;
-
-
-                // header("location: " . HOME_PAGE);
-                // exit;
             } else {
                 $erros['senha'] = "Login ou senha informados são inválidos!";
             }

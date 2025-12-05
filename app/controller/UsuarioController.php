@@ -117,8 +117,6 @@ class UsuarioController extends Controller {
         }
     }
 
-
-
     protected function save() {
         //Capturar os dados do formulário
         $id = $_POST['idUsuario'];
@@ -137,7 +135,6 @@ class UsuarioController extends Controller {
         $usuario->setSenha($senha);
         $usuario->setTipousuario($tipousuario);
         $usuario->setSiape($siape);
-        
         
         //Validar os dados (camada service)
         $erros = $this->usuarioService->validarDados($usuario, $confSenha);
@@ -192,7 +189,6 @@ class UsuarioController extends Controller {
         
         echo $json;
 
-        //[{},{},{}]
     }
 
     private function findUsuarioById() {
@@ -203,11 +199,7 @@ class UsuarioController extends Controller {
         //Busca o usuário na base pelo ID    
         return $this->usuarioDao->findById($id);
     }
-
-    
-
 }
-
 
 #Criar objeto da classe para assim executar o construtor
 new UsuarioController();

@@ -65,7 +65,6 @@ class TurmaController extends Controller
         if ($turma) {
             $dados['idTurma'] = $turma->getId();
             $dados["turma"] = $turma;
-
             $dados['turno'] = TurmaTurno::getAllAsArray();
             $dados['cursos'] = $this->cursoDao->list();
 
@@ -151,7 +150,6 @@ class TurmaController extends Controller
 
         echo $json;
 
-        //[{},{},{}]
     }
 
     private function findTurmaById()
@@ -174,7 +172,6 @@ class TurmaController extends Controller
         return $this->cursoDao->findById($id);
     }
 }
-
 
 #Criar objeto da classe para assim executar o construtor
 new TurmaController();

@@ -74,7 +74,6 @@ class CursoController extends Controller
         $curso->setNome($nome);
         $curso->setNivel($nivel);
 
-
         //Validar os dados (camada service)
         $erros = $this->cursoService->validarDados($curso);
         if (! $erros) {
@@ -127,8 +126,6 @@ class CursoController extends Controller
         $json = json_encode($cursos);
 
         echo $json;
-
-        //[{},{},{}]
     }
 
     private function findUsuarioById()

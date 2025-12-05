@@ -5,9 +5,7 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-
 #Classe controller padrão
-
 require_once(__DIR__ . "/../util/config.php");
 require_once(__DIR__ . "/../model/enum/UsuarioTipo.php");
 
@@ -25,8 +23,7 @@ class Controller {
     }
 
     protected function callAction($methodName) {
-        //Verifica se o método da action recebido por parâmetro existe na classe
-        //Se sim, chama-o
+        //Verifica se o método da action recebido por parâmetro existe na classe. Se sim, chama-o
         if($methodName && method_exists($this, $methodName))
             $this->$methodName();
         
@@ -39,13 +36,9 @@ class Controller {
 
     protected function loadView(string $path, array $dados, string $msgErro = "", string $msgSucesso = "") {
         
-        //Verificar os dados que estão sendo recebidos na função
-        //echo "<pre>" . print_r($dados, true) . "</pre>";
-        //exit;
-
         $caminho = __DIR__ . "/../view/" . $path;
-        //echo $caminho;
         if(file_exists($caminho)) {
+
             //Inclui e exibe a view a partir do controller
             require $caminho;
 
@@ -78,11 +71,8 @@ class Controller {
 
     protected function usuarioLogadoIsAdmin() {
 
-
         if(session_status() != PHP_SESSION_ACTIVE)
             session_start();
-
-
 
         if(isset($_SESSION[SESSAO_USUARIO_ID])) {
 
@@ -95,11 +85,8 @@ class Controller {
 
      protected function usuarioLogadoIsProfessor() {
 
-
         if(session_status() != PHP_SESSION_ACTIVE)
             session_start();
-
-
 
         if(isset($_SESSION[SESSAO_USUARIO_ID])) {
 

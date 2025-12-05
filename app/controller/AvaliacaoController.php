@@ -8,8 +8,6 @@ require_once(__DIR__ . "/../dao/DisciplinaDAO.php");
 require_once(__DIR__ . "/../dao/TurmaAlunoDAO.php");
 require_once(__DIR__ . "/../dao/TurmaDAO.php");
 
-
-
 class AvaliacaoController extends Controller
 {
     private AvaliacaoDAO $avaliacaoDao;
@@ -28,18 +26,7 @@ class AvaliacaoController extends Controller
     protected function list(string $msgErro = "", string $msgSucesso = "")
     {
         $dados["lista"] = $this->avaliacaoDao->listByAlunoId($this->getIdUsuarioLogado());
-
-        //print '<pre> ';
-        //print_r($dados["lista"]);
-        //print '</pre> ';
-
-        ///controller/TurmaDisciplinaController.php?action=list&idTurma=1
-
         $this->loadView("usuario/listaAvaliacao.php", $dados, $msgErro, $msgSucesso);
-
-        //TODO: provisoriamente redireciona para a lista de disciplinas da turma 1 - O ideal é redirecionar para a página das minhas avaliações
-        //header("location: " . BASEURL . "/controller/TurmaDisciplinaController.php?action=list&idTurma=1?msgSucesso=$msgSucesso");
-        //exit;
     }
 
     protected function disciplinasAvaliadas(string $msgErro = "")
@@ -107,7 +94,7 @@ class AvaliacaoController extends Controller
         $dados["lista"] = $this->avaliacaoDao->listByDisciplinaId($idAluno, $idDisciplina);
 
         $dados["idDisciplina"] = $idDisciplina;
-        
+
 
         // Carrega a view correta
         $this->loadView("usuario/listAvaliacao.php", $dados, $msgErro, $msgSucesso);
@@ -115,31 +102,53 @@ class AvaliacaoController extends Controller
 
     protected function grafico()
     {
-    if (!isset($_GET['idDisciplina']) || !isset($_GET['idTurma']) || !isset($_GET['bimestre'])) {
-        $this->list("Parâmetros insuficientes.");
-        return;
-    }
-
-    $idProfessor = $this->getIdUsuarioLogado();
-    $idTurma = $_GET['idTurma'];
-    $idDisciplina = $_GET['idDisciplina'];
-    $bimestre = $_GET['bimestre'];
-
-    // Buscar médias e comentários
-    $medias = $this->avaliacaoDao->listByDisciplinaProfessor($idProfessor, $idTurma, $idDisciplina, $bimestre);
-    $comentarios = $this->avaliacaoDao->listComentariosByDisciplinaProfessor($idProfessor, $idTurma, $idDisciplina, $bimestre);
-
-    // --- VERIFICA SE NÃO EXISTEM AVALIAÇÕES ---
-    $temMedias = false;
-    foreach ($medias as $m) {
-        if (!is_null($m)) {
-            $temMedias = true;
-            break;
+        if (!isset($_GET['idDisciplina']) || !isset($_GET['idTurma']) || !isset($_GET['bimestre'])) {
+            $this->list("Parâmetros insuficientes.");
+            return;
         }
-    }
 
-    if (!$temMedias && empty($comentarios)) {
-        // Carregar apenas nomes da disciplina e turma para exibir na tela vazia
+        $idProfessor = $this->getIdUsuarioLogado();
+        $idTurma = $_GET['idTurma'];
+        $idDisciplina = $_GET['idDisciplina'];
+        $bimestre = $_GET['bimestre'];
+
+        // Buscar médias e comentários
+        $medias = $this->avaliacaoDao->listByDisciplinaProfessor($idProfessor, $idTurma, $idDisciplina, $bimestre);
+        $comentarios = $this->avaliacaoDao->listComentariosByDisciplinaProfessor($idProfessor, $idTurma, $idDisciplina, $bimestre);
+
+        // --- VERIFICA SE NÃO EXISTEM AVALIAÇÕES ---
+        $temMedias = false;
+        foreach ($medias as $m) {
+            if (!is_null($m)) {
+                $temMedias = true;
+                break;
+            }
+        }
+
+        if (!$temMedias && empty($comentarios)) {
+            // Carregar apenas nomes da disciplina e turma para exibir na tela vazia
+            $disciplinaDao = new DisciplinaDAO();
+            $disciplina = $disciplinaDao->findById($idDisciplina);
+
+            $turmaDao = new TurmaDAO();
+            $turma = $turmaDao->findById($idTurma);
+
+            // Buscar curso da turma usando CursoDAO
+            $cursoDao = new CursoDAO();
+            $curso = $cursoDao->findById($turma->getCurso()->getId());
+
+
+            $dados["nomeTurma"] = ($curso ? $curso->getNome() : "Curso não informado") . " - " . $turma->getAnoTurma();
+            $dados["nomeDisciplina"] = $disciplina->getNomeDisciplina();
+            $this->loadView("usuario/semAvaliacao.php", $dados);
+            return;
+        }
+
+        // Se existe avaliação → continua
+        $dados["avaliacoes"] = $medias;
+        $dados["comentarios"] = $comentarios;
+
+        // Buscar nomes da disciplina e turma
         $disciplinaDao = new DisciplinaDAO();
         $disciplina = $disciplinaDao->findById($idDisciplina);
 
@@ -150,35 +159,11 @@ class AvaliacaoController extends Controller
         $cursoDao = new CursoDAO();
         $curso = $cursoDao->findById($turma->getCurso()->getId());
 
- 
+        // Montar nome da turma: "Nome do Curso - Ano da Turma"
         $dados["nomeTurma"] = ($curso ? $curso->getNome() : "Curso não informado") . " - " . $turma->getAnoTurma();
         $dados["nomeDisciplina"] = $disciplina->getNomeDisciplina();
-        $this->loadView("usuario/semAvaliacao.php", $dados);
-        return;
-    }
 
-    // Se existe avaliação → continua
-    $dados["avaliacoes"] = $medias;
-    $dados["comentarios"] = $comentarios;
-
-    // Buscar nomes da disciplina e turma
-    $disciplinaDao = new DisciplinaDAO();
-    $disciplina = $disciplinaDao->findById($idDisciplina);
-
-    $turmaDao = new TurmaDAO();
-    $turma = $turmaDao->findById($idTurma);
-
-    // Buscar curso da turma usando CursoDAO
-    $cursoDao = new CursoDAO();
-    $curso = $cursoDao->findById($turma->getCurso()->getId());
-
-    // Montar nome da turma: "Nome do Curso - Ano da Turma"
-    $dados["nomeTurma"] = ($curso ? $curso->getNome() : "Curso não informado") . " - " . $turma->getAnoTurma();
-    $dados["nomeDisciplina"] = $disciplina->getNomeDisciplina();
-    
-    $this->loadView("usuario/graficoAvaliacao.php", $dados);
-
-
+        $this->loadView("usuario/graficoAvaliacao.php", $dados);
     }
 
     // Exibe o formulário de criação
@@ -193,11 +178,6 @@ class AvaliacaoController extends Controller
         $dados['idDisciplina'] = $idDisciplina;
         $dados['professor'] = $disciplinaDao->findProfessorByDisciplinaId($idDisciplina);
 
-        // print '<pre>';
-        // print_r($dados['professor']);
-        // print '</pre>';
-        // die;
-
         $this->loadView("usuario/avaliacao.php", $dados);
     }
 
@@ -209,17 +189,10 @@ class AvaliacaoController extends Controller
         $turmaAlunoDAO = new TurmaAlunoDAO();
         $turmaDAO = new TurmaDAO();
 
-
         // Capturar dados do formulário
         $id = $_POST['idAvaliacao'];
         $bimestre = trim($_POST['bimestre']) != "" ? trim($_POST['bimestre']) : NULL;
         $idDisciplina = trim($_POST['idDisciplina']) != "" ? trim($_POST['idDisciplina']) : NULL;
-
-        //TODO: AQUI DEVE HAVER UMA VALIDACAO PARA O ID DA DISCILINA.
-
-
-        //TODO: aqui eh possivel validar o bimestre da mesma forma que estavamos validamos o cadastro na turma. 
-
 
         $professor = $disciplinaDao->findProfessorByDisciplinaId($idDisciplina);
 
@@ -232,16 +205,13 @@ class AvaliacaoController extends Controller
         $notaOrganizacao = isset($_POST['notaOrganizacao']) ? $_POST['notaOrganizacao'] : NULL;
         $notaRecursos = isset($_POST['notaRecursos']) ? $_POST['notaRecursos'] : NULL;
         $comentario = trim($_POST['comentario']) != "" ? $_POST['comentario'] : NULL;
-        
+
         $turma = $turmaDAO->findById($turmaAlunoDAO->obterTurmaPorUsuario($idAluno)['idTurma']);
-      
+
         // Criar objeto Avaliacao e preencher
         $avaliacao = new Avaliacao();
         $avaliacao->setIdAvaliacao($id);
-
-        // $avaliacao->setIdTurmaAlunos($idTurmaAlunos);
         $avaliacao->setBimestre($bimestre);
-
         $avaliacao->setIdAluno($idAluno);
         $avaliacao->setProfessor($professor);
         $avaliacao->setTurma($turma);
@@ -254,7 +224,6 @@ class AvaliacaoController extends Controller
         $avaliacao->setNotaOrganizacao($notaOrganizacao);
         $avaliacao->setNotaRecursos($notaRecursos);
         $avaliacao->setComentario($comentario);
-
 
         //Validar os dados (camada service)
         $erros = $this->avaliacaoService->validarDados($avaliacao);
@@ -270,13 +239,11 @@ class AvaliacaoController extends Controller
                     $this->avaliacaoDao->update($avaliacao);
                 }
 
-                //$this->list("", "Avaliação salva com sucesso!");
                 header("location: " . BASEURL . "/controller/AvaliacaoController.php?action=listarAvaliacoesPorDisciplina&idDisciplina=" . $avaliacao->getIdDisciplina());
                 return;
-                // Importante para evitar que o código continue e exiba o formulário novamente
 
+                // Importante para evitar que o código continue e exiba o formulário novamente
             } catch (PDOException $e) {
-                //Iserir erro no array
                 array_push($erros, "Erro ao gravar no banco de dados!" . $e->getMessage());
                 array_push($erros, $e->getMessage());
             }
@@ -286,14 +253,12 @@ class AvaliacaoController extends Controller
         $dados['idAvaliacao'] = $avaliacao->getIdAvaliacao();
         $dados['idDisciplina'] = $idDisciplina;
         $dados["avaliacao"] = $avaliacao;
-        $dados["professor"] = $professor; 
+        $dados["professor"] = $professor;
         $dados["erros"] = $erros;
 
-    $this->loadView("usuario/avaliacao.php", $dados);
-    return;
-
+        $this->loadView("usuario/avaliacao.php", $dados);
+        return;
     }
 }
 
-#Criar objeto para executar o construtor e acionar handleAction()
 new AvaliacaoController();

@@ -14,23 +14,15 @@ class CadastroController extends Controller
     private CursoDAO $cursoDao;
     private UsuarioService $usuarioService;
     private ArquivoService $arquivoService;
+
     //Método construtor do controller - será executado a cada requisição a está classe
     public function __construct()
     {
-        /* if(! $this->usuarioEstaLogado())
-            return;
-
-        //Verificar se o usuário é ADMIN
-        if(! $this->usuarioLogadoIsAdmin()) {
-            echo "Acesso Negado!";
-            return;
-        }*/
 
         $this->usuarioDao = new UsuarioDAO();
         $this->usuarioService = new UsuarioService();
         $this->cursoDao = new CursoDAO();
         $this->arquivoService = new ArquivoService();
-
 
         $this->handleAction();
     }
@@ -48,7 +40,6 @@ class CadastroController extends Controller
         $dados['tiposUsuario'] = UsuarioTipo::ALUNO;
         $dados['cursos'] = $this->cursoDao->list();
 
-
         $this->loadView("usuario/formAluno.php", $dados);
     }
 
@@ -60,7 +51,6 @@ class CadastroController extends Controller
             $dados['idUsuario'] = $usuario->getId();
             $usuario->setSenha("");
             $dados["usuario"] = $usuario;
-
             $dados['tiposUsuario'] = UsuarioTipo::getAllAsArray();
             $dados['cursos'] = $this->cursoDao->list();
 
@@ -75,13 +65,11 @@ class CadastroController extends Controller
         $id = $_POST['idUsuario'];
         $nome = trim($_POST['nomeUsuario']) != "" ? trim($_POST['nomeUsuario']) : NULL;
         $numMatricula = trim($_POST['numMatricula']) != "" ? trim($_POST['numMatricula']) : NULL;
-        //s $declaracaoMatricula = ($_FILES['declaracaoMatricula']) != "" ?($_FILES['declaracaoMatricula']) : NULL;
         $email = trim($_POST['email']) != "" ? trim($_POST['email']) : NULL;
         $senha = trim($_POST['senha']) != "" ? trim($_POST['senha']) : NULL;
         $confSenha = trim($_POST['conf_senha']) != "" ? trim($_POST['conf_senha']) : NULL;
         $tipousuario = UsuarioTipo::ALUNO;
         $idCurso = trim($_POST['idCurso']) != "" ? trim($_POST['idCurso']) : NULL;
-
 
         //Criar o objeto Usuario
         $usuario = new Usuario();
@@ -112,7 +100,6 @@ class CadastroController extends Controller
         if (! $erros) {
 
             // Validar arquivo
-
             if (! $erros) {
                 //1- Salvar a foto em um arquivo
 
@@ -164,6 +151,7 @@ class CadastroController extends Controller
         $usuario = $this->findUsuarioById();
 
         if ($usuario) {
+
             //Excluir
             $this->usuarioDao->deleteById($usuario->getId());
 
@@ -181,8 +169,6 @@ class CadastroController extends Controller
         $json = json_encode($usuarios);
 
         echo $json;
-
-        //[{},{},{}]
     }
 
     private function findUsuarioById()
