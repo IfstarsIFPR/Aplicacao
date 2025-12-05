@@ -2,7 +2,7 @@ body {
     background: linear-gradient(135deg, #1b3b67, #061e45);
     overflow-x: hidden;
     overflow-y: auto;
-        font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins', sans-serif;
 
 }
 
@@ -25,7 +25,7 @@ body {
 /* Hover suave */
 .custom-card:hover {
     transform: translateY(-6px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
 }
 
 /* Título do card */
@@ -57,4 +57,3 @@ body {
     background-color: #5668ff;
     transform: scale(1.05);
 }
-

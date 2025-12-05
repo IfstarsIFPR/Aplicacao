@@ -38,13 +38,10 @@
      background-color: #7085f3;
      border: none;
      width: 130px;
-     /* tamanho fixo */
      border-radius: 20px;
      padding: 8px;
      font-weight: bold;
      display: block;
      margin: 0 auto;
-     /* centraliza */
      text-align: center;
-     /* garante centralização */
  }

@@ -1,7 +1,6 @@
 body {
     background: linear-gradient(120deg, #1b3d69, #112f57);
     font-family: 'Arial', sans-serif;
-    /* fonte padrão */
     margin: 0;
     padding: 0;
     min-height: 100vh;
@@ -35,7 +34,6 @@ h3.text-center {
 
 .btn-info {
     background: linear-gradient(135deg, #2563eb, #1e40af);
-    /* azul gradiente */
     color: white;
     border: none;
     border-radius: 25px;
@@ -54,13 +52,8 @@ h3.text-center {
 
 .fonteBonita {
     font-family: 'Poppins', sans-serif;
-    /* ou outra fonte do Google Fonts */
     font-weight: 700;
-    /* deixa mais "forte" */
     font-size: 1.5rem;
-    /* tamanho maior */
     color: #3b82f6;
-    /* azul bonito (mesmo estilo do botão) */
     letter-spacing: 1px;
-    /* dá espaçamento entre letras */
 }

@@ -1,7 +1,7 @@
 body {
     background: linear-gradient(120deg, #1b3d69, #112f57);
     color: #fff;
- 
+
 }
 
 /* CARD */
@@ -30,7 +30,8 @@ body {
     font-family: 'Poppins', sans-serif;
 
 }
-h4{
+
+h4 {
     text-transform: capitalize;
 }
 
@@ -38,8 +39,8 @@ h4{
 .info-mini-card {
     background: #243b63;
     border-radius: 15px;
-    padding: 4px 8px;   
-    height: 65px;  
+    padding: 4px 8px;
+    height: 65px;
 }
 
 .titulo-pequeno {

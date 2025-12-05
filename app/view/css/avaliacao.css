@@ -49,12 +49,12 @@ body {
   color: var(--amarelo);
 }
 
-/* ===== COLUNA DIREITA ===== */
+/* COLUNA DIREITA */
 .forms {
   padding-left: px;
 }
 
-/* ===== CAMPOS ===== */
+/* CAMPOS */
 .form-select,
 .form-control {
   background-color: #11274c;
@@ -69,7 +69,7 @@ body {
   color: #bcd2e0;
 }
 
-/* ===== BOTÃO ===== */
+/* BOTÃO */
 .btn-primary {
   background-color: transparent !important;
   border: 1px solid #cbdbeb;

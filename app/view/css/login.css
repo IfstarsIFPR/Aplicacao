@@ -96,7 +96,7 @@ body {
     overflow-y: auto;
 }
 
-/* ===== RESPONSIVIDADE ===== */
+/* RESPONSIVIDADE */
 @media (max-width: 992px) {
     .login-container {
         flex-direction: column;

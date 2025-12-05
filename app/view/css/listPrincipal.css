@@ -30,9 +30,7 @@ h3.text-center {
 
 table {
     border-radius: 12px;
-    /* arredondamento */
     overflow: hidden;
-    /* mantém os cantos arredondados visíveis */
     width: 100%;
 }
 
@@ -45,10 +43,9 @@ table {
 
 .btn:hover {
     background-color: #1e40af;
-    /* cor ao passar o mouse */
     cursor: pointer;
 }
 
 .table-responsive {
     overflow-x: auto;
-}
+} 

@@ -1,17 +1,16 @@
-/* ====== NAVBAR CUSTOM ====== */
+/* NAVBAR CUSTOM */
 .navbar-custom {
   background-color: #072957 !important;
-  /* Azul escuro */
   padding: 8px 20px;
   font-family: 'Segoe UI', sans-serif;
 }
 
-/* ====== LOGO ====== */
+/* LOGO */
 .navbar-logo {
   height: 50px;
 }
 
-/* ====== LINKS ====== */
+/* LINKS */
 .navbar-custom .nav-link {
   color: #fff !important;
   transition: color 0.3s ease;
@@ -55,7 +54,7 @@
   object-fit: cover;
 }
 
-/* ======= CORREÇÃO DO PERFIL ======= */
+/* CORREÇÃO DO PERFIL */
 .user-menu::after {
   display: none !important;
 }
@@ -66,7 +65,7 @@
   color: #fff;
 }
 
-/* ====== RESPONSIVIDADE ====== */
+/* RESPONSIVIDADE */
 @media (max-width: 992px) {
   .navbar-brand span {
     font-size: 14px;

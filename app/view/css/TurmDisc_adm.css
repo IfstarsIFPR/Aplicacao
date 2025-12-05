@@ -58,11 +58,8 @@ h3 {
 .buttons {
     display: flex;
     justify-content: center;
-    /* centraliza horizontalmente */
     align-items: center;
-    /* alinha verticalmente */
     gap: 12px;
-    /* espaço entre os botões */
     margin-top: 15px;
     padding: 20px;
 }
