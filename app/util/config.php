@@ -44,5 +44,3 @@ define('SESSAO_CURSO_NIVEL', "NivelLogadoTipo");
 //Arquivos
 define('PATH_ARQUIVOS', __DIR__ . "/../../arquivos");
 define('BASEURL_ARQUIVOS', BASEURL . "/../arquivos");
-
-
