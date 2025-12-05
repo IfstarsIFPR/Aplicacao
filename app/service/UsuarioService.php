@@ -53,9 +53,6 @@ class UsuarioService
         return $erros;
     }
 
-
-
-
     /* Método para validar se o usuário selecionou uma foto de perfil */
     public function validarFotoPerfil(array $foto)
     {
