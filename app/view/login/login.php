@@ -46,7 +46,6 @@ require_once(__DIR__ . "/../include/header.php");
                 <?php endif; ?>
             </div>
 
-
             <button type="submit" class="btn btn-login">Entrar</button>
             <div class="mt-3">
                 <?php include_once(__DIR__ . "/../include/msg.php") ?>

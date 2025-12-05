@@ -10,7 +10,7 @@ require_once(__DIR__ . "/../../include/menu.php");
 
 <div class="row">
 
-        <h3 class="text-center mt-5">Turmas da Disciplina</h3>
+    <h3 class="text-center mt-5">Turmas da Disciplina</h3>
 
     <div class="container">
 

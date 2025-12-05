@@ -23,24 +23,18 @@ require_once(__DIR__ . "/../../include/menu.php");
     .titulo-dashboard h3 {
         position: relative;
         padding-bottom: 10px;
-        /* espaço entre o texto e a linha */
         text-align: center;
-        /* garante que o título continue centralizado */
     }
 
     .titulo-dashboard h3::after {
         content: '';
         display: block;
         width: 100%;
-        /* agora ocupa toda a largura do container */
         height: 3px;
-        /* espessura da linha */
         background-color: #2c4d72ff;
-        /* cor da linha */
         margin-top: 8px;
-        /* espaço entre o título e a linha */
         border-radius: 2px;
-        /* cantos levemente arredondados */
+
     }
 
     /* Tabela escura customizada */
@@ -96,31 +90,30 @@ require_once(__DIR__ . "/../../include/menu.php");
             padding: 8px 6px;
         }
     }
-
 </style>
 
-    <div class="container card-dashboard">
-                <div class="titulo-dashboard">
-                    <h3>Disciplinas da Turma</h3>
-                </div>
-
- <div class="table-responsive mt-4">
-            <table id="tabCursos" class="tabela-custom">
-                <thead>
-                    <tr>
-                        <th>Disciplina</th>
-                        <th>Professor</th>
-                    </tr>
-                </thead>
-                <tbody>
-        <?php foreach ($dados['lista'] as $disc): ?>
-              <tr>
-                <td><?php echo $disc->getNomeDisciplina(); ?></td>
-                <td><?php echo $disc->getNomeProfessor(); ?></td>
-        </tr>
-        <?php endforeach; ?>
-        </tbody>
-        </table>
-</div>
+<div class="container card-dashboard">
+    <div class="titulo-dashboard">
+        <h3>Disciplinas da Turma</h3>
     </div>
+
+    <div class="table-responsive mt-4">
+        <table id="tabCursos" class="tabela-custom">
+            <thead>
+                <tr>
+                    <th>Disciplina</th>
+                    <th>Professor</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($dados['lista'] as $disc): ?>
+                    <tr>
+                        <td><?php echo $disc->getNomeDisciplina(); ?></td>
+                        <td><?php echo $disc->getNomeProfessor(); ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+</div>
 <?php require_once(__DIR__ . "/../../include/footer.php"); ?>

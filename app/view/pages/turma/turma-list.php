@@ -23,24 +23,18 @@ require_once(__DIR__ . "/../../include/menu.php");
     .titulo-dashboard h3 {
         position: relative;
         padding-bottom: 10px;
-        /* espaço entre o texto e a linha */
         text-align: center;
-        /* garante que o título continue centralizado */
+
     }
 
     .titulo-dashboard h3::after {
         content: '';
         display: block;
         width: 100%;
-        /* agora ocupa toda a largura do container */
         height: 3px;
-        /* espessura da linha */
         background-color: #2c4d72ff;
-        /* cor da linha */
         margin-top: 8px;
-        /* espaço entre o título e a linha */
         border-radius: 2px;
-        /* cantos levemente arredondados */
     }
 
     /* Tabela escura customizada */
@@ -124,68 +118,62 @@ require_once(__DIR__ . "/../../include/menu.php");
             padding: 8px 6px;
         }
     }
+</style>
 
-    </style>
-
- <div class="container card-dashboard">
-        <div class="titulo-dashboard">
-    <h3>
-        📚 Turma(s) do Curso:
-        <span class="curso-nome"><?= $dados['curso']->getNome() ?></span>
-    </h3> </div>
+<div class="container card-dashboard">
+    <div class="titulo-dashboard">
+        <h3>
+            📚 Turma(s) do Curso:
+            <span class="curso-nome"><?= $dados['curso']->getNome() ?></span>
+        </h3>
+    </div>
     <div class="text-center mt-2">
         <strong>Nível:</strong> <?= $dados['curso']->getNivel() ?>
     </div>
 
-        <div class="row">
+    <div class="row">
 
-            <div class="col-12">
-                    <?php require_once(__DIR__ . "/../../include/msg.php"); ?>
-                </div>
-            </div>
-
-              <div class="table-responsive mt-4">
-                    <table id="tabTurmas" class="tabela-custom">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Ano</th>
-                                <th>Curso</th>
-                                <th>Turno</th>
-                                <th>Disciplinas</th>
-                                <th>Alterar</th>
-                               <!-- <th>Excluir</th> -->
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach ($dados['lista'] as $tur): ?>
-                                <tr>
-                                    <td><?php echo $tur->getId(); ?></td>
-                                    <td><?= $tur->getAnoTurma(); ?></td>
-                                    <td><?= $tur->getCurso()->getNome(); ?></td>
-                                    <td><?= $tur->getTurno(); ?></td>
-                                    <td><a class="btn-disciplinas"
-                                            href="<?= BASEURL ?>/controller/TurmaDisciplinaController.php?action=listDisc&idTurma=<?= $tur->getId() ?>">
-                                            Disciplinas</a>
-                                    </td>
-                                    <td><a class="btn-alterar"
-                                            href="<?= BASEURL ?>/controller/TurmaController.php?action=edit&id=<?= $tur->getId() ?>">
-                                            Alterar</a>
-                                    </td>
-                                   <!-- <td><a class="btn btn-secondary"
-                                            onclick="return confirm('Confirma a exclusão do usuário?');"
-                                            href="<?= BASEURL ?>/controller/TurmaController.php?action=delete&id=<?= $tur->getId() ?>">
-                                            Excluir</a>
-                                    </td> -->
-                                </tr>
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+        <div class="col-12">
+            <?php require_once(__DIR__ . "/../../include/msg.php"); ?>
         </div>
     </div>
 
-    <?php
-    require_once(__DIR__ . "/../../include/footer.php");
-    ?>
+    <div class="table-responsive mt-4">
+        <table id="tabTurmas" class="tabela-custom">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Ano</th>
+                    <th>Curso</th>
+                    <th>Turno</th>
+                    <th>Disciplinas</th>
+                    <th>Alterar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($dados['lista'] as $tur): ?>
+                    <tr>
+                        <td><?php echo $tur->getId(); ?></td>
+                        <td><?= $tur->getAnoTurma(); ?></td>
+                        <td><?= $tur->getCurso()->getNome(); ?></td>
+                        <td><?= $tur->getTurno(); ?></td>
+                        <td><a class="btn-disciplinas"
+                                href="<?= BASEURL ?>/controller/TurmaDisciplinaController.php?action=listDisc&idTurma=<?= $tur->getId() ?>">
+                                Disciplinas</a>
+                        </td>
+                        <td><a class="btn-alterar"
+                                href="<?= BASEURL ?>/controller/TurmaController.php?action=edit&id=<?= $tur->getId() ?>">
+                                Alterar</a>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+</div>
+
+<?php
+require_once(__DIR__ . "/../../include/footer.php");
+?>

@@ -23,24 +23,18 @@ require_once(__DIR__ . "/../../include/menu.php");
     .titulo-dashboard h3 {
         position: relative;
         padding-bottom: 10px;
-        /* espaço entre o texto e a linha */
         text-align: center;
-        /* garante que o título continue centralizado */
     }
 
     .titulo-dashboard h3::after {
         content: '';
         display: block;
         width: 100%;
-        /* agora ocupa toda a largura do container */
         height: 3px;
-        /* espessura da linha */
         background-color: #2c4d72ff;
-        /* cor da linha */
         margin-top: 8px;
-        /* espaço entre o título e a linha */
         border-radius: 2px;
-        /* cantos levemente arredondados */
+
     }
 
     /* Tabela escura customizada */
@@ -124,7 +118,6 @@ require_once(__DIR__ . "/../../include/menu.php");
             padding: 8px 6px;
         }
     }
-
 </style>
 
 <div class="container card-dashboard">
@@ -139,40 +132,34 @@ require_once(__DIR__ . "/../../include/menu.php");
     </div>
 
     <div class="table-responsive mt-4">
-            <table id="tabDisciplinas" class="tabela-custom">
-                <thead>
+        <table id="tabDisciplinas" class="tabela-custom">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Turmas</th>
+                    <th>Alterar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($dados['lista'] as $dis): ?>
                     <tr>
-                        <th>ID</th>
-                        <th>Nome</th>
-                        <th>Turmas</th>
-                        <th>Alterar</th>
-                        <!-- <th>Excluir</th> -->
+                        <td><?php echo $dis->getId(); ?></td>
+                        <td><?= $dis->getNomeDisciplina(); ?></td>
+                        <td><a class="btn-turmas"
+                                href="<?= BASEURL ?>/controller/TurmaDisciplinaController.php?action=listTurmas&idDisciplina=<?= $dis->getId() ?>">
+                                Turmas</a>
+                        </td>
+                        <td><a class="btn-alterar"
+                                href="<?= BASEURL ?>/controller/DisciplinaController.php?action=edit&id=<?= $dis->getId() ?>">
+                                Alterar</a>
+                        </td>
                     </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($dados['lista'] as $dis): ?>
-                        <tr>
-                            <td><?php echo $dis->getId(); ?></td>
-                            <td><?= $dis->getNomeDisciplina(); ?></td>
-                            <td><a class="btn-turmas"
-                                    href="<?= BASEURL ?>/controller/TurmaDisciplinaController.php?action=listTurmas&idDisciplina=<?= $dis->getId() ?>">
-                                    Turmas</a>
-                            </td>
-                            <td><a class="btn-alterar"
-                                    href="<?= BASEURL ?>/controller/DisciplinaController.php?action=edit&id=<?= $dis->getId() ?>">
-                                    Alterar</a>
-                            </td>
-                            <!-- <td><a class="btn btn-secondary" 
-                                onclick="return confirm('Confirma a exclusão da disciplina?');"
-                                href="<?= BASEURL ?>/controller/DisciplinaController.php?action=delete&id=<?= $dis->getId() ?>">
-                                Excluir</a> 
-                            </td> -->
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-        </div>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
     </div>
+</div>
 
 <?php
 require_once(__DIR__ . "/../../include/footer.php");

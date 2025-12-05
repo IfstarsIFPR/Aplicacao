@@ -10,7 +10,7 @@ require_once(__DIR__ . "/../../include/menu.php");
 
 <div class="container">
 
-    <h3 class="text-center mt-5 section-title">  📝  Disciplinas da Turma</h3>
+    <h3 class="text-center mt-5 section-title"> 📝 Disciplinas da Turma</h3>
 
     <div class="row justify-content-center">
 
@@ -19,15 +19,15 @@ require_once(__DIR__ . "/../../include/menu.php");
             <div class="col-md-6 col-lg-4 p-3">
                 <div class="card custom-card shadow-lg">
 
-                                    <div class="card-body text-center">
+                    <div class="card-body text-center">
 
-                    <h5 class="card-title"><?= $disc->getNomeDisciplina(); ?></h5>
-                    <p class="card-text">Professor(a): <?= $disc->getNomeProfessor(); ?></p>
-                    <a href="<?= BASEURL ?>/controller/AvaliacaoController.php?action=create&id_disicplina=<?= $disc->getId() ?>" class="btn btn-primary btn-custom">Avaliar</a>
+                        <h5 class="card-title"><?= $disc->getNomeDisciplina(); ?></h5>
+                        <p class="card-text">Professor(a): <?= $disc->getNomeProfessor(); ?></p>
+                        <a href="<?= BASEURL ?>/controller/AvaliacaoController.php?action=create&id_disicplina=<?= $disc->getId() ?>" class="btn btn-primary btn-custom">Avaliar</a>
 
+                    </div>
                 </div>
-            </div>
-            <!-- ./col -->
+                <!-- ./col -->
             </div>
         <?php endforeach; ?>
     </div>
