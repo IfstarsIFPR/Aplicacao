@@ -81,8 +81,6 @@ class AvaliacaoDAO
         $stmt = $conn->prepare("SELECT * FROM avaliacao WHERE idAluno = ? ORDER BY idAvaliacao DESC");
         $stmt->execute([$idAluno]);
 
-        //TODO : Ajustar para retornar objetos Avaliacao - Padrao MAP usado nas outras DAOS
-
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
@@ -132,11 +130,7 @@ class AvaliacaoDAO
         $stmt->bindValue(':idDisciplina', $idDisciplina);
         $stmt->bindValue(':idTurma', $idTurma);
         $stmt->bindValue(':bimestre', $bimestre);
-
-
         $stmt->execute();
-
-        //TODO : Ajustar para retornar objetos Avaliacao - Padrao MAP usado nas outras DAOS
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -204,7 +198,6 @@ class AvaliacaoDAO
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    //TODO: Implementar método de atualização
     public function update()
     {
         return null;

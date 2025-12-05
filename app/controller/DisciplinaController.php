@@ -39,11 +39,6 @@ class DisciplinaController extends Controller
 
         $dados["lista"] = $this->disciplinaDao->list();
 
-        // Ordena as turmas pelo nome do curso
-        // usort($dados["lista"], function ($a, $b) {
-        //     return strcmp($a->getCurso()->getNome(), $b->getCurso()->getNome());
-        // });
-
         $this->loadView("pages/disciplina/disciplina-list.php", $dados,  $msgErro, $msgSucesso);
     }
 
@@ -124,8 +119,6 @@ class DisciplinaController extends Controller
         // Mostrar os erros
         $dados['idDisciplina'] = $disciplina->getId();
         $dados["disciplina"] = $disciplina;
-
-
         $dados['erros'] = $erros;
         $this->loadView("pages/disciplina/disciplina-form.php", $dados);
     }

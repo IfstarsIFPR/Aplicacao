@@ -70,7 +70,7 @@ class TurmaDisciplinaDAO
                 INNER JOIN usuario u ON u.idUsuario = td.idProfessor
                 WHERE td.idTurmaDisciplina = :id";
         $stm = $conn->prepare($sql);
-        
+
         $stm->bindParam(":id", $id);
 
         $stm->execute();
@@ -100,8 +100,8 @@ class TurmaDisciplinaDAO
     }
 
     public function listByProfessor(int $idProfessor)
-{
-    $sql = "SELECT td.idTurmaDisciplina,
+    {
+        $sql = "SELECT td.idTurmaDisciplina,
                    t.idTurma, t.anoTurma, t.codigoTurma, t.turno, t.idCurso,
                    td.idDisciplina, d.nomeDisciplina,
                    u.idUsuario, u.nomeUsuario, u.siape
@@ -112,12 +112,12 @@ class TurmaDisciplinaDAO
             WHERE td.idProfessor = :idProfessor
             ORDER BY d.nomeDisciplina, t.codigoTurma";
 
-    $stmt = $this->conn->prepare($sql);
-    $stmt->bindParam(":idProfessor", $idProfessor, PDO::PARAM_INT);
-    $stmt->execute();
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(":idProfessor", $idProfessor, PDO::PARAM_INT);
+        $stmt->execute();
 
-    return $this->mapTurmaDisciplina($stmt->fetchAll(PDO::FETCH_ASSOC));
-}
+        return $this->mapTurmaDisciplina($stmt->fetchAll(PDO::FETCH_ASSOC));
+    }
 
 
     //Delete todas as associações de uma disciplina
@@ -150,7 +150,8 @@ class TurmaDisciplinaDAO
             $disc = new Disciplina();
             $disc->setId($reg['idDisciplina']);
             if (isset($reg['nomeDisciplina'])) {
-            $disc->setNomeDisciplina($reg['nomeDisciplina']);}
+                $disc->setNomeDisciplina($reg['nomeDisciplina']);
+            }
             $turmaDisc->setDisciplina($disc);
 
             //Turma
