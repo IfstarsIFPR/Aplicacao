@@ -13,14 +13,6 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://www.jqueryscript.net/demo/multi-select-filter-checkbox/filter-multi-select-bundle.min.js"></script>
 
-<!-- https://www.jqueryscript.net/form/multi-select-filter-checkbox.html -->
-<!-- <script>
-  $(function () {
-    $('#selectTurma').filterMultiSelect();
-  });
-</script> -->
-
-<!-- Fecha as tags BODY e HTML -->
 </body>
 
 </html>

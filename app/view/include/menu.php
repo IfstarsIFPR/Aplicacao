@@ -32,13 +32,6 @@ try {
         $isProfessor = $_SESSION[SESSAO_USUARIO_TIPO] == UsuarioTipo::PROFESSOR;
     }
 
-    /*if ($isAluno) {
-    $idUsuario = $_SESSION[SESSAO_USUARIO_ID] ?? 0;
-
-    $turmaDao = new TurmaAlunoDAO();
-    $idTurma = $turmaDao->obterTurmaPorUsuario($idUsuario)['idTurma'];
-}*/
-
     if ($isAluno) {
         $idUsuario = $_SESSION[SESSAO_USUARIO_ID] ?? 0;
 
@@ -59,7 +52,6 @@ try {
 $usuarioDao = new UsuarioDAO();
 $usuario = $usuarioDao->findById($idUsuario);
 
-
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-dark navbar-custom shadow-sm">
@@ -74,7 +66,6 @@ $usuario = $usuarioDao->findById($idUsuario);
             aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -123,7 +114,7 @@ $usuario = $usuarioDao->findById($idUsuario);
                         </ul>
                     </li>
 
-                      <li class="nav-item dropdown">
+                    <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="dropdownTurmas" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             Gerenciar Turmas
@@ -163,7 +154,6 @@ $usuario = $usuarioDao->findById($idUsuario);
                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <div class="user-avatar"> <img src="<?= BASEURL_ARQUIVOS . '/' . $usuario->getFotoPerfil() ?>" style="width: 50px; height: 50px; object-fit: cover; border-radius: 50%;"> </div>
             </a>
-
 
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarUsuario">
                 <li><a class="dropdown-item" href="<?= BASEURL . '/controller/PerfilController.php?action=view' ?>">Perfil</a></li>
