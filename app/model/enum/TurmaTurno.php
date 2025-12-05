@@ -2,7 +2,8 @@
 #Nome do arquivo: UsuarioPapel.php
 #Objetivo: classe Enum para os papeis de permissões do model de Usuario
 
-class TurmaTurno {
+class TurmaTurno
+{
 
     public static string $SEPARADOR = "|";
 
@@ -11,9 +12,8 @@ class TurmaTurno {
     const NOTURNO = "noturno";
     const INTEGRAL = "integral";
 
-    public static function getAllAsArray() {
+    public static function getAllAsArray()
+    {
         return [TurmaTurno::MATUTINO, TurmaTurno::VESPERTINO, TurmaTurno::NOTURNO, TurmaTurno::INTEGRAL];
-
     }
-
 }

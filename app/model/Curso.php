@@ -1,8 +1,9 @@
-<?php 
+<?php
 #Nome do arquivo: Curso.php
 #Objetivo: classe Model para Curso
 
-class Curso {
+class Curso
+{
 
     private ?int $id;
     private ?string $nome;
@@ -26,7 +27,7 @@ class Curso {
         return $this;
     }
 
-    
+
 
     /**
      * Get the value of nivel

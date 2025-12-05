@@ -4,7 +4,8 @@ require_once(__DIR__ . "/Turma.php");
 require_once(__DIR__ . "/Disciplina.php");
 require_once(__DIR__ . "/Usuario.php");
 
-class TurmaDisciplina {
+class TurmaDisciplina
+{
 
     private ?int $id;
     private ?Turma $turma;

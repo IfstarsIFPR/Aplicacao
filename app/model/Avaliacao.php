@@ -1,6 +1,7 @@
 <?php
 
-class Avaliacao {
+class Avaliacao
+{
 
     private ?int $idAvaliacao;
     private ?int $idAluno;
@@ -16,9 +17,6 @@ class Avaliacao {
     private ?int $notaOrganizacao;
     private ?int $notaRecursos;
     private ?string $comentario;
-
-
-
 
     /**
      * Get the value of idAvaliacao
@@ -74,7 +72,7 @@ class Avaliacao {
         return $this;
     }
 
-        /**
+    /**
      * Get the value of turma
      */
     public function getTurma(): ?Turma
@@ -110,7 +108,7 @@ class Avaliacao {
         return $this;
     }
 
-    
+
 
     /**
      * Get the value of bimestre
@@ -273,5 +271,4 @@ class Avaliacao {
 
         return $this;
     }
-
 }

@@ -1,8 +1,9 @@
-<?php 
+<?php
 #Nome do arquivo: Disciplina.php
 #Objetivo: classe Model para Disciplina
 
-class Disciplina {
+class Disciplina
+{
 
     private ?int $id;
     private ?string $nomeDisciplina;

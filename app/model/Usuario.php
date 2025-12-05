@@ -1,4 +1,4 @@
-<?php 
+<?php
 #Nome do arquivo: Usuario.php
 #Objetivo: classe Model para Usuario
 
@@ -6,11 +6,12 @@ require_once(__DIR__ . "/enum/UsuarioTipo.php");
 require_once(__DIR__ . "/Curso.php");
 require_once(__DIR__ . "/enum/UsuarioStatus.php");
 
-class Usuario {
+class Usuario
+{
 
     private ?int $id;
     private ?Curso $curso;
-    private ?string $nome;      
+    private ?string $nome;
     private ?string $email;
     private ?string $senha;
     private ?string $tipoUsuario;
@@ -20,7 +21,6 @@ class Usuario {
     private ?int $numMatricula;
     private ?string $status = "pendente";
 
-  
     /**
      * Get the value of id
      */
@@ -206,7 +206,7 @@ class Usuario {
         return $this;
     }
 
-    
+
 
     /**
      * Get the value of fotoPerfil

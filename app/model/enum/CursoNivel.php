@@ -2,7 +2,8 @@
 #Nome do arquivo: UsuarioPapel.php
 #Objetivo: classe Enum para os papeis de permissões do model de Usuario
 
-class CursoNivel {
+class CursoNivel
+{
 
     public static string $SEPARADOR = "|";
 
@@ -11,9 +12,8 @@ class CursoNivel {
     const BACHARELADO = "bacharelado";
     const LICENCIATURA = "licenciatura";
 
-    public static function getAllAsArray() {
+    public static function getAllAsArray()
+    {
         return [CursoNivel::TECNICO, CursoNivel::TECNOLOGO, CursoNivel::BACHARELADO, CursoNivel::LICENCIATURA];
-
     }
-
 }

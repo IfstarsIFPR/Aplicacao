@@ -1,9 +1,10 @@
-<?php 
+<?php
 #Nome do arquivo: Turma.php
 #Objetivo: classe Model para Turma
 require_once(__DIR__ . "/Curso.php");
 
-class Turma {
+class Turma
+{
 
     private ?int $id;
     private ?Curso $curso;
