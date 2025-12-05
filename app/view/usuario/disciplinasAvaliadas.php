@@ -14,13 +14,13 @@ require_once(__DIR__ . "/../include/menu.php");
 
         <?php foreach ($dados['lista'] as $disc): ?>
             <div class="col-md-6 col-lg-4 p-3">
-                                <div class="card custom-card shadow-lg">
+                <div class="card custom-card shadow-lg">
 
-                <div class="card-body text-center">
-                <h5 class="card-title"><?=($disc['nomeDisciplina']) ?></h5>
-                <a href="<?= BASEURL ?>/controller/AvaliacaoController.php?action=listarAvaliacoesPorDisciplina&idDisciplina=<?= $disc["idDisciplina"] ?>" class="btn btn-primary btn-custom">Ver Avaliações</a>
+                    <div class="card-body text-center">
+                        <h5 class="card-title"><?= ($disc['nomeDisciplina']) ?></h5>
+                        <a href="<?= BASEURL ?>/controller/AvaliacaoController.php?action=listarAvaliacoesPorDisciplina&idDisciplina=<?= $disc["idDisciplina"] ?>" class="btn btn-primary btn-custom">Ver Avaliações</a>
+                    </div>
                 </div>
-            </div>
             </div>
         <?php endforeach; ?>
     </div>

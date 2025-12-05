@@ -9,21 +9,20 @@ require_once(__DIR__ . "/../include/header.php");
 <div class="container">
 
     <h3 class="text-center mt-5">
-      <!-- <a href="/controller/LoginController.php?action=login" class="btn-voltar position-relative"><i class="bi bi-arrow-left-circle"></i></a>-->
-       <?php if ($dados['idUsuario'] == 0) echo "Cadastro";
-       else echo "Alterar"; ?>
-       Aluno
+        <?php if ($dados['idUsuario'] == 0) echo "Cadastro";
+        else echo "Alterar"; ?>
+        Aluno
     </h3>
 
-    <div class="row my-5 justify-content-center align-items-center"> 
+    <div class="row my-5 justify-content-center align-items-center">
 
         <div class="col-lg-2 col-md-2 text-center d-flex justify-content-center align-items-center">
-        <img src="/Aplicacao/app/view/img/logoStars.png" 
-             class="logo-aluno" 
-             alt="Logo STARS">
-         </div>
+            <img src="/Aplicacao/app/view/img/logoStars.png"
+                class="logo-aluno"
+                alt="Logo STARS">
+        </div>
 
-           <div class="col-md-4 offset-md-2 aluno-form">
+        <div class="col-md-4 offset-md-2 aluno-form">
             <form id="frmUsuario" method="POST" enctype="multipart/form-data"
                 action="<?= BASEURL ?>/controller/CadastroController.php?action=save">
 

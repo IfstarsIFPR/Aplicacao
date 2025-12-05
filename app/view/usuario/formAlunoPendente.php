@@ -12,7 +12,7 @@ require_once(__DIR__ . "/../include/menu.php");
     Aluno
 </h3>
 <div class="row">
-   
+
     <div class="container">
         <div class="form-container  d-flex justify-content-center">
 
@@ -27,9 +27,6 @@ require_once(__DIR__ . "/../include/menu.php");
                         <label class="form-label" for="txtdeclaracaoMatricula">Declaração de Matrícula:</label>
 
                         <a href="<?= BASEURL_ARQUIVOS . '/' . $dados["usuario"]->getdeclaracaoMatricula() ?>"> Declaração</a>
-
-                        <!-- <input class="form-control" type="file" id="txtdeclaracaoMatricula" name="declaracaoMatricula"
-                            maxlength="20" value="<?php echo (isset($dados["usuario"]) ? $dados["usuario"]->getdeclaracaoMatricula() : ''); ?>" /> -->
 
                     </div>
 

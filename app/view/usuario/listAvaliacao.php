@@ -7,8 +7,8 @@ require_once(__DIR__ . "/../include/menu.php");
 
 <div class="container">
     <h3 class="text-center text-white mb-4 mt-5">
-  
-       📕 <?= $dados["nomeDisciplina"] ?> —
+
+        📕 <?= $dados["nomeDisciplina"] ?> —
         <span class="text-info">Professor(a): <?= $dados["nomeProfessor"] ?></span>
     </h3>
 
@@ -76,6 +76,5 @@ require_once(__DIR__ . "/../include/menu.php");
 
     </div>
 </div>
-<!--<script src="/view/js/botaovoltar.js"></script>-->
 
 <?php require_once(__DIR__ . "/../include/footer.php"); ?>

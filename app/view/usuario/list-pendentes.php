@@ -23,24 +23,19 @@ require_once(__DIR__ . "/../include/menu.php");
     .titulo-dashboard h3 {
         position: relative;
         padding-bottom: 10px;
-        /* espaço entre o texto e a linha */
         text-align: center;
-        /* garante que o título continue centralizado */
+
     }
 
     .titulo-dashboard h3::after {
         content: '';
         display: block;
         width: 100%;
-        /* agora ocupa toda a largura do container */
         height: 3px;
         /* espessura da linha */
         background-color: #2c4d72ff;
-        /* cor da linha */
         margin-top: 8px;
-        /* espaço entre o título e a linha */
         border-radius: 2px;
-        /* cantos levemente arredondados */
     }
 
     /* Tabela escura customizada */
@@ -158,7 +153,6 @@ require_once(__DIR__ . "/../include/menu.php");
                             <th>E-mail</th>
                             <th>Tipo</th>
                             <th>Verificar</th>
-                            <!--<th>Excluir</th> -->
                         </tr>
                     </thead>
                     <tbody>
@@ -174,13 +168,7 @@ require_once(__DIR__ . "/../include/menu.php");
                                         <i class="bi bi-check-circle"></i>
                                     </a>
                                 </td>
-                               <!-- <td>
-                                    <a class="btn-excluir"
-                                        onclick="return confirm('Confirma a exclusão do usuário?');"
-                                        href="<?= BASEURL ?>/controller/UsuarioController.php?action=delete&id=<?= $usu->getId() ?>">
-                                        Excluir
-                                    </a>
-                                </td> -->
+
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
