@@ -11,6 +11,8 @@ class UsuarioService
     public function validarDados(Usuario $usuario, ?string $confSenha)
     {
         $erros = [];
+        $usuarioDao = new UsuarioDAO();
+
 
         // Campos obrigatórios
         if (!$usuario->getNome())
@@ -18,6 +20,20 @@ class UsuarioService
 
         if (!$usuario->getEmail())
             $erros['email'] = "O campo E-mail é obrigatório.";
+        else {
+            // validação de unicidade: usar DAO se fornecido, ou criar um temporário
+            if (! $usuarioDao) {
+                $usuarioDao = new UsuarioDAO();
+            }
+            $exist = $usuarioDao->findByEmailSenha($usuario->getEmail(), $usuario->getSenha());
+            if ($exist) {
+                // permite atualizar o próprio usuário (mesmo e-mail)
+                if (! $usuario->getId() || $exist->getId() != $usuario->getId()) {
+                    $erros['email'] = "O E-mail já está cadastrado.";
+                }
+            }
+        }
+
 
         if (!$usuario->getSenha())
             $erros['senha'] = "O campo Senha é obrigatório.";
