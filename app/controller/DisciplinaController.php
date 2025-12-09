@@ -52,9 +52,10 @@ class DisciplinaController extends Controller
 
         $dados["idDisciplina"] = 0; // garante que não dará erro na view
         $dados["disciplina"] = null;
+        $dados["professores"] = (new UsuarioDAO())->listProfessores();
 
         $dados["turmas"]  = $this->turmaDAO->list();
-        $dados["professores"] = (new UsuarioDAO())->listProfessores();
+        
 
         // Ordena as turmas pelo nome do curso
         usort($dados["turmas"], function ($a, $b) {
@@ -105,7 +106,7 @@ class DisciplinaController extends Controller
         $disciplina->setNomeDisciplina($nomeDisciplina);
 
         // Validar os dados (camada service)
-        $erros = $this->disciplinaService->validarDados($disciplina, $turmasIds);
+        $erros = $this->disciplinaService->validarDados($disciplina, $turmasIds, $idProfessor);
 
         if (!$erros) {
             try {

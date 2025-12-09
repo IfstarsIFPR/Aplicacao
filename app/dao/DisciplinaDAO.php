@@ -127,7 +127,7 @@ class DisciplinaDAO {
             foreach ($turmasIds as $turmaId) {
                 $stmRel->bindValue("disciplina_id", $lastId);
                 $stmRel->bindValue("turma_id", $turmaId);
-                $stmRel->bindValue("idProfessor", $idProfessor);
+                $stmRel->bindValue("id_professor", $idProfessor);
                 $stmRel->execute();
             }
         }
