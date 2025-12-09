@@ -39,6 +39,11 @@ class DisciplinaController extends Controller
 
         $dados["lista"] = $this->disciplinaDao->list();
 
+        // Ordena as turmas pelo nome do curso
+        // usort($dados["lista"], function ($a, $b) {
+        //     return strcmp($a->getCurso()->getNome(), $b->getCurso()->getNome());
+        // });
+
         $this->loadView("pages/disciplina/disciplina-list.php", $dados,  $msgErro, $msgSucesso);
     }
 
@@ -49,6 +54,7 @@ class DisciplinaController extends Controller
         $dados["disciplina"] = null;
 
         $dados["turmas"]  = $this->turmaDAO->list();
+        $dados["professores"] = (new UsuarioDAO())->listProfessores();
 
         // Ordena as turmas pelo nome do curso
         usort($dados["turmas"], function ($a, $b) {
@@ -65,6 +71,8 @@ class DisciplinaController extends Controller
         if ($disciplina) {
             $dados['idDisciplina'] = $disciplina->getId();
             $dados["disciplina"] = $disciplina;
+            $dados["professores"] = (new UsuarioDAO())->listProfessores();
+
 
             $dados["turmas"]  = $this->turmaDAO->list();
 
@@ -89,6 +97,7 @@ class DisciplinaController extends Controller
         $nomeDisciplina = trim($_POST['nomeDisciplina']) != "" ? trim($_POST['nomeDisciplina']) : NULL;
 
         $turmasIds = $_POST['turmas'] ?? [];
+        $idProfessor = $_POST['idProfessor'] ?? 0;
 
         // Criar objeto Disciplina
         $disciplina = new Disciplina();
@@ -102,7 +111,7 @@ class DisciplinaController extends Controller
             try {
                 if ($disciplina->getId() == 0) {
                     // Insert e recuperar o ID
-                    $this->disciplinaDao->insert($disciplina, $turmasIds);
+                    $this->disciplinaDao->insert($disciplina, $turmasIds, $idProfessor);
                 } else {
                     $this->disciplinaDao->update($disciplina);
                 }
@@ -119,6 +128,8 @@ class DisciplinaController extends Controller
         // Mostrar os erros
         $dados['idDisciplina'] = $disciplina->getId();
         $dados["disciplina"] = $disciplina;
+
+
         $dados['erros'] = $erros;
         $this->loadView("pages/disciplina/disciplina-form.php", $dados);
     }
